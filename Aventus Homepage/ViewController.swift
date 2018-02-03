@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: Properties
-    @IBOutlet weak var ivtSpeech: UITextView!
 
     @IBOutlet weak var userText: UITextField!
     
