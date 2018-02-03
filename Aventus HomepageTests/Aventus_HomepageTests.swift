@@ -11,26 +11,22 @@ import XCTest
 
 class Aventus_HomepageTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    // MARK: Event Class Tests
+    
+    // Confirm that the Event initializer returns an Event object when passed valid parameters.
+    func testEventInitSucceeds(){
+        let sampleEvent = Event.init(artist: "Selena", location: "London", datetime: "today", description: "first time", photo: nil)
+        XCTAssertNotNil(sampleEvent)
+        
+        let sampleEvent2 = Event.init(artist: "Drake", location: "London", datetime: "today", description: "first time", photo: nil)
+        XCTAssertNotNil(sampleEvent2)
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+    func testEventInitFails(){
+        let sampleEvent = Event.init(artist: "", location: "London", datetime: "today", description: "first time", photo: nil)
+        XCTAssertNil(sampleEvent)
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let sampleEvent2 = Event.init(artist: "Drake", location: "London", datetime: "", description: "first time", photo: nil)
+        XCTAssertNil(sampleEvent2)
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
