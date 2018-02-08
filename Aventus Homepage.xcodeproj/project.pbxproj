@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF76AE2C202639FB006274FE /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76AE2B202639FB006274FE /* EventTableViewCell.swift */; };
 		BF76AE3020264CD5006274FE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76AE2F20264CD5006274FE /* Event.swift */; };
-		BF76AE33202663E5006274FE /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76AE31202663E5006274FE /* EventTableViewController.swift */; };
 		BF7B71BB20236FCC009E5598 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B71BA20236FCC009E5598 /* AppDelegate.swift */; };
 		BF7B71BD20236FCC009E5598 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B71BC20236FCC009E5598 /* ViewController.swift */; };
 		BF7B71C020236FCC009E5598 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7B71BE20236FCC009E5598 /* Main.storyboard */; };
 		BF7B71C220236FCC009E5598 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7B71C120236FCC009E5598 /* Assets.xcassets */; };
 		BF7B71C520236FCC009E5598 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7B71C320236FCC009E5598 /* LaunchScreen.storyboard */; };
 		BF7B71D020236FCD009E5598 /* Aventus_HomepageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B71CF20236FCD009E5598 /* Aventus_HomepageTests.swift */; };
+		BFD17E19202CD729008CB952 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD17E18202CD729008CB952 /* EventViewController.swift */; };
+		BFD17E1F202CDF0B008CB952 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,9 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BF76AE2B202639FB006274FE /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		BF76AE2F20264CD5006274FE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		BF76AE31202663E5006274FE /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		BF7B71B720236FCC009E5598 /* Aventus Homepage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aventus Homepage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7B71BA20236FCC009E5598 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF7B71BC20236FCC009E5598 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +40,8 @@
 		BF7B71CB20236FCD009E5598 /* Aventus HomepageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aventus HomepageTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7B71CF20236FCD009E5598 /* Aventus_HomepageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aventus_HomepageTests.swift; sourceTree = "<group>"; };
 		BF7B71D120236FCD009E5598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFD17E18202CD729008CB952 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +87,8 @@
 				BF7B71BC20236FCC009E5598 /* ViewController.swift */,
 				BF7B71BE20236FCC009E5598 /* Main.storyboard */,
 				BF76AE2F20264CD5006274FE /* Event.swift */,
-				BF76AE2B202639FB006274FE /* EventTableViewCell.swift */,
-				BF76AE31202663E5006274FE /* EventTableViewController.swift */,
+				BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */,
+				BFD17E18202CD729008CB952 /* EventViewController.swift */,
 				BF7B71C120236FCC009E5598 /* Assets.xcassets */,
 				BF7B71C320236FCC009E5598 /* LaunchScreen.storyboard */,
 				BF7B71C620236FCC009E5598 /* Info.plist */,
@@ -212,10 +212,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF76AE2C202639FB006274FE /* EventTableViewCell.swift in Sources */,
 				BF7B71BD20236FCC009E5598 /* ViewController.swift in Sources */,
+				BFD17E19202CD729008CB952 /* EventViewController.swift in Sources */,
 				BF7B71BB20236FCC009E5598 /* AppDelegate.swift in Sources */,
-				BF76AE33202663E5006274FE /* EventTableViewController.swift in Sources */,
+				BFD17E1F202CDF0B008CB952 /* EventTableViewCell.swift in Sources */,
 				BF76AE3020264CD5006274FE /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

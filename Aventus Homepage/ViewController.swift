@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     // MARK: Properties
 
-    @IBOutlet weak var userText: UITextField!
+    @IBOutlet weak var userSpeech: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class ViewController: UIViewController {
 
     // MARK: Actions
     @IBAction func recordButton(_ sender: UIButton) {
-        userText.text = "Done Listening"
+        userSpeech.text = "Done Listening"
     }
 
 }
