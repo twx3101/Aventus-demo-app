@@ -41,6 +41,23 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowSeatSegue" {
+            let detailViewController = segue.destination as! SeatViewController
+            
+            let myIndexPath = self.tableView.indexPathForSelectedRow!
+            let row = myIndexPath.row
+    
+            detailViewController.eventLoaded = events[row]
+            
+            
+            
+            /*if(detailViewController.seating != nil) {
+                detailViewController.seating.image = UIImage(named: "Seating")
+            }*/
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
