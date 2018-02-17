@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aventus Homepage/EventViewController.swift"
-            timestampString = "540564416.824861"
+            timestampString = "540582403.188107"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -97,6 +97,99 @@
             endingLineNumber = "34"
             landmarkName = "upButton(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PaymentViewController.swift"
+            timestampString = "540582215.190351"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "PaymentViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aventus_Homepage.PaymentViewController.__deallocating_deinit"
+                  moduleName = "Aventus Homepage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kk2017/demo-app/PaymentViewController.swift"
+                  timestampString = "540582215.703972"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aventus_Homepage.PaymentViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Aventus_Homepage.PaymentViewController"
+                  moduleName = "Aventus Homepage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kk2017/demo-app/PaymentViewController.swift"
+                  timestampString = "540582215.705318"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "118">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aventus_Homepage.PaymentViewController.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Aventus_Homepage.PaymentViewController"
+                  moduleName = "Aventus Homepage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kk2017/demo-app/PaymentViewController.swift"
+                  timestampString = "540582215.706458"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aventus_Homepage.PaymentViewController.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Aventus_Homepage.PaymentViewController&gt;"
+                  moduleName = "Aventus Homepage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kk2017/demo-app/PaymentViewController.swift"
+                  timestampString = "540582215.707824"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aventus_Homepage.PaymentViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Aventus_Homepage.PaymentViewController&gt;"
+                  moduleName = "Aventus Homepage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kk2017/demo-app/PaymentViewController.swift"
+                  timestampString = "540582215.7089829"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "105">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

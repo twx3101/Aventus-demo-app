@@ -50,10 +50,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
             detailViewController.eventLoaded = events[row]            
             
-            
-            /*if(detailViewController.seating != nil) {
-                detailViewController.seating.image = UIImage(named: "Seating")
-            }*/
         }
     }
     
@@ -133,9 +129,9 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // need to deal with when there is no seat availiable for some catogories or for all categories
         // is it possible to have categories.size() != no_seats_avail.size() != no_categories
-        let seating1 = Seating(categories: ["CatA", "CatB", "CatC", "CatD"], noSeatsAvail: [10,10,10,10], noCategories: 4)
-        let seating2 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE"], noSeatsAvail: [10,10,0,10,10], noCategories: 5)
-        let seating3 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE", "CatG"], noSeatsAvail: [10,10,10,10], noCategories: 6)
+        let seating1 = Seating(categories: ["CatA", "CatB", "CatC", "CatD"], price: [50, 150, 200, 250], noSeatsAvail: [10,10,10,10], noCategories: 4)
+        let seating2 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE"], price: [50, 150, 200, 250, 300], noSeatsAvail: [10,10,0,10,10], noCategories: 5)
+        let seating3 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE", "CatG"], price: [50, 150, 200, 250,300, 360], noSeatsAvail: [10,10,10,10, 10, 10], noCategories: 6)
         
         guard let event1 = Event(artist: "Drake", location: "London", datetime: "today", description: nil, photo: photo1, seating: seating1) else{
             fatalError("Unable to instantiate event1")

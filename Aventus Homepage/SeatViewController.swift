@@ -10,6 +10,8 @@ import UIKit
 
 class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
+    let cellIdentifier = "SeatTableViewCell"
+    
     @IBOutlet weak var tableView: UITableView!
     
     var eventLoaded: Event?
@@ -32,7 +34,7 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellIdentifier = "SeatTableViewCell"
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? SeatTableViewCell else{
             fatalError("The dequeued cell is not an instance of SeatTableViewCell.")
         }
@@ -44,12 +46,33 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PaymentSegue" {
+            
+            
+            let detailViewController = segue.destination as! PaymentViewController
+            
+            var seats = [Int]()
+            
+            let section = 0
+            
+            for row in 0 ..< tableView.numberOfRows(inSection: section)  {
+                let indexPath = IndexPath(row: row, section: section)
+                let cell = tableView.cellForRow(at: indexPath)
+                seats.append(Int((cell as! SeatTableViewCell).selectedSeats.text!)!)
+            }
+            
+            detailViewController.payment = Payment(categories: (seating?.categories)!, price: (seating?.price)!, selectedSeats: seats)
+            
+            //detailViewController.eventLoaded = events[row]
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         seating = eventLoaded?.seating
-        
 
         // Do any additional setup after loading the view.
     }

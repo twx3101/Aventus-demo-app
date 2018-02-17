@@ -1,14 +1,14 @@
 //
-//  Seating.swift
+//  Payment.swift
 //  Aventus Homepage
 //
-//  Created by Krongsiriwat, Krantharat on 15/02/2018.
+//  Created by Krongsiriwat, Krantharat on 17/02/2018.
 //  Copyright © 2018 Krongsiriwat, Krantharat. All rights reserved.
 //
 
 import UIKit
 
-class Seating{
+class Payment{
     
     // MARK: Properties
     
@@ -16,20 +16,15 @@ class Seating{
     
     var price: [Int]
     
-    var noSeatsAvail: [Int]
-    
-    var noCategories: Int
- 
-    
+    var selectedSeats: [Int]
     
     // MARK: Initialization
     
-    init(categories: [String], price: [Int], noSeatsAvail: [Int], noCategories: Int){
+    init(categories: [String], price: [Int], selectedSeats: [Int]){
         
         self.categories = categories
         self.price = price
-        self.noSeatsAvail = noSeatsAvail
-        self.noCategories = noCategories
+        self.selectedSeats = selectedSeats
     }
     
 }
