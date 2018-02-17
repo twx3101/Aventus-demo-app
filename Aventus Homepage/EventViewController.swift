@@ -66,6 +66,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // Do any additional setup after loading the view.
         // Load events to display
+        print("HELLO")
         loadEvents()
     }
 
@@ -84,8 +85,48 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Pass the selected object to the new view controller.
     }
     */
+    func parseJSON(){
+        let url = String(format: "https://sheetsu.com/apis/v1.0bu/c2358558ce5f")
+        let serviceURL = URL(string: url)
+        var request = URLRequest(url: serviceURL!)
+        
+        request.httpMethod = "GET"
+        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: request) { (data, response, error) in
+            if let data = data{
+                do{ let json =  try JSONSerialization.jsonObject(with: data, options: [])
+                    if let event_list = json as? NSArray{
+                        for i in 0 ... 2 {
+                            let eve = event_list[i] as? [String:Any]
+                            let event1 = Event(json:eve!)
+                                self.events.append(event1!)
+                            }
+                        }
+                    }
+                    
+                catch{
+                print(error)
+                return
+                }
+                
+            //convert JSON data into Event Class
+           
+        print("HELLO")
+            
+            DispatchQueue.main.async{
+                self.tableView.reloadData()
+            }
+    
+            }
+        }.resume()
+    }
     
     private func loadEvents(){
+
+	/*
         let photo1 = UIImage(named: "drake")
         let photo2 = UIImage(named: "selena")
         
@@ -105,11 +146,23 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         guard let event3 = Event(artist: "Selena", location: "London", datetime: "next week", description: nil, photo: photo2, seating: seating3) else{
             fatalError("Unable to instantiate event3")
-        }
+        }*/
+        parseJSON()
+//        guard let event1 = Event(artist: "Drake", location: "London", datetime: "today", description: nil, photo: photo1) else{
+//            fatalError("Unable to instantiate event1")
+//        }
+//
+//        guard let event2 = Event(artist: "Selena", location: "London", datetime: "tomorrow", description: nil, photo: photo2) else{
+//            fatalError("Unable to instantiate event2")
+//        }
+//
+//        guard let event3 = Event(artist: "Selena", location: "London", datetime: "next week", description: nil, photo: photo2) else{
+//            fatalError("Unable to instantiate event3")
+//        }
         
-        events += [event1, event2, event3]
+       // events += [event1, event2, event3]
         
     }
 
-
+    
 }
