@@ -43,6 +43,7 @@ class Event{
         self.datetime = jsondatetime
         self.description = nil
         self.photo = nil
+        self.seating = Seating(categories: ["cat A", "cat B"], noSeatsAvail: [100, 100], noCategories: 2)
     }
     
     
@@ -59,7 +60,7 @@ class Event{
         self.description = description
         self.photo = photo
         
-        self.seating = seating
+        self.seating = Seating(categories: ["cat A", "cat B"], noSeatsAvail: [100, 100], noCategories: 2)
     }
    
     

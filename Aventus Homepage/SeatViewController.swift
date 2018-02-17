@@ -8,20 +8,48 @@
 
 import UIKit
 
-class SeatViewController: UIViewController {
+class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    @IBOutlet weak var seating: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
     
     var eventLoaded: Event?
+    
+    var seating: Seating?
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if eventLoaded == nil {
+            return 0
+        }
+        else {
+            return eventLoaded!.seating.noCategories
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellIdentifier = "SeatTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? SeatTableViewCell else{
+            fatalError("The dequeued cell is not an instance of SeatTableViewCell.")
+        }
+        
+        cell.categoryLabel.text = seating?.categories[indexPath.row]
+        cell.priceLabel.text = "100"
+        cell.noSeatsLabel.text = "\(seating?.noSeatsAvail[indexPath.row] ?? 0)"
+
+        return cell
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let event = eventLoaded {
-            seating.image = event.photo
-        }
+        seating = eventLoaded?.seating
         
-        //seating.image = UIImage(named: "Seating")
 
         // Do any additional setup after loading the view.
     }

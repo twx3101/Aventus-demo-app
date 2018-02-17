@@ -14,28 +14,19 @@ class Seating{
     
     var categories: [String]
     
-    var no_seats_avail: [Int]
+    var noSeatsAvail: [Int]
     
-    var no_categaries: Int
-    
-    var artist: String
-    
-    var location: String
-    
-    var datetime: String
-    
-    var description: String?
-    
-    var photo: UIImage?
-    
+    var noCategories: Int
+ 
     
     
     // MARK: Initialization
     
-    init(categories: [String], no_seats_avail: [Int], no_categories: Int){
+    init(categories: [String], noSeatsAvail: [Int], noCategories: Int){
         
         self.categories = categories
-        self.no_seats_avail = no_seats_avail
-        self.no_categaries = no_categories
+        self.noSeatsAvail = noSeatsAvail
+        self.noCategories = noCategories
     }
+    
 }
