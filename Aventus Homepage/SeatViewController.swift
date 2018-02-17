@@ -46,17 +46,16 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
         
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PaymentSegue" {
-            
             
             let detailViewController = segue.destination as! PaymentViewController
             
             var categories = [String]()
             var seats = [Int]()
             var prices = [Int]()
-            
-            
+        
             let section = 0
             
             for row in 0 ..< tableView.numberOfRows(inSection: section)  {
@@ -75,8 +74,6 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             detailViewController.payment = Payment(categories: (seating?.categories)!, price: (seating?.price)!, selectedSeats: seats)
             
-            //detailViewController.eventLoaded = events[row]
-            
         }
     }
     
@@ -87,6 +84,7 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -103,5 +101,12 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func showLayoutButton(_ sender: UIButton) {
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+    }
 
 }

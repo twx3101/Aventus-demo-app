@@ -35,12 +35,15 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
             fatalError("The dequeued cell is not an instance of PaymentTableViewCell.")
         }
         if indexPath.row < (count - 1) {
+            
             cell.categoryLabel.text = payment?.categories[indexPath.row]
             cell.unitLabel.text = String((payment?.selectedSeats[indexPath.row])!)
             cell.priceLabel.text = String((payment?.price[indexPath.row])!)
-            //print(((payment?.selectedSeats[indexPath.row])!*(payment?.price[indexPath.row])!))
+
             let sub = ((payment?.selectedSeats[indexPath.row])!*(payment?.price[indexPath.row])!)
+            
             cell.subTotalLabel.text = String(sub)
+            
             total = total + sub
             
             
@@ -54,6 +57,16 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return cell
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ConfirmSegue" {
+            
+            let detailViewController = segue.destination as! ConfirmationViewController
+            
+            detailViewController.payment = payment
+            
+        }
     }
 
     override func viewDidLoad() {
