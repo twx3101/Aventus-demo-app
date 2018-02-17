@@ -52,14 +52,25 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             let detailViewController = segue.destination as! PaymentViewController
             
+            var categories = [String]()
             var seats = [Int]()
+            var prices = [Int]()
+            
             
             let section = 0
             
             for row in 0 ..< tableView.numberOfRows(inSection: section)  {
                 let indexPath = IndexPath(row: row, section: section)
                 let cell = tableView.cellForRow(at: indexPath)
-                seats.append(Int((cell as! SeatTableViewCell).selectedSeats.text!)!)
+                let seatCell = (cell as! SeatTableViewCell)
+                
+                if let selected = Int(seatCell.selectedSeats.text!) {
+                    if selected > 0 {
+                        categories.append(seatCell.categoryLabel.text!)
+                        prices.append(Int(seatCell.priceLabel.text!)!)
+                        seats.append(Int((cell as! SeatTableViewCell).selectedSeats.text!)!)
+                    }
+                }
             }
             
             detailViewController.payment = Payment(categories: (seating?.categories)!, price: (seating?.price)!, selectedSeats: seats)
