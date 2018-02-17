@@ -22,9 +22,11 @@ class Event{
     
     var photo: UIImage?
     
+    var seating: Seating
+    
     // MARK: Initialization
     
-    init?(artist: String, location: String, datetime: String, description: String?, photo: UIImage?){
+    init?(artist: String, location: String, datetime: String, description: String?, photo: UIImage?, seating: Seating){
         
         guard !artist.isEmpty && !location.isEmpty && !datetime.isEmpty else{
             return nil
@@ -36,5 +38,7 @@ class Event{
         
         self.description = description
         self.photo = photo
+        
+        self.seating = seating
     }
 }

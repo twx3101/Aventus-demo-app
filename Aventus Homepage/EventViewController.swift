@@ -89,15 +89,21 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         let photo1 = UIImage(named: "drake")
         let photo2 = UIImage(named: "selena")
         
-        guard let event1 = Event(artist: "Drake", location: "London", datetime: "today", description: nil, photo: photo1) else{
+        // need to deal with when there is no seat availiable for some catogories or for all categories
+        // is it possible to have categories.size() != no_seats_avail.size() != no_categories
+        let seating1 = Seating(categories: ["CatA", "CatB", "CatC", "CatD"], no_seats_avail: [10,10,10,10], no_categories: 4)
+        let seating2 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE"], no_seats_avail: [10,10,0,10,10], no_categories: 5)
+        let seating3 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE", "CatG"], no_seats_avail: [10,10,10,10], no_categories: 6)
+        
+        guard let event1 = Event(artist: "Drake", location: "London", datetime: "today", description: nil, photo: photo1, seating: seating1) else{
             fatalError("Unable to instantiate event1")
         }
         
-        guard let event2 = Event(artist: "Selena", location: "London", datetime: "tomorrow", description: nil, photo: photo2) else{
+        guard let event2 = Event(artist: "Selena", location: "London", datetime: "tomorrow", description: nil, photo: photo2, seating: seating2) else{
             fatalError("Unable to instantiate event2")
         }
         
-        guard let event3 = Event(artist: "Selena", location: "London", datetime: "next week", description: nil, photo: photo2) else{
+        guard let event3 = Event(artist: "Selena", location: "London", datetime: "next week", description: nil, photo: photo2, seating: seating3) else{
             fatalError("Unable to instantiate event3")
         }
         
