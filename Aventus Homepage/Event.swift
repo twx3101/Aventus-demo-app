@@ -22,6 +22,8 @@ class Event{
     
     var photo: UIImage?
     
+    var seating: Seating
+    
     // MARK: Initialization
     init?(json: [String: Any]) {
         guard let jsonartist = json["Artist"] as? String else{
@@ -41,10 +43,11 @@ class Event{
         self.datetime = jsondatetime
         self.description = nil
         self.photo = nil
+        self.seating = Seating(categories: ["cat A", "cat B"], price: [50, 150], noSeatsAvail: [100, 100], noCategories: 2)
     }
     
     
-    init?(artist: String, location: String, datetime: String, description: String?, photo: UIImage?){
+    init?(artist: String, location: String, datetime: String, description: String?, photo: UIImage?, seating: Seating){
         
         guard !artist.isEmpty && !location.isEmpty && !datetime.isEmpty else{
             return nil
@@ -56,6 +59,8 @@ class Event{
         
         self.description = description
         self.photo = photo
+        
+        self.seating = Seating(categories: ["cat A", "cat B"], price: [50, 150], noSeatsAvail: [100, 100], noCategories: 2)
     }
    
     

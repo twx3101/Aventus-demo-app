@@ -8,23 +8,83 @@
 
 import UIKit
 
-class SeatViewController: UIViewController {
+class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    @IBOutlet weak var seating: UIImageView!
+    let cellIdentifier = "SeatTableViewCell"
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var eventLoaded: Event?
+    
+    var seating: Seating?
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if eventLoaded == nil {
+            return 0
+        }
+        else {
+            return eventLoaded!.seating.noCategories
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? SeatTableViewCell else{
+            fatalError("The dequeued cell is not an instance of SeatTableViewCell.")
+        }
+        
+        cell.categoryLabel.text = seating?.categories[indexPath.row]
+        cell.priceLabel.text = "100"
+        cell.noSeatsLabel.text = "\(seating?.noSeatsAvail[indexPath.row] ?? 0)"
+
+        return cell
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PaymentSegue" {
+            
+            let detailViewController = segue.destination as! PaymentViewController
+            
+            var categories = [String]()
+            var seats = [Int]()
+            var prices = [Int]()
+        
+            let section = 0
+            
+            for row in 0 ..< tableView.numberOfRows(inSection: section)  {
+                let indexPath = IndexPath(row: row, section: section)
+                let cell = tableView.cellForRow(at: indexPath)
+                let seatCell = (cell as! SeatTableViewCell)
+                
+                if let selected = Int(seatCell.selectedSeats.text!) {
+                    if selected > 0 {
+                        categories.append(seatCell.categoryLabel.text!)
+                        prices.append(Int(seatCell.priceLabel.text!)!)
+                        seats.append(Int((cell as! SeatTableViewCell).selectedSeats.text!)!)
+                    }
+                }
+            }
+            
+            detailViewController.payment = Payment(categories: (seating?.categories)!, price: (seating?.price)!, selectedSeats: seats)
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let event = eventLoaded {
-            seating.image = event.photo
-        }
-        
-        //seating.image = UIImage(named: "Seating")
+        seating = eventLoaded?.seating
 
         // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,5 +101,12 @@ class SeatViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func showLayoutButton(_ sender: UIButton) {
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+    }
 
 }

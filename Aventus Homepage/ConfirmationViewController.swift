@@ -1,14 +1,14 @@
 //
-//  PaymentViewController.swift
+//  ConfirmationViewController.swift
 //  Aventus Homepage
 //
-//  Created by Krongsiriwat, Krantharat on 11/02/2018.
+//  Created by Krongsiriwat, Krantharat on 15/02/2018.
 //  Copyright © 2018 Krongsiriwat, Krantharat. All rights reserved.
 //
 
 import UIKit
 
-class PaymentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ConfirmationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,17 +29,17 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellIdentifier = "PaymentTableViewCell"
+        let cellIdentifier = "ConfirmTableViewCell"
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PaymentTableViewCell else{
-            fatalError("The dequeued cell is not an instance of PaymentTableViewCell.")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ConfirmTableViewCell else{
+            fatalError("The dequeued cell is not an instance of ConfirmTableViewCell.")
         }
         if indexPath.row < (count - 1) {
             
             cell.categoryLabel.text = payment?.categories[indexPath.row]
             cell.unitLabel.text = String((payment?.selectedSeats[indexPath.row])!)
             cell.priceLabel.text = String((payment?.price[indexPath.row])!)
-
+            
             let sub = ((payment?.selectedSeats[indexPath.row])!*(payment?.price[indexPath.row])!)
             
             cell.subTotalLabel.text = String(sub)
@@ -58,22 +58,12 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
         
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ConfirmSegue" {
-            
-            let detailViewController = segue.destination as! ConfirmationViewController
-            
-            detailViewController.payment = payment
-            
-        }
-    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         count = (payment?.selectedSeats.count)! + 1
-        
         // Do any additional setup after loading the view.
     }
 
