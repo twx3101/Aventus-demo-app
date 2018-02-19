@@ -13,12 +13,17 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     
     var events = [Event]()
+    var filteredEvents = [Event]()
+    let searchController = UISearchController(searchResultsController: nil)
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering(){
+            return filteredEvents.count
+        }
         return events.count
     }
     
@@ -29,9 +34,13 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventTableViewCell else{
             fatalError("The dequeued cell is not an instance of EventTableViewCell.")
         }
-        
-        let event = events[indexPath.row]
-        
+        let event : Event
+        if isFiltering(){
+              event = filteredEvents[indexPath.row]
+        }
+        else {
+             event = events[indexPath.row]
+        }
         cell.artistLabel.text = event.artist
         cell.locationDatetimeLabel.text = event.location + " " + event.datetime
         cell.descriptionLabel.text = event.description
@@ -47,9 +56,13 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             let myIndexPath = self.tableView.indexPathForSelectedRow!
             let row = myIndexPath.row
-    
-            detailViewController.eventLoaded = events[row]
             
+            if isFiltering(){
+                detailViewController.eventLoaded = filteredEvents[row]
+            }
+            else{
+                detailViewController.eventLoaded = events[row]
+            }
             
             
             /*if(detailViewController.seating != nil) {
@@ -60,13 +73,20 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //tableView.delegate = self
         //tableView.dataSource = self
         
         // Do any additional setup after loading the view.
         // Load events to display
-        print("HELLO")
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Events"
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            tableView.tableHeaderView = searchController.searchBar
+        }
+        definesPresentationContext = true
         loadEvents()
     }
 
@@ -99,7 +119,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             if let data = data{
                 do{ let json =  try JSONSerialization.jsonObject(with: data, options: [])
                     if let event_list = json as? NSArray{
-                        for i in 0 ... 2 {
+                        for i in 0 ..< event_list.count {
                             let eve = event_list[i] as? [String:Any]
                             let event1 = Event(json:eve!)
                                 self.events.append(event1!)
@@ -116,17 +136,32 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
            
         print("HELLO")
             
-            DispatchQueue.main.async{
+            DispatchQueue.main.async{ [unowned self] in
                 self.tableView.reloadData()
             }
     
             }
         }.resume()
     }
+    func isFiltering() -> Bool{
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    func searchBarIsEmpty()-> Bool{
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All"){
+        filteredEvents = events.filter({( event:Event) -> Bool in
+            return event.artist.lowercased().contains(searchText.lowercased()) || event.location.lowercased().contains(searchText.lowercased())
+            
+        })
+        tableView.reloadData()
+    }
     
     private func loadEvents(){
-        let photo1 = UIImage(named: "drake")
-        let photo2 = UIImage(named: "selena")
+        //let photo1 = UIImage(named: "drake")
+        //let photo2 = UIImage(named: "selena")
         
         parseJSON()
 //        guard let event1 = Event(artist: "Drake", location: "London", datetime: "today", description: nil, photo: photo1) else{
@@ -144,6 +179,16 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
        // events += [event1, event2, event3]
         
     }
-
     
 }
+    extension EventViewController: UISearchResultsUpdating{
+        
+        func updateSearchResults(for searchController: UISearchController) {
+            filterContentForSearchText(searchController.searchBar.text!)
+            
+        }
+        
+    }
+
+    
+
