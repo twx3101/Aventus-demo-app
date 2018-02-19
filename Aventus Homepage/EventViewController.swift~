@@ -56,6 +56,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             let myIndexPath = self.tableView.indexPathForSelectedRow!
             let row = myIndexPath.row
+<<<<<<< HEAD
             
             if isFiltering(){
                 detailViewController.eventLoaded = filteredEvents[row]
@@ -68,7 +69,11 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             /*if(detailViewController.seating != nil) {
                 detailViewController.seating.image = UIImage(named: "Seating")
             }*/
-
+=======
+    
+            detailViewController.eventLoaded = events[row]            
+            
+>>>>>>> refs/remotes/origin/master
         }
     }
     
@@ -79,7 +84,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // Do any additional setup after loading the view.
         // Load events to display
-
+<<<<<<< HEAD
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Events"
@@ -89,7 +94,9 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             tableView.tableHeaderView = searchController.searchBar
         }
         definesPresentationContext = true
+=======
         //print("HELLO")
+>>>>>>> refs/remotes/origin/master
         loadEvents()
     }
 
@@ -165,16 +172,22 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     private func loadEvents(){
-
+<<<<<<< HEAD
         //let photo1 = UIImage(named: "drake")
         //let photo2 = UIImage(named: "selena")
+=======
+
+	
+        let photo1 = UIImage(named: "drake")
+        let photo2 = UIImage(named: "selena")
+>>>>>>> refs/remotes/origin/master
         
         // need to deal with when there is no seat availiable for some catogories or for all categories
         // is it possible to have categories.size() != no_seats_avail.size() != no_categories
-       let seating1 = Seating(categories: ["CatA", "CatB", "CatC", "CatD"], price: [50, 150, 200, 250], noSeatsAvail: [10,10,10,10], noCategories: 4)
+        let seating1 = Seating(categories: ["CatA", "CatB", "CatC", "CatD"], price: [50, 150, 200, 250], noSeatsAvail: [10,10,10,10], noCategories: 4)
         let seating2 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE"], price: [50, 150, 200, 250, 300], noSeatsAvail: [10,10,0,10,10], noCategories: 5)
         let seating3 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE", "CatG"], price: [50, 150, 200, 250,300, 360], noSeatsAvail: [10,10,10,10, 10, 10], noCategories: 6)
-        /*
+        
         guard let event1 = Event(artist: "Drake", location: "London", datetime: "today", description: nil, photo: photo1, seating: seating1) else{
             fatalError("Unable to instantiate event1")
         }
@@ -185,10 +198,10 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         guard let event3 = Event(artist: "Selena", location: "London", datetime: "next week", description: nil, photo: photo2, seating: seating3) else{
             fatalError("Unable to instantiate event3")
-        } */
-        parseJSON()
+        }
+        //parseJSON()
         
-        //events += [event1, event2, event3]
+        events += [event1, event2, event3]
         
     }
     
