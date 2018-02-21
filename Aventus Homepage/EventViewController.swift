@@ -46,7 +46,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
              event = events[indexPath.row]
         }
         cell.artistLabel.text = event.artist
-        cell.locationDatetimeLabel.text = event.location + " " + event.datetime
+        cell.locationDatetimeLabel.text = event.location + " " + event.datetime + " " + event.time
         cell.descriptionLabel.text = event.description
         cell.artistPhoto.image = event.photo
         
@@ -114,7 +114,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Pass the selected object to the new view controller.
     }
     */
-    func parseJSON(){
+    /*func parseJSON(){
         let url = String(format: "https://sheetsu.com/apis/v1.0bu/c2358558ce5f")
         let serviceURL = URL(string: url)
         var request = URLRequest(url: serviceURL!)
@@ -153,7 +153,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
             }
         }.resume()
-    }
+    }*/
+    
     func isFiltering() -> Bool{
         return searchController.isActive && !searchBarIsEmpty()
     }
@@ -209,12 +210,13 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             for event in snapshot.children.allObjects as![DataSnapshot]{
                 let eventObject = event.value as? [String: AnyObject]
                 let eventArtist = eventObject?["Artist"]
-                 let eventDate = eventObject?["Local Date"]
-                 let eventLocation = eventObject?["Fake City"]
+                let eventDate = eventObject?["Local Date"]
+                let eventLocation = eventObject?["Fake City"]
+                let eventTime = eventObject?["Local Time"]
                 
                 print(eventArtist)
                 
-                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1)
+                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String)
         
                 self.events.append(event1!)
             }

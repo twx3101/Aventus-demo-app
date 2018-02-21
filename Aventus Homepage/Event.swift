@@ -11,17 +11,6 @@ import UIKit
 class Event{
     
     // MARK: Properties
-    //var FIELD1: String,
-   
-    /*var Local Date: String,
-    var Local Time: String,
-   
-    var Artist: EELS,
-    
-    var Genre : String,*/
-   
-    
-   
     var artist: String
     
     var location: String
@@ -34,8 +23,10 @@ class Event{
     
     var seating: Seating
     
+    var time: String
+    
     // MARK: Initialization
-    init?(json: [String: Any]) {
+    /*init?(json: [String: Any]) {
         guard let jsonartist = json["Fake Mainstream Events"] as? String else{
             return nil
         }
@@ -86,12 +77,12 @@ class Event{
         let seats = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "Standing"], price: jsonPrice, noSeatsAvail: [10,10,0,10,10], noCategories: jsonPrice.count)
         
         
-        self.seating = seats 
+        self.seating = seats
         
-    }
+    }*/
     
     
-    init?(artist: String, location: String, datetime: String, description: String?, photo: UIImage?, seating: Seating){
+    init?(artist: String, location: String, datetime: String, description: String?, photo: UIImage?, seating: Seating, time: String){
         
         guard !artist.isEmpty && !location.isEmpty && !datetime.isEmpty else{
             return nil
@@ -103,6 +94,7 @@ class Event{
         
         self.description = description
         self.photo = photo
+        self.time = time
         
         self.seating = Seating(categories: ["cat A", "cat B"], price: [50, 150], noSeatsAvail: [100, 100], noCategories: 2)
     }
