@@ -1,0 +1,6 @@
+framework module Pods_Aventus_HomepageTests {
+  umbrella header "Pods-Aventus HomepageTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

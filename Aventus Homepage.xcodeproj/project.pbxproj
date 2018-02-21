@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12C1D887D77544B860371CA9 /* Pods_Aventus_HomepageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C3088AC72CB5166593D99D6 /* Pods_Aventus_HomepageTests.framework */; };
+		A2DB4B9FE7072B377F0D202E /* Pods_Aventus_Homepage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0680B9BDCB97715218517485 /* Pods_Aventus_Homepage.framework */; };
+		BB4799B5203D6436008D752A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB4799B4203D6435008D752A /* GoogleService-Info.plist */; };
+		BB4799B7203D8014008D752A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB4799B6203D8014008D752A /* GoogleService-Info.plist */; };
 		BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF40F12E2030971400E280BB /* SeatViewController.swift */; };
 		BF5946972038743A00A0A493 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5946962038743A00A0A493 /* Payment.swift */; };
 		BF5946992038ADFC00A0A493 /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5946982038ADFC00A0A493 /* PaymentTableViewCell.swift */; };
@@ -38,6 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0680B9BDCB97715218517485 /* Pods_Aventus_Homepage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_Homepage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C3088AC72CB5166593D99D6 /* Pods_Aventus_HomepageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_HomepageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F03A5D970A368C531D58B3D /* Pods-Aventus Homepage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus Homepage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage.debug.xcconfig"; sourceTree = "<group>"; };
+		5A9D0D3E1659240E126487F5 /* Pods-Aventus Homepage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus Homepage.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage.release.xcconfig"; sourceTree = "<group>"; };
+		A240143A4391B99D0B7F83E9 /* Pods-Aventus HomepageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus HomepageTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus HomepageTests/Pods-Aventus HomepageTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BB4799B4203D6435008D752A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BB4799B6203D8014008D752A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF40F12E2030971400E280BB /* SeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatViewController.swift; sourceTree = "<group>"; };
 		BF5946962038743A00A0A493 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		BF5946982038ADFC00A0A493 /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
@@ -60,6 +71,7 @@
 		BFBAF60C2035C3E200050B8A /* Seating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seating.swift; sourceTree = "<group>"; };
 		BFD17E18202CD729008CB952 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		CEDA407488874009405E8407 /* Pods-Aventus HomepageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus HomepageTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus HomepageTests/Pods-Aventus HomepageTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2DB4B9FE7072B377F0D202E /* Pods_Aventus_Homepage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,18 +87,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12C1D887D77544B860371CA9 /* Pods_Aventus_HomepageTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13A4566002A0D2E3A7AD916F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F03A5D970A368C531D58B3D /* Pods-Aventus Homepage.debug.xcconfig */,
+				5A9D0D3E1659240E126487F5 /* Pods-Aventus Homepage.release.xcconfig */,
+				A240143A4391B99D0B7F83E9 /* Pods-Aventus HomepageTests.debug.xcconfig */,
+				CEDA407488874009405E8407 /* Pods-Aventus HomepageTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BF7B71AE20236FCC009E5598 = {
 			isa = PBXGroup;
 			children = (
 				BF7B71B920236FCC009E5598 /* Aventus Homepage */,
 				BF7B71CE20236FCD009E5598 /* Aventus HomepageTests */,
 				BF7B71B820236FCC009E5598 /* Products */,
+				13A4566002A0D2E3A7AD916F /* Pods */,
+				F0DD4CA171D612ED5D9194D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +146,7 @@
 				BF7B71C120236FCC009E5598 /* Assets.xcassets */,
 				BF7B71C320236FCC009E5598 /* LaunchScreen.storyboard */,
 				BF7B71C620236FCC009E5598 /* Info.plist */,
+				BB4799B6203D8014008D752A /* GoogleService-Info.plist */,
 			);
 			path = "Aventus Homepage";
 			sourceTree = "<group>";
@@ -127,9 +155,19 @@
 			isa = PBXGroup;
 			children = (
 				BF7B71CF20236FCD009E5598 /* Aventus_HomepageTests.swift */,
+				BB4799B4203D6435008D752A /* GoogleService-Info.plist */,
 				BF7B71D120236FCD009E5598 /* Info.plist */,
 			);
 			path = "Aventus HomepageTests";
+			sourceTree = "<group>";
+		};
+		F0DD4CA171D612ED5D9194D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0680B9BDCB97715218517485 /* Pods_Aventus_Homepage.framework */,
+				1C3088AC72CB5166593D99D6 /* Pods_Aventus_HomepageTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,9 +177,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF7B71D420236FCD009E5598 /* Build configuration list for PBXNativeTarget "Aventus Homepage" */;
 			buildPhases = (
+				A72F0EFD078038A154480A58 /* [CP] Check Pods Manifest.lock */,
 				BF7B71B320236FCC009E5598 /* Sources */,
 				BF7B71B420236FCC009E5598 /* Frameworks */,
 				BF7B71B520236FCC009E5598 /* Resources */,
+				1647C2B1FD0C0A13AA3D4E85 /* [CP] Embed Pods Frameworks */,
+				02E992562F69ED97C17DE15D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,9 +197,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF7B71D720236FCD009E5598 /* Build configuration list for PBXNativeTarget "Aventus HomepageTests" */;
 			buildPhases = (
+				7176B02B7131474A6A1001FB /* [CP] Check Pods Manifest.lock */,
 				BF7B71C720236FCD009E5598 /* Sources */,
 				BF7B71C820236FCD009E5598 /* Frameworks */,
 				BF7B71C920236FCD009E5598 /* Resources */,
+				E23D72C4AB3CD1B06183E832 /* [CP] Embed Pods Frameworks */,
+				5219267C3482F1E6C705771C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -220,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7B71C520236FCC009E5598 /* LaunchScreen.storyboard in Resources */,
+				BB4799B7203D8014008D752A /* GoogleService-Info.plist in Resources */,
 				BF7B71C220236FCC009E5598 /* Assets.xcassets in Resources */,
 				BF7B71C020236FCC009E5598 /* Main.storyboard in Resources */,
 			);
@@ -229,10 +274,117 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB4799B5203D6436008D752A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		02E992562F69ED97C17DE15D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1647C2B1FD0C0A13AA3D4E85 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5219267C3482F1E6C705771C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aventus HomepageTests/Pods-Aventus HomepageTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7176B02B7131474A6A1001FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Aventus HomepageTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A72F0EFD078038A154480A58 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Aventus Homepage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E23D72C4AB3CD1B06183E832 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aventus HomepageTests/Pods-Aventus HomepageTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BF7B71B320236FCC009E5598 /* Sources */ = {
@@ -391,6 +543,7 @@
 		};
 		BF7B71D520236FCD009E5598 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F03A5D970A368C531D58B3D /* Pods-Aventus Homepage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Aventus Homepage/Info.plist";
@@ -403,6 +556,7 @@
 		};
 		BF7B71D620236FCD009E5598 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A9D0D3E1659240E126487F5 /* Pods-Aventus Homepage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Aventus Homepage/Info.plist";
@@ -415,6 +569,7 @@
 		};
 		BF7B71D820236FCD009E5598 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A240143A4391B99D0B7F83E9 /* Pods-Aventus HomepageTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -429,6 +584,7 @@
 		};
 		BF7B71D920236FCD009E5598 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEDA407488874009405E8407 /* Pods-Aventus HomepageTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

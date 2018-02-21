@@ -11,7 +11,17 @@ import UIKit
 class Event{
     
     // MARK: Properties
+    //var FIELD1: String,
+   
+    /*var Local Date: String,
+    var Local Time: String,
+   
+    var Artist: EELS,
     
+    var Genre : String,*/
+   
+    
+   
     var artist: String
     
     var location: String
@@ -76,7 +86,7 @@ class Event{
         let seats = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "Standing"], price: jsonPrice, noSeatsAvail: [10,10,0,10,10], noCategories: jsonPrice.count)
         
         
-        self.seating = seats
+        self.seating = seats 
         
     }
     

@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var ref: DatabaseReference!
+    var refHandle: DatabaseHandle!
     
     var events = [Event]()
     var filteredEvents = [Event]()
@@ -76,6 +80,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         //tableView.delegate = self
         //tableView.dataSource = self
+        
+        
         
         // Do any additional setup after loading the view.
         // Load events to display
@@ -165,15 +171,17 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     private func loadEvents(){
+        
+        
 
         //let photo1 = UIImage(named: "drake")
         //let photo2 = UIImage(named: "selena")
         
         // need to deal with when there is no seat availiable for some catogories or for all categories
         // is it possible to have categories.size() != no_seats_avail.size() != no_categories
-       let seating1 = Seating(categories: ["CatA", "CatB", "CatC", "CatD"], price: [50, 150, 200, 250], noSeatsAvail: [10,10,10,10], noCategories: 4)
-        let seating2 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE"], price: [50, 150, 200, 250, 300], noSeatsAvail: [10,10,0,10,10], noCategories: 5)
-        let seating3 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE", "CatG"], price: [50, 150, 200, 250,300, 360], noSeatsAvail: [10,10,10,10, 10, 10], noCategories: 6)
+        let seating1 = Seating(categories: ["CatA", "CatB", "CatC", "CatD"], price: [50, 150, 200, 250], noSeatsAvail: [10,10,10,10], noCategories: 4)
+        /*let seating2 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE"], price: [50, 150, 200, 250, 300], noSeatsAvail: [10,10,0,10,10], noCategories: 5)
+        let seating3 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE", "CatG"], price: [50, 150, 200, 250,300, 360], noSeatsAvail: [10,10,10,10, 10, 10], noCategories: 6)*/
         /*
         guard let event1 = Event(artist: "Drake", location: "London", datetime: "today", description: nil, photo: photo1, seating: seating1) else{
             fatalError("Unable to instantiate event1")
@@ -186,10 +194,33 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         guard let event3 = Event(artist: "Selena", location: "London", datetime: "next week", description: nil, photo: photo2, seating: seating3) else{
             fatalError("Unable to instantiate event3")
         } */
-        parseJSON()
+        //parseJSON()
         
         //events += [event1, event2, event3]
         
+        //Set the firebase reference
+        ref = Database.database().reference()
+        
+        //Retrieve the posts and listen for changes
+        refHandle = ref.observe(DataEventType.value, with: { (snapshot) in
+            //    let postDict = snapshot.value as? [0] ?? [:]
+           // print(snapshot.value)
+            
+            for event in snapshot.children.allObjects as![DataSnapshot]{
+                let eventObject = event.value as? [String: AnyObject]
+                let eventArtist = eventObject?["Artist"]
+                 let eventDate = eventObject?["Local Date"]
+                 let eventLocation = eventObject?["Fake City"]
+                
+                print(eventArtist)
+                
+                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1)
+        
+                self.events.append(event1!)
+            }
+            self.tableView.reloadData()
+            //Code to execute to obtain the information held in the value field in the database
+        })
     }
     
 }
