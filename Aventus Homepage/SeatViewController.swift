@@ -40,7 +40,7 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         cell.categoryLabel.text = seating?.categories[indexPath.row]
-        cell.priceLabel.text = "100"
+        cell.priceLabel.text = "\(seating?.price[indexPath.row] ?? 0)"
         cell.noSeatsLabel.text = "\(seating?.noSeatsAvail[indexPath.row] ?? 0)"
 
         return cell

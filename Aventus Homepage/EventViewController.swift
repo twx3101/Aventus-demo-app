@@ -180,7 +180,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // need to deal with when there is no seat availiable for some catogories or for all categories
         // is it possible to have categories.size() != no_seats_avail.size() != no_categories
-        let seating1 = Seating(categories: ["CatA", "CatB", "CatC", "CatD"], price: [50, 150, 200, 250], noSeatsAvail: [10,10,10,10], noCategories: 4)
+        var seating1 = Seating(categories: ["CatA", "CatB", "CatC", "CatD"], price: [50, 150, 200, 250], noSeatsAvail: [10,10,10,10], noCategories: 4)
         /*let seating2 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE"], price: [50, 150, 200, 250, 300], noSeatsAvail: [10,10,0,10,10], noCategories: 5)
         let seating3 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE", "CatG"], price: [50, 150, 200, 250,300, 360], noSeatsAvail: [10,10,10,10, 10, 10], noCategories: 6)*/
         /*
@@ -207,6 +207,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             //    let postDict = snapshot.value as? [0] ?? [:]
            // print(snapshot.value)
             
+          //Getting information for events
             for event in snapshot.children.allObjects as![DataSnapshot]{
                 let eventObject = event.value as? [String: AnyObject]
                 let eventArtist = eventObject?["Artist"]
@@ -214,12 +215,57 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 let eventLocation = eventObject?["Fake City"]
                 let eventTime = eventObject?["Local Time"]
                 
-                print(eventArtist)
+                let eventCat1Area = eventObject?["Area: category 1"]
+                let eventCat2Area = eventObject?["Area: category 2"]
+                let eventCat3Area = eventObject?["Area: category 3"]
+                let eventCat4Area = eventObject?["Area: category 4"]
+                let eventCat5Area = eventObject?["Area: category 5 Standing"]
+                
+                print(event)
+                
+                let eventCatArea = [eventCat1Area, eventCat2Area, eventCat3Area, eventCat4Area, eventCat5Area]
+                
+                /*let eventCat1Price = Int((eventObject?["Category 1: Price"])! as! NSNumber)
+                let eventCat2Price = Int((eventObject?["Category 2: Price"])! as! NSNumber)
+                let eventCat3Price = Int((eventObject?["Category 3: Price"])! as! NSNumber)
+                let eventCat4Price = Int((eventObject?["Category 4: Price"])! as! NSNumber)
+                let eventCat5Price = Int((eventObject?["Category 5(standing area): Price"])! as! NSNumber)*/
+                
+                let eventCat1Price = eventObject?["Category 1: Price"]
+                let eventCat2Price = eventObject?["Category 2: Price"]
+                let eventCat3Price = eventObject?["Category 3: Price"]
+                let eventCat4Price = eventObject?["Category 4: Price"]
+                let eventCat5Price = eventObject?["Category 5(standing area): Price"]
+                
+                print(eventCat1Price)
+                print(eventCat2Price)
+                let eventCatPrice = [eventCat1Price , eventCat2Price , eventCat3Price , eventCat4Price , eventCat5Price ]
+                
+                /*let eventCat1Seats = Int((eventObject?["Number of seat available"])! as! NSNumber)
+                let eventCat2Seats = Int((eventObject?["Number of seat available"])! as! NSNumber)
+                let eventCat3Seats = Int((eventObject?["Number of seat available"])! as! NSNumber)
+                let eventCat4Seats = Int((eventObject?["Number of seat available"])! as! NSNumber)
+                let eventCat5Seats = Int((eventObject?["Number of seat available"])! as!  NSNumber)*/
+            
+                
+                let eventCat1Seats = eventObject?["Number of seat available"]
+                let eventCat2Seats = eventObject?["Number of seat available"]
+                let eventCat3Seats = eventObject?["Number of seat available"]
+                let eventCat4Seats = eventObject?["Number of seat available"]
+                let eventCat5Seats = eventObject?["Number of seat available"]
+                
+                let eventCatSeats = [eventCat1Seats, eventCat2Seats, eventCat3Seats, eventCat4Seats, eventCat5Seats]
+                
+                //let eventCatSeats = [eventCat1Seats as! Int, eventCat2Seats as! Int, eventCat3Seats as! Int, eventCat4Seats as! Int, eventCat5Seats as! Int]
+                
+                //seating1 = Seating(categories: eventCatArea as! [String], price: eventCatPrice, noSeatsAvail: eventCatSeats, noCategories: 5)
                 
                 let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String)
         
                 self.events.append(event1!)
             }
+    
+            
             self.tableView.reloadData()
             //Code to execute to obtain the information held in the value field in the database
         })

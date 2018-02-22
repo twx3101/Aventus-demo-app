@@ -19,6 +19,7 @@ class Seating{
     var noSeatsAvail: [Int]
     
     var noCategories: Int
+    
  
     
     

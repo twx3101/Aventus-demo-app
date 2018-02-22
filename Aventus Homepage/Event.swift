@@ -91,12 +91,11 @@ class Event{
         self.artist = artist
         self.location = location
         self.datetime = datetime
-        
         self.description = description
         self.photo = photo
         self.time = time
         
-        self.seating = Seating(categories: ["cat A", "cat B"], price: [50, 150], noSeatsAvail: [100, 100], noCategories: 2)
+        self.seating = seating
     }
    
     
