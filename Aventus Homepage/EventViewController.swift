@@ -180,7 +180,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // need to deal with when there is no seat availiable for some catogories or for all categories
         // is it possible to have categories.size() != no_seats_avail.size() != no_categories
-        var seating1 = Seating(categories: ["CatA", "CatB", "CatC", "CatD"], price: [50, 150, 200, 250], noSeatsAvail: [10,10,10,10], noCategories: 4)
+
         /*let seating2 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE"], price: [50, 150, 200, 250, 300], noSeatsAvail: [10,10,0,10,10], noCategories: 5)
         let seating3 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE", "CatG"], price: [50, 150, 200, 250,300, 360], noSeatsAvail: [10,10,10,10, 10, 10], noCategories: 6)*/
         /*
@@ -228,51 +228,76 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 let eventAddress = eventObject?["Venue address"]
                 let eventCity = eventObject?["Venue city"]
                 let eventWeekend = eventObject?["Weekend"]
+                
+                var eventCatArea = [String]()
+                
+                eventCatArea.append(eventObject?["Area: category 1"] as! String)
+                eventCatArea.append(eventObject?["Area: category 2"] as! String)
+                eventCatArea.append(eventObject?["Area: category 3"] as! String)
+                eventCatArea.append(eventObject?["Area: category 4"] as! String)
+                eventCatArea.append(eventObject?["Area: category 5 Standing"] as! String)
              
-                let eventCat1Area = eventObject?["Area: category 1"]
-                let eventCat2Area = eventObject?["Area: category 2"]
-                let eventCat3Area = eventObject?["Area: category 3"]
-                let eventCat4Area = eventObject?["Area: category 4"]
-                let eventCat5Area = eventObject?["Area: category 5 Standing"]
+                /*let eventCatArea[0] = eventObject?["Area: category 1"]
+                let eventCatArea[1] = eventObject?["Area: category 2"]
+                let eventCatArea[2] = eventObject?["Area: category 3"]
+                let eventCatArea[3] = eventObject?["Area: category 4"]
+                let eventCatArea[4] = eventObject?["Area: category 5 Standing"]*/
+            
+                //let eventCatArea: [String] = [eventCat1Area as! String, eventCat2Area as! String, eventCat3Area as! String, eventCat4Area as! String, eventCat5Area as! String]
                 
-                print(event)
+                print(eventCatArea)
                 
-                let eventCatArea = [eventCat1Area, eventCat2Area, eventCat3Area, eventCat4Area, eventCat5Area]
+                var eventCatPrice = [Int]()
                 
-                /*let eventCat1Price = Int((eventObject?["Category 1: Price"])! as! NSNumber)
-                let eventCat2Price = Int((eventObject?["Category 2: Price"])! as! NSNumber)
-                let eventCat3Price = Int((eventObject?["Category 3: Price"])! as! NSNumber)
-                let eventCat4Price = Int((eventObject?["Category 4: Price"])! as! NSNumber)
-                let eventCat5Price = Int((eventObject?["Category 5(standing area): Price"])! as! NSNumber)*/
+                eventCatPrice.append(eventObject?["Category 1: Price"] as! Int)
+                eventCatPrice.append(eventObject?["Category 2: Price"] as! Int)
+                eventCatPrice.append(eventObject?["Category 3: Price"] as! Int)
+                eventCatPrice.append(eventObject?["Category 4: Price"] as! Int)
+                eventCatPrice.append(eventObject?["Category 5(standing area): Price"] as! Int)
                 
-                let eventCat1Price = eventObject?["Category 1: Price"]
+                /*let eventCat1Price = eventObject?["Category 1: Price"]
                 let eventCat2Price = eventObject?["Category 2: Price"]
                 let eventCat3Price = eventObject?["Category 3: Price"]
                 let eventCat4Price = eventObject?["Category 4: Price"]
                 let eventCat5Price = eventObject?["Category 5(standing area): Price"]
                 
-                print(eventCat1Price)
-                print(eventCat2Price)
-                let eventCatPrice = [eventCat1Price , eventCat2Price , eventCat3Price , eventCat4Price , eventCat5Price ]
+                let eventCatPrice: [Int] = [eventCat1Price as! Int , eventCat2Price as! Int , eventCat3Price as! Int , eventCat4Price as! Int , eventCat5Price as! Int ]*/
                 
-                /*let eventCat1Seats = Int((eventObject?["Number of seat available"])! as! NSNumber)
-                let eventCat2Seats = Int((eventObject?["Number of seat available"])! as! NSNumber)
-                let eventCat3Seats = Int((eventObject?["Number of seat available"])! as! NSNumber)
-                let eventCat4Seats = Int((eventObject?["Number of seat available"])! as! NSNumber)
-                let eventCat5Seats = Int((eventObject?["Number of seat available"])! as!  NSNumber)*/
+                print(eventCatPrice)
+                
+                var eventCatSeats = [Int]()
+                
+                eventCatSeats.append(eventObject?["Category 1: Number of seat available"] as! Int)
+                eventCatSeats.append(eventObject?["Category 2: Number of seat available"] as! Int)
+                eventCatSeats.append(eventObject?["Category 3: Number of seat available"] as! Int)
+                eventCatSeats.append(eventObject?["Category 4: Number of seat available"] as! Int)
+                eventCatSeats.append(eventObject?["Category 5: Number of seat available"] as! Int)
             
+                /*let eventCat1Seats = eventObject?["Category 1: Number of seat available"]
+                let eventCat2Seats = eventObject?["Category 2: Number of seat available"]
+                let eventCat3Seats = eventObject?["Category 3: Number of seat available"]
+                let eventCat4Seats = eventObject?["Category 4: Number of seat available"]
+                let eventCat5Seats = eventObject?["Category 5: Number of seat available"]
                 
-                let eventCat1Seats = eventObject?["Number of seat available"]
-                let eventCat2Seats = eventObject?["Number of seat available"]
-                let eventCat3Seats = eventObject?["Number of seat available"]
-                let eventCat4Seats = eventObject?["Number of seat available"]
-                let eventCat5Seats = eventObject?["Number of seat available"]
+                let eventCatSeats: [Int] = [eventCat1Seats as! Int, eventCat2Seats as! Int, eventCat3Seats as! Int, eventCat4Seats as! Int, eventCat5Seats as! Int]*/
                 
-                let eventCatSeats = [eventCat1Seats, eventCat2Seats, eventCat3Seats, eventCat4Seats, eventCat5Seats]
+                print(eventCatSeats)
                 
-                //let eventCatSeats = [eventCat1Seats as! Int, eventCat2Seats as! Int, eventCat3Seats as! Int, eventCat4Seats as! Int, eventCat5Seats as! Int]
+                var eventAvailCat = [String]()
+                var eventAvailPrice = [Int]()
+                var eventAvailSeats = [Int]()
+                var no_avail_cat: Int = 0
+       
+                for i in 0...4 {
+                    if eventCatPrice[i] != 0 {
+                        eventAvailCat.append(eventCatArea[i])
+                        eventAvailPrice.append(eventCatPrice[i])
+                        eventAvailSeats.append(eventCatSeats[i])
+                        no_avail_cat = no_avail_cat+1
+                    }
+                }
                 
-                //seating1 = Seating(categories: eventCatArea as! [String], price: eventCatPrice, noSeatsAvail: eventCatSeats, noCategories: 5)
+                let seating1 = Seating(categories: eventAvailCat, price: eventAvailPrice, noSeatsAvail: eventAvailSeats , noCategories: no_avail_cat)
                 
                 let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String)
         
