@@ -25,6 +25,32 @@ class Event{
     
     var time: String
     
+    var artist_ranking: Int
+    
+    var day_in_week: String
+    
+    var event_ID: String
+    
+    var event_status: String
+    
+    var venue: String
+    
+    var genre: String
+    
+    var month: String
+    
+    var timezone: String
+    
+    var city: String
+    
+    var imageURL: String
+    
+    var address: String
+    
+    var weekend: String
+    
+    
+    
     // MARK: Initialization
     /*init?(json: [String: Any]) {
         guard let jsonartist = json["Fake Mainstream Events"] as? String else{
@@ -82,7 +108,7 @@ class Event{
     }*/
     
     
-    init?(artist: String, location: String, datetime: String, description: String?, photo: UIImage?, seating: Seating, time: String){
+    init?(artist: String, location: String, datetime: String, description: String?, photo: UIImage?, seating: Seating, time: String, artist_ranking: Int, day_in_week: String, event_ID: String, event_status: String, venue: String, genre: String, month: String, timezone: String, city: String, imageURL: String, address: String, weekend: String){
         
         guard !artist.isEmpty && !location.isEmpty && !datetime.isEmpty else{
             return nil
@@ -94,6 +120,19 @@ class Event{
         self.description = description
         self.photo = photo
         self.time = time
+        self.artist_ranking = artist_ranking
+        self.day_in_week = day_in_week
+        self.event_ID = event_ID
+        self.event_status = event_status
+        self.venue = venue
+        self.genre = genre
+        self.month = month
+        self.timezone = timezone
+        self.city = city
+        self.imageURL = imageURL
+        self.address = address
+        self.weekend = weekend
+        
         
         self.seating = seating
     }

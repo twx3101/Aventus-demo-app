@@ -213,8 +213,22 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 let eventArtist = eventObject?["Artist"]
                 let eventDate = eventObject?["Local Date"]
                 let eventLocation = eventObject?["Fake City"]
-                let eventTime = eventObject?["Local Time"]
+                let eventTime = eventObject?["Local Time (formatted)"]
+
                 
+                let eventArtistRanking = eventObject?["Artist Ranking"]
+                let eventDayinWeek = eventObject?["Day in week"]
+                let eventID = eventObject?["Event ID"]
+                let eventImageURL = eventObject?["Event Image URL 1"]
+                let eventStatus = eventObject?["Event Status"]
+                let eventVenue = eventObject?["Fake Venue"]
+                let eventGenre = eventObject?["Genre"]
+                let eventMonth = eventObject?["Month"]
+                let eventTimezone = eventObject?["Timezone"]
+                let eventAddress = eventObject?["Venue address"]
+                let eventCity = eventObject?["Venue city"]
+                let eventWeekend = eventObject?["Weekend"]
+             
                 let eventCat1Area = eventObject?["Area: category 1"]
                 let eventCat2Area = eventObject?["Area: category 2"]
                 let eventCat3Area = eventObject?["Area: category 3"]
@@ -260,7 +274,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 //seating1 = Seating(categories: eventCatArea as! [String], price: eventCatPrice, noSeatsAvail: eventCatSeats, noCategories: 5)
                 
-                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String)
+                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String)
         
                 self.events.append(event1!)
             }
