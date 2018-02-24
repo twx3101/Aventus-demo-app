@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseDatabase
+import Alamofire
+import AlamofireImage
 
 class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
@@ -48,8 +50,14 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.artistLabel.text = event.artist
         cell.locationDatetimeLabel.text = event.location
         cell.descriptionLabel.text = event.datetime + " " + event.time
-        cell.artistPhoto.image = event.photo
         
+        Alamofire.request(event.imageURL).responseImage { response in
+            debugPrint(response)
+        
+            if let image = response.result.value{
+            cell.artistPhoto.image = image
+            }
+        }
         return cell
 
     }
@@ -219,7 +227,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 let eventArtistRanking = eventObject?["Artist Ranking"]
                 let eventDayinWeek = eventObject?["Day in week"]
                 let eventID = eventObject?["Event ID"]
-                let eventImageURL = eventObject?["Event Image URL 1"]
+                let eventImageURL = eventObject?["Fake Artist Pc JPEG URL"]
                 let eventStatus = eventObject?["Event Status"]
                 let eventVenue = eventObject?["Fake Venue"]
                 let eventGenre = eventObject?["Genre"]
