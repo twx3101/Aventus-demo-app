@@ -46,8 +46,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
              event = events[indexPath.row]
         }
         cell.artistLabel.text = event.artist
-        cell.locationDatetimeLabel.text = event.location + " " + event.datetime + " " + event.time
-        cell.descriptionLabel.text = event.description
+        cell.locationDatetimeLabel.text = event.location
+        cell.descriptionLabel.text = event.datetime + " " + event.time
         cell.artistPhoto.image = event.photo
         
         return cell
@@ -210,7 +210,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
           //Getting information for events
             for event in snapshot.children.allObjects as![DataSnapshot]{
                 let eventObject = event.value as? [String: AnyObject]
-                let eventArtist = eventObject?["Artist"]
+                let eventArtist = eventObject?["Fake Mainstream Events"]
                 let eventDate = eventObject?["Local Date"]
                 let eventLocation = eventObject?["Fake City"]
                 let eventTime = eventObject?["Local Time (formatted)"]
@@ -249,11 +249,31 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 var eventCatPrice = [Int]()
                 
-                eventCatPrice.append(eventObject?["Category 1: Price"] as! Int)
-                eventCatPrice.append(eventObject?["Category 2: Price"] as! Int)
-                eventCatPrice.append(eventObject?["Category 3: Price"] as! Int)
-                eventCatPrice.append(eventObject?["Category 4: Price"] as! Int)
-                eventCatPrice.append(eventObject?["Category 5(standing area): Price"] as! Int)
+                if let cat1 = eventObject?["Category 1: Price"] as? Int{ eventCatPrice.append(cat1)
+                }
+                else{
+                   eventCatPrice.append(0)
+                }
+                if let cat2 = eventObject?["Category 2: Price"] as? Int{ eventCatPrice.append(cat2)
+                }
+                else{
+                    eventCatPrice.append(0)
+                }
+                if let cat3 = eventObject?["Category 3: Price"] as? Int{ eventCatPrice.append(cat3)
+                }
+                else{
+                    eventCatPrice.append(0)
+                }
+                if let cat4 = eventObject?["Category 4: Price"] as? Int{ eventCatPrice.append(cat4)
+                }
+                else{
+                    eventCatPrice.append(0)
+                }
+                if let cat5 = eventObject?["Category 5(standing area): Price"] as? Int{ eventCatPrice.append(cat5)
+                }
+                else{
+                    eventCatPrice.append(0)
+                }
                 
                 /*let eventCat1Price = eventObject?["Category 1: Price"]
                 let eventCat2Price = eventObject?["Category 2: Price"]
@@ -267,11 +287,32 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 var eventCatSeats = [Int]()
                 
-                eventCatSeats.append(eventObject?["Category 1: Number of seat available"] as! Int)
-                eventCatSeats.append(eventObject?["Category 2: Number of seat available"] as! Int)
-                eventCatSeats.append(eventObject?["Category 3: Number of seat available"] as! Int)
-                eventCatSeats.append(eventObject?["Category 4: Number of seat available"] as! Int)
-                eventCatSeats.append(eventObject?["Category 5: Number of seat available"] as! Int)
+                if let seat1 = eventObject?["Category 1: Number of seat available"] as? Int{ eventCatSeats.append(seat1)
+                }
+                else{
+                    eventCatSeats.append(0)
+                }
+                
+                if let seat2 = eventObject?["Category 2: Number of seat available"] as? Int{ eventCatSeats.append(seat2)
+                }
+                else{
+                    eventCatSeats.append(0)
+                }
+                if let seat3 = eventObject?["Category 3: Number of seat available"] as? Int{ eventCatSeats.append(seat3)
+                }
+                else{
+                    eventCatSeats.append(0)
+                }
+                if let seat4 = eventObject?["Category 4: Number of seat available"] as? Int{ eventCatSeats.append(seat4)
+                }
+                else{
+                    eventCatSeats.append(0)
+                }
+                if let seat5 = eventObject?["Category 5: Number of seat available"] as? Int{ eventCatSeats.append(seat5)
+                }
+                else{
+                    eventCatSeats.append(0)
+                }
             
                 /*let eventCat1Seats = eventObject?["Category 1: Number of seat available"]
                 let eventCat2Seats = eventObject?["Category 2: Number of seat available"]

@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		12C1D887D77544B860371CA9 /* Pods_Aventus_HomepageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C3088AC72CB5166593D99D6 /* Pods_Aventus_HomepageTests.framework */; };
+		A19EE4D5203F7F4700864352 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB4799B4203D6435008D752A /* GoogleService-Info.plist */; };
 		A2DB4B9FE7072B377F0D202E /* Pods_Aventus_Homepage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0680B9BDCB97715218517485 /* Pods_Aventus_Homepage.framework */; };
-		BB4799B5203D6436008D752A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB4799B4203D6435008D752A /* GoogleService-Info.plist */; };
-		BB4799B7203D8014008D752A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB4799B6203D8014008D752A /* GoogleService-Info.plist */; };
+		BB4799B7203D8014008D752A /* .. in Resources */ = {isa = PBXBuildFile; fileRef = BB4799B6203D8014008D752A /* .. */; };
 		BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF40F12E2030971400E280BB /* SeatViewController.swift */; };
 		BF5946972038743A00A0A493 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5946962038743A00A0A493 /* Payment.swift */; };
 		BF5946992038ADFC00A0A493 /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5946982038ADFC00A0A493 /* PaymentTableViewCell.swift */; };
@@ -47,8 +47,8 @@
 		1F03A5D970A368C531D58B3D /* Pods-Aventus Homepage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus Homepage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage.debug.xcconfig"; sourceTree = "<group>"; };
 		5A9D0D3E1659240E126487F5 /* Pods-Aventus Homepage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus Homepage.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage.release.xcconfig"; sourceTree = "<group>"; };
 		A240143A4391B99D0B7F83E9 /* Pods-Aventus HomepageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus HomepageTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus HomepageTests/Pods-Aventus HomepageTests.debug.xcconfig"; sourceTree = "<group>"; };
-		BB4799B4203D6435008D752A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		BB4799B6203D8014008D752A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BB4799B4203D6435008D752A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BB4799B6203D8014008D752A /* .. */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = ..; sourceTree = "<group>"; };
 		BF40F12E2030971400E280BB /* SeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatViewController.swift; sourceTree = "<group>"; };
 		BF5946962038743A00A0A493 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		BF5946982038ADFC00A0A493 /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
@@ -146,7 +146,8 @@
 				BF7B71C120236FCC009E5598 /* Assets.xcassets */,
 				BF7B71C320236FCC009E5598 /* LaunchScreen.storyboard */,
 				BF7B71C620236FCC009E5598 /* Info.plist */,
-				BB4799B6203D8014008D752A /* GoogleService-Info.plist */,
+				BB4799B4203D6435008D752A /* GoogleService-Info.plist */,
+				BB4799B6203D8014008D752A /* .. */,
 			);
 			path = "Aventus Homepage";
 			sourceTree = "<group>";
@@ -155,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				BF7B71CF20236FCD009E5598 /* Aventus_HomepageTests.swift */,
-				BB4799B4203D6435008D752A /* GoogleService-Info.plist */,
 				BF7B71D120236FCD009E5598 /* Info.plist */,
 			);
 			path = "Aventus HomepageTests";
@@ -264,7 +264,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7B71C520236FCC009E5598 /* LaunchScreen.storyboard in Resources */,
-				BB4799B7203D8014008D752A /* GoogleService-Info.plist in Resources */,
+				BB4799B7203D8014008D752A /* .. in Resources */,
+				A19EE4D5203F7F4700864352 /* GoogleService-Info.plist in Resources */,
 				BF7B71C220236FCC009E5598 /* Assets.xcassets in Resources */,
 				BF7B71C020236FCC009E5598 /* Main.storyboard in Resources */,
 			);
@@ -274,7 +275,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB4799B5203D6436008D752A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
