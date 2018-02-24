@@ -47,7 +47,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         else {
              event = events[indexPath.row]
         }
-        cell.artistLabel.text = event.artist
+        cell.artistLabel.text = "    " + event.artist
         cell.locationDatetimeLabel.text = event.location
         cell.descriptionLabel.text = event.datetime + " " + event.time
         
@@ -55,7 +55,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             debugPrint(response)
         
             if let image = response.result.value{
-            cell.artistPhoto.image = image
+                cell.artistPhoto.image = image
             }
         }
         return cell
