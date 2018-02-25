@@ -72,6 +72,8 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = colors.bg  
+        
         count = (payment?.selectedSeats.count)! + 1
         
         // Do any additional setup after loading the view.

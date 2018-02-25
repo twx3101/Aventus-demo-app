@@ -8,15 +8,19 @@
 
 import UIKit
 
-class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate{
     
     let cellIdentifier = "SeatTableViewCell"
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var selectedSeatPicker: UIPickerView!
+    
     var eventLoaded: Event?
     
     var seating: Seating?
+    
+    var pickerData = [["0", "1", "2"]]
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -40,8 +44,21 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         cell.categoryLabel.text = seating?.categories[indexPath.row]
-        cell.priceLabel.text = "100"
+        cell.priceLabel.text = "\(seating?.price[indexPath.row] ?? 0)"
         cell.noSeatsLabel.text = "\(seating?.noSeatsAvail[indexPath.row] ?? 0)"
+        
+        
+        /*let noSeatsAvail = (seating?.noSeatsAvail[indexPath.row])!
+        
+        if noSeatsAvail < 10 {
+            for i in 0...noSeatsAvail {
+                pickerData[0].append(i)
+            }
+        } else {
+            for i in 0...10 {
+                pickerData[0].append(i)
+            }
+        }*/
 
         return cell
         
@@ -77,11 +94,34 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData[component].count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[component][row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        updateLabel()
+    }
+    
+    func updateLabel(){
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = colors.bg
         
         seating = eventLoaded?.seating
 
+        selectedSeatPicker.dataSource = self
+        selectedSeatPicker.delegate = self
         // Do any additional setup after loading the view.
     }
     

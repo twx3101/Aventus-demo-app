@@ -26,7 +26,7 @@ class RoundButton: UIButton{
     func sharedInit(){
         layer.backgroundColor = colors.round.cgColor
         
-        layer.cornerRadius = frame.width/2
+        layer.cornerRadius = frame.height/2
         layer.borderWidth = 1.0
         layer.borderColor = tintColor.cgColor
         

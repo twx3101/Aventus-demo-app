@@ -74,8 +74,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.delegate = self
-        //tableView.dataSource = self
+
+        view.backgroundColor = colors.bg
         
         // Do any additional setup after loading the view.
         // Load events to display
