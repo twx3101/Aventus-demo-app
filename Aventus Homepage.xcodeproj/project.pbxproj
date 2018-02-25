@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF40F12E2030971400E280BB /* SeatViewController.swift */; };
+		BF51ED4F20432787003D0219 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED4E20432787003D0219 /* ColorHelper.swift */; };
+		BF51ED51204331B9003D0219 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED50204331B9003D0219 /* RoundButton.swift */; };
+		BF51ED5520433BBD003D0219 /* UtterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED5420433BBD003D0219 /* UtterLabel.swift */; };
 		BF5946972038743A00A0A493 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5946962038743A00A0A493 /* Payment.swift */; };
 		BF5946992038ADFC00A0A493 /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5946982038ADFC00A0A493 /* PaymentTableViewCell.swift */; };
 		BF59469B2038D69C00A0A493 /* ConfirmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59469A2038D69C00A0A493 /* ConfirmTableViewCell.swift */; };
@@ -40,6 +43,9 @@
 
 /* Begin PBXFileReference section */
 		BF40F12E2030971400E280BB /* SeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatViewController.swift; sourceTree = "<group>"; };
+		BF51ED4E20432787003D0219 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
+		BF51ED50204331B9003D0219 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		BF51ED5420433BBD003D0219 /* UtterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtterLabel.swift; sourceTree = "<group>"; };
 		BF5946962038743A00A0A493 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		BF5946982038ADFC00A0A493 /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
 		BF59469A2038D69C00A0A493 /* ConfirmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewCell.swift; sourceTree = "<group>"; };
@@ -103,6 +109,9 @@
 		BF7B71B920236FCC009E5598 /* Aventus Homepage */ = {
 			isa = PBXGroup;
 			children = (
+				BF51ED4E20432787003D0219 /* ColorHelper.swift */,
+				BF51ED5420433BBD003D0219 /* UtterLabel.swift */,
+				BF51ED50204331B9003D0219 /* RoundButton.swift */,
 				BF7B71BA20236FCC009E5598 /* AppDelegate.swift */,
 				BF7B71BC20236FCC009E5598 /* ViewController.swift */,
 				BF7B71BE20236FCC009E5598 /* Main.storyboard */,
@@ -243,6 +252,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF51ED5520433BBD003D0219 /* UtterLabel.swift in Sources */,
+				BF51ED51204331B9003D0219 /* RoundButton.swift in Sources */,
 				BFA6D2FC203850C300DFA67B /* SeatTableViewCell.swift in Sources */,
 				BF8588252030B729005C9D7D /* PaymentViewController.swift in Sources */,
 				BF5946992038ADFC00A0A493 /* PaymentTableViewCell.swift in Sources */,
@@ -254,6 +265,7 @@
 				BF59469D2038E25900A0A493 /* SeatPopUpViewController.swift in Sources */,
 				BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */,
 				BFD17E1F202CDF0B008CB952 /* EventTableViewCell.swift in Sources */,
+				BF51ED4F20432787003D0219 /* ColorHelper.swift in Sources */,
 				BF59469B2038D69C00A0A493 /* ConfirmTableViewCell.swift in Sources */,
 				BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */,
 				BF76AE3020264CD5006274FE /* Event.swift in Sources */,

@@ -11,17 +11,21 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: Properties
-
-    @IBOutlet weak var userSpeech: UILabel!
+    @IBOutlet weak var utter1Label: UILabel!
+    
+    @IBOutlet weak var utter2Label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = colors.bg   
+        
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     // MARK: Actions
     @IBAction func recordButton(_ sender: UIButton) {
-        userSpeech.text = "Done Listening"
     }
 
 }

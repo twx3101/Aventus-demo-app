@@ -6,10 +6,14 @@
 //  Copyright © 2018 Krongsiriwat, Krantharat. All rights reserved.
 //
 
+
+
+
 import UIKit
 
 // Importing Firebase
 //import Firebase
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
