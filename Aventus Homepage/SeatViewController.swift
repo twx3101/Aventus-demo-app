@@ -118,6 +118,11 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         view.backgroundColor = colors.bg
         
+        // Add footer to hide the empty cell from the table view
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 343, height: 50))
+        tableView.tableFooterView?.isHidden = true
+        tableView.backgroundColor = UIColor.clear
+        
         seating = eventLoaded?.seating
 
         selectedSeatPicker.dataSource = self
