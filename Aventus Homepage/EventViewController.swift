@@ -124,7 +124,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     private func loadEvents(){
 
 	
-        let photo1 = UIImage(named: "drake")
+        /*let photo1 = UIImage(named: "drake")
         let photo2 = UIImage(named: "selena")
         
         // need to deal with when there is no seat availiable for some catogories or for all categories
@@ -143,10 +143,10 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         guard let event3 = Event(artist: "Selena", location: "London", datetime: "next week", description: nil, photo: photo2, seating: seating3) else{
             fatalError("Unable to instantiate event3")
-        }
-        //parseJSON()
+        }*/
+        parseJSON()
         
-        events += [event1, event2, event3]
+        //events += [event1, event2, event3]
         
     }
 
