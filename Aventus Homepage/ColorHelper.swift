@@ -11,7 +11,14 @@ import UIKit
 // Define global variables
 struct colors{
     static var bg = UIColorFromHex(rgbValue: 0x1E0E2B, alpha: 1)
+    static var tableBg = UIColorFromHex(rgbValue: 0x1E0E2B, alpha: 0.5)
     static var text = UIColorFromHex(rgbValue: 0xA6D80C, alpha: 1)
+    static var infoText = UIColorFromHex(rgbValue: 0x1f0f34, alpha: 1)
+    
+    
+    static var textFieldPlaceholder = UIColorFromHex(rgbValue: 0xb8a8c1, alpha: 1)
+    static var textFieldBg = UIColorFromHex(rgbValue: 0xc1bbc5, alpha: 1)
+    static var textFieldBorder = UIColorFromHex(rgbValue: 0xACA2B2, alpha: 1)
     static var header = UIColorFromHex(rgbValue: 0xACA2B2, alpha: 1)
     static var rect = UIColorFromHex(rgbValue: 0xDCDCDC, alpha: 1)
     static var round = UIColorFromHex(rgbValue: 0xACA2B2, alpha: 1)

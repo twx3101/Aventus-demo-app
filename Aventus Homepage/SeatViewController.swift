@@ -8,19 +8,16 @@
 
 import UIKit
 
-class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate{
+class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     let cellIdentifier = "SeatTableViewCell"
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var selectedSeatPicker: UIPickerView!
-    
     var eventLoaded: Event?
     
     var seating: Seating?
     
-    var pickerData = [["0", "1", "2"]]
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -59,11 +56,15 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 pickerData[0].append(i)
             }
         }*/
-
+        
         return cell
         
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = nil
+    }
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PaymentSegue" {
             
@@ -93,40 +94,19 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         }
     }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return pickerData.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData[component].count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[component][row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        updateLabel()
-    }
-    
-    func updateLabel(){
 
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = colors.bg
+        tableView.backgroundColor = nil
         
         // Add footer to hide the empty cell from the table view
-        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 343, height: 50))
-        tableView.tableFooterView?.isHidden = true
-        tableView.backgroundColor = UIColor.clear
+        //tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 343, height: 50))
+        //tableView.tableFooterView?.isHidden = true
+        //tableView.backgroundColor = UIColor.clear
         
         seating = eventLoaded?.seating
 
-        selectedSeatPicker.dataSource = self
-        selectedSeatPicker.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -146,12 +126,13 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func showLayoutButton(_ sender: UIButton) {
+
+    @IBAction func showLayoutButton(_ sender: RoundButton) {
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParentViewController: self)
     }
-
+    
 }

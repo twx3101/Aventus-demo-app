@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF40F12E2030971400E280BB /* SeatViewController.swift */; };
 		BF51ED4F20432787003D0219 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED4E20432787003D0219 /* ColorHelper.swift */; };
-		BF51ED51204331B9003D0219 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED50204331B9003D0219 /* RoundButton.swift */; };
+		BF51ED51204331B9003D0219 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED50204331B9003D0219 /* RecordButton.swift */; };
 		BF51ED5520433BBD003D0219 /* UtterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED5420433BBD003D0219 /* UtterLabel.swift */; };
 		BF5946972038743A00A0A493 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5946962038743A00A0A493 /* Payment.swift */; };
 		BF5946992038ADFC00A0A493 /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5946982038ADFC00A0A493 /* PaymentTableViewCell.swift */; };
@@ -24,6 +24,8 @@
 		BF7B71C520236FCC009E5598 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7B71C320236FCC009E5598 /* LaunchScreen.storyboard */; };
 		BF7B71D020236FCD009E5598 /* Aventus_HomepageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B71CF20236FCD009E5598 /* Aventus_HomepageTests.swift */; };
 		BF8588252030B729005C9D7D /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8588242030B729005C9D7D /* PaymentViewController.swift */; };
+		BF933145204471160002A3C8 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF933144204471160002A3C8 /* RoundButton.swift */; };
+		BF93314720448ABB0002A3C8 /* DetailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93314620448ABB0002A3C8 /* DetailTextField.swift */; };
 		BFA6D2FC203850C300DFA67B /* SeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6D2FB203850C300DFA67B /* SeatTableViewCell.swift */; };
 		BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */; };
 		BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60C2035C3E200050B8A /* Seating.swift */; };
@@ -44,7 +46,7 @@
 /* Begin PBXFileReference section */
 		BF40F12E2030971400E280BB /* SeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatViewController.swift; sourceTree = "<group>"; };
 		BF51ED4E20432787003D0219 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
-		BF51ED50204331B9003D0219 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		BF51ED50204331B9003D0219 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		BF51ED5420433BBD003D0219 /* UtterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtterLabel.swift; sourceTree = "<group>"; };
 		BF5946962038743A00A0A493 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		BF5946982038ADFC00A0A493 /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
@@ -63,6 +65,8 @@
 		BF7B71CF20236FCD009E5598 /* Aventus_HomepageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aventus_HomepageTests.swift; sourceTree = "<group>"; };
 		BF7B71D120236FCD009E5598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF8588242030B729005C9D7D /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentViewController.swift; path = ../PaymentViewController.swift; sourceTree = "<group>"; };
+		BF933144204471160002A3C8 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		BF93314620448ABB0002A3C8 /* DetailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextField.swift; sourceTree = "<group>"; };
 		BFA6D2FB203850C300DFA67B /* SeatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatTableViewCell.swift; sourceTree = "<group>"; };
 		BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		BFBAF60C2035C3E200050B8A /* Seating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seating.swift; sourceTree = "<group>"; };
@@ -111,7 +115,9 @@
 			children = (
 				BF51ED4E20432787003D0219 /* ColorHelper.swift */,
 				BF51ED5420433BBD003D0219 /* UtterLabel.swift */,
-				BF51ED50204331B9003D0219 /* RoundButton.swift */,
+				BF51ED50204331B9003D0219 /* RecordButton.swift */,
+				BF933144204471160002A3C8 /* RoundButton.swift */,
+				BF93314620448ABB0002A3C8 /* DetailTextField.swift */,
 				BF7B71BA20236FCC009E5598 /* AppDelegate.swift */,
 				BF7B71BC20236FCC009E5598 /* ViewController.swift */,
 				BF7B71BE20236FCC009E5598 /* Main.storyboard */,
@@ -252,8 +258,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF933145204471160002A3C8 /* RoundButton.swift in Sources */,
 				BF51ED5520433BBD003D0219 /* UtterLabel.swift in Sources */,
-				BF51ED51204331B9003D0219 /* RoundButton.swift in Sources */,
+				BF51ED51204331B9003D0219 /* RecordButton.swift in Sources */,
 				BFA6D2FC203850C300DFA67B /* SeatTableViewCell.swift in Sources */,
 				BF8588252030B729005C9D7D /* PaymentViewController.swift in Sources */,
 				BF5946992038ADFC00A0A493 /* PaymentTableViewCell.swift in Sources */,
@@ -262,6 +269,7 @@
 				BFD17E19202CD729008CB952 /* EventViewController.swift in Sources */,
 				BF7B71BB20236FCC009E5598 /* AppDelegate.swift in Sources */,
 				BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */,
+				BF93314720448ABB0002A3C8 /* DetailTextField.swift in Sources */,
 				BF59469D2038E25900A0A493 /* SeatPopUpViewController.swift in Sources */,
 				BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */,
 				BFD17E1F202CDF0B008CB952 /* EventTableViewCell.swift in Sources */,

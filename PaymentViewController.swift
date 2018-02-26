@@ -55,6 +55,8 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.subTotalLabel.text = String(total)
         }
         
+        cell.backgroundColor = colors.tableBg
+        
         return cell
         
     }
@@ -72,9 +74,15 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = colors.bg  
+        self.view.backgroundColor = colors.bg
+        tableView.backgroundColor = colors.bg
         
-        count = (payment?.selectedSeats.count)! + 1
+        
+        if let p = payment?.selectedSeats.count {
+            count = p + 1
+        }
+        
+        //count = (payment?.selectedSeats.count)! + 1
         
         // Do any additional setup after loading the view.
     }

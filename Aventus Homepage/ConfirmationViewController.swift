@@ -55,6 +55,8 @@ class ConfirmationViewController: UIViewController, UITableViewDelegate, UITable
             cell.subTotalLabel.text = String(total)
         }
         
+        cell.backgroundColor = colors.tableBg
+        
         return cell
         
     }
@@ -62,7 +64,8 @@ class ConfirmationViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = colors.bg  
+        self.view.backgroundColor = colors.bg
+        tableView.backgroundColor = colors.bg
         
         count = (payment?.selectedSeats.count)! + 1
         // Do any additional setup after loading the view.

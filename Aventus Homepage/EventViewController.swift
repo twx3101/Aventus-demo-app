@@ -46,6 +46,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.descriptionLabel.text = event.description
         cell.artistPhoto.image = event.photo
         
+        cell.backgroundColor = colors.tableBg
+        
         return cell
 
     }
@@ -79,6 +81,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // Do any additional setup after loading the view.
         // Load events to display
+        
+        
 
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
