@@ -10,18 +10,41 @@ import UIKit
 
 // Define global variables
 struct colors{
+    
+    // background color
     static var bg = UIColorFromHex(rgbValue: 0x1E0E2B, alpha: 1)
-    static var tableBg = UIColorFromHex(rgbValue: 0x1E0E2B, alpha: 0.5)
-    static var text = UIColorFromHex(rgbValue: 0xA6D80C, alpha: 1)
-    static var infoText = UIColorFromHex(rgbValue: 0x1f0f34, alpha: 1)
     
     
+    // table background color
+    static var tableBg = UIColorFromHex(rgbValue: 0xACA2B2, alpha: 1)
+    
+    // table header text color
+    static var headerText = UIColorFromHex(rgbValue: 0xe11693, alpha: 1)
+    
+    // table header background color
+    static var headerBg = UIColorFromHex(rgbValue: 0x2c1a3b, alpha: 1)
+    
+    // table body text color
+    static var bodyText = UIColorFromHex(rgbValue: 0x1f0f34, alpha: 1)
+    
+    
+    // utterance text
+    static var utterText = UIColorFromHex(rgbValue: 0xA6D80C, alpha: 1)
+    
+    
+
+    // textfiled color
     static var textFieldPlaceholder = UIColorFromHex(rgbValue: 0xb8a8c1, alpha: 1)
-    static var textFieldBg = UIColorFromHex(rgbValue: 0xc1bbc5, alpha: 1)
+    static var textFieldBg = UIColorFromHex(rgbValue: 0xd1ced4, alpha: 1)
     static var textFieldBorder = UIColorFromHex(rgbValue: 0xACA2B2, alpha: 1)
-    static var header = UIColorFromHex(rgbValue: 0xACA2B2, alpha: 1)
-    static var rect = UIColorFromHex(rgbValue: 0xDCDCDC, alpha: 1)
-    static var round = UIColorFromHex(rgbValue: 0xACA2B2, alpha: 1)
+    
+    
+    
+    // button background color
+    static var buttonBg = UIColorFromHex(rgbValue: 0xACA2B2, alpha: 1)
+    
+    // button text
+    static var buttonText = UIColorFromHex(rgbValue: 0x1f0f34, alpha: 1)
 
 }
 

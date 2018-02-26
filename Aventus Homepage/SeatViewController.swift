@@ -14,6 +14,10 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var headerView: UIView!
+    
+    @IBOutlet weak var footerView: UIView!
+    
     var eventLoaded: Event?
     
     var seating: Seating?
@@ -62,8 +66,15 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = nil
+        //cell.backgroundColor = colors.tableBg
+        cell.contentView.backgroundColor = colors.tableBg
+        
+        cell.separatorInset = UIEdgeInsetsMake(20, 20, 20, 20);
+        cell.layer.borderWidth = 5;
+        cell.layer.borderColor = nil
+        
     }
+    
         
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PaymentSegue" {
@@ -98,7 +109,10 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = colors.bg
-        tableView.backgroundColor = nil
+        
+        tableView.backgroundColor = colors.bg
+        headerView.backgroundColor = colors.headerBg
+        footerView.backgroundColor = nil
         
         // Add footer to hide the empty cell from the table view
         //tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 343, height: 50))

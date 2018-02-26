@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1607012044A36B00241A2D /* HeaderLabel.swift */; };
+		BF1607042044ADC700241A2D /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1607032044ADC700241A2D /* BodyLabel.swift */; };
 		BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF40F12E2030971400E280BB /* SeatViewController.swift */; };
 		BF51ED4F20432787003D0219 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED4E20432787003D0219 /* ColorHelper.swift */; };
 		BF51ED51204331B9003D0219 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED50204331B9003D0219 /* RecordButton.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF1607012044A36B00241A2D /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
+		BF1607032044ADC700241A2D /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
 		BF40F12E2030971400E280BB /* SeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatViewController.swift; sourceTree = "<group>"; };
 		BF51ED4E20432787003D0219 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		BF51ED50204331B9003D0219 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 			children = (
 				BF51ED4E20432787003D0219 /* ColorHelper.swift */,
 				BF51ED5420433BBD003D0219 /* UtterLabel.swift */,
+				BF1607012044A36B00241A2D /* HeaderLabel.swift */,
+				BF1607032044ADC700241A2D /* BodyLabel.swift */,
 				BF51ED50204331B9003D0219 /* RecordButton.swift */,
 				BF933144204471160002A3C8 /* RoundButton.swift */,
 				BF93314620448ABB0002A3C8 /* DetailTextField.swift */,
@@ -273,8 +279,10 @@
 				BF59469D2038E25900A0A493 /* SeatPopUpViewController.swift in Sources */,
 				BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */,
 				BFD17E1F202CDF0B008CB952 /* EventTableViewCell.swift in Sources */,
+				BF1607042044ADC700241A2D /* BodyLabel.swift in Sources */,
 				BF51ED4F20432787003D0219 /* ColorHelper.swift in Sources */,
 				BF59469B2038D69C00A0A493 /* ConfirmTableViewCell.swift in Sources */,
+				BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */,
 				BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */,
 				BF76AE3020264CD5006274FE /* Event.swift in Sources */,
 			);

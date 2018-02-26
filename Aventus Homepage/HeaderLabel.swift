@@ -1,14 +1,14 @@
 //
-//  UtterLabel.swift
+//  headerLabel.swift
 //  Aventus Homepage
 //
-//  Created by Krongsiriwat, Krantharat on 25/02/2018.
+//  Created by Krongsiriwat, Krantharat on 26/02/2018.
 //  Copyright © 2018 Krongsiriwat, Krantharat. All rights reserved.
 //
 
 import UIKit
 
-class UtterLabel: UILabel{
+class HeaderLabel: UILabel{
     override init(frame: CGRect){
         super.init(frame: frame)
         sharedInit()
@@ -24,15 +24,12 @@ class UtterLabel: UILabel{
     }
     
     func sharedInit(){
-        //layer.masksToBounds = true
-        //layer.cornerRadius = 5
-        //clipsToBounds = true
-        //layer.borderColor = colors.bg.cgColor
-        //layer.borderWidth = 1.0
-        textColor = colors.utterText
+
+        textColor = colors.headerText
         
     }
     
     
 }
+
 

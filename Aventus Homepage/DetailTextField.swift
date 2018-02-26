@@ -6,7 +6,6 @@
 //  Copyright © 2018 Krongsiriwat, Krantharat. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class DetailTextField : UITextField {
