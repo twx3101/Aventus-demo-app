@@ -19,13 +19,14 @@ struct colors{
     static var tableBg = UIColorFromHex(rgbValue: 0xACA2B2, alpha: 1)
     
     // table header text color
-    static var headerText = UIColorFromHex(rgbValue: 0xe11693, alpha: 1)
+    static var headerText = UIColorFromHex(rgbValue: 0xA6D80C, alpha: 1)
     
     // table header background color
-    static var headerBg = UIColorFromHex(rgbValue: 0x2c1a3b, alpha: 1)
+    static var headerBg = UIColorFromHex(rgbValue: 0x1E0E2B, alpha: 1)
     
     // table body text color
-    static var bodyText = UIColorFromHex(rgbValue: 0x1f0f34, alpha: 1)
+    static var bodyText = UIColorFromHex(rgbValue: 0xe11693, alpha: 1)
+    //static var bodyText = UIColorFromHex(rgbValue: 0x1f0f34, alpha: 1)
     
     
     // utterance text

@@ -87,12 +87,12 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Events"
-        if #available(iOS 11.0, *) {
+        /*if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
         } else {
             tableView.tableHeaderView = searchController.searchBar
         }
-        definesPresentationContext = true
+        definesPresentationContext = true*/
         //print("HELLO")
         loadEvents()
     }

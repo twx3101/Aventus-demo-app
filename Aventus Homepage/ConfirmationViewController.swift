@@ -55,9 +55,22 @@ class ConfirmationViewController: UIViewController, UITableViewDelegate, UITable
             cell.subTotalLabel.text = String(total)
         }
         
-        cell.backgroundColor = colors.tableBg
+        //cell.backgroundColor = colors.tableBg
         
         return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = nil
+        cell.contentView.backgroundColor = colors.tableBg
+        cell.contentView.layer.borderWidth = 5.0
+        cell.contentView.layer.borderColor = colors.bg.cgColor
+        cell.contentView.layer.cornerRadius = 15.0
+        
+        cell.separatorInset = UIEdgeInsetsMake(20, 20, 20, 20);
+        cell.layer.borderWidth = 5;
+        cell.layer.borderColor = colors.bg.cgColor
         
     }
 

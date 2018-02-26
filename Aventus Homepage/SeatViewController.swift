@@ -66,12 +66,15 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        //cell.backgroundColor = colors.tableBg
+        cell.backgroundColor = nil
         cell.contentView.backgroundColor = colors.tableBg
-        
+        cell.contentView.layer.borderWidth = 5.0
+        cell.contentView.layer.borderColor = colors.bg.cgColor
+        cell.contentView.layer.cornerRadius = 15.0
+    
         cell.separatorInset = UIEdgeInsetsMake(20, 20, 20, 20);
         cell.layer.borderWidth = 5;
-        cell.layer.borderColor = nil
+        cell.layer.borderColor = colors.bg.cgColor
         
     }
     
@@ -114,10 +117,6 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         headerView.backgroundColor = colors.headerBg
         footerView.backgroundColor = nil
         
-        // Add footer to hide the empty cell from the table view
-        //tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 343, height: 50))
-        //tableView.tableFooterView?.isHidden = true
-        //tableView.backgroundColor = UIColor.clear
         
         seating = eventLoaded?.seating
 
