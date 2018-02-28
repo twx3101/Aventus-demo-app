@@ -58,6 +58,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 cell.artistPhoto.image = image
             }
         }
+        cell.backgroundColor = colors.tableBg
         return cell
         
     }
@@ -90,7 +91,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         //tableView.dataSource = self
         
         
-        
+        view.backgroundColor = colors.bg
         // Do any additional setup after loading the view.
         // Load events to display
         
@@ -103,7 +104,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             tableView.tableHeaderView = searchController.searchBar
         }
         definesPresentationContext = true
-        print("HELLO")
+        
         loadEvents()
     }
     
