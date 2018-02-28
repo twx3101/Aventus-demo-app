@@ -47,7 +47,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         else {
             event = events[indexPath.row]
         }
-        cell.artistLabel.text = "    " + event.artist
+        cell.artistLabel.text = event.artist
         cell.locationDatetimeLabel.text = event.location
         cell.descriptionLabel.text = event.datetime + " " + event.time
         
