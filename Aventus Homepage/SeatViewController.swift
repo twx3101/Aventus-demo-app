@@ -14,9 +14,14 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var headerView: UIView!
+    
+    @IBOutlet weak var footerView: UIView!
+    
     var eventLoaded: Event?
     
     var seating: Seating?
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -42,11 +47,38 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.categoryLabel.text = seating?.categories[indexPath.row]
         cell.priceLabel.text = "\(seating?.price[indexPath.row] ?? 0)"
         cell.noSeatsLabel.text = "\(seating?.noSeatsAvail[indexPath.row] ?? 0)"
-
+        
+        
+        /*let noSeatsAvail = (seating?.noSeatsAvail[indexPath.row])!
+        
+        if noSeatsAvail < 10 {
+            for i in 0...noSeatsAvail {
+                pickerData[0].append(i)
+            }
+        } else {
+            for i in 0...10 {
+                pickerData[0].append(i)
+            }
+        }*/
+        
         return cell
         
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = nil
+        cell.contentView.backgroundColor = colors.tableBg
+        cell.contentView.layer.borderWidth = 5.0
+        cell.contentView.layer.borderColor = colors.bg.cgColor
+        cell.contentView.layer.cornerRadius = 15.0
+    
+        cell.separatorInset = UIEdgeInsetsMake(20, 20, 20, 20);
+        cell.layer.borderWidth = 5;
+        cell.layer.borderColor = colors.bg.cgColor
+        
+    }
+    
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PaymentSegue" {
             
@@ -76,9 +108,15 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = colors.bg
+        
+        tableView.backgroundColor = colors.bg
+        headerView.backgroundColor = colors.headerBg
+        footerView.backgroundColor = nil
+        
         
         seating = eventLoaded?.seating
 
@@ -101,12 +139,13 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func showLayoutButton(_ sender: UIButton) {
+
+    @IBAction func showLayoutButton(_ sender: RoundButton) {
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParentViewController: self)
     }
-
+    
 }

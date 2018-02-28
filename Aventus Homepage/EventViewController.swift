@@ -42,10 +42,10 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         let event : Event
         if isFiltering(){
-              event = filteredEvents[indexPath.row]
+            event = filteredEvents[indexPath.row]
         }
         else {
-             event = events[indexPath.row]
+            event = events[indexPath.row]
         }
         cell.artistLabel.text = "    " + event.artist
         cell.locationDatetimeLabel.text = event.location
@@ -53,13 +53,14 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         Alamofire.request(event.imageURL).responseImage { response in
             debugPrint(response)
-        
+            
             if let image = response.result.value{
                 cell.artistPhoto.image = image
             }
         }
+        cell.backgroundColor = colors.tableBg
         return cell
-
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,9 +79,9 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             
             /*if(detailViewController.seating != nil) {
-                detailViewController.seating.image = UIImage(named: "Seating")
-            }*/
-
+             detailViewController.seating.image = UIImage(named: "Seating")
+             }*/
+            
         }
     }
     
@@ -90,10 +91,10 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         //tableView.dataSource = self
         
         
-        
+        view.backgroundColor = colors.bg
         // Do any additional setup after loading the view.
         // Load events to display
-
+        
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Events"
@@ -103,65 +104,65 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             tableView.tableHeaderView = searchController.searchBar
         }
         definesPresentationContext = true
-        //print("HELLO")
+        
         loadEvents()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    /*func parseJSON(){
-        let url = String(format: "https://sheetsu.com/apis/v1.0bu/c2358558ce5f")
-        let serviceURL = URL(string: url)
-        var request = URLRequest(url: serviceURL!)
-        
-        request.httpMethod = "GET"
-        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-        
-        let session = URLSession.shared
-        
-        session.dataTask(with: request) { (data, response, error) in
-            
-            if let data = data{
-                do{
-                    let json =  try JSONSerialization.jsonObject(with: data, options: [])
-                    if let event_list = json as? NSArray{
-                        for i in 0 ..< event_list.count {
-                            let eve = event_list[i] as? [String:Any]
-                            let event1 = Event(json:eve!)
-                                self.events.append(event1!)
-                        }
-                    }
-                }
-                    
-                catch{
-                    print(error)
-                    return
-                }
-                
-            //convert JSON data into Event Class
-           
-        print("HELLO")
-            
-            DispatchQueue.main.async{ [unowned self] in
-                self.tableView.reloadData()
-            }
     
-            }
-        }.resume()
-    }*/
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    /*func parseJSON(){
+     let url = String(format: "https://sheetsu.com/apis/v1.0bu/c2358558ce5f")
+     let serviceURL = URL(string: url)
+     var request = URLRequest(url: serviceURL!)
+     
+     request.httpMethod = "GET"
+     request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+     
+     let session = URLSession.shared
+     
+     session.dataTask(with: request) { (data, response, error) in
+     
+     if let data = data{
+     do{
+     let json =  try JSONSerialization.jsonObject(with: data, options: [])
+     if let event_list = json as? NSArray{
+     for i in 0 ..< event_list.count {
+     let eve = event_list[i] as? [String:Any]
+     let event1 = Event(json:eve!)
+     self.events.append(event1!)
+     }
+     }
+     }
+     
+     catch{
+     print(error)
+     return
+     }
+     
+     //convert JSON data into Event Class
+     
+     print("HELLO")
+     
+     DispatchQueue.main.async{ [unowned self] in
+     self.tableView.reloadData()
+     }
+     
+     }
+     }.resume()
+     }*/
     
     func isFiltering() -> Bool{
         return searchController.isActive && !searchBarIsEmpty()
@@ -182,27 +183,27 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     private func loadEvents(){
         
         
-
+        
         //let photo1 = UIImage(named: "drake")
         //let photo2 = UIImage(named: "selena")
         
         // need to deal with when there is no seat availiable for some catogories or for all categories
         // is it possible to have categories.size() != no_seats_avail.size() != no_categories
-
+        
         /*let seating2 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE"], price: [50, 150, 200, 250, 300], noSeatsAvail: [10,10,0,10,10], noCategories: 5)
-        let seating3 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE", "CatG"], price: [50, 150, 200, 250,300, 360], noSeatsAvail: [10,10,10,10, 10, 10], noCategories: 6)*/
+         let seating3 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE", "CatG"], price: [50, 150, 200, 250,300, 360], noSeatsAvail: [10,10,10,10, 10, 10], noCategories: 6)*/
         /*
-        guard let event1 = Event(artist: "Drake", location: "London", datetime: "today", description: nil, photo: photo1, seating: seating1) else{
-            fatalError("Unable to instantiate event1")
-        }
-        
-        guard let event2 = Event(artist: "Selena", location: "London", datetime: "tomorrow", description: nil, photo: photo2, seating: seating2) else{
-            fatalError("Unable to instantiate event2")
-        }
-        
-        guard let event3 = Event(artist: "Selena", location: "London", datetime: "next week", description: nil, photo: photo2, seating: seating3) else{
-            fatalError("Unable to instantiate event3")
-        } */
+         guard let event1 = Event(artist: "Drake", location: "London", datetime: "today", description: nil, photo: photo1, seating: seating1) else{
+         fatalError("Unable to instantiate event1")
+         }
+         
+         guard let event2 = Event(artist: "Selena", location: "London", datetime: "tomorrow", description: nil, photo: photo2, seating: seating2) else{
+         fatalError("Unable to instantiate event2")
+         }
+         
+         guard let event3 = Event(artist: "Selena", location: "London", datetime: "next week", description: nil, photo: photo2, seating: seating3) else{
+         fatalError("Unable to instantiate event3")
+         } */
         //parseJSON()
         
         //events += [event1, event2, event3]
@@ -213,16 +214,16 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         //Retrieve the posts and listen for changes
         refHandle = ref.observe(DataEventType.value, with: { (snapshot) in
             //    let postDict = snapshot.value as? [0] ?? [:]
-           // print(snapshot.value)
+            // print(snapshot.value)
             
-          //Getting information for events
+            //Getting information for events
             for event in snapshot.children.allObjects as![DataSnapshot]{
                 let eventObject = event.value as? [String: AnyObject]
                 let eventArtist = eventObject?["Fake Mainstream Events"]
                 let eventDate = eventObject?["Local Date"]
                 let eventLocation = eventObject?["Fake City"]
                 let eventTime = eventObject?["Local Time (formatted)"]
-
+                
                 
                 let eventArtistRanking = eventObject?["Artist Ranking"]
                 let eventDayinWeek = eventObject?["Day in week"]
@@ -244,13 +245,13 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 eventCatArea.append(eventObject?["Area: category 3"] as! String)
                 eventCatArea.append(eventObject?["Area: category 4"] as! String)
                 eventCatArea.append(eventObject?["Area: category 5 Standing"] as! String)
-             
+                
                 /*let eventCatArea[0] = eventObject?["Area: category 1"]
-                let eventCatArea[1] = eventObject?["Area: category 2"]
-                let eventCatArea[2] = eventObject?["Area: category 3"]
-                let eventCatArea[3] = eventObject?["Area: category 4"]
-                let eventCatArea[4] = eventObject?["Area: category 5 Standing"]*/
-            
+                 let eventCatArea[1] = eventObject?["Area: category 2"]
+                 let eventCatArea[2] = eventObject?["Area: category 3"]
+                 let eventCatArea[3] = eventObject?["Area: category 4"]
+                 let eventCatArea[4] = eventObject?["Area: category 5 Standing"]*/
+                
                 //let eventCatArea: [String] = [eventCat1Area as! String, eventCat2Area as! String, eventCat3Area as! String, eventCat4Area as! String, eventCat5Area as! String]
                 
                 print(eventCatArea)
@@ -260,7 +261,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 if let cat1 = eventObject?["Category 1: Price"] as? Int{ eventCatPrice.append(cat1)
                 }
                 else{
-                   eventCatPrice.append(0)
+                    eventCatPrice.append(0)
                 }
                 if let cat2 = eventObject?["Category 2: Price"] as? Int{ eventCatPrice.append(cat2)
                 }
@@ -284,12 +285,12 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 }
                 
                 /*let eventCat1Price = eventObject?["Category 1: Price"]
-                let eventCat2Price = eventObject?["Category 2: Price"]
-                let eventCat3Price = eventObject?["Category 3: Price"]
-                let eventCat4Price = eventObject?["Category 4: Price"]
-                let eventCat5Price = eventObject?["Category 5(standing area): Price"]
-                
-                let eventCatPrice: [Int] = [eventCat1Price as! Int , eventCat2Price as! Int , eventCat3Price as! Int , eventCat4Price as! Int , eventCat5Price as! Int ]*/
+                 let eventCat2Price = eventObject?["Category 2: Price"]
+                 let eventCat3Price = eventObject?["Category 3: Price"]
+                 let eventCat4Price = eventObject?["Category 4: Price"]
+                 let eventCat5Price = eventObject?["Category 5(standing area): Price"]
+                 
+                 let eventCatPrice: [Int] = [eventCat1Price as! Int , eventCat2Price as! Int , eventCat3Price as! Int , eventCat4Price as! Int , eventCat5Price as! Int ]*/
                 
                 print(eventCatPrice)
                 
@@ -321,14 +322,14 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 else{
                     eventCatSeats.append(0)
                 }
-            
-                /*let eventCat1Seats = eventObject?["Category 1: Number of seat available"]
-                let eventCat2Seats = eventObject?["Category 2: Number of seat available"]
-                let eventCat3Seats = eventObject?["Category 3: Number of seat available"]
-                let eventCat4Seats = eventObject?["Category 4: Number of seat available"]
-                let eventCat5Seats = eventObject?["Category 5: Number of seat available"]
                 
-                let eventCatSeats: [Int] = [eventCat1Seats as! Int, eventCat2Seats as! Int, eventCat3Seats as! Int, eventCat4Seats as! Int, eventCat5Seats as! Int]*/
+                /*let eventCat1Seats = eventObject?["Category 1: Number of seat available"]
+                 let eventCat2Seats = eventObject?["Category 2: Number of seat available"]
+                 let eventCat3Seats = eventObject?["Category 3: Number of seat available"]
+                 let eventCat4Seats = eventObject?["Category 4: Number of seat available"]
+                 let eventCat5Seats = eventObject?["Category 5: Number of seat available"]
+                 
+                 let eventCatSeats: [Int] = [eventCat1Seats as! Int, eventCat2Seats as! Int, eventCat3Seats as! Int, eventCat4Seats as! Int, eventCat5Seats as! Int]*/
                 
                 print(eventCatSeats)
                 
@@ -336,7 +337,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 var eventAvailPrice = [Int]()
                 var eventAvailSeats = [Int]()
                 var no_avail_cat: Int = 0
-       
+                
                 for i in 0...4 {
                     if eventCatPrice[i] != 0 {
                         eventAvailCat.append(eventCatArea[i])
@@ -349,10 +350,10 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 let seating1 = Seating(categories: eventAvailCat, price: eventAvailPrice, noSeatsAvail: eventAvailSeats , noCategories: no_avail_cat)
                 
                 let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String)
-        
+                
                 self.events.append(event1!)
             }
-    
+            
             
             self.tableView.reloadData()
             //Code to execute to obtain the information held in the value field in the database
@@ -360,14 +361,14 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
 }
-    extension EventViewController: UISearchResultsUpdating{
-        
-        func updateSearchResults(for searchController: UISearchController) {
-            filterContentForSearchText(searchController.searchBar.text!)
-            
-        }
+extension EventViewController: UISearchResultsUpdating{
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
         
     }
-
     
+}
+
+
 
