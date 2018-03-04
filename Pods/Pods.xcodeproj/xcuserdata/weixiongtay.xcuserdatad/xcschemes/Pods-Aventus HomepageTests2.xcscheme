@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BFBAD237A5F24D39A70A97B4A57D212F"
-               BuildableName = "Pods_Aventus_HomepageTests.framework"
-               BlueprintName = "Pods-Aventus HomepageTests"
+               BlueprintIdentifier = "7C23D1A23BB4B5554C7C21B7EC7B3B79"
+               BuildableName = "Pods_Aventus_HomepageTests2.framework"
+               BlueprintName = "Pods-Aventus HomepageTests2"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BFBAD237A5F24D39A70A97B4A57D212F"
-            BuildableName = "Pods_Aventus_HomepageTests.framework"
-            BlueprintName = "Pods-Aventus HomepageTests"
+            BlueprintIdentifier = "7C23D1A23BB4B5554C7C21B7EC7B3B79"
+            BuildableName = "Pods_Aventus_HomepageTests2.framework"
+            BlueprintName = "Pods-Aventus HomepageTests2"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

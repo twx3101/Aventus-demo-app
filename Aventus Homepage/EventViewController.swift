@@ -50,7 +50,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.artistLabel.text = event.artist
         cell.locationDatetimeLabel.text = event.location
         cell.descriptionLabel.text = event.datetime + " " + event.time
-        
         Alamofire.request(event.imageURL).responseImage { response in
             debugPrint(response)
             

@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EFEF15BCA00AB75AF21BDC9 /* Pods_Aventus_HomepageTests2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1534D3CCB716116C2B8FE568 /* Pods_Aventus_HomepageTests2.framework */; };
 		9642442B80472C7349CF56B8 /* Pods_Aventus_Homepage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3801DE766E1697792EDB2A4C /* Pods_Aventus_Homepage.framework */; };
+		A1845B0D204B161E0004D983 /* Aventus_HomepageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1845B0C204B161E0004D983 /* Aventus_HomepageUITests.swift */; };
+		A18FF15F204C607300DE4692 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18FF15E204C607300DE4692 /* UnitTests.swift */; };
+		A1AB3169204C529500F5A6A1 /* Aventus_Database_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AB3168204C529500F5A6A1 /* Aventus_Database_Tests.swift */; };
+		A1AB3177204C533100F5A6A1 /* Test_Databse_Fake_Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AB3176204C533100F5A6A1 /* Test_Databse_Fake_Data.swift */; };
 		BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1607012044A36B00241A2D /* HeaderLabel.swift */; };
 		BF1607042044ADC700241A2D /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1607032044ADC700241A2D /* BodyLabel.swift */; };
 		BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF40F12E2030971400E280BB /* SeatViewController.swift */; };
@@ -34,10 +39,37 @@
 		BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60C2035C3E200050B8A /* Seating.swift */; };
 		BFD17E19202CD729008CB952 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD17E18202CD729008CB952 /* EventViewController.swift */; };
 		BFD17E1F202CDF0B008CB952 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */; };
-		F0455BB173F71E2C8BA41957 /* Pods_Aventus_HomepageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6B0AEFFA9500FD09E18E5C /* Pods_Aventus_HomepageTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A1845B0F204B161E0004D983 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF7B71AF20236FCC009E5598 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF7B71B620236FCC009E5598;
+			remoteInfo = "Aventus Homepage";
+		};
+		A1AB316B204C529500F5A6A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF7B71AF20236FCC009E5598 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF7B71B620236FCC009E5598;
+			remoteInfo = "Aventus Homepage";
+		};
+		A1AB3179204C533100F5A6A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF7B71AF20236FCC009E5598 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF7B71B620236FCC009E5598;
+			remoteInfo = "Aventus Homepage";
+		};
+		A1ECFFCA204B109B006DE0C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF7B71AF20236FCC009E5598 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF7B71B620236FCC009E5598;
+			remoteInfo = "Aventus Homepage";
+		};
 		BF7B71CC20236FCD009E5598 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BF7B71AF20236FCC009E5598 /* Project object */;
@@ -48,9 +80,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00C814C682FDD1FC940FBC95 /* Pods-Aventus HomepageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus HomepageTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus HomepageTests/Pods-Aventus HomepageTests.release.xcconfig"; sourceTree = "<group>"; };
+		1534D3CCB716116C2B8FE568 /* Pods_Aventus_HomepageTests2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_HomepageTests2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15973FF8ED2F30FB0506552E /* Pods-Aventus Homepage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus Homepage.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage.release.xcconfig"; sourceTree = "<group>"; };
 		3801DE766E1697792EDB2A4C /* Pods_Aventus_Homepage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_Homepage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60DF77654971427BC6104ACA /* Pods-Aventus HomepageTests2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus HomepageTests2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus HomepageTests2/Pods-Aventus HomepageTests2.debug.xcconfig"; sourceTree = "<group>"; };
+		A1845B0A204B161E0004D983 /* Aventus HomepageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aventus HomepageUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1845B0C204B161E0004D983 /* Aventus_HomepageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aventus_HomepageUITests.swift; sourceTree = "<group>"; };
+		A1845B0E204B161E0004D983 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A18FF15D204C607200DE4692 /* Aventus HomepageTests2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aventus HomepageTests2-Bridging-Header.h"; sourceTree = "<group>"; };
+		A18FF15E204C607300DE4692 /* UnitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
+		A1AB3166204C529500F5A6A1 /* Aventus Database Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aventus Database Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1AB3168204C529500F5A6A1 /* Aventus_Database_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aventus_Database_Tests.swift; sourceTree = "<group>"; };
+		A1AB316A204C529500F5A6A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1AB3174204C533100F5A6A1 /* Test Databse Fake Data.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Test Databse Fake Data.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1AB3176204C533100F5A6A1 /* Test_Databse_Fake_Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_Databse_Fake_Data.swift; sourceTree = "<group>"; };
+		A1AB3178204C533100F5A6A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1ECFFC5204B109B006DE0C0 /* Aventus HomepageTests2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aventus HomepageTests2.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1ECFFC9204B109B006DE0C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA6B0AEFFA9500FD09E18E5C /* Pods_Aventus_HomepageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_HomepageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1607012044A36B00241A2D /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
 		BF1607032044ADC700241A2D /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
@@ -82,11 +128,40 @@
 		BFBAF60C2035C3E200050B8A /* Seating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seating.swift; sourceTree = "<group>"; };
 		BFD17E18202CD729008CB952 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
-		D7CEA4ED76ACC3EE1B0894E1 /* Pods-Aventus HomepageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus HomepageTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus HomepageTests/Pods-Aventus HomepageTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFF61EBBE04522FA8C689EA8 /* Pods-Aventus Homepage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus Homepage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage.debug.xcconfig"; sourceTree = "<group>"; };
+		E2606FF670C7DF7CDCD8D7C4 /* Pods-Aventus HomepageTests2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus HomepageTests2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus HomepageTests2/Pods-Aventus HomepageTests2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A1845B07204B161E0004D983 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1AB3163204C529500F5A6A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1AB3171204C533100F5A6A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1ECFFC2204B109B006DE0C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EFEF15BCA00AB75AF21BDC9 /* Pods_Aventus_HomepageTests2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF7B71B420236FCC009E5598 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -99,7 +174,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0455BB173F71E2C8BA41957 /* Pods_Aventus_HomepageTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +185,7 @@
 			children = (
 				3801DE766E1697792EDB2A4C /* Pods_Aventus_Homepage.framework */,
 				AA6B0AEFFA9500FD09E18E5C /* Pods_Aventus_HomepageTests.framework */,
+				1534D3CCB716116C2B8FE568 /* Pods_Aventus_HomepageTests2.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -120,10 +195,47 @@
 			children = (
 				DFF61EBBE04522FA8C689EA8 /* Pods-Aventus Homepage.debug.xcconfig */,
 				15973FF8ED2F30FB0506552E /* Pods-Aventus Homepage.release.xcconfig */,
-				D7CEA4ED76ACC3EE1B0894E1 /* Pods-Aventus HomepageTests.debug.xcconfig */,
-				00C814C682FDD1FC940FBC95 /* Pods-Aventus HomepageTests.release.xcconfig */,
+				60DF77654971427BC6104ACA /* Pods-Aventus HomepageTests2.debug.xcconfig */,
+				E2606FF670C7DF7CDCD8D7C4 /* Pods-Aventus HomepageTests2.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A1845B0B204B161E0004D983 /* Aventus HomepageUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A1845B0C204B161E0004D983 /* Aventus_HomepageUITests.swift */,
+				A1845B0E204B161E0004D983 /* Info.plist */,
+			);
+			path = "Aventus HomepageUITests";
+			sourceTree = "<group>";
+		};
+		A1AB3167204C529500F5A6A1 /* Aventus Database Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A1AB3168204C529500F5A6A1 /* Aventus_Database_Tests.swift */,
+				A1AB316A204C529500F5A6A1 /* Info.plist */,
+			);
+			path = "Aventus Database Tests";
+			sourceTree = "<group>";
+		};
+		A1AB3175204C533100F5A6A1 /* Test Databse Fake Data */ = {
+			isa = PBXGroup;
+			children = (
+				A1AB3176204C533100F5A6A1 /* Test_Databse_Fake_Data.swift */,
+				A1AB3178204C533100F5A6A1 /* Info.plist */,
+			);
+			path = "Test Databse Fake Data";
+			sourceTree = "<group>";
+		};
+		A1ECFFC6204B109B006DE0C0 /* Aventus HomepageTests2 */ = {
+			isa = PBXGroup;
+			children = (
+				A18FF15E204C607300DE4692 /* UnitTests.swift */,
+				A1ECFFC9204B109B006DE0C0 /* Info.plist */,
+				A18FF15D204C607200DE4692 /* Aventus HomepageTests2-Bridging-Header.h */,
+			);
+			path = "Aventus HomepageTests2";
 			sourceTree = "<group>";
 		};
 		BF7B71AE20236FCC009E5598 = {
@@ -131,6 +243,10 @@
 			children = (
 				BF7B71B920236FCC009E5598 /* Aventus Homepage */,
 				BF7B71CE20236FCD009E5598 /* Aventus HomepageTests */,
+				A1ECFFC6204B109B006DE0C0 /* Aventus HomepageTests2 */,
+				A1845B0B204B161E0004D983 /* Aventus HomepageUITests */,
+				A1AB3167204C529500F5A6A1 /* Aventus Database Tests */,
+				A1AB3175204C533100F5A6A1 /* Test Databse Fake Data */,
 				BF7B71B820236FCC009E5598 /* Products */,
 				9227F1EEB0CBE8202090F7F6 /* Pods */,
 				0E3A32C4D4D341D83D85A634 /* Frameworks */,
@@ -142,6 +258,10 @@
 			children = (
 				BF7B71B720236FCC009E5598 /* Aventus Homepage.app */,
 				BF7B71CB20236FCD009E5598 /* Aventus HomepageTests.xctest */,
+				A1ECFFC5204B109B006DE0C0 /* Aventus HomepageTests2.xctest */,
+				A1845B0A204B161E0004D983 /* Aventus HomepageUITests.xctest */,
+				A1AB3166204C529500F5A6A1 /* Aventus Database Tests.xctest */,
+				A1AB3174204C533100F5A6A1 /* Test Databse Fake Data.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,18 +308,84 @@
 			path = "Aventus HomepageTests";
 			sourceTree = "<group>";
 		};
-		F0DD4CA171D612ED5D9194D6 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0680B9BDCB97715218517485 /* Pods_Aventus_Homepage.framework */,
-				1C3088AC72CB5166593D99D6 /* Pods_Aventus_HomepageTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A1845B09204B161E0004D983 /* Aventus HomepageUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1845B13204B161E0004D983 /* Build configuration list for PBXNativeTarget "Aventus HomepageUITests" */;
+			buildPhases = (
+				A1845B06204B161E0004D983 /* Sources */,
+				A1845B07204B161E0004D983 /* Frameworks */,
+				A1845B08204B161E0004D983 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1845B10204B161E0004D983 /* PBXTargetDependency */,
+			);
+			name = "Aventus HomepageUITests";
+			productName = "Aventus HomepageUITests";
+			productReference = A1845B0A204B161E0004D983 /* Aventus HomepageUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		A1AB3165204C529500F5A6A1 /* Aventus Database Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1AB316F204C529500F5A6A1 /* Build configuration list for PBXNativeTarget "Aventus Database Tests" */;
+			buildPhases = (
+				A1AB3162204C529500F5A6A1 /* Sources */,
+				A1AB3163204C529500F5A6A1 /* Frameworks */,
+				A1AB3164204C529500F5A6A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1AB316C204C529500F5A6A1 /* PBXTargetDependency */,
+			);
+			name = "Aventus Database Tests";
+			productName = "Aventus Database Tests";
+			productReference = A1AB3166204C529500F5A6A1 /* Aventus Database Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A1AB3173204C533100F5A6A1 /* Test Databse Fake Data */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1AB317B204C533100F5A6A1 /* Build configuration list for PBXNativeTarget "Test Databse Fake Data" */;
+			buildPhases = (
+				A1AB3170204C533100F5A6A1 /* Sources */,
+				A1AB3171204C533100F5A6A1 /* Frameworks */,
+				A1AB3172204C533100F5A6A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1AB317A204C533100F5A6A1 /* PBXTargetDependency */,
+			);
+			name = "Test Databse Fake Data";
+			productName = "Test Databse Fake Data";
+			productReference = A1AB3174204C533100F5A6A1 /* Test Databse Fake Data.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A1ECFFC4204B109B006DE0C0 /* Aventus HomepageTests2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1ECFFCE204B109B006DE0C0 /* Build configuration list for PBXNativeTarget "Aventus HomepageTests2" */;
+			buildPhases = (
+				F5C1085A95F51FAA73B07704 /* [CP] Check Pods Manifest.lock */,
+				A1ECFFC1204B109B006DE0C0 /* Sources */,
+				A1ECFFC2204B109B006DE0C0 /* Frameworks */,
+				A1ECFFC3204B109B006DE0C0 /* Resources */,
+				F46D46C0C8CB83C2177FF455 /* [CP] Embed Pods Frameworks */,
+				AC932AC1BE279B4F5AF08506 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1ECFFCB204B109B006DE0C0 /* PBXTargetDependency */,
+			);
+			name = "Aventus HomepageTests2";
+			productName = "Aventus HomepageTests2";
+			productReference = A1ECFFC5204B109B006DE0C0 /* Aventus HomepageTests2.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BF7B71B620236FCC009E5598 /* Aventus Homepage */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF7B71D420236FCD009E5598 /* Build configuration list for PBXNativeTarget "Aventus Homepage" */;
@@ -224,12 +410,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF7B71D720236FCD009E5598 /* Build configuration list for PBXNativeTarget "Aventus HomepageTests" */;
 			buildPhases = (
-				0240EC47B8F41080A365A0F4 /* [CP] Check Pods Manifest.lock */,
 				BF7B71C720236FCD009E5598 /* Sources */,
 				BF7B71C820236FCD009E5598 /* Frameworks */,
 				BF7B71C920236FCD009E5598 /* Resources */,
-				4DABDE5D768C33A379217AC8 /* [CP] Embed Pods Frameworks */,
-				072C4DC309D3E91C563573B1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,10 +434,31 @@
 					field,
 					text,
 				);
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Krongsiriwat, Krantharat";
 				TargetAttributes = {
+					A1845B09204B161E0004D983 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BF7B71B620236FCC009E5598;
+					};
+					A1AB3165204C529500F5A6A1 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BF7B71B620236FCC009E5598;
+					};
+					A1AB3173204C533100F5A6A1 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BF7B71B620236FCC009E5598;
+					};
+					A1ECFFC4204B109B006DE0C0 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BF7B71B620236FCC009E5598;
+					};
 					BF7B71B620236FCC009E5598 = {
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
@@ -281,11 +485,43 @@
 			targets = (
 				BF7B71B620236FCC009E5598 /* Aventus Homepage */,
 				BF7B71CA20236FCD009E5598 /* Aventus HomepageTests */,
+				A1ECFFC4204B109B006DE0C0 /* Aventus HomepageTests2 */,
+				A1845B09204B161E0004D983 /* Aventus HomepageUITests */,
+				A1AB3165204C529500F5A6A1 /* Aventus Database Tests */,
+				A1AB3173204C533100F5A6A1 /* Test Databse Fake Data */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A1845B08204B161E0004D983 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1AB3164204C529500F5A6A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1AB3172204C533100F5A6A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1ECFFC3204B109B006DE0C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF7B71B520236FCC009E5598 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,54 +543,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0240EC47B8F41080A365A0F4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Aventus HomepageTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		072C4DC309D3E91C563573B1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aventus HomepageTests/Pods-Aventus HomepageTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4DABDE5D768C33A379217AC8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aventus HomepageTests/Pods-Aventus HomepageTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6A2E7D2F82319B9073FB5F68 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -399,6 +587,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AC932AC1BE279B4F5AF08506 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aventus HomepageTests2/Pods-Aventus HomepageTests2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B2A91743D8F0597A47E5F415 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,9 +617,79 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F46D46C0C8CB83C2177FF455 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Aventus HomepageTests2/Pods-Aventus HomepageTests2-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Aventus HomepageTests2/Pods-Aventus HomepageTests2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5C1085A95F51FAA73B07704 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Aventus HomepageTests2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A1845B06204B161E0004D983 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1845B0D204B161E0004D983 /* Aventus_HomepageUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1AB3162204C529500F5A6A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1AB3169204C529500F5A6A1 /* Aventus_Database_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1AB3170204C533100F5A6A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1AB3177204C533100F5A6A1 /* Test_Databse_Fake_Data.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1ECFFC1204B109B006DE0C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A18FF15F204C607300DE4692 /* UnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF7B71B320236FCC009E5598 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,6 +729,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A1845B10204B161E0004D983 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF7B71B620236FCC009E5598 /* Aventus Homepage */;
+			targetProxy = A1845B0F204B161E0004D983 /* PBXContainerItemProxy */;
+		};
+		A1AB316C204C529500F5A6A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF7B71B620236FCC009E5598 /* Aventus Homepage */;
+			targetProxy = A1AB316B204C529500F5A6A1 /* PBXContainerItemProxy */;
+		};
+		A1AB317A204C533100F5A6A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF7B71B620236FCC009E5598 /* Aventus Homepage */;
+			targetProxy = A1AB3179204C533100F5A6A1 /* PBXContainerItemProxy */;
+		};
+		A1ECFFCB204B109B006DE0C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF7B71B620236FCC009E5598 /* Aventus Homepage */;
+			targetProxy = A1ECFFCA204B109B006DE0C0 /* PBXContainerItemProxy */;
+		};
 		BF7B71CD20236FCD009E5598 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BF7B71B620236FCC009E5598 /* Aventus Homepage */;
@@ -483,6 +776,220 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A1845B11204B161E0004D983 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Aventus HomepageUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "wt814.Aventus-HomepageUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Aventus Homepage";
+			};
+			name = Debug;
+		};
+		A1845B12204B161E0004D983 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Aventus HomepageUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "wt814.Aventus-HomepageUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Aventus Homepage";
+			};
+			name = Release;
+		};
+		A1AB316D204C529500F5A6A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Aventus Database Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "wt814.Aventus-Database-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+			};
+			name = Debug;
+		};
+		A1AB316E204C529500F5A6A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Aventus Database Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "wt814.Aventus-Database-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+			};
+			name = Release;
+		};
+		A1AB317C204C533100F5A6A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Test Databse Fake Data/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "wt814.Test-Databse-Fake-Data";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+			};
+			name = Debug;
+		};
+		A1AB317D204C533100F5A6A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Test Databse Fake Data/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "wt814.Test-Databse-Fake-Data";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+			};
+			name = Release;
+		};
+		A1ECFFCC204B109B006DE0C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60DF77654971427BC6104ACA /* Pods-Aventus HomepageTests2.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(PODS_ROOT)/Firebase/Core/Sources (non-recursive)";
+				INFOPLIST_FILE = "Aventus HomepageTests2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "wt814.Aventus-HomepageTests2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Aventus HomepageTests2/Aventus HomepageTests2-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+			};
+			name = Debug;
+		};
+		A1ECFFCD204B109B006DE0C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2606FF670C7DF7CDCD8D7C4 /* Pods-Aventus HomepageTests2.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Aventus HomepageTests2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "wt814.Aventus-HomepageTests2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Aventus HomepageTests2/Aventus HomepageTests2-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+			};
+			name = Release;
+		};
 		BF7B71D220236FCD009E5598 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -585,6 +1092,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Aventus Homepage/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Aventus-Homepage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -598,6 +1106,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Aventus Homepage/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Aventus-Homepage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -606,7 +1115,6 @@
 		};
 		BF7B71D820236FCD009E5598 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7CEA4ED76ACC3EE1B0894E1 /* Pods-Aventus HomepageTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -621,7 +1129,6 @@
 		};
 		BF7B71D920236FCD009E5598 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00C814C682FDD1FC940FBC95 /* Pods-Aventus HomepageTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -637,6 +1144,42 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A1845B13204B161E0004D983 /* Build configuration list for PBXNativeTarget "Aventus HomepageUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1845B11204B161E0004D983 /* Debug */,
+				A1845B12204B161E0004D983 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1AB316F204C529500F5A6A1 /* Build configuration list for PBXNativeTarget "Aventus Database Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1AB316D204C529500F5A6A1 /* Debug */,
+				A1AB316E204C529500F5A6A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1AB317B204C533100F5A6A1 /* Build configuration list for PBXNativeTarget "Test Databse Fake Data" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1AB317C204C533100F5A6A1 /* Debug */,
+				A1AB317D204C533100F5A6A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1ECFFCE204B109B006DE0C0 /* Build configuration list for PBXNativeTarget "Aventus HomepageTests2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1ECFFCC204B109B006DE0C0 /* Debug */,
+				A1ECFFCD204B109B006DE0C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BF7B71B220236FCC009E5598 /* Build configuration list for PBXProject "Aventus Homepage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

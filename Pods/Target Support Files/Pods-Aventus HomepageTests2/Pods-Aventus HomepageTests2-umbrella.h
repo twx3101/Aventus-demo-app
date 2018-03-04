@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_Aventus_HomepageTestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_Aventus_HomepageTestsVersionString[];
+FOUNDATION_EXPORT double Pods_Aventus_HomepageTests2VersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_Aventus_HomepageTests2VersionString[];
 

@@ -2,6 +2,8 @@ PODS:
   - Alamofire (4.6.0)
   - AlamofireImage (3.3.0):
     - Alamofire (~> 4.5)
+  - Firebase (4.8.2):
+    - Firebase/Core (= 4.8.2)
   - Firebase/Core (4.8.2):
     - FirebaseAnalytics (= 4.0.9)
     - FirebaseCore (= 4.0.14)
@@ -34,6 +36,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - Firebase
   - Firebase/Core
   - Firebase/Database
 
@@ -49,6 +52,6 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: 8f820de379a05374f18ea4675107e1e5ea8309a6
+PODFILE CHECKSUM: b559331b363048f3d28e2603c214493591ae67d4
 
 COCOAPODS: 1.4.0

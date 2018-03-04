@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Aventus HomepageTests2/UnitTests.swift">
+   </FileRef>
+   <FileRef
       location = "group:Aventus Homepage.xcodeproj">
    </FileRef>
    <FileRef
