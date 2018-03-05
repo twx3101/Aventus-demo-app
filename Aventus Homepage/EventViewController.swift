@@ -12,9 +12,17 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     
+    let cellIdentifier = "EventTableViewCell"
+    
+    weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    //let dispatchQueue = DispatchQueue(label: "Dispatch Queue", attributes: [], target: nil)
+    
     var events = [Event]()
     var filteredEvents = [Event]()
     let searchController = UISearchController(searchResultsController: nil)
+    
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -29,11 +37,10 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellIdentifier = "EventTableViewCell"
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventTableViewCell else{
             fatalError("The dequeued cell is not an instance of EventTableViewCell.")
         }
+    
         let event : Event
         if isFiltering(){
               event = filteredEvents[indexPath.row]
@@ -66,11 +73,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 detailViewController.eventLoaded = events[row]
             }
             
-            
-            /*if(detailViewController.seating != nil) {
-                detailViewController.seating.image = UIImage(named: "Seating")
-            }*/
-
         }
     }
     
@@ -79,23 +81,41 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         view.backgroundColor = colors.bg
         
-        // Do any additional setup after loading the view.
-        // Load events to display
-        
-        
-
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Events"
-        /*if #available(iOS 11.0, *) {
-            navigationItem.searchController = searchController
-        } else {
-            tableView.tableHeaderView = searchController.searchBar
-        }
-        definesPresentationContext = true*/
-        //print("HELLO")
+
+        /*let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        
+        tableView.backgroundView = activityIndicatorView
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        
+        self.activityIndicatorView = activityIndicatorView
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)*/
+        //activityIndicatorView.startAnimating()
         loadEvents()
+        //activityIndicatorView.stopAnimating()
     }
+    
+    /*override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if events.count == 0 {
+            activityIndicatorView.startAnimating()
+            
+            dispatchQueue.async {
+                Thread.sleep(forTimeInterval: 3)
+                
+                OperationQueue.main.addOperation() {
+                    self.loadEvents()
+                    self.activityIndicatorView.stopAnimating()
+                    self.tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -169,6 +189,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     private func loadEvents(){
+        
+        
 	
         /*let photo1 = UIImage(named: "drake")
         let photo2 = UIImage(named: "selena")
@@ -193,6 +215,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             fatalError("Unable to instantiate event3")
         } */
         parseJSON()
+        
+        
         
         //events += [event1, event2, event3]
         

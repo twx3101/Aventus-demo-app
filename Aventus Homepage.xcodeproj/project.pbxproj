@@ -20,6 +20,9 @@
 		BF65F164203B3B9900580CB8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF65F163203B3B9900580CB8 /* GoogleService-Info.plist */; };
 		BF6C935B204D6A0100BA03E6 /* WarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C935A204D6A0100BA03E6 /* WarningLabel.swift */; };
 		BF6C935D204D6F7A00BA03E6 /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C935C204D6F7A00BA03E6 /* GeneralView.swift */; };
+		BF6C935F204D7E0600BA03E6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C935E204D7E0600BA03E6 /* ProfileViewController.swift */; };
+		BF6C9361204D7EE400BA03E6 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C9360204D7EE400BA03E6 /* PageViewController.swift */; };
+		BF6C9365204D9CD000BA03E6 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C9364204D9CD000BA03E6 /* CustomSegmentedControl.swift */; };
 		BF76AE3020264CD5006274FE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76AE2F20264CD5006274FE /* Event.swift */; };
 		BF7B71BB20236FCC009E5598 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B71BA20236FCC009E5598 /* AppDelegate.swift */; };
 		BF7B71BD20236FCC009E5598 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B71BC20236FCC009E5598 /* ViewController.swift */; };
@@ -61,6 +64,9 @@
 		BF65F163203B3B9900580CB8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF6C935A204D6A0100BA03E6 /* WarningLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningLabel.swift; sourceTree = "<group>"; };
 		BF6C935C204D6F7A00BA03E6 /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
+		BF6C935E204D7E0600BA03E6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BF6C9360204D7EE400BA03E6 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		BF6C9364204D9CD000BA03E6 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		BF76AE2F20264CD5006274FE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BF7B71B720236FCC009E5598 /* Aventus Homepage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aventus Homepage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7B71BA20236FCC009E5598 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,12 +136,15 @@
 				BF51ED50204331B9003D0219 /* RecordButton.swift */,
 				BF933144204471160002A3C8 /* RoundButton.swift */,
 				BF93314620448ABB0002A3C8 /* DetailTextField.swift */,
+				BF6C9364204D9CD000BA03E6 /* CustomSegmentedControl.swift */,
 				BF7B71BA20236FCC009E5598 /* AppDelegate.swift */,
 				BF7B71BC20236FCC009E5598 /* ViewController.swift */,
 				BF7B71BE20236FCC009E5598 /* Main.storyboard */,
+				BF6C9360204D7EE400BA03E6 /* PageViewController.swift */,
 				BFBAF60C2035C3E200050B8A /* Seating.swift */,
 				BF5946962038743A00A0A493 /* Payment.swift */,
 				BF76AE2F20264CD5006274FE /* Event.swift */,
+				BF6C935E204D7E0600BA03E6 /* ProfileViewController.swift */,
 				BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */,
 				BFD17E18202CD729008CB952 /* EventViewController.swift */,
 				BFA6D2FB203850C300DFA67B /* SeatTableViewCell.swift */,
@@ -276,10 +285,12 @@
 				BF6C935D204D6F7A00BA03E6 /* GeneralView.swift in Sources */,
 				BFA6D2FC203850C300DFA67B /* SeatTableViewCell.swift in Sources */,
 				BF8588252030B729005C9D7D /* PaymentViewController.swift in Sources */,
+				BF6C935F204D7E0600BA03E6 /* ProfileViewController.swift in Sources */,
 				BF5946992038ADFC00A0A493 /* PaymentTableViewCell.swift in Sources */,
 				BF7B71BD20236FCC009E5598 /* ViewController.swift in Sources */,
 				BF5946972038743A00A0A493 /* Payment.swift in Sources */,
 				BFD17E19202CD729008CB952 /* EventViewController.swift in Sources */,
+				BF6C9361204D7EE400BA03E6 /* PageViewController.swift in Sources */,
 				BF7B71BB20236FCC009E5598 /* AppDelegate.swift in Sources */,
 				BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */,
 				BF93314720448ABB0002A3C8 /* DetailTextField.swift in Sources */,
@@ -289,6 +300,7 @@
 				BF1607042044ADC700241A2D /* BodyLabel.swift in Sources */,
 				BF51ED4F20432787003D0219 /* ColorHelper.swift in Sources */,
 				BF6C935B204D6A0100BA03E6 /* WarningLabel.swift in Sources */,
+				BF6C9365204D9CD000BA03E6 /* CustomSegmentedControl.swift in Sources */,
 				BF59469B2038D69C00A0A493 /* ConfirmTableViewCell.swift in Sources */,
 				BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */,
 				BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */,
