@@ -32,6 +32,9 @@ struct colors{
     // utterance text
     static var utterText = UIColorFromHex(rgbValue: 0xA6D80C, alpha: 1)
     
+    // warning text
+    static var warningText = UIColorFromHex(rgbValue: 0xff4d4d, alpha: 1)
+    
     
 
     // textfiled color

@@ -18,6 +18,8 @@
 		BF59469B2038D69C00A0A493 /* ConfirmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59469A2038D69C00A0A493 /* ConfirmTableViewCell.swift */; };
 		BF59469D2038E25900A0A493 /* SeatPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59469C2038E25900A0A493 /* SeatPopUpViewController.swift */; };
 		BF65F164203B3B9900580CB8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF65F163203B3B9900580CB8 /* GoogleService-Info.plist */; };
+		BF6C935B204D6A0100BA03E6 /* WarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C935A204D6A0100BA03E6 /* WarningLabel.swift */; };
+		BF6C935D204D6F7A00BA03E6 /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C935C204D6F7A00BA03E6 /* GeneralView.swift */; };
 		BF76AE3020264CD5006274FE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76AE2F20264CD5006274FE /* Event.swift */; };
 		BF7B71BB20236FCC009E5598 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B71BA20236FCC009E5598 /* AppDelegate.swift */; };
 		BF7B71BD20236FCC009E5598 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B71BC20236FCC009E5598 /* ViewController.swift */; };
@@ -57,6 +59,8 @@
 		BF59469A2038D69C00A0A493 /* ConfirmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewCell.swift; sourceTree = "<group>"; };
 		BF59469C2038E25900A0A493 /* SeatPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatPopUpViewController.swift; sourceTree = "<group>"; };
 		BF65F163203B3B9900580CB8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BF6C935A204D6A0100BA03E6 /* WarningLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningLabel.swift; sourceTree = "<group>"; };
+		BF6C935C204D6F7A00BA03E6 /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
 		BF76AE2F20264CD5006274FE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BF7B71B720236FCC009E5598 /* Aventus Homepage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aventus Homepage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7B71BA20236FCC009E5598 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,9 +122,11 @@
 			isa = PBXGroup;
 			children = (
 				BF51ED4E20432787003D0219 /* ColorHelper.swift */,
+				BF6C935C204D6F7A00BA03E6 /* GeneralView.swift */,
 				BF51ED5420433BBD003D0219 /* UtterLabel.swift */,
 				BF1607012044A36B00241A2D /* HeaderLabel.swift */,
 				BF1607032044ADC700241A2D /* BodyLabel.swift */,
+				BF6C935A204D6A0100BA03E6 /* WarningLabel.swift */,
 				BF51ED50204331B9003D0219 /* RecordButton.swift */,
 				BF933144204471160002A3C8 /* RoundButton.swift */,
 				BF93314620448ABB0002A3C8 /* DetailTextField.swift */,
@@ -267,6 +273,7 @@
 				BF933145204471160002A3C8 /* RoundButton.swift in Sources */,
 				BF51ED5520433BBD003D0219 /* UtterLabel.swift in Sources */,
 				BF51ED51204331B9003D0219 /* RecordButton.swift in Sources */,
+				BF6C935D204D6F7A00BA03E6 /* GeneralView.swift in Sources */,
 				BFA6D2FC203850C300DFA67B /* SeatTableViewCell.swift in Sources */,
 				BF8588252030B729005C9D7D /* PaymentViewController.swift in Sources */,
 				BF5946992038ADFC00A0A493 /* PaymentTableViewCell.swift in Sources */,
@@ -281,6 +288,7 @@
 				BFD17E1F202CDF0B008CB952 /* EventTableViewCell.swift in Sources */,
 				BF1607042044ADC700241A2D /* BodyLabel.swift in Sources */,
 				BF51ED4F20432787003D0219 /* ColorHelper.swift in Sources */,
+				BF6C935B204D6A0100BA03E6 /* WarningLabel.swift in Sources */,
 				BF59469B2038D69C00A0A493 /* ConfirmTableViewCell.swift in Sources */,
 				BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */,
 				BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */,
