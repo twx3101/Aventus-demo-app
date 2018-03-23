@@ -12,6 +12,17 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var warningLabel: UILabel!
+    
+    @IBOutlet weak var nameTextField: DetailTextField!
+    
+    @IBOutlet weak var cardNoTextField: DetailTextField!
+    
+    @IBOutlet weak var expiryTextField: DetailTextField!
+    
+    @IBOutlet weak var cvvTextField: DetailTextField!
+    
+    
     var payment: Payment?
     
     var count: Int = 0
@@ -75,6 +86,7 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "ConfirmSegue" {
             
             let detailViewController = segue.destination as! ConfirmationViewController
@@ -82,6 +94,16 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
             detailViewController.payment = payment
             
         }
+        
+        /*if nameTextField.text != "" {
+            OperationQueue.main.addOperation {
+                self.performSegue(withIdentifier: "ConfirmSegue", sender: self)
+            }
+        }*/
+    }
+    
+    func confirmPayment() {
+        self.performSegue(withIdentifier: "ConfirmSegue", sender: self)
     }
 
     override func viewDidLoad() {
@@ -95,6 +117,9 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
             count = p + 1
         }
         
+        //self.performSegue(withIdentifier: "ConfirmSegue", sender: self)
+        
+        //NotificationCenter.default.addObserver(self, selector: #selector(confirmPayment), name: NSNotification.Name(rawValue: "ConfirmSegue"), object: nil)
         //count = (payment?.selectedSeats.count)! + 1
         
         // Do any additional setup after loading the view.
@@ -115,5 +140,13 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func confirmButton(_ sender: UIButton) {
+        if nameTextField.text != "" && cardNoTextField.text != "" && expiryTextField.text != "" && cvvTextField.text != "" {
+            self.performSegue(withIdentifier: "ConfirmSegue", sender: self)
+        }
+        else {
+            warningLabel.text = "Please fill out the form."
+        }
+    }
+    
 }

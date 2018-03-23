@@ -15,6 +15,12 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     
+    let cellIdentifier = "EventTableViewCell"
+    
+    weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    //let dispatchQueue = DispatchQueue(label: "Dispatch Queue", attributes: [], target: nil)
+    
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle!
     

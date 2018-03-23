@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1EFEF15BCA00AB75AF21BDC9 /* Pods_Aventus_HomepageTests2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1534D3CCB716116C2B8FE568 /* Pods_Aventus_HomepageTests2.framework */; };
+		457E32D120659C6200B7224B /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E32D020659C6200B7224B /* CustomSegmentedControl.swift */; };
+		457E32D520659C7E00B7224B /* WarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E32D220659C7E00B7224B /* WarningLabel.swift */; };
+		457E32D620659C7E00B7224B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E32D320659C7E00B7224B /* PageViewController.swift */; };
+		457E32D720659C7E00B7224B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E32D420659C7E00B7224B /* ProfileViewController.swift */; };
 		9642442B80472C7349CF56B8 /* Pods_Aventus_Homepage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3801DE766E1697792EDB2A4C /* Pods_Aventus_Homepage.framework */; };
 		A1845B0D204B161E0004D983 /* Aventus_HomepageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1845B0C204B161E0004D983 /* Aventus_HomepageUITests.swift */; };
 		A18FF15F204C607300DE4692 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18FF15E204C607300DE4692 /* UnitTests.swift */; };
@@ -83,6 +87,10 @@
 		1534D3CCB716116C2B8FE568 /* Pods_Aventus_HomepageTests2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_HomepageTests2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15973FF8ED2F30FB0506552E /* Pods-Aventus Homepage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus Homepage.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage.release.xcconfig"; sourceTree = "<group>"; };
 		3801DE766E1697792EDB2A4C /* Pods_Aventus_Homepage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_Homepage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		457E32D020659C6200B7224B /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		457E32D220659C7E00B7224B /* WarningLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningLabel.swift; sourceTree = "<group>"; };
+		457E32D320659C7E00B7224B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		457E32D420659C7E00B7224B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		60DF77654971427BC6104ACA /* Pods-Aventus HomepageTests2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus HomepageTests2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus HomepageTests2/Pods-Aventus HomepageTests2.debug.xcconfig"; sourceTree = "<group>"; };
 		A1845B0A204B161E0004D983 /* Aventus HomepageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aventus HomepageUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1845B0C204B161E0004D983 /* Aventus_HomepageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aventus_HomepageUITests.swift; sourceTree = "<group>"; };
@@ -269,6 +277,10 @@
 		BF7B71B920236FCC009E5598 /* Aventus Homepage */ = {
 			isa = PBXGroup;
 			children = (
+				457E32D320659C7E00B7224B /* PageViewController.swift */,
+				457E32D420659C7E00B7224B /* ProfileViewController.swift */,
+				457E32D220659C7E00B7224B /* WarningLabel.swift */,
+				457E32D020659C6200B7224B /* CustomSegmentedControl.swift */,
 				BF51ED4E20432787003D0219 /* ColorHelper.swift */,
 				BF51ED5420433BBD003D0219 /* UtterLabel.swift */,
 				BF1607012044A36B00241A2D /* HeaderLabel.swift */,
@@ -701,18 +713,22 @@
 				BF8588252030B729005C9D7D /* PaymentViewController.swift in Sources */,
 				BF5946992038ADFC00A0A493 /* PaymentTableViewCell.swift in Sources */,
 				BF7B71BD20236FCC009E5598 /* ViewController.swift in Sources */,
+				457E32D120659C6200B7224B /* CustomSegmentedControl.swift in Sources */,
 				BF5946972038743A00A0A493 /* Payment.swift in Sources */,
 				BFD17E19202CD729008CB952 /* EventViewController.swift in Sources */,
 				BF7B71BB20236FCC009E5598 /* AppDelegate.swift in Sources */,
 				BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */,
 				BF93314720448ABB0002A3C8 /* DetailTextField.swift in Sources */,
+				457E32D520659C7E00B7224B /* WarningLabel.swift in Sources */,
 				BF59469D2038E25900A0A493 /* SeatPopUpViewController.swift in Sources */,
+				457E32D620659C7E00B7224B /* PageViewController.swift in Sources */,
 				BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */,
 				BFD17E1F202CDF0B008CB952 /* EventTableViewCell.swift in Sources */,
 				BF1607042044ADC700241A2D /* BodyLabel.swift in Sources */,
 				BF51ED4F20432787003D0219 /* ColorHelper.swift in Sources */,
 				BF59469B2038D69C00A0A493 /* ConfirmTableViewCell.swift in Sources */,
 				BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */,
+				457E32D720659C7E00B7224B /* ProfileViewController.swift in Sources */,
 				BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */,
 				BF76AE3020264CD5006274FE /* Event.swift in Sources */,
 			);
@@ -947,7 +963,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				"HEADER_SEARCH_PATHS[arch=*]" = "$(PODS_ROOT)/Firebase/Core/Sources (non-recursive)";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(PODS_ROOT)/Firebase/Core/Sources",
+					"(non-recursive)",
+				);
 				INFOPLIST_FILE = "Aventus HomepageTests2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -81,6 +81,8 @@ class ConfirmationViewController: UIViewController, UITableViewDelegate, UITable
         tableView.backgroundColor = colors.bg
         
         count = (payment?.selectedSeats.count)! + 1
+        
+        // NotificationCenter.default.post(NSNotification(name: NSNotification.Name(rawValue: "ConfirmSegue"), object: nil) as Notification)
         // Do any additional setup after loading the view.
     }
 
