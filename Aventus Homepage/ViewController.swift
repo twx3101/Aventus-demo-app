@@ -7,8 +7,17 @@
 //
 
 import UIKit
+import CapitoSpeechKit
+import MBProgressHUD
+
+//TODO: add busy microphone button, add transcription textbox, add Errorlabels, add textDelegate
 
 class ViewController: UIViewController {
+    lazy var readyMic: UIImage = {
+        return UIImage(named: "icons8-microphone-96")!
+    }()
+    var isRecording: Bool = false
+    var controller: CapitoController?
     
     // MARK: Properties
     @IBOutlet weak var utter1Label: UILabel!
@@ -17,6 +26,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var waveFrame: UIView!
     
+    @IBOutlet weak var microphone: RecordButton!
     
     
     override func viewDidLoad() {
@@ -87,6 +97,117 @@ class ViewController: UIViewController {
     }
 
     // MARK: Actions
+    
 
+    @IBAction func microphonePress(_ sender: UIButton) {
+        if self.isRecording {
+            CapitoController.getInstance().cancelTalking()
+        }
+        else {
+            CapitoController.getInstance().push(toTalk: self, withDialogueContext: nil)
+            //self.transcriptionLabel.text = ""
+        }
+    }
 }
 
+extension ViewController{
+    func bootstrapView(response: CapitoResponse){
+        //process
+        print("Response Code: %@", response.responseCode)
+        print("Message Text: %@", response.message)
+        print("Context: %@", response.context)
+        print("Data: %@", response.data)
+        
+        //app-specific code to handle responses
+    }
+    
+   /* func handle(text:String){
+        self.showProcessingHUD(text: "Processing...")
+        
+        CapitoController.getInstance().text(self, input: text, withDialogueContext: nil)
+    }
+    */
+    func handle(response: CapitoResponse){
+        if response.messageType == "WARNING"{
+            //self.showErrorMessage(text: response.message)
+        }
+        else{
+            self.bootstrapView(response: response)
+        }
+    }
+}
+
+//errors
+extension ViewController{
+    
+    func showProcessingHUD(text: String){
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.mode = .indeterminate
+        hud.minShowTime = 1.0
+        hud.label.text = "Processing"
+        hud.detailsLabel.text = text
+    }
+    func hideProcessingHUD(){
+        MBProgressHUD.hide(for: self.view, animated: true)
+    }
+    
+    func showError(_ error: Error) {
+        print(error.localizedDescription)
+    }
+    
+}
+
+extension ViewController: SpeechDelegate{
+    
+    func speechControllerDidBeginRecording() {
+        self.isRecording = true
+        //change microphone to show busy recording
+        //self.microphone.setImage(busyMic, for: .normal)
+    }
+    
+    func speechControllerDidFinishRecording() {
+        self.isRecording = false
+        self.microphone.setImage(readyMic, for: .normal)
+    }
+    
+    func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
+        self.showProcessingHUD(text: "Processing...")
+        //self.transcriptionLabel.text = String(format: "\"%@\"", transcription.firstResult().replacingOccurrences(of: " | ", with: " "))
+    }
+    
+    func speechControllerDidFinish(withResults response: CapitoResponse!) {
+        self.hideProcessingHUD()
+        self.handle(response: response)
+    }
+    
+    func speechControllerDidFinishWithError(_ error: Error!) {
+        self.hideProcessingHUD()
+        self.showError(error)
+    }
+}
+
+/*
+ extension ViewController: UISearchBarDelegate {
+    func searchButtonPressed(_ searchBar: UISearchBar){
+        self.textControlBar.resignFirstResponder()
+ 
+        if let text = searchBar.text{
+            print("Sending text event: \(text)")
+            self.onTextControlClick(nil)
+            self.handle(text: text)
+        }
+    }
+ }
+ 
+ extension ViewController: TextDelegate{
+    func textControllerDidFinish(withResults response: CapitoResponse!) {
+        self.hideProcessingHUD()
+    self.handle(response: response)
+    }
+ 
+    func textControllerDidFinishWithError(_ error: Error!){
+        self.hideProcessingHUD()
+        self.showError(error)
+    }
+ }
+ */

@@ -11,7 +11,7 @@
 
 import UIKit
 import Firebase
-
+import CapitoSpeechKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,8 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        let settings = CAPSettings.getInstance()
+        settings?.setAppVersion(AppDelegate.appVersionNumberDisplayString())
+        settings?.silenceDetectionTime = 3.0
+        
+        let controller = CapitoController.getInstance()
+        //"a2d65251-0fe4-476f-994d-5dce055f555f" test appkey
+        controller?.setup(withID: "0848c593-9864-4205-bf86-4fb40c5b7744", host: "sysportal.test.a.cloud.capitosystems.com" , port: 443, useSSL: true)
+        
+        let status = controller?.connect()
+        print("CapitoSpeechKit status: ", status)
+        
         FirebaseApp.configure()
-
+        
         return true
     }
     
@@ -35,10 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        CapitoController.getInstance().disconnect()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        let status = CapitoController.getInstance().connect()
+        print(status!)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -49,6 +64,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    class func appVersionNumberDisplayString() -> String {
+        guard let infoDictionary = Bundle.main.infoDictionary,
+            let majorVersion = infoDictionary["CFBundleShortVersionString"],
+            let minorVersion = infoDictionary["CFBundleVersion"] else {
+                return ""
+        }
+        return "\(majorVersion).\(minorVersion)"
+    }
 }
 

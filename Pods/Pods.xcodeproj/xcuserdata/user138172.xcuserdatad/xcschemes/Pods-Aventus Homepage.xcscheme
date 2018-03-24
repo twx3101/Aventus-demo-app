@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C136FC91220586D5C9F4C060B9BC7CB7"
+               BlueprintIdentifier = "98870B59EE87BAB53450B0EEE75B81F9"
                BuildableName = "Pods_Aventus_Homepage.framework"
                BlueprintName = "Pods-Aventus Homepage"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C136FC91220586D5C9F4C060B9BC7CB7"
+            BlueprintIdentifier = "98870B59EE87BAB53450B0EEE75B81F9"
             BuildableName = "Pods_Aventus_Homepage.framework"
             BlueprintName = "Pods-Aventus Homepage"
             ReferencedContainer = "container:Pods.xcodeproj">

@@ -1,0 +1,6 @@
+framework module CapitoSpeechKit {
+  umbrella header "CapitoSpeechKit.h"
+
+  export *
+  module * { export * }
+}

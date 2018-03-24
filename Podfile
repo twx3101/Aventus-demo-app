@@ -11,6 +11,8 @@ target 'Aventus Homepage' do
   pod 'Firebase/Database'
   pod 'Alamofire'
   pod 'AlamofireImage'
+  pod 'CapitoSpeechKit'
+  pod 'MBProgressHUD'
 
 target 'Aventus HomepageTests2' do
     inherit! :search_paths

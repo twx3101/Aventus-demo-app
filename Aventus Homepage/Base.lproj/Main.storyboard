@@ -154,7 +154,7 @@
                                 </constraints>
                                 <state key="normal" image="icons8-microphone-96"/>
                                 <connections>
-                                    <action selector="recordButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="65a-Xx-id3"/>
+                                    <action selector="microphonePress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zTm-pu-L8B"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G0T-Bw-pX4" customClass="SineView" customModule="Aventus_Homepage" customModuleProvider="target">
@@ -175,6 +175,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="JzQ-rS-r6Q"/>
                     <connections>
+                        <outlet property="microphone" destination="syZ-Cf-8hp" id="yy1-wF-Kic"/>
                         <outlet property="utter1Label" destination="ug6-cg-Hl4" id="Y5y-p3-9gM"/>
                         <outlet property="utter2Label" destination="Y5a-nW-cBV" id="RAH-fU-TBL"/>
                         <outlet property="waveFrame" destination="G0T-Bw-pX4" id="uei-7Y-kKr"/>
