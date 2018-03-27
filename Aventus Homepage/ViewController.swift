@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     lazy var readyMic: UIImage = {
         return UIImage(named: "icons8-microphone-96")!
     }()
+    lazy var pressedMic: UIImage = {
+        return UIImage(named: "microphone_on")!
+    }()
     var isRecording: Bool = false
     var controller: CapitoController?
     
@@ -28,6 +31,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var microphone: RecordButton!
     
+    @IBOutlet weak var transcription: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +109,7 @@ class ViewController: UIViewController {
         }
         else {
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: nil)
-            //self.transcriptionLabel.text = ""
+                self.transcription.text = ""
         }
     }
 }
@@ -162,7 +166,7 @@ extension ViewController: SpeechDelegate{
     func speechControllerDidBeginRecording() {
         self.isRecording = true
         //change microphone to show busy recording
-        //self.microphone.setImage(busyMic, for: .normal)
+        self.microphone.setImage(pressedMic, for: .normal)
     }
     
     func speechControllerDidFinishRecording() {
@@ -172,7 +176,7 @@ extension ViewController: SpeechDelegate{
     
     func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
         self.showProcessingHUD(text: "Processing...")
-        //self.transcriptionLabel.text = String(format: "\"%@\"", transcription.firstResult().replacingOccurrences(of: " | ", with: " "))
+        self.transcription.text = String(format: "\"%@\"", transcription.firstResult().replacingOccurrences(of: " | ", with: " "))
     }
     
     func speechControllerDidFinish(withResults response: CapitoResponse!) {
