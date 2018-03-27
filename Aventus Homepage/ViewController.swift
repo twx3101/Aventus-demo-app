@@ -122,7 +122,9 @@ extension ViewController{
         print("Context: %@", response.context)
         print("Data: %@", response.data)
         
+    
         //app-specific code to handle responses
+        self.parseData(context: response.context)
     }
     
    /* func handle(text:String){
@@ -138,6 +140,54 @@ extension ViewController{
         else{
             self.bootstrapView(response: response)
         }
+    }
+    
+    func parseData(context: [AnyHashable : Any]){
+        
+        if let task = context["Task"] as? String{
+            if task == "Navigate"{
+                //TODO
+            }
+            else if task == "BuyTicket"{
+                //TODO
+            }
+            else if task == "SelectSeat"{
+                //TODO
+            }
+            else if task == "NavigateStatic"{
+                //TODO
+            }
+        }
+        else{
+            //handle nil data
+        }
+    }
+    
+    func handleNavigate(context: [AnyHashable : Any]){
+//        artist: String
+//
+//        location: String
+//
+//        datetime: String
+//
+//        seating: Seating
+//
+//        time: String
+//
+//        day_in_week: String
+//
+//        venue: String
+//
+//        genre: String
+//
+//        month: String
+//
+//        city: String
+//
+//        weekend: String
+        
+        // handle time to day, month, seating for price, currency, time for day Part, comparison is contextual
+        // end hour, end week , endday is range of dates
     }
 }
 
