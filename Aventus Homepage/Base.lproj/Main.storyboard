@@ -169,6 +169,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What do you want to see?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ysO-qi-qd7" userLabel="TextBar">
+                                <rect key="frame" x="42" y="99" width="288" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -183,6 +190,7 @@
                     <navigationItem key="navigationItem" id="JzQ-rS-r6Q"/>
                     <connections>
                         <outlet property="microphone" destination="syZ-Cf-8hp" id="yy1-wF-Kic"/>
+                        <outlet property="textControl" destination="ysO-qi-qd7" id="APJ-CR-32F"/>
                         <outlet property="transcription" destination="Qac-BT-IBr" id="mdc-wO-y2p"/>
                         <outlet property="utter1Label" destination="ug6-cg-Hl4" id="Y5y-p3-9gM"/>
                         <outlet property="utter2Label" destination="Y5a-nW-cBV" id="RAH-fU-TBL"/>

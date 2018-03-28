@@ -12,7 +12,7 @@ import MBProgressHUD
 
 //TODO: add busy microphone button, add transcription textbox, add Errorlabels, add textDelegate
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate{
     lazy var readyMic: UIImage = {
         return UIImage(named: "icons8-microphone-96")!
     }()
@@ -33,6 +33,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var transcription: UILabel!
     
+    @IBOutlet weak var textControl: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,7 +43,7 @@ class ViewController: UIViewController {
         genWave()
         
         // Do any additional setup after loading the view, typically from a nib.
-        
+        self.textControl.delegate = self
     }
     
     func genWave() {
@@ -112,6 +114,17 @@ class ViewController: UIViewController {
                 self.transcription.text = ""
         }
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if let text = self.textControl.text{
+            print("Sending Text event:\(text)")
+            self.handle(text: text)
+            
+        }
+        textField.text = ""
+        return true
+    }
+   
 }
 
 extension ViewController{
@@ -127,12 +140,12 @@ extension ViewController{
         self.parseData(context: response.context)
     }
     
-   /* func handle(text:String){
+   func handle(text:String){
         self.showProcessingHUD(text: "Processing...")
         
         CapitoController.getInstance().text(self, input: text, withDialogueContext: nil)
     }
-    */
+    
     func handle(response: CapitoResponse){
         if response.messageType == "WARNING"{
             //self.showErrorMessage(text: response.message)
@@ -165,7 +178,7 @@ extension ViewController{
     
     func handleNavigate(context: [AnyHashable : Any]){
 //        artist: String
-//
+//        print(context[AnyHashable("artist")]?)
 //        location: String
 //
 //        datetime: String
@@ -252,7 +265,7 @@ extension ViewController: SpeechDelegate{
         }
     }
  }
- 
+*/
  extension ViewController: TextDelegate{
     func textControllerDidFinish(withResults response: CapitoResponse!) {
         self.hideProcessingHUD()
@@ -264,4 +277,3 @@ extension ViewController: SpeechDelegate{
         self.showError(error)
     }
  }
- */
