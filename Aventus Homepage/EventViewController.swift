@@ -26,6 +26,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var events = [Event]()
     var filteredEvents = [Event]()
+    var isFiltering : Bool = false
+    var filteredArtist = ""
     let searchController = UISearchController(searchResultsController: nil)
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -33,7 +35,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering(){
+        if isFiltering{
             return filteredEvents.count
         }
         return events.count
@@ -47,7 +49,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             fatalError("The dequeued cell is not an instance of EventTableViewCell.")
         }
         let event : Event
-        if isFiltering(){
+        if isFiltering{
             event = filteredEvents[indexPath.row]
         }
         else {
@@ -75,7 +77,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             let myIndexPath = self.tableView.indexPathForSelectedRow!
             let row = myIndexPath.row
             
-            if isFiltering(){
+            if isFiltering{
                 detailViewController.eventLoaded = filteredEvents[row]
             }
             else{
@@ -111,6 +113,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         definesPresentationContext = true
         
         loadEvents()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -169,8 +173,14 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
      }.resume()
      }*/
     
-    func isFiltering() -> Bool{
-        return searchController.isActive && !searchBarIsEmpty()
+    func isFilteringBar() -> Bool{
+        if(searchController.isActive && !searchBarIsEmpty()){
+            isFiltering = true
+        }
+        else{
+            isFiltering = false
+        }
+        return isFiltering
     }
     
     func searchBarIsEmpty()-> Bool{
@@ -180,6 +190,13 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     func filterContentForSearchText(_ searchText: String, scope: String = "All"){
         filteredEvents = events.filter({( event:Event) -> Bool in
             return event.artist.lowercased().contains(searchText.lowercased()) || event.location.lowercased().contains(searchText.lowercased())
+            
+        })
+        tableView.reloadData()
+    }
+    func filterContentofEvents(artist: String){
+        filteredEvents = events.filter({( event:Event) -> Bool in
+            return event.artist.lowercased().contains(artist.lowercased()) || event.location.lowercased().contains(artist.lowercased())
             
         })
         tableView.reloadData()
@@ -259,7 +276,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 //let eventCatArea: [String] = [eventCat1Area as! String, eventCat2Area as! String, eventCat3Area as! String, eventCat4Area as! String, eventCat5Area as! String]
                 
-                print(eventCatArea)
+                //print(eventCatArea)
                 
                 var eventCatPrice = [Int]()
                 
@@ -268,7 +285,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 else{
                     eventCatPrice.append(0)
                 }
-                if let cat2 = eventObject?["Category 2: Price"] as? Int{ eventCatPrice.append(cat2)
+                if let cat2 = eventObject?["Category : Price"] as? Int{ eventCatPrice.append(cat2)
                 }
                 else{
                     eventCatPrice.append(0)
@@ -297,7 +314,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                  
                  let eventCatPrice: [Int] = [eventCat1Price as! Int , eventCat2Price as! Int , eventCat3Price as! Int , eventCat4Price as! Int , eventCat5Price as! Int ]*/
                 
-                print(eventCatPrice)
+                //print(eventCatPrice)
                 
                 var eventCatSeats = [Int]()
                 
@@ -336,7 +353,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                  
                  let eventCatSeats: [Int] = [eventCat1Seats as! Int, eventCat2Seats as! Int, eventCat3Seats as! Int, eventCat4Seats as! Int, eventCat5Seats as! Int]*/
                 
-                print(eventCatSeats)
+                //print(eventCatSeats)
                 
                 var eventAvailCat = [String]()
                 var eventAvailPrice = [Int]()
@@ -358,9 +375,13 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 
                 self.events.append(event1!)
             }
-            
-            
+            if self.isFiltering{
+                self.filterContentofEvents(artist: self.filteredArtist)
+                print("SUCCESS!")
+               
+            }
             self.tableView.reloadData()
+            
             //Code to execute to obtain the information held in the value field in the database
         })
     }

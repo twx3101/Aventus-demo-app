@@ -17,7 +17,7 @@
                     <connections>
                         <segue destination="lZ0-vv-1mp" kind="show" id="N8K-aj-rXi"/>
                         <segue destination="BYZ-38-t0r" kind="show" id="aW1-Sr-eg6"/>
-                        <segue destination="mXJ-Mo-iGK" kind="show" id="vEj-Yt-K4Z"/>
+                        <segue destination="mXJ-Mo-iGK" kind="show" identifier="" id="vEj-Yt-K4Z"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUh-Aj-3vA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -169,12 +169,15 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What do you want to see?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ysO-qi-qd7" userLabel="TextBar">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="I want to see Justin Bieber" borderStyle="roundedRect" placeholder="What do you want to see?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ysO-qi-qd7" userLabel="TextBar">
                                 <rect key="frame" x="42" y="99" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <segue destination="mXJ-Mo-iGK" kind="show" identifier="FilterControllerSegue" id="5pg-n2-dXI"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -279,6 +282,14 @@
                                 </constraints>
                                 <state key="normal" image="icons8-microphone-96"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvA-yV-T5x">
+                                <rect key="frame" x="36" y="637" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go Back"/>
+                                <connections>
+                                    <segue destination="aE7-CK-fRi" kind="unwind" unwindAction="unwindToViewWithSegue:" id="L74-Hl-Ybc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -296,6 +307,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iLX-Ef-G5l" sceneMemberID="firstResponder"/>
+                <exit id="aE7-CK-fRi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4151.1999999999998" y="35.532233883058474"/>
         </scene>
@@ -982,4 +994,7 @@
         <image name="icons8-sort-up-96" width="48" height="48"/>
         <image name="user" width="123" height="102"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="5pg-n2-dXI"/>
+    </inferredMetricsTieBreakers>
 </document>

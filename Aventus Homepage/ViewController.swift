@@ -46,6 +46,17 @@ class ViewController: UIViewController, UITextFieldDelegate{
         self.textControl.delegate = self
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FilterControllerSegue"{
+            let EventViewController = segue.destination as! EventViewController
+            if let artist = sender as? String{
+            print(artist)
+            EventViewController.isFiltering = true
+            EventViewController.filteredArtist = artist
+            }
+        }
+    }
+    
     func genWave() {
         let range: CGFloat = 20
         let centerY = waveFrame.frame.height / 2
@@ -125,6 +136,9 @@ class ViewController: UIViewController, UITextFieldDelegate{
         return true
     }
    
+    @IBAction func unwindToView(segue: UIStoryboardSegue){
+        
+    }
 }
 
 extension ViewController{
@@ -157,9 +171,11 @@ extension ViewController{
     
     func parseData(context: [AnyHashable : Any]){
         
-        if let task = context["Task"] as? String{
+        if let task = context["task"] as? String{
             if task == "Navigate"{
                 //TODO
+                print("Success!")
+                handleNavigate(context: context)
             }
             else if task == "BuyTicket"{
                 //TODO
@@ -173,12 +189,17 @@ extension ViewController{
         }
         else{
             //handle nil data
+            print("NIL Data")
         }
     }
     
     func handleNavigate(context: [AnyHashable : Any]){
 //        artist: String
-//        print(context[AnyHashable("artist")]?)
+        if let artist = context["artist"] as? String{
+            performSegue(withIdentifier: "FilterControllerSegue", sender: artist)
+//            filtered_events = event.filter({ $0.artist == artist})
+//            isFiltering = true
+        }
 //        location: String
 //
 //        datetime: String
