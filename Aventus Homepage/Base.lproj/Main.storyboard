@@ -244,7 +244,6 @@
                                                     <outlet property="artistPhoto" destination="hNT-dg-ngL" id="BSn-9n-pD7"/>
                                                     <outlet property="descriptionLabel" destination="U6D-eY-auk" id="bC5-d3-LSC"/>
                                                     <outlet property="locationDatetimeLabel" destination="tEP-TH-cbH" id="4Ra-u9-aYN"/>
-                                                    <segue destination="PPN-Wq-gpx" kind="show" identifier="ShowSeatSegue" id="5dw-wT-JnF"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>

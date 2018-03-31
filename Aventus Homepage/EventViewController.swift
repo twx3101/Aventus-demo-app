@@ -19,8 +19,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     weak var activityIndicatorView: UIActivityIndicatorView!
     
-    //let dispatchQueue = DispatchQueue(label: "Dispatch Queue", attributes: [], target: nil)
-    
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle!
     
@@ -91,15 +89,26 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     }*/
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("section: \(indexPath.section)")
-        print("row: \(indexPath.row)")
+        //print("section: \(indexPath.section)")
+        
+        let pageViewController = self.parent as! PageViewController
+        
+        let detailViewController = pageViewController.pages[3] as! SeatViewController
+        
+        if isFiltering() {
+            detailViewController.eventLoaded = filteredEvents[indexPath.row]
+        } else {
+            detailViewController.eventLoaded = events[indexPath.row]
+        }
+        
+        pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.delegate = self
-        //tableView.dataSource = self
-        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
         view.backgroundColor = colors.bg
         // Do any additional setup after loading the view.
