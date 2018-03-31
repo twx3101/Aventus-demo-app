@@ -13,7 +13,7 @@
         <!--Page View Controller-->
         <scene sceneID="Wts-7S-HhY">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="jHu-rk-thc" customClass="PageViewController" customModule="Aventus_Homepage" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="PageView" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="jHu-rk-thc" customClass="PageViewController" customModule="Aventus_Homepage" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="lZ0-vv-1mp" kind="show" id="N8K-aj-rXi"/>
                         <segue destination="BYZ-38-t0r" kind="show" id="aW1-Sr-eg6"/>
@@ -286,7 +286,7 @@
         <!--Seat View Controller-->
         <scene sceneID="5Ts-o7-wRs">
             <objects>
-                <viewController id="PPN-Wq-gpx" customClass="SeatViewController" customModule="Aventus_Homepage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SeatPage" id="PPN-Wq-gpx" customClass="SeatViewController" customModule="Aventus_Homepage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fzn-Va-zEa"/>
                         <viewControllerLayoutGuide type="bottom" id="Mb0-1f-oi8"/>
@@ -541,7 +541,7 @@
         <!--Payment View Controller-->
         <scene sceneID="xNS-TD-4By">
             <objects>
-                <viewController id="x2Z-KW-Ak7" customClass="PaymentViewController" customModule="Aventus_Homepage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaymentPage" id="x2Z-KW-Ak7" customClass="PaymentViewController" customModule="Aventus_Homepage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mlw-2f-8DO"/>
                         <viewControllerLayoutGuide type="bottom" id="2KM-w9-jRD"/>
@@ -763,7 +763,7 @@
         <!--Confirmation View Controller-->
         <scene sceneID="MQL-1f-zFC">
             <objects>
-                <viewController id="BI1-Lz-PkS" customClass="ConfirmationViewController" customModule="Aventus_Homepage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfirmPage" id="BI1-Lz-PkS" customClass="ConfirmationViewController" customModule="Aventus_Homepage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nB7-dp-4mH"/>
                         <viewControllerLayoutGuide type="bottom" id="ka6-P3-Uzk"/>
@@ -920,7 +920,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="il2-sZ-0pO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="532" y="833"/>
+            <point key="canvasLocation" x="532" y="832.53373313343332"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5VO-ER-769">

@@ -17,15 +17,21 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.delegate = self
         self.dataSource = self
         
-        let left: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "ProfilePage")
-        let mid: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "HomePage")
-        let right: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "EventPage")
+        let profilePage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "ProfilePage")
+        let homePage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "HomePage")
+        let eventPage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "EventPage")
+        let seatPage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "SeatPage")
+        let paymentPage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "PaymentPage")
+        let confirmPage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage")
         
-        pages.append(left)
-        pages.append(mid)
-        pages.append(right)
+        pages.append(profilePage)
+        pages.append(homePage)
+        pages.append(eventPage)
+        pages.append(seatPage)
+        pages.append(paymentPage)
+        pages.append(confirmPage)
         
-        setViewControllers([mid], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
+        setViewControllers([homePage], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController)-> UIViewController? {
@@ -43,7 +49,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         let cur = pages.index(of: viewController)!
         
-        if cur == (pages.count - 1) { return nil }
+        if cur >= 2 {
+            return nil
+        }
         
         let nxt = abs((cur + 1) % pages.count)
         return pages[nxt]

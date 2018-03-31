@@ -79,7 +79,7 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
         
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PaymentSegue" {
             
             let detailViewController = segue.destination as! PaymentViewController
@@ -107,6 +107,11 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             detailViewController.payment = Payment(categories: (seating?.categories)!, price: (seating?.price)!, selectedSeats: seats)
             
         }
+    }*/
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("section: \(indexPath.section)")
+        print("row: \(indexPath.row)")
     }
 
     override func viewDidLoad() {

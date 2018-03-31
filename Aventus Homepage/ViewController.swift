@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         
         self.view.backgroundColor = colors.bg
         self.waveFrame.backgroundColor = colors.bg
-        genWave()
+        //genWave()
         
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -100,18 +100,23 @@ class ViewController: UIViewController {
     
 
     @IBAction func microphonePress(_ sender: UIButton) {
+        
         if self.isRecording {
             CapitoController.getInstance().cancelTalking()
+            print("if")
         }
         else {
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: nil)
+            print("else")
             //self.transcriptionLabel.text = ""
         }
+ 
     }
 }
 
 extension ViewController{
     func bootstrapView(response: CapitoResponse){
+        //print("bootstrapview")
         //process
         print("Response Code: %@", response.responseCode)
         print("Message Text: %@", response.message)
@@ -119,6 +124,13 @@ extension ViewController{
         print("Data: %@", response.data)
         
         //app-specific code to handle responses
+        
+        // go to the event page
+        let pageViewController = self.parent as! PageViewController
+        
+        pageViewController.setViewControllers([pageViewController.pages[2]], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        
+
     }
     
    /* func handle(text:String){
@@ -128,6 +140,7 @@ extension ViewController{
     }
     */
     func handle(response: CapitoResponse){
+        //print("handle")
         if response.messageType == "WARNING"{
             //self.showErrorMessage(text: response.message)
         }

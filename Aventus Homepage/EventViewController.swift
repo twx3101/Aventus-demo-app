@@ -68,7 +68,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowSeatSegue" {
             let detailViewController = segue.destination as! SeatViewController
             
@@ -88,6 +88,11 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
              }*/
             
         }
+    }*/
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("section: \(indexPath.section)")
+        print("row: \(indexPath.row)")
     }
     
     override func viewDidLoad() {
