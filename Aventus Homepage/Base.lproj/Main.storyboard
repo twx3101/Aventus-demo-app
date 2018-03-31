@@ -343,28 +343,29 @@
                                             <constraint firstAttribute="width" constant="343" id="pc3-hu-AQa"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCz-QG-a7i" customClass="CustomView">
-                                        <rect key="frame" x="0.0" y="223.5" width="343" height="216"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQQ-Vu-8Za">
+                                        <rect key="frame" x="0.0" y="144" width="343" height="375"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JxV-xS-j2R">
-                                                <rect key="frame" x="0.0" y="0.0" width="250" height="216"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="375"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="250" id="LVu-de-vPe"/>
+                                                    <constraint firstAttribute="width" constant="343" id="LVu-de-vPe"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="dataSource" destination="PPN-Wq-gpx" id="ZMh-nx-hw6"/>
                                                     <outlet property="delegate" destination="PPN-Wq-gpx" id="HQV-nR-nFO"/>
                                                 </connections>
                                             </pickerView>
-                                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s27-4f-x1H">
-                                                <rect key="frame" x="250" y="0.0" width="93" height="216"/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="PPN-Wq-gpx" id="vQA-Mg-WAR"/>
-                                                    <outlet property="delegate" destination="PPN-Wq-gpx" id="gq6-SG-IUL"/>
-                                                </connections>
-                                            </pickerView>
                                         </subviews>
-                                    </stackView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="JxV-xS-j2R" firstAttribute="leading" secondItem="fQQ-Vu-8Za" secondAttribute="leading" id="aRe-9y-844"/>
+                                            <constraint firstAttribute="width" constant="343" id="cHa-sz-zJN"/>
+                                            <constraint firstAttribute="trailing" secondItem="JxV-xS-j2R" secondAttribute="trailing" id="iQi-hO-srt"/>
+                                            <constraint firstAttribute="bottom" secondItem="JxV-xS-j2R" secondAttribute="bottom" id="rJe-xY-u3t"/>
+                                            <constraint firstItem="JxV-xS-j2R" firstAttribute="top" secondItem="fQQ-Vu-8Za" secondAttribute="top" id="uaT-vt-dlm"/>
+                                        </constraints>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="VmM-mz-ztS">
                                         <rect key="frame" x="0.0" y="535" width="343" height="30"/>
                                         <subviews>
@@ -394,6 +395,9 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="fQQ-Vu-8Za" firstAttribute="top" secondItem="sB4-xZ-nOT" secondAttribute="bottom" constant="16" id="z8X-xc-yXJ"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -414,7 +418,6 @@
                         <outlet property="categoriesPicker" destination="JxV-xS-j2R" id="udc-gT-hb8"/>
                         <outlet property="descriptionLabel" destination="yUP-PI-dTd" id="sae-8t-usf"/>
                         <outlet property="locationDateTimeLabel" destination="cV2-ud-0nr" id="Vxq-h2-fdJ"/>
-                        <outlet property="ticketPicker" destination="s27-4f-x1H" id="Wgk-ib-s32"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JbZ-2F-aT8" sceneMemberID="firstResponder"/>

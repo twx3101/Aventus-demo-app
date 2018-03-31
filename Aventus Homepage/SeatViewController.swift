@@ -12,6 +12,8 @@ import Alamofire
 class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     
+    
+    
     @IBOutlet weak var artistLabel: UILabel!
     
     @IBOutlet weak var locationDateTimeLabel: UILabel!
@@ -22,49 +24,51 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     @IBOutlet weak var categoriesPicker: UIPickerView!
     
-    @IBOutlet weak var ticketPicker: UIPickerView!
-    
     
     var eventLoaded: Event?
     
     var seating: Seating?
+    
+    var pickerData: [[String]] = [[String]]()
     
     var categoriesData: [String] = [String]()
     
     var ticketData: [String] = [String]()
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData[component].count
+    }
+    
+    /*func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if(pickerView.tag==0) {
             return categoriesData.count
         } else {
             return ticketData.count
         }
-    }
+        
+    }*/
     
     // This function sets the text of the picker view to the content of the "salutations" array
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if(pickerView.tag == 0) {
+        /*if(pickerView.tag == 0) {
             return categoriesData[row]
         } else {
             return ticketData[row]
-        }
+        }*/
+        return pickerData[component][row]
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
-        var titleData: String
-        if(pickerView.tag == 0) {
-            titleData = categoriesData[row]
-        } else {
-            titleData = ticketData[row]
-        }
-        //let titleData = categoriesData[row]
+        //var titleData: String
+
+        let titleData = pickerData[component][row]
         //let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.black])
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: titleData)
         pickerLabel.attributedText = myTitle
         //color  and center the label's background
         //let hue = CGFloat(row)/CGFloat(categoriesData.count)
@@ -72,7 +76,6 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         pickerLabel.textAlignment = .center
         return pickerLabel
     }
-    
     
  
     // When user selects an option, this function will set the text of the text field to reflect
@@ -111,20 +114,15 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         seating = eventLoaded?.seating
         
-        //let pickerView = UIPickerView()
-        //pickerView.delegate = self
-        //pickerTextField.inputView = pickerView
-        
-        //self.categoriesPicker.delegate = self
-        //self.categoriesPicker.dataSource = self
-        
         categoriesData = (seating?.categories)!
         let noSeats = 11
         for i in 0..<noSeats {
             ticketData.append(String(i))
         }
-        print(ticketData)
-        
+
+        pickerData.append(categoriesData)
+        pickerData.append(ticketData)
+
         // Do any additional setup after loading the view.
     }
     
