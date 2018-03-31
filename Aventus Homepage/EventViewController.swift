@@ -90,16 +90,19 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print("section: \(indexPath.section)")
-        
+        print(indexPath.row)
         let pageViewController = self.parent as! PageViewController
         
-        let detailViewController = pageViewController.pages[3] as! SeatViewController
+        //let detailViewController = pageViewController.pages[3] as! SeatViewController
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
         
         if isFiltering() {
             detailViewController.eventLoaded = filteredEvents[indexPath.row]
         } else {
             detailViewController.eventLoaded = events[indexPath.row]
         }
+        
+        pageViewController.pages[3] = detailViewController
         
         pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
 
@@ -201,31 +204,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     private func loadEvents(){
         
-        
-        
-        //let photo1 = UIImage(named: "drake")
-        //let photo2 = UIImage(named: "selena")
-        
-        // need to deal with when there is no seat availiable for some catogories or for all categories
-        // is it possible to have categories.size() != no_seats_avail.size() != no_categories
-        
-        /*let seating2 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE"], price: [50, 150, 200, 250, 300], noSeatsAvail: [10,10,0,10,10], noCategories: 5)
-         let seating3 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE", "CatG"], price: [50, 150, 200, 250,300, 360], noSeatsAvail: [10,10,10,10, 10, 10], noCategories: 6)*/
-        /*
-         guard let event1 = Event(artist: "Drake", location: "London", datetime: "today", description: nil, photo: photo1, seating: seating1) else{
-         fatalError("Unable to instantiate event1")
-         }
-         
-         guard let event2 = Event(artist: "Selena", location: "London", datetime: "tomorrow", description: nil, photo: photo2, seating: seating2) else{
-         fatalError("Unable to instantiate event2")
-         }
-         
-         guard let event3 = Event(artist: "Selena", location: "London", datetime: "next week", description: nil, photo: photo2, seating: seating3) else{
-         fatalError("Unable to instantiate event3")
-         } */
-        //parseJSON()
-        
-        //events += [event1, event2, event3]
         
         //Set the firebase reference
         ref = Database.database().reference()
