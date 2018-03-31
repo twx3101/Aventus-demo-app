@@ -405,14 +405,25 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 return event.genre.lowercased().contains(genre.lowercased())
             })
         }
-        if let date = contextContent["date"] as? Date{
+        if let start_date = contextContent["start_date"] as? Date{
+            
             let dateformatter = DateFormatter()
             dateformatter.dateFormat = "yyyy-MM-dd"
             dateformatter.locale = Locale(identifier: "en_US_POSIX")
             dateformatter.timeZone = TimeZone(abbreviation: "GMT")
-            filteredEvents = filteredEvents.filter{
-                let eventDate = dateformatter.date(from: $0.datetime)
-                return eventDate == (date)
+            
+            //range of dateas
+            if let end_date = contextContent["end_date"] as? Date{
+                filteredEvents = filteredEvents.filter{
+                    let eventDate = dateformatter.date(from: $0.datetime)
+                    return(eventDate!.isBetween(start_date, and: end_date))
+                }
+            }
+            else{
+                filteredEvents = filteredEvents.filter{
+                    let eventDate = dateformatter.date(from: $0.datetime)
+                    return eventDate == (start_date)
+                }
             }
             
         }
@@ -428,6 +439,12 @@ extension EventViewController: UISearchResultsUpdating{
         
     }
     
+}
+
+extension Date{
+    func isBetween(_ date1: Date, and date2: Date) -> Bool{
+        return (min(date1, date2) ... max(date1, date2)).contains(self)
+    }
 }
 
 

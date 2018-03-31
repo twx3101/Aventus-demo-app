@@ -223,28 +223,103 @@ extension ViewController{
             var cal = Calendar.current
             cal.timeZone = TimeZone(abbreviation: "GMT")!
             let c = DateComponents(year: year, month: month, day: day )
-            contextContents["date"] = cal.date(from: c)!
+            
+            contextContents["start_date"] = cal.date(from: c)!
+            
+          
+            
         }
-//        datetime: String
-//
-
-//
-//        time: String
-//
-//        day_in_week: String
-//
-
-//        month: String
-//
-//
-//        weekend: String
+        if let end_datetime = context["end_datetime"] as? [String: Int]{
+            //if start_date is empty, set date to current time
+            
+            if !(contextContents.keys.contains("start_datetime")) {
+                contextContents["start_date"] = setCurrentDate()
+            }
+            var cal = Calendar.current
+            cal.timeZone = TimeZone(abbreviation: "GMT")!
+            
+            let end_day = end_datetime["day"]
+            let end_month = end_datetime["month"]
+            let end_year = end_datetime["year"]
+            
+            let d = DateComponents(year: end_year, month: end_month, day: end_day)
+            
+            contextContents["end_date"] = cal.date(from: d)
+            
+        }
         
-//        seating: Seating
+        var daysToAdd = 0
+        var monthsToAdd = 0
+        var yearsToAdd = 0
+        
+        // Find events a period of time from current time
+        if var end_week = context["end_week"] as? String{
+         
+            if end_week[end_week.startIndex] == "+"{
+                end_week.remove(at: end_week.startIndex)
+                let addWeekBy = Int(end_week)
+                
+                daysToAdd += addWeekBy! * 7
+                
+            }
+        }
+        
+        if var end_day = context["end_day"] as? String{
+            if end_day[end_day.startIndex] == "+"{
+                end_day.remove(at: end_day.startIndex)
+                let addDayBy = Int(end_day)
+                
+                daysToAdd = daysToAdd + addDayBy!
+                
+            }
+        }
+            
+        if var end_month = context["end_month"] as? String{
+            if end_month[end_month.startIndex] == "+"{
+                end_month.remove(at: end_month.startIndex)
+                let addMonthBy = Int(end_month)
+                    
+                monthsToAdd = monthsToAdd + addMonthBy!
+                    
+            }
+        }
+        
+        if (daysToAdd != 0 || monthsToAdd != 0 || yearsToAdd != 0){
+            // if no start date is set, set date to current day
+            if !(contextContents.keys.contains("start_datetime")) {
+                contextContents["start_date"] = setCurrentDate()
+            }
+            // set end date to current date + no. of days to add
+            var cal = Calendar.current
+            cal.timeZone = TimeZone(abbreviation: "GMT")!
+            let start_date = contextContents["start_date"] as! Date
+            let d = DateComponents(year: yearsToAdd, month: monthsToAdd, day: daysToAdd)
+        
+            let futureDate = cal.date(byAdding: d, to: start_date)
+        
+            contextContents["end_date"] = futureDate
+        }
+
         
         performSegue(withIdentifier: "FilterControllerSegue", sender: contextContents)
 
         // handle time to day, month, seating for price, currency, time for day Part, comparison is contextual
-        // end hour, end week , endday is range of dates
+       
+    
+            
+    }
+    
+    func setCurrentDate() -> Date{
+        let current_date = Date()
+        var cal = Calendar.current
+        cal.timeZone = TimeZone(abbreviation: "GMT")!
+        
+        var c = cal.dateComponents([.year, .month, .day, .hour, .minute, .second], from: current_date)
+        
+        c.hour = 0
+        c.minute = 0
+        c.second = 0
+        return cal.date(from: c)!
     }
 }
 
