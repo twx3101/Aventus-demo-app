@@ -27,7 +27,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     var events = [Event]()
     var filteredEvents = [Event]()
     var isFiltering : Bool = false
-    var filteredArtist = ""
+    var filteredItems = Dictionary<String,Any>()
     let searchController = UISearchController(searchResultsController: nil)
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -194,13 +194,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         })
         tableView.reloadData()
     }
-    func filterContentofEvents(artist: String){
-        filteredEvents = events.filter({( event:Event) -> Bool in
-            return event.artist.lowercased().contains(artist.lowercased()) || event.location.lowercased().contains(artist.lowercased())
-            
-        })
-        tableView.reloadData()
-    }
+
     
     private func loadEvents(){
         
@@ -376,16 +370,56 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.events.append(event1!)
             }
             if self.isFiltering{
-                self.filterContentofEvents(artist: self.filteredArtist)
+                self.filterContentofEvents(contextContent: self.filteredItems)
                 print("SUCCESS!")
                
-            }
+            }   else{
             self.tableView.reloadData()
-            
+            }
             //Code to execute to obtain the information held in the value field in the database
         })
     }
     
+    func filterContentofEvents(contextContent: Dictionary<String, Any>){
+        //reset to populate new events
+        filteredEvents = events
+        
+        
+        if let artist = contextContent["artist"] as? String{
+            filteredEvents = filteredEvents.filter({( event:Event) -> Bool in
+                return event.artist.lowercased().contains(artist.lowercased())
+            })
+        }
+        if let location = contextContent["location"] as? String{
+            filteredEvents = filteredEvents.filter({( event:Event) -> Bool in
+                return event.location.lowercased().contains(location.lowercased())
+            })
+        }
+        if let venue  = contextContent["venue"] as? String{
+            filteredEvents = filteredEvents.filter({( event:Event) -> Bool in
+                return event.venue.lowercased().contains(venue.lowercased())
+            })
+        }
+        if let genre = contextContent["genre"] as? String{
+            filteredEvents = filteredEvents.filter({( event:Event) -> Bool in
+                return event.genre.lowercased().contains(genre.lowercased())
+            })
+        }
+        if let date = contextContent["date"] as? Date{
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "yyyy-MM-dd"
+            dateformatter.locale = Locale(identifier: "en_US_POSIX")
+            dateformatter.timeZone = TimeZone(abbreviation: "GMT")
+            filteredEvents = filteredEvents.filter{
+                let eventDate = dateformatter.date(from: $0.datetime)
+                return eventDate == (date)
+            }
+            
+        }
+        
+      
+        tableView.reloadData()
+    }
 }
 extension EventViewController: UISearchResultsUpdating{
     

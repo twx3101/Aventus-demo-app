@@ -14,7 +14,7 @@ class Event{
         // MARK: Properties
         var artist: String
         
-        var location: String
+        var location: String //Fake Generated City
         
         var datetime: String
         
@@ -42,7 +42,7 @@ class Event{
         
         var timezone: String
         
-        var city: String
+        var city: String //Real City
         
         var imageURL: String
         

@@ -49,10 +49,9 @@ class ViewController: UIViewController, UITextFieldDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FilterControllerSegue"{
             let EventViewController = segue.destination as! EventViewController
-            if let artist = sender as? String{
-            print(artist)
+            if let contextContents = sender as? Dictionary<String, Any>{
             EventViewController.isFiltering = true
-            EventViewController.filteredArtist = artist
+            EventViewController.filteredItems = contextContents
             }
         }
     }
@@ -194,32 +193,56 @@ extension ViewController{
     }
     
     func handleNavigate(context: [AnyHashable : Any]){
+        var contextContents = [String: Any]()
 //        artist: String
         if let artist = context["artist"] as? String{
-            performSegue(withIdentifier: "FilterControllerSegue", sender: artist)
-//            filtered_events = event.filter({ $0.artist == artist})
-//            isFiltering = true
+            contextContents["artist"] = artist
+
         }
 //        location: String
-//
+        if let location = context["location"] as?  String{
+            contextContents["location"] = location
+        }
+        
+        //        venue: String
+        if let venue = context["venue"] as? String{
+            contextContents["venue"] = venue
+        }
+        
+        //        genre: String
+        if let genre = context["musicGenre"] as? String{
+            contextContents["genre"] = genre
+        }
+        
+        // handling time: AnyHashable("start_datetime")
+        if let datetime = context["start_datetime"] as? [String : AnyObject]{
+            let day = datetime["day"] as? Int
+            let month = datetime["month"] as? Int
+            let year = datetime["year"] as? Int
+            
+            var cal = Calendar.current
+            cal.timeZone = TimeZone(abbreviation: "GMT")!
+            let c = DateComponents(year: year, month: month, day: day )
+            contextContents["date"] = cal.date(from: c)!
+        }
 //        datetime: String
 //
-//        seating: Seating
+
 //
 //        time: String
 //
 //        day_in_week: String
 //
-//        venue: String
-//
-//        genre: String
-//
+
 //        month: String
 //
-//        city: String
 //
 //        weekend: String
         
+//        seating: Seating
+        
+        performSegue(withIdentifier: "FilterControllerSegue", sender: contextContents)
+
         // handle time to day, month, seating for price, currency, time for day Part, comparison is contextual
         // end hour, end week , endday is range of dates
     }
