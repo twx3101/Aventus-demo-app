@@ -225,14 +225,11 @@ extension ViewController{
             let c = DateComponents(year: year, month: month, day: day )
             
             contextContents["start_date"] = cal.date(from: c)!
-            
-          
-            
         }
         if let end_datetime = context["end_datetime"] as? [String: Int]{
             //if start_date is empty, set date to current time
             
-            if !(contextContents.keys.contains("start_datetime")) {
+            if contextContents.index(forKey: "start_datetime") == nil {
                 contextContents["start_date"] = setCurrentDate()
             }
             var cal = Calendar.current
@@ -286,7 +283,7 @@ extension ViewController{
         
         if (daysToAdd != 0 || monthsToAdd != 0 || yearsToAdd != 0){
             // if no start date is set, set date to current day
-            if !(contextContents.keys.contains("start_datetime")) {
+            if contextContents.index(forKey: "start_datetime") == nil  {
                 contextContents["start_date"] = setCurrentDate()
             }
             // set end date to current date + no. of days to add
@@ -299,11 +296,52 @@ extension ViewController{
         
             contextContents["end_date"] = futureDate
         }
-
+        // if there is no end_date, then set end_Date to the next day
+        if contextContents.index(forKey: "end_date") == nil && contextContents.index(forKey: "start_date") != nil{
+            var cal = Calendar.current
+            cal.timeZone = TimeZone(abbreviation: "GMT")!
+            let start_date = contextContents["start_date"] as! Date
+            let d = DateComponents(day: 1)
+            
+            let futureDate = cal.date(byAdding: d, to: start_date)
+            
+            contextContents["end_date"] = futureDate
+        }
+        
+        
+        //handling time of day and hour
+        if let dayPart = context["dayPart"] as? String{
+            if contextContents.index(forKey: "start_datetime") == nil  {
+                contextContents["start_date"] = setCurrentDate()
+            }
+            
+            var cal = Calendar.current
+            cal.timeZone = TimeZone(abbreviation: "GMT")!
+            let start_date = contextContents["start_date"] as! Date
+            var d = DateComponents(hour: 0)
+            var e = DateComponents(hour: 0)
+            if dayPart == "Day"{
+                d.hour = 6
+                e.hour = 12
+            }
+            else if dayPart == "Afternoon"{
+                d.hour = 12
+                e.hour = 18
+            }
+            else if dayPart == "Night"{
+                d.hour = 18
+                e.hour = 24
+            }
+            let futureDate = cal.date(byAdding: d, to: start_date)
+            let endDate = cal.date(byAdding: e, to: start_date)
+            
+            contextContents["start_date"] = futureDate
+            contextContents["end_date"] = endDate
+        }
         
         performSegue(withIdentifier: "FilterControllerSegue", sender: contextContents)
 
-        // handle time to day, month, seating for price, currency, time for day Part, comparison is contextual
+        // handle time to day, month, seating for price, currency, time for day Part, comparison is contextual, need to handle end_hour
        
     
             

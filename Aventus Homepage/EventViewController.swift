@@ -408,14 +408,15 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         if let start_date = contextContent["start_date"] as? Date{
             
             let dateformatter = DateFormatter()
-            dateformatter.dateFormat = "yyyy-MM-dd"
+            dateformatter.dateFormat = "yyyy-MM-dd hh:mm a"
             dateformatter.locale = Locale(identifier: "en_US_POSIX")
             dateformatter.timeZone = TimeZone(abbreviation: "GMT")
             
             //range of dateas
             if let end_date = contextContent["end_date"] as? Date{
                 filteredEvents = filteredEvents.filter{
-                    let eventDate = dateformatter.date(from: $0.datetime)
+                    let dateTime = $0.datetime + " " + $0.time
+                    let eventDate = dateformatter.date(from: dateTime)
                     return(eventDate!.isBetween(start_date, and: end_date))
                 }
             }
