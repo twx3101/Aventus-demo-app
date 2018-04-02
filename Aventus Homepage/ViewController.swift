@@ -46,16 +46,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
         self.textControl.delegate = self
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FilterControllerSegue"{
-            let EventViewController = segue.destination as! EventViewController
-            if let contextContents = sender as? Dictionary<String, Any>{
-            EventViewController.isFiltering = true
-            EventViewController.filteredItems = contextContents
-            }
-        }
-    }
-    
     func genWave() {
         let range: CGFloat = 20
         let centerY = waveFrame.frame.height / 2
@@ -153,7 +143,6 @@ extension ViewController{
         
         // go to the event page
         let pageViewController = self.parent as! PageViewController
-        
         pageViewController.setViewControllers([pageViewController.pages[2]], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         self.parseData(context: response.context)
     }
@@ -347,8 +336,10 @@ extension ViewController{
         
 
         // handle time to day, month, seating for price, currency, time for day Part, comparison is contextual, need to handle end_hour
-       
-    
+        let pageViewController = self.parent as! PageViewController
+        let eventViewController = pageViewController.pages[2] as! EventViewController
+        eventViewController.isFiltering = true
+        eventViewController.filteredItems = contextContents
             
     }
     

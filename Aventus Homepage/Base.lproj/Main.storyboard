@@ -175,9 +175,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <segue destination="mXJ-Mo-iGK" kind="show" identifier="FilterControllerSegue" id="5pg-n2-dXI"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -281,14 +278,6 @@
                                 </constraints>
                                 <state key="normal" image="icons8-microphone-96"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvA-yV-T5x">
-                                <rect key="frame" x="36" y="637" width="65" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Go Back"/>
-                                <connections>
-                                    <segue destination="aE7-CK-fRi" kind="unwind" unwindAction="unwindToViewWithSegue:" id="L74-Hl-Ybc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -306,7 +295,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iLX-Ef-G5l" sceneMemberID="firstResponder"/>
-                <exit id="aE7-CK-fRi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4151.1999999999998" y="35.532233883058474"/>
         </scene>
@@ -918,7 +906,4 @@
         <image name="icons8-microphone-96" width="50" height="50"/>
         <image name="user" width="123" height="102"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="5pg-n2-dXI"/>
-    </inferredMetricsTieBreakers>
 </document>

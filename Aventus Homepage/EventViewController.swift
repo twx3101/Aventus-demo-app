@@ -98,7 +98,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         //let detailViewController = pageViewController.pages[3] as! SeatViewController
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
         
-        if isFiltering() {
+        if isFiltering {
             detailViewController.eventLoaded = filteredEvents[indexPath.row]
         } else {
             detailViewController.eventLoaded = events[indexPath.row]
