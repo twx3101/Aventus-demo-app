@@ -22,8 +22,9 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     @IBOutlet weak var artistPhoto: UIImageView!
     
-    @IBOutlet weak var categoriesPicker: UIPickerView!
+    @IBOutlet weak var pickerView: UIPickerView!
     
+    @IBOutlet weak var selectCatButton: UIButton!
     
     var eventLoaded: Event?
     
@@ -62,7 +63,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         return pickerData[component][row]
     }
     
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+    /*func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
         //var titleData: String
 
@@ -75,13 +76,13 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         pickerLabel.backgroundColor = colors.buttonBg
         pickerLabel.textAlignment = .center
         return pickerLabel
-    }
+    }*/
     
  
     // When user selects an option, this function will set the text of the text field to reflect
     // the selected option.
-    /*func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if(pickerView.tag == 0) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        /*if(pickerView.tag == 0) {
             var noSeats = seating?.noSeatsAvail[row] as! Int
             print(noSeats)
             if(noSeats > 10) {
@@ -93,12 +94,15 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 ticketData.append(String(i))
             }
             print(ticketData)
-        }
-    }*/
+        }*/
+        
+        selectCatButton.setTitle(pickerData[component][row], for: .normal)
+        pickerView.isHidden = true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = colors.bg
+        view.backgroundColor = colors.buttonBg
         
         artistLabel.text = eventLoaded?.artist
         locationDateTimeLabel.text = eventLoaded?.location
@@ -122,27 +126,28 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 
         pickerData.append(categoriesData)
         pickerData.append(ticketData)
+        
+        pickerView.isHidden = true
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
 
-        // Do any additional setup after loading the view.
+        
+
     }
     
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func selectCategories(_ sender: UIButton) {
+        if pickerView.isHidden {
+            pickerView.isHidden = false
+        }
     }
-    */
-
+    
     @IBAction func showLayoutButton(_ sender: RoundButton) {
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
         self.addChildViewController(popOverVC)

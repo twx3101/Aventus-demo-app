@@ -362,24 +362,29 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQQ-Vu-8Za">
                                         <rect key="frame" x="0.0" y="144" width="343" height="375"/>
                                         <subviews>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JxV-xS-j2R">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="375"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="343" id="LVu-de-vPe"/>
-                                                </constraints>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGa-5x-o7b">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                <state key="normal" title="Select Cat"/>
                                                 <connections>
-                                                    <outlet property="dataSource" destination="PPN-Wq-gpx" id="ZMh-nx-hw6"/>
-                                                    <outlet property="delegate" destination="PPN-Wq-gpx" id="HQV-nR-nFO"/>
+                                                    <action selector="selectCategories:" destination="PPN-Wq-gpx" eventType="touchUpInside" id="UAE-lE-7Wz"/>
                                                 </connections>
+                                            </button>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbD-L0-Yah">
+                                                <rect key="frame" x="0.0" y="50" width="343" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="HqE-em-hJ0"/>
+                                                </constraints>
                                             </pickerView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="JxV-xS-j2R" firstAttribute="leading" secondItem="fQQ-Vu-8Za" secondAttribute="leading" id="aRe-9y-844"/>
+                                            <constraint firstItem="zbD-L0-Yah" firstAttribute="leading" secondItem="fQQ-Vu-8Za" secondAttribute="leading" id="ILk-tT-I26"/>
                                             <constraint firstAttribute="width" constant="343" id="cHa-sz-zJN"/>
-                                            <constraint firstAttribute="trailing" secondItem="JxV-xS-j2R" secondAttribute="trailing" id="iQi-hO-srt"/>
-                                            <constraint firstAttribute="bottom" secondItem="JxV-xS-j2R" secondAttribute="bottom" id="rJe-xY-u3t"/>
-                                            <constraint firstItem="JxV-xS-j2R" firstAttribute="top" secondItem="fQQ-Vu-8Za" secondAttribute="top" id="uaT-vt-dlm"/>
+                                            <constraint firstItem="ZGa-5x-o7b" firstAttribute="top" secondItem="fQQ-Vu-8Za" secondAttribute="top" id="dho-i0-OdL"/>
+                                            <constraint firstItem="zbD-L0-Yah" firstAttribute="top" secondItem="fQQ-Vu-8Za" secondAttribute="top" constant="50" id="f68-2R-Ijv"/>
+                                            <constraint firstItem="ZGa-5x-o7b" firstAttribute="leading" secondItem="fQQ-Vu-8Za" secondAttribute="leading" id="knM-Yo-NzD"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZGa-5x-o7b" secondAttribute="trailing" id="oFW-eb-1f1"/>
+                                            <constraint firstAttribute="trailing" secondItem="zbD-L0-Yah" secondAttribute="trailing" id="uoX-jM-gZi"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="VmM-mz-ztS">
@@ -431,9 +436,10 @@
                     <connections>
                         <outlet property="artistLabel" destination="frQ-EC-Nht" id="F0O-9m-Fkl"/>
                         <outlet property="artistPhoto" destination="pny-ET-V8O" id="7xM-4O-LV2"/>
-                        <outlet property="categoriesPicker" destination="JxV-xS-j2R" id="udc-gT-hb8"/>
                         <outlet property="descriptionLabel" destination="yUP-PI-dTd" id="sae-8t-usf"/>
                         <outlet property="locationDateTimeLabel" destination="cV2-ud-0nr" id="Vxq-h2-fdJ"/>
+                        <outlet property="pickerView" destination="zbD-L0-Yah" id="nOC-Up-qRA"/>
+                        <outlet property="selectCatButton" destination="ZGa-5x-o7b" id="oBD-8J-o3N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JbZ-2F-aT8" sceneMemberID="firstResponder"/>
