@@ -46,6 +46,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         self.textControl.delegate = self
     }
     
+
     func genWave() {
         let range: CGFloat = 20
         let centerY = waveFrame.frame.height / 2
