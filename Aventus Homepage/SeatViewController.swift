@@ -22,9 +22,9 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     @IBOutlet weak var artistPhoto: UIImageView!
     
-    @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var categoryPicker: UIPickerView!
     
-    @IBOutlet weak var selectCatButton: UIButton!
+    @IBOutlet weak var ticketPicker: UIPickerView!
     
     var eventLoaded: Event?
     
@@ -34,75 +34,103 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     var categoriesData: [String] = [String]()
     
+    var priceData: [String] = [String]()
+    
     var ticketData: [String] = [String]()
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
-    }
+    let pickerWidth = 100
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData[component].count
+    let pickerHeight = 80
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
     /*func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData[component].count
+    }*/
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if(pickerView.tag==0) {
             return categoriesData.count
         } else {
             return ticketData.count
         }
         
-    }*/
-    
-    // This function sets the text of the picker view to the content of the "salutations" array
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        /*if(pickerView.tag == 0) {
+    }
+
+    /*func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if(pickerView.tag==0) {
             return categoriesData[row]
         } else {
             return ticketData[row]
-        }*/
-        return pickerData[component][row]
-    }
-    
-    /*func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let pickerLabel = UILabel()
-        //var titleData: String
-
-        let titleData = pickerData[component][row]
-        //let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.black])
-        let myTitle = NSAttributedString(string: titleData)
-        pickerLabel.attributedText = myTitle
-        //color  and center the label's background
-        //let hue = CGFloat(row)/CGFloat(categoriesData.count)
-        pickerLabel.backgroundColor = colors.buttonBg
-        pickerLabel.textAlignment = .center
-        return pickerLabel
+        }
     }*/
     
- 
-    // When user selects an option, this function will set the text of the text field to reflect
-    // the selected option.
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        /*if(pickerView.tag == 0) {
-            var noSeats = seating?.noSeatsAvail[row] as! Int
-            print(noSeats)
-            if(noSeats > 10) {
-                noSeats = 10
-            }
-            print(noSeats)
-            ticketData = ["No of tickets"]
-            for i in 0..<noSeats {
-                ticketData.append(String(i))
-            }
-            print(ticketData)
-        }*/
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 100
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
-        selectCatButton.setTitle(pickerData[component][row], for: .normal)
-        pickerView.isHidden = true
+        var view: UIView
+        
+        if(pickerView.tag==0){
+            
+            view = UIView(frame: CGRect(x: 0, y: 0, width: pickerWidth*2, height: pickerHeight))
+            
+            let topLabel = UILabel(frame: CGRect(x: 0, y: 0, width: pickerWidth*2, height: 30))
+            topLabel.text = categoriesData[row]
+            topLabel.textColor = .white
+            topLabel.textAlignment = .center
+            topLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightThin)
+            view.addSubview(topLabel)
+            
+            let bottomLabel = UILabel(frame: CGRect(x: 0, y: pickerHeight/2, width: pickerWidth*2, height: 30 ))
+            bottomLabel.text = "£" + priceData[row]
+            bottomLabel.textColor = .white
+            bottomLabel.textAlignment = .center
+            bottomLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightThin)
+            view.addSubview(bottomLabel)
+            
+        } else {
+            
+            view = UIView(frame: CGRect(x: 0, y: 0, width: pickerWidth, height: pickerHeight))
+            
+            let topLabel = UILabel(frame: CGRect(x: 0, y: 0, width: pickerWidth, height: 40))
+            //let topLabel = UILabel()
+            topLabel.center.x = view.center.x
+            topLabel.center.y = view.center.y
+            topLabel.text = ticketData[row]
+            topLabel.textColor = .white
+            topLabel.textAlignment = .center
+            topLabel.font = UIFont.systemFont(ofSize: 32, weight: UIFontWeightThin)
+            view.addSubview(topLabel)
+            
+        }
+        
+        view.layer.cornerRadius = 15.0
+        
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        view.layer.masksToBounds = false
+        view.layer.shadowRadius = 1.0
+        view.layer.shadowOpacity = 0.5
+        view.clipsToBounds = true
+        
+        //view.backgroundColor = colors.buttonBg
+        
+        return view
+    }
+    
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = colors.buttonBg
+        view.backgroundColor = colors.bg
         
         artistLabel.text = eventLoaded?.artist
         locationDateTimeLabel.text = eventLoaded?.location
@@ -116,23 +144,28 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             }
         }
         
-        seating = eventLoaded?.seating
+        seating = (eventLoaded?.seating) as! Seating
         
-        categoriesData = (seating?.categories)!
-        let noSeats = 11
+        categoriesData = (seating!.categories)
+        
+        let noCategories = (seating!.noCategories)
+        
+        for i in 0..<noCategories {
+            priceData.append(String(seating!.price[i]))
+        }
+        let noSeats = 6
         for i in 0..<noSeats {
             ticketData.append(String(i))
         }
 
-        pickerData.append(categoriesData)
-        pickerData.append(ticketData)
+        //pickerData.append(categoriesData)
+        //pickerData.append(ticketData)
         
-        pickerView.isHidden = true
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        
-
-        
+        categoryPicker.delegate = self
+        categoryPicker.dataSource = self
+        ticketPicker.delegate = self
+        ticketPicker.dataSource = self
+  
 
     }
     
@@ -141,17 +174,16 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         super.didReceiveMemoryWarning()
     }
     
-
-    @IBAction func selectCategories(_ sender: UIButton) {
-        if pickerView.isHidden {
-            pickerView.isHidden = false
-        }
-    }
     
     @IBAction func showLayoutButton(_ sender: RoundButton) {
+        
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
+        
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
+        //popOverVC.view.center.x = self.view.center.x
+        //popOverVC.view.center.y = self.view.center.y
+        
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParentViewController: self)
     }

@@ -37,8 +37,8 @@ class SeatPopUpViewController: UIViewController {
 
     @IBAction func closeButton(_ sender: UIButton) {
         self.removeAnimate()
-        //self.view.removeFromSuperview()
     }
+
     
     func showAnimate()
     {

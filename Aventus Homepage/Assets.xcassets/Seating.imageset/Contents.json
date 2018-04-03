@@ -6,11 +6,11 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "Seating.jpg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "seatLayout.jpg",
       "scale" : "3x"
     }
   ],

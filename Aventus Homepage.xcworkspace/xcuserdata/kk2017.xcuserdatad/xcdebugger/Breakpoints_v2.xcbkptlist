@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aventus Homepage/EventViewController.swift"
-            timestampString = "544221701.334774"
+            timestampString = "544462011.211327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aventus Homepage/EventViewController.swift"
-            timestampString = "544221701.334847"
+            timestampString = "544462011.211382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -42,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aventus Homepage/EventViewController.swift"
-            timestampString = "544221701.334903"
+            timestampString = "544462011.211421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
             endingLineNumber = "112"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "EventViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aventus Homepage/EventViewController.swift"
-            timestampString = "544221701.335006"
+            timestampString = "544462011.2114559"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aventus Homepage/SeatViewController.swift"
-            timestampString = "544453412.253709"
+            timestampString = "544465280.6633"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aventus Homepage/SeatViewController.swift"
-            timestampString = "544453412.254039"
+            timestampString = "544465280.663407"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
