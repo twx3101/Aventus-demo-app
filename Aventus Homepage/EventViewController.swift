@@ -19,15 +19,13 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     weak var activityIndicatorView: UIActivityIndicatorView!
     
-    //let dispatchQueue = DispatchQueue(label: "Dispatch Queue", attributes: [], target: nil)
-    
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle!
     
     var events = [Event]()
     var filteredEvents = [Event]()
     var isFiltering : Bool = false
-    var filteredArtist = ""
+    var filteredItems = Dictionary<String,Any>()
     let searchController = UISearchController(searchResultsController: nil)
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -70,7 +68,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowSeatSegue" {
             let detailViewController = segue.destination as! SeatViewController
             
@@ -90,13 +88,32 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
              }*/
             
         }
+    }*/
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //print("section: \(indexPath.section)")
+        print(indexPath.row)
+        let pageViewController = self.parent as! PageViewController
+        
+        //let detailViewController = pageViewController.pages[3] as! SeatViewController
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
+        
+        if isFiltering {
+            detailViewController.eventLoaded = filteredEvents[indexPath.row]
+        } else {
+            detailViewController.eventLoaded = events[indexPath.row]
+        }
+        
+        pageViewController.pages[3] = detailViewController
+        
+        pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.delegate = self
-        //tableView.dataSource = self
-        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
         view.backgroundColor = colors.bg
         // Do any additional setup after loading the view.
@@ -194,41 +211,10 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         })
         tableView.reloadData()
     }
-    func filterContentofEvents(artist: String){
-        filteredEvents = events.filter({( event:Event) -> Bool in
-            return event.artist.lowercased().contains(artist.lowercased()) || event.location.lowercased().contains(artist.lowercased())
-            
-        })
-        tableView.reloadData()
-    }
+
     
     private func loadEvents(){
         
-        
-        
-        //let photo1 = UIImage(named: "drake")
-        //let photo2 = UIImage(named: "selena")
-        
-        // need to deal with when there is no seat availiable for some catogories or for all categories
-        // is it possible to have categories.size() != no_seats_avail.size() != no_categories
-        
-        /*let seating2 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE"], price: [50, 150, 200, 250, 300], noSeatsAvail: [10,10,0,10,10], noCategories: 5)
-         let seating3 = Seating(categories: ["CatA", "CatB", "CatC", "CatD", "CatE", "CatG"], price: [50, 150, 200, 250,300, 360], noSeatsAvail: [10,10,10,10, 10, 10], noCategories: 6)*/
-        /*
-         guard let event1 = Event(artist: "Drake", location: "London", datetime: "today", description: nil, photo: photo1, seating: seating1) else{
-         fatalError("Unable to instantiate event1")
-         }
-         
-         guard let event2 = Event(artist: "Selena", location: "London", datetime: "tomorrow", description: nil, photo: photo2, seating: seating2) else{
-         fatalError("Unable to instantiate event2")
-         }
-         
-         guard let event3 = Event(artist: "Selena", location: "London", datetime: "next week", description: nil, photo: photo2, seating: seating3) else{
-         fatalError("Unable to instantiate event3")
-         } */
-        //parseJSON()
-        
-        //events += [event1, event2, event3]
         
         //Set the firebase reference
         ref = Database.database().reference()
@@ -376,16 +362,68 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 self.events.append(event1!)
             }
             if self.isFiltering{
-                self.filterContentofEvents(artist: self.filteredArtist)
+                self.filterContentofEvents(contextContent: self.filteredItems)
                 print("SUCCESS!")
                
-            }
+            }   else{
             self.tableView.reloadData()
-            
+            }
             //Code to execute to obtain the information held in the value field in the database
         })
     }
     
+    func filterContentofEvents(contextContent: Dictionary<String, Any>){
+        //reset to populate new events
+        filteredEvents = events
+        
+        
+        if let artist = contextContent["artist"] as? String{
+            filteredEvents = filteredEvents.filter({( event:Event) -> Bool in
+                return event.artist.lowercased().contains(artist.lowercased())
+            })
+        }
+        if let location = contextContent["location"] as? String{
+            filteredEvents = filteredEvents.filter({( event:Event) -> Bool in
+                return event.location.lowercased().contains(location.lowercased())
+            })
+        }
+        if let venue  = contextContent["venue"] as? String{
+            filteredEvents = filteredEvents.filter({( event:Event) -> Bool in
+                return event.venue.lowercased().contains(venue.lowercased())
+            })
+        }
+        if let genre = contextContent["genre"] as? String{
+            filteredEvents = filteredEvents.filter({( event:Event) -> Bool in
+                return event.genre.lowercased().contains(genre.lowercased())
+            })
+        }
+        if let start_date = contextContent["start_date"] as? Date{
+            
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "yyyy-MM-dd hh:mm a"
+            dateformatter.locale = Locale(identifier: "en_US_POSIX")
+            dateformatter.timeZone = TimeZone(abbreviation: "GMT")
+            
+            //range of dateas
+            if let end_date = contextContent["end_date"] as? Date{
+                filteredEvents = filteredEvents.filter{
+                    let dateTime = $0.datetime + " " + $0.time
+                    let eventDate = dateformatter.date(from: dateTime)
+                    return(eventDate!.isBetween(start_date, and: end_date))
+                }
+            }
+            else{
+                filteredEvents = filteredEvents.filter{
+                    let eventDate = dateformatter.date(from: $0.datetime)
+                    return eventDate == (start_date)
+                }
+            }
+            
+        }
+        
+      
+        tableView.reloadData()
+    }
 }
 extension EventViewController: UISearchResultsUpdating{
     
@@ -394,6 +432,12 @@ extension EventViewController: UISearchResultsUpdating{
         
     }
     
+}
+
+extension Date{
+    func isBetween(_ date1: Date, and date2: Date) -> Bool{
+        return (min(date1, date2) ... max(date1, date2)).contains(self)
+    }
 }
 
 

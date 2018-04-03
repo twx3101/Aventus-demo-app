@@ -7,87 +7,165 @@
 //
 
 import UIKit
+import Alamofire
 
-class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
-    let cellIdentifier = "SeatTableViewCell"
     
-    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var headerView: UIView!
     
-    @IBOutlet weak var footerView: UIView!
+    @IBOutlet weak var artistLabel: UILabel!
+    
+    @IBOutlet weak var locationDateTimeLabel: UILabel!
+    
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    @IBOutlet weak var artistPhoto: UIImageView!
+    
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    @IBOutlet weak var selectCatButton: UIButton!
     
     var eventLoaded: Event?
     
     var seating: Seating?
     
+    var pickerData: [[String]] = [[String]]()
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+    var categoriesData: [String] = [String]()
+    
+    var ticketData: [String] = [String]()
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if eventLoaded == nil {
-            return 0
-        }
-        else {
-            return eventLoaded!.seating.noCategories
-        }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData[component].count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? SeatTableViewCell else{
-            fatalError("The dequeued cell is not an instance of SeatTableViewCell.")
-        }
-        
-        cell.categoryLabel.text = seating?.categories[indexPath.row]
-        cell.priceLabel.text = "\(seating?.price[indexPath.row] ?? 0)"
-        cell.noSeatsLabel.text = "\(seating?.noSeatsAvail[indexPath.row] ?? 0)"
-        
-        
-        /*let noSeatsAvail = (seating?.noSeatsAvail[indexPath.row])!
-        
-        if noSeatsAvail < 10 {
-            for i in 0...noSeatsAvail {
-                pickerData[0].append(i)
-            }
+    /*func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if(pickerView.tag==0) {
+            return categoriesData.count
         } else {
-            for i in 0...10 {
-                pickerData[0].append(i)
+            return ticketData.count
+        }
+        
+    }*/
+    
+    // This function sets the text of the picker view to the content of the "salutations" array
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        /*if(pickerView.tag == 0) {
+            return categoriesData[row]
+        } else {
+            return ticketData[row]
+        }*/
+        return pickerData[component][row]
+    }
+    
+    /*func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
+        //var titleData: String
+
+        let titleData = pickerData[component][row]
+        //let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.black])
+        let myTitle = NSAttributedString(string: titleData)
+        pickerLabel.attributedText = myTitle
+        //color  and center the label's background
+        //let hue = CGFloat(row)/CGFloat(categoriesData.count)
+        pickerLabel.backgroundColor = colors.buttonBg
+        pickerLabel.textAlignment = .center
+        return pickerLabel
+    }*/
+    
+ 
+    // When user selects an option, this function will set the text of the text field to reflect
+    // the selected option.
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        /*if(pickerView.tag == 0) {
+            var noSeats = seating?.noSeatsAvail[row] as! Int
+            print(noSeats)
+            if(noSeats > 10) {
+                noSeats = 10
             }
+            print(noSeats)
+            ticketData = ["No of tickets"]
+            for i in 0..<noSeats {
+                ticketData.append(String(i))
+            }
+            print(ticketData)
         }*/
         
-        return cell
+        selectCatButton.setTitle(pickerData[component][row], for: .normal)
+        pickerView.isHidden = true
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = colors.buttonBg
         
+        artistLabel.text = eventLoaded?.artist
+        locationDateTimeLabel.text = eventLoaded?.location
+        descriptionLabel.text = (eventLoaded?.datetime)! + " " + (eventLoaded?.time)!
+        
+       Alamofire.request((eventLoaded?.imageURL)!).responseImage { response in
+            debugPrint(response)
+            
+            if let image = response.result.value{
+                self.artistPhoto.image = image
+            }
+        }
+        
+        seating = eventLoaded?.seating
+        
+        categoriesData = (seating?.categories)!
+        let noSeats = 11
+        for i in 0..<noSeats {
+            ticketData.append(String(i))
+        }
+
+        pickerData.append(categoriesData)
+        pickerData.append(ticketData)
+        
+        pickerView.isHidden = true
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
+
+        
+
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = nil
-        cell.contentView.backgroundColor = colors.tableBg
-        cell.contentView.layer.borderWidth = 5.0
-        cell.contentView.layer.borderColor = colors.bg.cgColor
-        cell.contentView.layer.cornerRadius = 15.0
-    
-        cell.separatorInset = UIEdgeInsetsMake(20, 20, 20, 20);
-        cell.layer.borderWidth = 5;
-        cell.layer.borderColor = colors.bg.cgColor
-        
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
+
+    @IBAction func selectCategories(_ sender: UIButton) {
+        if pickerView.isHidden {
+            pickerView.isHidden = false
+        }
+    }
+    
+    @IBAction func showLayoutButton(_ sender: RoundButton) {
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+    }
+    
+    @IBAction func purchaseButton(_ sender: RoundButton) {
         
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PaymentSegue" {
+        let pageViewController = self.parent as! PageViewController
+
+        let detailViewController = pageViewController.pages[4] as! PaymentViewController
             
-            let detailViewController = segue.destination as! PaymentViewController
-            
-            var categories = [String]()
+            /*var categories = [String]()
             var seats = [Int]()
             var prices = [Int]()
-        
+            
             let section = 0
             
             for row in 0 ..< tableView.numberOfRows(inSection: section)  {
@@ -104,48 +182,7 @@ class SeatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
             
-            detailViewController.payment = Payment(categories: (seating?.categories)!, price: (seating?.price)!, selectedSeats: seats)
-            
-        }
+            detailViewController.payment = Payment(categories: (seating?.categories)!, price: (seating?.price)!, selectedSeats: seats)*/
+        pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = colors.bg
-        
-        tableView.backgroundColor = colors.bg
-        headerView.backgroundColor = colors.headerBg
-        footerView.backgroundColor = nil
-        
-        
-        seating = eventLoaded?.seating
-
-        // Do any additional setup after loading the view.
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    @IBAction func showLayoutButton(_ sender: RoundButton) {
-        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
-        self.addChildViewController(popOverVC)
-        popOverVC.view.frame = self.view.frame
-        self.view.addSubview(popOverVC.view)
-        popOverVC.didMove(toParentViewController: self)
-    }
-    
 }

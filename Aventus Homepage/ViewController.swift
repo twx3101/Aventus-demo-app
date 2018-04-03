@@ -40,21 +40,10 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         self.view.backgroundColor = colors.bg
         self.waveFrame.backgroundColor = colors.bg
-        genWave()
+        //genWave()
         
         // Do any additional setup after loading the view, typically from a nib.
         self.textControl.delegate = self
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FilterControllerSegue"{
-            let EventViewController = segue.destination as! EventViewController
-            if let artist = sender as? String{
-            print(artist)
-            EventViewController.isFiltering = true
-            EventViewController.filteredArtist = artist
-            }
-        }
     }
     
     func genWave() {
@@ -117,8 +106,10 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
 
     @IBAction func microphonePress(_ sender: UIButton) {
+        
         if self.isRecording {
             CapitoController.getInstance().cancelTalking()
+            print("if")
         }
         else {
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: nil)
@@ -136,13 +127,11 @@ class ViewController: UIViewController, UITextFieldDelegate{
         return true
     }
    
-    @IBAction func unwindToView(segue: UIStoryboardSegue){
-        
-    }
 }
 
 extension ViewController{
     func bootstrapView(response: CapitoResponse){
+        //print("bootstrapview")
         //process
         print("Response Code: %@", response.responseCode)
         print("Message Text: %@", response.message)
@@ -151,6 +140,10 @@ extension ViewController{
         
     
         //app-specific code to handle responses
+        
+        // go to the event page
+        let pageViewController = self.parent as! PageViewController
+        pageViewController.setViewControllers([pageViewController.pages[2]], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         self.parseData(context: response.context)
     }
     
@@ -161,6 +154,7 @@ extension ViewController{
     }
     
     func handle(response: CapitoResponse){
+        //print("handle")
         if response.messageType == "WARNING"{
             //self.showErrorMessage(text: response.message)
         }
@@ -194,34 +188,172 @@ extension ViewController{
     }
     
     func handleNavigate(context: [AnyHashable : Any]){
+        var contextContents = [String: Any]()
 //        artist: String
         if let artist = context["artist"] as? String{
-            performSegue(withIdentifier: "FilterControllerSegue", sender: artist)
-//            filtered_events = event.filter({ $0.artist == artist})
-//            isFiltering = true
+            contextContents["artist"] = artist
+
         }
 //        location: String
-//
-//        datetime: String
-//
-//        seating: Seating
-//
-//        time: String
-//
-//        day_in_week: String
-//
-//        venue: String
-//
-//        genre: String
-//
-//        month: String
-//
-//        city: String
-//
-//        weekend: String
+        if let location = context["location"] as?  String{
+            contextContents["location"] = location
+        }
         
-        // handle time to day, month, seating for price, currency, time for day Part, comparison is contextual
-        // end hour, end week , endday is range of dates
+        //        venue: String
+        if let venue = context["venue"] as? String{
+            contextContents["venue"] = venue
+        }
+        
+        //        genre: String
+        if let genre = context["musicGenre"] as? String{
+            contextContents["genre"] = genre
+        }
+        
+        // handling time: AnyHashable("start_datetime")
+        if let datetime = context["start_datetime"] as? [String : AnyObject]{
+            let day = datetime["day"] as? Int
+            let month = datetime["month"] as? Int
+            let year = datetime["year"] as? Int
+            
+            var cal = Calendar.current
+            cal.timeZone = TimeZone(abbreviation: "GMT")!
+            let c = DateComponents(year: year, month: month, day: day )
+            
+            contextContents["start_date"] = cal.date(from: c)!
+        }
+        if let end_datetime = context["end_datetime"] as? [String: Int]{
+            //if start_date is empty, set date to current time
+            
+            if contextContents.index(forKey: "start_datetime") == nil {
+                contextContents["start_date"] = setCurrentDate()
+            }
+            var cal = Calendar.current
+            cal.timeZone = TimeZone(abbreviation: "GMT")!
+            
+            let end_day = end_datetime["day"]
+            let end_month = end_datetime["month"]
+            let end_year = end_datetime["year"]
+            
+            let d = DateComponents(year: end_year, month: end_month, day: end_day)
+            
+            contextContents["end_date"] = cal.date(from: d)
+            
+        }
+        
+        var daysToAdd = 0
+        var monthsToAdd = 0
+        var yearsToAdd = 0
+        
+        // Find events a period of time from current time
+        if var end_week = context["end_week"] as? String{
+         
+            if end_week[end_week.startIndex] == "+"{
+                end_week.remove(at: end_week.startIndex)
+                let addWeekBy = Int(end_week)
+                
+                daysToAdd += addWeekBy! * 7
+                
+            }
+        }
+        
+        if var end_day = context["end_day"] as? String{
+            if end_day[end_day.startIndex] == "+"{
+                end_day.remove(at: end_day.startIndex)
+                let addDayBy = Int(end_day)
+                
+                daysToAdd = daysToAdd + addDayBy!
+                
+            }
+        }
+            
+        if var end_month = context["end_month"] as? String{
+            if end_month[end_month.startIndex] == "+"{
+                end_month.remove(at: end_month.startIndex)
+                let addMonthBy = Int(end_month)
+                    
+                monthsToAdd = monthsToAdd + addMonthBy!
+                    
+            }
+        }
+        
+        if (daysToAdd != 0 || monthsToAdd != 0 || yearsToAdd != 0){
+            // if no start date is set, set date to current day
+            if contextContents.index(forKey: "start_datetime") == nil  {
+                contextContents["start_date"] = setCurrentDate()
+            }
+            // set end date to current date + no. of days to add
+            var cal = Calendar.current
+            cal.timeZone = TimeZone(abbreviation: "GMT")!
+            let start_date = contextContents["start_date"] as! Date
+            let d = DateComponents(year: yearsToAdd, month: monthsToAdd, day: daysToAdd)
+        
+            let futureDate = cal.date(byAdding: d, to: start_date)
+        
+            contextContents["end_date"] = futureDate
+        }
+        // if there is no end_date, then set end_Date to the next day
+        if contextContents.index(forKey: "end_date") == nil && contextContents.index(forKey: "start_date") != nil{
+            var cal = Calendar.current
+            cal.timeZone = TimeZone(abbreviation: "GMT")!
+            let start_date = contextContents["start_date"] as! Date
+            let d = DateComponents(day: 1)
+            
+            let futureDate = cal.date(byAdding: d, to: start_date)
+            
+            contextContents["end_date"] = futureDate
+        }
+        
+        
+        //handling time of day and hour
+        if let dayPart = context["dayPart"] as? String{
+            if contextContents.index(forKey: "start_datetime") == nil  {
+                contextContents["start_date"] = setCurrentDate()
+            }
+            
+            var cal = Calendar.current
+            cal.timeZone = TimeZone(abbreviation: "GMT")!
+            let start_date = contextContents["start_date"] as! Date
+            var d = DateComponents(hour: 0)
+            var e = DateComponents(hour: 0)
+            if dayPart == "Day"{
+                d.hour = 6
+                e.hour = 12
+            }
+            else if dayPart == "Afternoon"{
+                d.hour = 12
+                e.hour = 18
+            }
+            else if dayPart == "Night"{
+                d.hour = 18
+                e.hour = 24
+            }
+            let futureDate = cal.date(byAdding: d, to: start_date)
+            let endDate = cal.date(byAdding: e, to: start_date)
+            
+            contextContents["start_date"] = futureDate
+            contextContents["end_date"] = endDate
+        }
+        
+
+        // handle time to day, month, seating for price, currency, time for day Part, comparison is contextual, need to handle end_hour
+        let pageViewController = self.parent as! PageViewController
+        let eventViewController = pageViewController.pages[2] as! EventViewController
+        eventViewController.isFiltering = true
+        eventViewController.filteredItems = contextContents
+            
+    }
+    
+    func setCurrentDate() -> Date{
+        let current_date = Date()
+        var cal = Calendar.current
+        cal.timeZone = TimeZone(abbreviation: "GMT")!
+        
+        var c = cal.dateComponents([.year, .month, .day, .hour, .minute, .second], from: current_date)
+        
+        c.hour = 0
+        c.minute = 0
+        c.second = 0
+        return cal.date(from: c)!
     }
 }
 

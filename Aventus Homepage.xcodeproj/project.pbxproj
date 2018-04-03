@@ -277,8 +277,6 @@
 		BF7B71B920236FCC009E5598 /* Aventus Homepage */ = {
 			isa = PBXGroup;
 			children = (
-				457E32D320659C7E00B7224B /* PageViewController.swift */,
-				457E32D420659C7E00B7224B /* ProfileViewController.swift */,
 				457E32D220659C7E00B7224B /* WarningLabel.swift */,
 				457E32D020659C6200B7224B /* CustomSegmentedControl.swift */,
 				BF51ED4E20432787003D0219 /* ColorHelper.swift */,
@@ -288,12 +286,14 @@
 				BF51ED50204331B9003D0219 /* RecordButton.swift */,
 				BF933144204471160002A3C8 /* RoundButton.swift */,
 				BF93314620448ABB0002A3C8 /* DetailTextField.swift */,
-				BF7B71BA20236FCC009E5598 /* AppDelegate.swift */,
-				BF7B71BC20236FCC009E5598 /* ViewController.swift */,
 				BF7B71BE20236FCC009E5598 /* Main.storyboard */,
+				BF7B71BA20236FCC009E5598 /* AppDelegate.swift */,
 				BFBAF60C2035C3E200050B8A /* Seating.swift */,
 				BF5946962038743A00A0A493 /* Payment.swift */,
 				BF76AE2F20264CD5006274FE /* Event.swift */,
+				457E32D320659C7E00B7224B /* PageViewController.swift */,
+				457E32D420659C7E00B7224B /* ProfileViewController.swift */,
+				BF7B71BC20236FCC009E5598 /* ViewController.swift */,
 				BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */,
 				BFD17E18202CD729008CB952 /* EventViewController.swift */,
 				BFA6D2FB203850C300DFA67B /* SeatTableViewCell.swift */,
