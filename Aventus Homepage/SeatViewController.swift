@@ -38,6 +38,12 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     var ticketData: [String] = [String]()
     
+    var selectedCategory: String = ""
+    
+    var selectedPrice: Int = 0
+    
+    var selectedTicket: Int = 0
+    
     let pickerWidth = 100
     
     let pickerHeight = 80
@@ -46,27 +52,14 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         return 1
     }
     
-    /*func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData[component].count
-    }*/
-    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if(pickerView.tag==0) {
             return categoriesData.count
         } else {
             return ticketData.count
         }
-        
     }
 
-    /*func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if(pickerView.tag==0) {
-            return categoriesData[row]
-        } else {
-            return ticketData[row]
-        }
-    }*/
-    
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 100
     }
@@ -109,14 +102,14 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             
         }
         
-        view.layer.cornerRadius = 15.0
+        /*view.layer.cornerRadius = 15.0
         
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         view.layer.masksToBounds = false
         view.layer.shadowRadius = 1.0
         view.layer.shadowOpacity = 0.5
-        view.clipsToBounds = true
+        view.clipsToBounds = true*/
         
         //view.backgroundColor = colors.buttonBg
         
@@ -125,6 +118,15 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if(pickerView.tag==0) {
+            selectedCategory = categoriesData[row]
+            selectedPrice = Int(priceData[row])!
+            
+            //print(selectedCategory)
+        } else {
+            selectedTicket = Int(ticketData[row])!
+            //print(ticketData[row])
+        }
 
     }
 
@@ -157,9 +159,9 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         for i in 0..<noSeats {
             ticketData.append(String(i))
         }
-
-        //pickerData.append(categoriesData)
-        //pickerData.append(ticketData)
+        
+        selectedCategory = categoriesData[0]
+        selectedPrice = Int(priceData[0])!
         
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
@@ -181,40 +183,26 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
-        //popOverVC.view.center.x = self.view.center.x
-        //popOverVC.view.center.y = self.view.center.y
-        
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParentViewController: self)
     }
     
     @IBAction func purchaseButton(_ sender: RoundButton) {
         
+        if(selectedTicket==0) {
+            return
+        }
+        
         let pageViewController = self.parent as! PageViewController
-
-        let detailViewController = pageViewController.pages[4] as! PaymentViewController
-            
-            /*var categories = [String]()
-            var seats = [Int]()
-            var prices = [Int]()
-            
-            let section = 0
-            
-            for row in 0 ..< tableView.numberOfRows(inSection: section)  {
-                let indexPath = IndexPath(row: row, section: section)
-                let cell = tableView.cellForRow(at: indexPath)
-                let seatCell = (cell as! SeatTableViewCell)
-                
-                if let selected = Int(seatCell.selectedSeats.text!) {
-                    if selected > 0 {
-                        categories.append(seatCell.categoryLabel.text!)
-                        prices.append(Int(seatCell.priceLabel.text!)!)
-                        seats.append(Int((cell as! SeatTableViewCell).selectedSeats.text!)!)
-                    }
-                }
-            }
-            
-            detailViewController.payment = Payment(categories: (seating?.categories)!, price: (seating?.price)!, selectedSeats: seats)*/
+        
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "PaymentPage") as! PaymentViewController
+        
+        detailViewController.event = eventLoaded
+        
+        detailViewController.payment = Payment(category: selectedCategory, price: selectedPrice, selectedSeats: selectedTicket)
+        
+        pageViewController.pages[4] = detailViewController
+        
         pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
 }

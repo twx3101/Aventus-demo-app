@@ -8,9 +8,8 @@
 
 import UIKit
 
-class PaymentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PaymentViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var warningLabel: UILabel!
     
@@ -22,6 +21,13 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var cvvTextField: DetailTextField!
     
+    @IBOutlet weak var summaryView: UIView!
+    
+    @IBOutlet weak var detailLabel: UILabel!
+    
+    @IBOutlet weak var totalLabel: UILabel!
+    
+    var event: Event?
     
     var payment: Payment?
     
@@ -29,61 +35,7 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var total: Int = 0
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cellIdentifier = "PaymentTableViewCell"
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PaymentTableViewCell else{
-            fatalError("The dequeued cell is not an instance of PaymentTableViewCell.")
-        }
-        if indexPath.row < (count - 1) {
-            
-            cell.categoryLabel.text = payment?.categories[indexPath.row]
-            cell.unitLabel.text = String((payment?.selectedSeats[indexPath.row])!)
-            cell.priceLabel.text = String((payment?.price[indexPath.row])!)
 
-            let sub = ((payment?.selectedSeats[indexPath.row])!*(payment?.price[indexPath.row])!)
-            
-            cell.subTotalLabel.text = String(sub)
-            
-            total = total + sub
-            
-            
-        }
-        else{
-            cell.categoryLabel.text = ""
-            cell.unitLabel.text = ""
-            cell.priceLabel.text = ""
-            cell.subTotalLabel.text = String(total)
-        }
-        
-        //cell.backgroundColor = colors.tableBg
-        
-        return cell
-        
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = nil
-        cell.contentView.backgroundColor = colors.tableBg
-        cell.contentView.layer.borderWidth = 5.0
-        cell.contentView.layer.borderColor = colors.bg.cgColor
-        cell.contentView.layer.cornerRadius = 15.0
-        
-        cell.separatorInset = UIEdgeInsetsMake(20, 20, 20, 20);
-        cell.layer.borderWidth = 5;
-        cell.layer.borderColor = colors.bg.cgColor
-        
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -110,12 +62,15 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         
         self.view.backgroundColor = colors.bg
-        tableView.backgroundColor = colors.bg
+
+        summaryView.backgroundColor = colors.buttonBg
+
+        detailLabel.text = (event?.artist)! + ", " + (payment?.category)!
         
+        //totalLabel.text = String((payment?.selectedSeats)!)
+        totalLabel.text = "£" + String((payment?.selectedSeats)!*(payment?.price)!)
         
-        if let p = payment?.selectedSeats.count {
-            count = p + 1
-        }
+
         
         //self.performSegue(withIdentifier: "ConfirmSegue", sender: self)
         
@@ -142,7 +97,19 @@ class PaymentViewController: UIViewController, UITableViewDataSource, UITableVie
     */
     @IBAction func confirmButton(_ sender: UIButton) {
         if nameTextField.text != "" && cardNoTextField.text != "" && expiryTextField.text != "" && cvvTextField.text != "" {
-            self.performSegue(withIdentifier: "ConfirmSegue", sender: self)
+            let pageViewController = self.parent as! PageViewController
+            
+            let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
+            
+            detailViewController.event = event
+            
+            detailViewController.payment = payment
+            
+            pageViewController.pages[5] = detailViewController
+            
+            pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            
+            
         }
         else {
             warningLabel.text = "Please fill out the form."

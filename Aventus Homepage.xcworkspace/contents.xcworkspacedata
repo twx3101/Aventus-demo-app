@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/kk2017/demo-app/Aventus Homepage/DropdownView.swift">
-   </FileRef>
-   <FileRef
       location = "group:Aventus HomepageTests2/UnitTests.swift">
    </FileRef>
    <FileRef

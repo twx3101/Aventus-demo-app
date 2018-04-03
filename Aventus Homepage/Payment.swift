@@ -12,17 +12,17 @@ class Payment{
     
     // MARK: Properties
     
-    var categories: [String]
+    var category: String
     
-    var price: [Int]
+    var price: Int
     
-    var selectedSeats: [Int]
+    var selectedSeats: Int
     
     // MARK: Initialization
     
-    init(categories: [String], price: [Int], selectedSeats: [Int]){
+    init(category: String, price: Int, selectedSeats: Int){
         
-        self.categories = categories
+        self.category = category
         self.price = price
         self.selectedSeats = selectedSeats
     }

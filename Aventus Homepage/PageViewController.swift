@@ -38,7 +38,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         let cur = pages.index(of: viewController)!
 
-        if cur == 0 { return nil }
+        if cur == 0 || cur == 5 {
+            return nil
+        }
         
         let prev = abs((cur - 1) % pages.count)
         return pages[prev]

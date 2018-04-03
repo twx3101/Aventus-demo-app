@@ -17,7 +17,6 @@
 		A18FF15F204C607300DE4692 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18FF15E204C607300DE4692 /* UnitTests.swift */; };
 		A1AB3169204C529500F5A6A1 /* Aventus_Database_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AB3168204C529500F5A6A1 /* Aventus_Database_Tests.swift */; };
 		A1AB3177204C533100F5A6A1 /* Test_Databse_Fake_Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AB3176204C533100F5A6A1 /* Test_Databse_Fake_Data.swift */; };
-		BF0353D02073CF8C0080E05B /* DropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0353CF2073CF8B0080E05B /* DropdownView.swift */; };
 		BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1607012044A36B00241A2D /* HeaderLabel.swift */; };
 		BF1607042044ADC700241A2D /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1607032044ADC700241A2D /* BodyLabel.swift */; };
 		BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF40F12E2030971400E280BB /* SeatViewController.swift */; };
@@ -107,7 +106,6 @@
 		A1ECFFC5204B109B006DE0C0 /* Aventus HomepageTests2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aventus HomepageTests2.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1ECFFC9204B109B006DE0C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA6B0AEFFA9500FD09E18E5C /* Pods_Aventus_HomepageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_HomepageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF0353CF2073CF8B0080E05B /* DropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DropdownView.swift; path = "/Users/kk2017/demo-app/Aventus Homepage/DropdownView.swift"; sourceTree = "<absolute>"; };
 		BF1607012044A36B00241A2D /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
 		BF1607032044ADC700241A2D /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
 		BF40F12E2030971400E280BB /* SeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatViewController.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 		BF7B71B920236FCC009E5598 /* Aventus Homepage */ = {
 			isa = PBXGroup;
 			children = (
-				BF0353CF2073CF8B0080E05B /* DropdownView.swift */,
 				457E32D220659C7E00B7224B /* WarningLabel.swift */,
 				457E32D020659C6200B7224B /* CustomSegmentedControl.swift */,
 				BF51ED4E20432787003D0219 /* ColorHelper.swift */,
@@ -476,6 +473,7 @@
 					};
 					BF7B71B620236FCC009E5598 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = N2Q967342B;
 						ProvisioningStyle = Automatic;
 					};
 					BF7B71CA20236FCD009E5598 = {
@@ -745,7 +743,6 @@
 				BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */,
 				BFD17E1F202CDF0B008CB952 /* EventTableViewCell.swift in Sources */,
 				BF1607042044ADC700241A2D /* BodyLabel.swift in Sources */,
-				BF0353D02073CF8C0080E05B /* DropdownView.swift in Sources */,
 				BF51ED4F20432787003D0219 /* ColorHelper.swift in Sources */,
 				BF59469B2038D69C00A0A493 /* ConfirmTableViewCell.swift in Sources */,
 				BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */,
@@ -1130,10 +1127,12 @@
 			baseConfigurationReference = DFF61EBBE04522FA8C689EA8 /* Pods-Aventus Homepage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = N2Q967342B;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Aventus Homepage/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Aventus-Homepage";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Aventus-Homepage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1144,10 +1143,12 @@
 			baseConfigurationReference = 15973FF8ED2F30FB0506552E /* Pods-Aventus Homepage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = N2Q967342B;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Aventus Homepage/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Aventus-Homepage";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Aventus-Homepage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
