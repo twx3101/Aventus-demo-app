@@ -11,13 +11,12 @@ import FirebaseDatabase
 import Alamofire
 import AlamofireImage
 
-class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class EventViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    let cellIdentifier = "EventTableViewCell"
     
-    weak var activityIndicatorView: UIActivityIndicatorView!
+    let cellIdentifier = "EventCollectionViewCell"
     
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle!
@@ -28,18 +27,79 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     var filteredItems = Dictionary<String,Any>()
     let searchController = UISearchController(searchResultsController: nil)
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isFiltering {
             return filteredEvents.count
         }
         return events.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cellIdentifier = "EventCollectionViewCell"
+        
+        /*let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! EventCollectionViewCell
+        
+        let title = UILabel(frame: CGRect(x: 0, y: 0, width: cell.bounds.size.width, height: cell.bounds.size.height))
+        cell.contentView.addSubview(title)
+        title.text = "hi"
+        title.textColor = UIColor.yellow*/
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? EventCollectionViewCell else{
+            fatalError("The dequeued cell is not an instance of EventCollectionViewCell.")
+        }
+        
+        let event : Event
+        if isFiltering{
+            event = filteredEvents[indexPath.row]
+        }
+        else {
+            event = events[indexPath.row]
+        }
+
+        let txtLabel = event.artist + " - " + event.location
+        
+        let mutableString = NSMutableAttributedString(string: txtLabel)
+        
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location: 0, length: txtLabel.count))
+        
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.bodyText, range: NSRange(location: 0, length: event.artist.count))
+        
+        
+        
+        cell.artistLabel.attributedText = mutableString
+        
+        cell.locationDatetimeLabel.text = event.datetime + ", " + event.time
+        cell.locationDatetimeLabel.textColor = .white
+
+        Alamofire.request(event.imageURL).responseImage { response in
+            debugPrint(response)
+            
+            if let image = response.result.value{
+                cell.artistPhoto.image = image
+            }
+        }
+        
+        cell.backgroundColor = colors.bg
+        
+        return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSizeWidth = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
+        //let itemSizeHeight = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right))
+        let itemSizeHeight: CGFloat = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2 + 20
+        return CGSize(width: itemSizeWidth, height: itemSizeHeight)
+    }
+    
+
+    
+    /*func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "EventTableViewCell"
         
@@ -66,7 +126,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.backgroundColor = colors.tableBg
         return cell
         
-    }
+    }*/
     
     /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowSeatSegue" {
@@ -90,7 +150,24 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }*/
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let pageViewController = self.parent as! PageViewController
+        
+        //let detailViewController = pageViewController.pages[3] as! SeatViewController
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
+        
+        if isFiltering {
+            detailViewController.eventLoaded = filteredEvents[indexPath.row]
+        } else {
+            detailViewController.eventLoaded = events[indexPath.row]
+        }
+        
+        pageViewController.pages[3] = detailViewController
+        
+        pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+    }
+    
+    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print("section: \(indexPath.section)")
         print(indexPath.row)
         let pageViewController = self.parent as! PageViewController
@@ -108,12 +185,14 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
 
-    }
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        //self.tableView.delegate = self
+        //self.tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         view.backgroundColor = colors.bg
         // Do any additional setup after loading the view.
@@ -125,7 +204,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
         } else {
-            tableView.tableHeaderView = searchController.searchBar
+            //tableView.tableHeaderView = searchController.searchBar
         }
         definesPresentationContext = true
         
@@ -209,7 +288,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             return event.artist.lowercased().contains(searchText.lowercased()) || event.location.lowercased().contains(searchText.lowercased())
             
         })
-        tableView.reloadData()
+        collectionView.reloadData()
+        //tableView.reloadData()
     }
 
     
@@ -366,7 +446,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 print("SUCCESS!")
                
             }   else{
-            self.tableView.reloadData()
+                self.collectionView.reloadData()
+            //self.tableView.reloadData()
             }
             //Code to execute to obtain the information held in the value field in the database
         })
@@ -421,8 +502,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             
         }
         
-      
-        tableView.reloadData()
+        collectionView.reloadData()
+        //tableView.reloadData()
     }
 }
 extension EventViewController: UISearchResultsUpdating{

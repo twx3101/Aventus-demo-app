@@ -143,7 +143,12 @@ extension ViewController{
         
         // go to the event page
         let pageViewController = self.parent as! PageViewController
-        pageViewController.setViewControllers([pageViewController.pages[2]], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        
+        let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "EventPage") as! EventViewController
+        
+        pageViewController.pages[2] = nextViewController
+        
+        pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         self.parseData(context: response.context)
     }
     

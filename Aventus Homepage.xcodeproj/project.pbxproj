@@ -35,6 +35,8 @@
 		BF7B71C220236FCC009E5598 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7B71C120236FCC009E5598 /* Assets.xcassets */; };
 		BF7B71C520236FCC009E5598 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7B71C320236FCC009E5598 /* LaunchScreen.storyboard */; };
 		BF7B71D020236FCD009E5598 /* Aventus_HomepageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B71CF20236FCD009E5598 /* Aventus_HomepageTests.swift */; };
+		BF83B2C2207502F100EA2405 /* EventCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF83B2C1207502F100EA2405 /* EventCollectionViewController.swift */; };
+		BF83B2C62075109C00EA2405 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF83B2C52075109C00EA2405 /* EventCollectionViewCell.swift */; };
 		BF8588252030B729005C9D7D /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8588242030B729005C9D7D /* PaymentViewController.swift */; };
 		BF933145204471160002A3C8 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF933144204471160002A3C8 /* RoundButton.swift */; };
 		BF93314720448ABB0002A3C8 /* DetailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93314620448ABB0002A3C8 /* DetailTextField.swift */; };
@@ -128,6 +130,8 @@
 		BF7B71CB20236FCD009E5598 /* Aventus HomepageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aventus HomepageTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7B71CF20236FCD009E5598 /* Aventus_HomepageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aventus_HomepageTests.swift; sourceTree = "<group>"; };
 		BF7B71D120236FCD009E5598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF83B2C1207502F100EA2405 /* EventCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewController.swift; sourceTree = "<group>"; };
+		BF83B2C52075109C00EA2405 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF8588242030B729005C9D7D /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentViewController.swift; path = ../PaymentViewController.swift; sourceTree = "<group>"; };
 		BF933144204471160002A3C8 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		BF93314620448ABB0002A3C8 /* DetailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextField.swift; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 				457E32D420659C7E00B7224B /* ProfileViewController.swift */,
 				BF7B71BC20236FCC009E5598 /* ViewController.swift */,
 				BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */,
+				BF83B2C52075109C00EA2405 /* EventCollectionViewCell.swift */,
 				BFD17E18202CD729008CB952 /* EventViewController.swift */,
 				BFA6D2FB203850C300DFA67B /* SeatTableViewCell.swift */,
 				BF40F12E2030971400E280BB /* SeatViewController.swift */,
@@ -307,6 +312,7 @@
 				BF7B71C320236FCC009E5598 /* LaunchScreen.storyboard */,
 				BF7B71C620236FCC009E5598 /* Info.plist */,
 				BF65F163203B3B9900580CB8 /* GoogleService-Info.plist */,
+				BF83B2C1207502F100EA2405 /* EventCollectionViewController.swift */,
 			);
 			path = "Aventus Homepage";
 			sourceTree = "<group>";
@@ -735,6 +741,7 @@
 				BF5946972038743A00A0A493 /* Payment.swift in Sources */,
 				BFD17E19202CD729008CB952 /* EventViewController.swift in Sources */,
 				BF7B71BB20236FCC009E5598 /* AppDelegate.swift in Sources */,
+				BF83B2C2207502F100EA2405 /* EventCollectionViewController.swift in Sources */,
 				BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */,
 				BF93314720448ABB0002A3C8 /* DetailTextField.swift in Sources */,
 				457E32D520659C7E00B7224B /* WarningLabel.swift in Sources */,
@@ -745,6 +752,7 @@
 				BF1607042044ADC700241A2D /* BodyLabel.swift in Sources */,
 				BF51ED4F20432787003D0219 /* ColorHelper.swift in Sources */,
 				BF59469B2038D69C00A0A493 /* ConfirmTableViewCell.swift in Sources */,
+				BF83B2C62075109C00EA2405 /* EventCollectionViewCell.swift in Sources */,
 				BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */,
 				457E32D720659C7E00B7224B /* ProfileViewController.swift in Sources */,
 				BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */,
