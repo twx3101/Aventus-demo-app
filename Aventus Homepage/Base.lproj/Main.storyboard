@@ -25,60 +25,6 @@
             </objects>
             <point key="canvasLocation" x="2242" y="-783"/>
         </scene>
-        <!--Event Collection View Controller-->
-        <scene sceneID="c8Q-8b-jBm">
-            <objects>
-                <viewController id="TmA-8A-Goj" customClass="EventCollectionViewController" customModule="Aventus_Homepage" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="LGg-Qf-MQU"/>
-                        <viewControllerLayoutGuide type="bottom" id="esM-TE-Dnb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="nm2-7v-twI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BJ9-Ic-8jb">
-                                <rect key="frame" x="67" y="197" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dLl-ZY-x4H">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickrCell" id="VKi-DB-yhV">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mm2-3Q-Cgg">
-                                <rect key="frame" x="139" y="370" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="TmA-8A-Goj" id="9lv-EU-Oxh"/>
-                                </connections>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="collectionView" destination="BJ9-Ic-8jb" id="Npf-8j-vYJ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SI3-On-WAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="425" y="-665"/>
-        </scene>
         <!--Profile View Controller-->
         <scene sceneID="CmX-Ab-QrL">
             <objects>
@@ -385,15 +331,19 @@
                                     <action selector="recordButton:" destination="PPN-Wq-gpx" eventType="touchUpInside" id="PJi-YD-kSo"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="g1d-H5-caX">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="g1d-H5-caX">
                                 <rect key="frame" x="16" y="36" width="343" height="460"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sB4-xZ-nOT">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sB4-xZ-nOT" userLabel="EventView">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="128"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pny-ET-V8O">
-                                                <rect key="frame" x="8" y="8" width="123" height="112"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pny-ET-V8O">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="128"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="5SN-2N-11f"/>
+                                                    <constraint firstAttribute="width" constant="343" id="exf-4g-Jo7"/>
+                                                    <constraint firstAttribute="height" constant="128" id="ikl-aP-Jvn"/>
+                                                </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frQ-EC-Nht" customClass="UtterLabel" customModule="Aventus_Homepage" customModuleProvider="target">
                                                 <rect key="frame" x="150" y="15" width="42" height="21"/>
@@ -419,79 +369,57 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="Hne-bm-xak"/>
-                                            <constraint firstAttribute="width" constant="343" id="pc3-hu-AQa"/>
+                                            <constraint firstItem="pny-ET-V8O" firstAttribute="leading" secondItem="sB4-xZ-nOT" secondAttribute="leading" id="9fI-QX-pgw"/>
+                                            <constraint firstAttribute="width" constant="343" id="YCf-xO-E6x"/>
+                                            <constraint firstAttribute="trailing" secondItem="pny-ET-V8O" secondAttribute="trailing" id="nGd-Dl-2Ou"/>
+                                            <constraint firstItem="pny-ET-V8O" firstAttribute="top" secondItem="sB4-xZ-nOT" secondAttribute="top" id="nlU-Ve-8bb"/>
+                                            <constraint firstAttribute="height" constant="128" id="qre-Wo-pUt"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Eok-gB-3Zv">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Eok-gB-3Zv">
                                         <rect key="frame" x="0.0" y="144" width="343" height="270"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOc-Kr-fjQ" customClass="DropdownView">
-                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="270"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ipH-jj-BTH">
+                                                <rect key="frame" x="0.0" y="0.0" width="180" height="270"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ipH-jj-BTH">
-                                                        <rect key="frame" x="0.0" y="-0.5" width="171" height="246"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-sO-EuZ" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="171" height="30"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="30" id="n6d-yp-s6E"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OKB-iG-wZ0">
-                                                                <rect key="frame" x="0.0" y="30" width="171" height="216"/>
-                                                            </pickerView>
-                                                        </subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-sO-EuZ" customClass="BodyLabel" customModule="Aventus_Homepage" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="LPh-sO-EuZ" secondAttribute="trailing" id="AIj-SO-ROo"/>
-                                                            <constraint firstItem="LPh-sO-EuZ" firstAttribute="leading" secondItem="ipH-jj-BTH" secondAttribute="leading" id="dWY-hs-0D3"/>
+                                                            <constraint firstAttribute="height" constant="30" id="n6d-yp-s6E"/>
                                                         </constraints>
-                                                    </stackView>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OKB-iG-wZ0">
+                                                        <rect key="frame" x="0.0" y="30" width="180" height="240"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="180" id="W9c-Mb-7wH"/>
+                                                        </constraints>
+                                                    </pickerView>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="ipH-jj-BTH" firstAttribute="top" secondItem="nOc-Kr-fjQ" secondAttribute="top" id="SSM-PE-cXK"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ipH-jj-BTH" secondAttribute="trailing" id="bNV-EP-W4g"/>
-                                                    <constraint firstItem="ipH-jj-BTH" firstAttribute="leading" secondItem="nOc-Kr-fjQ" secondAttribute="leading" id="tIA-ow-2f4"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Do-Ba-RpB" customClass="DropdownView">
-                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="270"/>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PnY-pX-Gwu">
+                                                <rect key="frame" x="196" y="0.0" width="147" height="270"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PnY-pX-Gwu">
-                                                        <rect key="frame" x="-0.5" y="-0.5" width="171.5" height="246"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tickets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdg-wg-IUF" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="30"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="30" id="m14-sb-CVv"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7h6-js-bPe">
-                                                                <rect key="frame" x="0.0" y="30" width="171.5" height="216"/>
-                                                            </pickerView>
-                                                        </subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tickets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdg-wg-IUF" customClass="BodyLabel" customModule="Aventus_Homepage" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="147" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="bdg-wg-IUF" secondAttribute="trailing" id="3Fo-hm-G6c"/>
-                                                            <constraint firstItem="bdg-wg-IUF" firstAttribute="leading" secondItem="PnY-pX-Gwu" secondAttribute="leading" id="J32-OW-hD9"/>
+                                                            <constraint firstAttribute="height" constant="30" id="m14-sb-CVv"/>
                                                         </constraints>
-                                                    </stackView>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7h6-js-bPe">
+                                                        <rect key="frame" x="0.0" y="30" width="147" height="240"/>
+                                                    </pickerView>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="PnY-pX-Gwu" firstAttribute="top" secondItem="2Do-Ba-RpB" secondAttribute="top" id="0Gf-uG-q7b"/>
-                                                    <constraint firstAttribute="trailing" secondItem="PnY-pX-Gwu" secondAttribute="trailing" id="IDO-Lb-QL7"/>
-                                                    <constraint firstItem="PnY-pX-Gwu" firstAttribute="leading" secondItem="2Do-Ba-RpB" secondAttribute="leading" id="azE-Pu-vtj"/>
-                                                </constraints>
-                                            </view>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="270" id="1z5-lZ-tvu"/>
-                                            <constraint firstAttribute="width" constant="343" id="r1O-A9-eH5"/>
+                                            <constraint firstAttribute="height" constant="270" id="71Y-8n-57u"/>
+                                            <constraint firstAttribute="width" constant="343" id="D06-pb-hji"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="VmM-mz-ztS">
@@ -520,9 +448,6 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Eok-gB-3Zv" firstAttribute="top" secondItem="sB4-xZ-nOT" secondAttribute="bottom" constant="8" id="kRt-w9-QMh"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

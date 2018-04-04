@@ -75,8 +75,9 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             let topLabel = UILabel(frame: CGRect(x: 0, y: 0, width: pickerWidth*2, height: 30))
             topLabel.text = categoriesData[row]
             topLabel.textColor = .white
+            
             topLabel.textAlignment = .center
-            topLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightThin)
+            topLabel.font = UIFont.boldSystemFont(ofSize: 18)
             view.addSubview(topLabel)
             
             let bottomLabel = UILabel(frame: CGRect(x: 0, y: pickerHeight/2, width: pickerWidth*2, height: 30 ))
