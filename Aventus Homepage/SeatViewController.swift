@@ -18,19 +18,19 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     @IBOutlet weak var locationDateTimeLabel: UILabel!
     
-    @IBOutlet weak var descriptionLabel: UILabel!
-    
     @IBOutlet weak var artistPhoto: UIImageView!
     
     @IBOutlet weak var categoryPicker: UIPickerView!
     
     @IBOutlet weak var ticketPicker: UIPickerView!
     
+    @IBOutlet weak var pickerView: UIView!
+    
+    @IBOutlet weak var labelView: UIView!
+    
     var eventLoaded: Event?
     
     var seating: Seating?
-    
-    var pickerData: [[String]] = [[String]]()
     
     var categoriesData: [String] = [String]()
     
@@ -68,13 +68,15 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         var view: UIView
         
+        let labelColor = UIColor.black
+        
         if(pickerView.tag==0){
             
             view = UIView(frame: CGRect(x: 0, y: 0, width: pickerWidth*2, height: pickerHeight))
             
             let topLabel = UILabel(frame: CGRect(x: 0, y: 0, width: pickerWidth*2, height: 30))
             topLabel.text = categoriesData[row]
-            topLabel.textColor = .white
+            topLabel.textColor = labelColor
             
             topLabel.textAlignment = .center
             topLabel.font = UIFont.boldSystemFont(ofSize: 18)
@@ -82,7 +84,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             
             let bottomLabel = UILabel(frame: CGRect(x: 0, y: pickerHeight/2, width: pickerWidth*2, height: 30 ))
             bottomLabel.text = "£" + priceData[row]
-            bottomLabel.textColor = .white
+            bottomLabel.textColor = labelColor
             bottomLabel.textAlignment = .center
             bottomLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightThin)
             view.addSubview(bottomLabel)
@@ -92,27 +94,17 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             view = UIView(frame: CGRect(x: 0, y: 0, width: pickerWidth, height: pickerHeight))
             
             let topLabel = UILabel(frame: CGRect(x: 0, y: 0, width: pickerWidth, height: 40))
-            //let topLabel = UILabel()
             topLabel.center.x = view.center.x
             topLabel.center.y = view.center.y
             topLabel.text = ticketData[row]
-            topLabel.textColor = .white
+            topLabel.textColor = labelColor
             topLabel.textAlignment = .center
             topLabel.font = UIFont.systemFont(ofSize: 32, weight: UIFontWeightThin)
             view.addSubview(topLabel)
             
         }
         
-        /*view.layer.cornerRadius = 15.0
-        
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        view.layer.masksToBounds = false
-        view.layer.shadowRadius = 1.0
-        view.layer.shadowOpacity = 0.5
-        view.clipsToBounds = true*/
-        
-        //view.backgroundColor = colors.buttonBg
+
         
         return view
     }
@@ -135,11 +127,21 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         super.viewDidLoad()
         view.backgroundColor = colors.bg
         
-        artistLabel.text = eventLoaded?.artist
-        locationDateTimeLabel.text = eventLoaded?.location
-        descriptionLabel.text = (eventLoaded?.datetime)! + " " + (eventLoaded?.time)!
+        pickerView.layer.cornerRadius = 15.0
+        pickerView.clipsToBounds = true
+        pickerView.backgroundColor = .white
         
-       Alamofire.request((eventLoaded?.imageURL)!).responseImage { response in
+        categoryPicker.delegate = self
+        categoryPicker.dataSource = self
+        ticketPicker.delegate = self
+        ticketPicker.dataSource = self
+        
+        artistLabel.text = (eventLoaded?.artist)! + " - " + (eventLoaded?.location)!
+        locationDateTimeLabel.text = (eventLoaded?.datetime)! + ", " + (eventLoaded?.time)!
+        
+        labelView.layer.backgroundColor = UIColor.white.withAlphaComponent(0.5).cgColor
+ 
+        Alamofire.request((eventLoaded?.imageURL)!).responseImage { response in
             debugPrint(response)
             
             if let image = response.result.value{
@@ -164,11 +166,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         selectedCategory = categoriesData[0]
         selectedPrice = Int(priceData[0])!
         
-        categoryPicker.delegate = self
-        categoryPicker.dataSource = self
-        ticketPicker.delegate = self
-        ticketPicker.dataSource = self
-  
+        
 
     }
     

@@ -27,7 +27,6 @@
 		BF5946992038ADFC00A0A493 /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5946982038ADFC00A0A493 /* PaymentTableViewCell.swift */; };
 		BF59469B2038D69C00A0A493 /* ConfirmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59469A2038D69C00A0A493 /* ConfirmTableViewCell.swift */; };
 		BF59469D2038E25900A0A493 /* SeatPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59469C2038E25900A0A493 /* SeatPopUpViewController.swift */; };
-		BF65F164203B3B9900580CB8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF65F163203B3B9900580CB8 /* GoogleService-Info.plist */; };
 		BF76AE3020264CD5006274FE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76AE2F20264CD5006274FE /* Event.swift */; };
 		BF7B71BB20236FCC009E5598 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B71BA20236FCC009E5598 /* AppDelegate.swift */; };
 		BF7B71BD20236FCC009E5598 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B71BC20236FCC009E5598 /* ViewController.swift */; };
@@ -39,11 +38,13 @@
 		BF8588252030B729005C9D7D /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8588242030B729005C9D7D /* PaymentViewController.swift */; };
 		BF933145204471160002A3C8 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF933144204471160002A3C8 /* RoundButton.swift */; };
 		BF93314720448ABB0002A3C8 /* DetailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93314620448ABB0002A3C8 /* DetailTextField.swift */; };
+		BFA6C53D20757EE000AD0601 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6C53C20757EE000AD0601 /* HelpViewController.swift */; };
 		BFA6D2FC203850C300DFA67B /* SeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6D2FB203850C300DFA67B /* SeatTableViewCell.swift */; };
 		BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */; };
 		BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60C2035C3E200050B8A /* Seating.swift */; };
 		BFD17E19202CD729008CB952 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD17E18202CD729008CB952 /* EventViewController.swift */; };
 		BFD17E1F202CDF0B008CB952 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */; };
+		BFDF282320756C1B00B17454 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFDF282220756C1B00B17454 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,7 +118,6 @@
 		BF5946982038ADFC00A0A493 /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
 		BF59469A2038D69C00A0A493 /* ConfirmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewCell.swift; sourceTree = "<group>"; };
 		BF59469C2038E25900A0A493 /* SeatPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatPopUpViewController.swift; sourceTree = "<group>"; };
-		BF65F163203B3B9900580CB8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF76AE2F20264CD5006274FE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BF7B71B720236FCC009E5598 /* Aventus Homepage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aventus Homepage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7B71BA20236FCC009E5598 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,11 +133,13 @@
 		BF8588242030B729005C9D7D /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentViewController.swift; path = ../PaymentViewController.swift; sourceTree = "<group>"; };
 		BF933144204471160002A3C8 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		BF93314620448ABB0002A3C8 /* DetailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextField.swift; sourceTree = "<group>"; };
+		BFA6C53C20757EE000AD0601 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		BFA6D2FB203850C300DFA67B /* SeatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatTableViewCell.swift; sourceTree = "<group>"; };
 		BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		BFBAF60C2035C3E200050B8A /* Seating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seating.swift; sourceTree = "<group>"; };
 		BFD17E18202CD729008CB952 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		BFDF282220756C1B00B17454 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DFF61EBBE04522FA8C689EA8 /* Pods-Aventus Homepage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus Homepage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage.debug.xcconfig"; sourceTree = "<group>"; };
 		E2606FF670C7DF7CDCD8D7C4 /* Pods-Aventus HomepageTests2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus HomepageTests2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus HomepageTests2/Pods-Aventus HomepageTests2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -306,10 +308,11 @@
 				BF8588242030B729005C9D7D /* PaymentViewController.swift */,
 				BF59469A2038D69C00A0A493 /* ConfirmTableViewCell.swift */,
 				BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */,
+				BFA6C53C20757EE000AD0601 /* HelpViewController.swift */,
 				BF7B71C120236FCC009E5598 /* Assets.xcassets */,
 				BF7B71C320236FCC009E5598 /* LaunchScreen.storyboard */,
 				BF7B71C620236FCC009E5598 /* Info.plist */,
-				BF65F163203B3B9900580CB8 /* GoogleService-Info.plist */,
+				BFDF282220756C1B00B17454 /* GoogleService-Info.plist */,
 			);
 			path = "Aventus Homepage";
 			sourceTree = "<group>";
@@ -543,7 +546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7B71C520236FCC009E5598 /* LaunchScreen.storyboard in Resources */,
-				BF65F164203B3B9900580CB8 /* GoogleService-Info.plist in Resources */,
+				BFDF282320756C1B00B17454 /* GoogleService-Info.plist in Resources */,
 				BF7B71C220236FCC009E5598 /* Assets.xcassets in Resources */,
 				BF7B71C020236FCC009E5598 /* Main.storyboard in Resources */,
 			);
@@ -740,6 +743,7 @@
 				BF7B71BB20236FCC009E5598 /* AppDelegate.swift in Sources */,
 				BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */,
 				BF93314720448ABB0002A3C8 /* DetailTextField.swift in Sources */,
+				BFA6C53D20757EE000AD0601 /* HelpViewController.swift in Sources */,
 				457E32D520659C7E00B7224B /* WarningLabel.swift in Sources */,
 				BF59469D2038E25900A0A493 /* SeatPopUpViewController.swift in Sources */,
 				457E32D620659C7E00B7224B /* PageViewController.swift in Sources */,
@@ -1136,7 +1140,7 @@
 				INFOPLIST_FILE = "Aventus Homepage/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Aventus-Homepage";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Aventus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1152,7 +1156,7 @@
 				INFOPLIST_FILE = "Aventus Homepage/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Aventus-Homepage";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Aventus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

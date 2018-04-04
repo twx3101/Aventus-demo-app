@@ -137,6 +137,35 @@ class Event{
             
             self.seating = seating
         }
+    
+    /*init?(artist: String, location: String, datetime: String, description: String?, photo: UIImage?, seating: Seating, time: String, artist_ranking: Int, day_in_week: String, event_ID: String, event_status: String, venue: String, genre: String, month: String, timezone: String, imageURL: String, weekend: String){
+        
+        guard !artist.isEmpty && !location.isEmpty && !datetime.isEmpty else{
+            return nil
+        }
+        
+        self.artist = artist
+        self.location = location
+        self.datetime = datetime
+        self.description = description
+        self.photo = photo
+        self.time = time
+        self.artist_ranking = artist_ranking
+        self.day_in_week = day_in_week
+        self.event_ID = event_ID
+        self.event_status = event_status
+        self.venue = venue
+        self.genre = genre
+        self.month = month
+        self.timezone = timezone
+        //self.city = city
+        self.imageURL = imageURL
+        //self.address = address
+        self.weekend = weekend
+        
+        
+        self.seating = seating
+    }*/
         
         
     }
