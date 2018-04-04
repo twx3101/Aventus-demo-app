@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1EFEF15BCA00AB75AF21BDC9 /* Pods_Aventus_HomepageTests2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1534D3CCB716116C2B8FE568 /* Pods_Aventus_HomepageTests2.framework */; };
+		2F7E52B120758BD1003B96D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7E52B020758BD1003B96D7 /* GoogleService-Info.plist */; };
 		457E32D120659C6200B7224B /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E32D020659C6200B7224B /* CustomSegmentedControl.swift */; };
 		457E32D520659C7E00B7224B /* WarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E32D220659C7E00B7224B /* WarningLabel.swift */; };
 		457E32D620659C7E00B7224B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E32D320659C7E00B7224B /* PageViewController.swift */; };
@@ -44,7 +45,6 @@
 		BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60C2035C3E200050B8A /* Seating.swift */; };
 		BFD17E19202CD729008CB952 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD17E18202CD729008CB952 /* EventViewController.swift */; };
 		BFD17E1F202CDF0B008CB952 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */; };
-		BFDF282320756C1B00B17454 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BFDF282220756C1B00B17454 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +88,7 @@
 /* Begin PBXFileReference section */
 		1534D3CCB716116C2B8FE568 /* Pods_Aventus_HomepageTests2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_HomepageTests2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15973FF8ED2F30FB0506552E /* Pods-Aventus Homepage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus Homepage.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage.release.xcconfig"; sourceTree = "<group>"; };
+		2F7E52B020758BD1003B96D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3801DE766E1697792EDB2A4C /* Pods_Aventus_Homepage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_Homepage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		457E32D020659C6200B7224B /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		457E32D220659C7E00B7224B /* WarningLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningLabel.swift; sourceTree = "<group>"; };
@@ -139,7 +140,6 @@
 		BFBAF60C2035C3E200050B8A /* Seating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seating.swift; sourceTree = "<group>"; };
 		BFD17E18202CD729008CB952 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
-		BFDF282220756C1B00B17454 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DFF61EBBE04522FA8C689EA8 /* Pods-Aventus Homepage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus Homepage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage.debug.xcconfig"; sourceTree = "<group>"; };
 		E2606FF670C7DF7CDCD8D7C4 /* Pods-Aventus HomepageTests2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus HomepageTests2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus HomepageTests2/Pods-Aventus HomepageTests2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -312,7 +312,7 @@
 				BF7B71C120236FCC009E5598 /* Assets.xcassets */,
 				BF7B71C320236FCC009E5598 /* LaunchScreen.storyboard */,
 				BF7B71C620236FCC009E5598 /* Info.plist */,
-				BFDF282220756C1B00B17454 /* GoogleService-Info.plist */,
+				2F7E52B020758BD1003B96D7 /* GoogleService-Info.plist */,
 			);
 			path = "Aventus Homepage";
 			sourceTree = "<group>";
@@ -546,7 +546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7B71C520236FCC009E5598 /* LaunchScreen.storyboard in Resources */,
-				BFDF282320756C1B00B17454 /* GoogleService-Info.plist in Resources */,
+				2F7E52B120758BD1003B96D7 /* GoogleService-Info.plist in Resources */,
 				BF7B71C220236FCC009E5598 /* Assets.xcassets in Resources */,
 				BF7B71C020236FCC009E5598 /* Main.storyboard in Resources */,
 			);
