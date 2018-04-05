@@ -45,6 +45,8 @@ class Event{
         var city: String //Real City
         
         var imageURL: String
+    
+    var bannerURL: String
         
         var address: String
         
@@ -109,7 +111,7 @@ class Event{
          }*/
         
     
-        init?(artist: String, location: String, datetime: String, description: String?, photo: UIImage?, seating: Seating, time: String, artist_ranking: Int, day_in_week: String, event_ID: String, event_status: String, venue: String, genre: String, month: String, timezone: String, city: String, imageURL: String, address: String, weekend: String){
+    init?(artist: String, location: String, datetime: String, description: String?, photo: UIImage?, seating: Seating, time: String, artist_ranking: Int, day_in_week: String, event_ID: String, event_status: String, venue: String, genre: String, month: String, timezone: String, city: String, imageURL: String, bannerURL: String, address: String, weekend: String){
             
             guard !artist.isEmpty && !location.isEmpty && !datetime.isEmpty else{
                 return nil
@@ -131,6 +133,7 @@ class Event{
             self.timezone = timezone
             self.city = city
             self.imageURL = imageURL
+            self.bannerURL = bannerURL
             self.address = address
             self.weekend = weekend
             

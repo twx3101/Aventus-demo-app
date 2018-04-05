@@ -37,7 +37,7 @@ class PaymentViewController: UIViewController {
     
 
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "ConfirmSegue" {
             
@@ -56,7 +56,7 @@ class PaymentViewController: UIViewController {
     
     func confirmPayment() {
         self.performSegue(withIdentifier: "ConfirmSegue", sender: self)
-    }
+    }*/
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -75,13 +75,25 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         cell.locationDatetimeLabel.text = event.datetime + ", " + event.time
         cell.locationDatetimeLabel.textColor = .white
+        
+        print(event.bannerURL)
 
-        Alamofire.request(event.imageURL).responseImage { response in
+        Alamofire.request(event.bannerURL).responseImage { response in
             debugPrint(response)
             
+            
             if let image = response.result.value{
-                cell.artistPhoto.image = image
+                
+                let size = CGSize(width: 358.0, height: 190.0)
+                let aspectScaledToFitImage = image.af_imageAspectScaled(toFit: size)
+                cell.artistPhoto.image = aspectScaledToFitImage
+                
             }
+            
+            //let size = CGSize(width: 100.0, height: 100.0)
+            
+            // Scale image to size disregarding aspect ratio
+            //let image = image.af_imageScaled(to: size)
         }
         
         cell.backgroundColor = colors.bg
@@ -91,7 +103,8 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSizeWidth = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
+        //let itemSizeWidth = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
+        let itemSizeWidth = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10))
         //let itemSizeHeight = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right))
         let itemSizeHeight: CGFloat = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2 + 20
         return CGSize(width: itemSizeWidth, height: itemSizeHeight)
@@ -218,57 +231,6 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    /*func parseJSON(){
-     let url = String(format: "https://sheetsu.com/apis/v1.0bu/c2358558ce5f")
-     let serviceURL = URL(string: url)
-     var request = URLRequest(url: serviceURL!)
-     
-     request.httpMethod = "GET"
-     request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-     
-     let session = URLSession.shared
-     
-     session.dataTask(with: request) { (data, response, error) in
-     
-     if let data = data{
-     do{
-     let json =  try JSONSerialization.jsonObject(with: data, options: [])
-     if let event_list = json as? NSArray{
-     for i in 0 ..< event_list.count {
-     let eve = event_list[i] as? [String:Any]
-     let event1 = Event(json:eve!)
-     self.events.append(event1!)
-     }
-     }
-     }
-     
-     catch{
-     print(error)
-     return
-     }
-     
-     //convert JSON data into Event Class
-     
-     print("HELLO")
-     
-     DispatchQueue.main.async{ [unowned self] in
-     self.tableView.reloadData()
-     }
-     
-     }
-     }.resume()
-     }*/
-    
     func isFilteringBar() -> Bool{
         if(searchController.isActive && !searchBarIsEmpty()){
             isFiltering = true
@@ -319,6 +281,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 let eventID = eventObject?["Event ID"]
                 //let eventID = "1"
                 let eventImageURL = eventObject?["Fake Artist Pc JPEG URL"]
+                let eventBannerURL = eventObject?["Fake Artist Banner"]
                 //let eventImageURL = "https://images.sk-static.com/images/media/img/col6/20151201-145152-307273.jpg"
                 let eventStatus = eventObject?["Event Status"]
                 let eventVenue = eventObject?["Fake Venue"]
@@ -332,45 +295,66 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 
                 var eventCatArea = [String]()
                 
-                eventCatArea.append(eventObject?["Area: category 1"] as! String)
-                eventCatArea.append(eventObject?["Area: category 2"] as! String)
-                eventCatArea.append(eventObject?["Area: category 3"] as! String)
-                eventCatArea.append(eventObject?["Area: category 4"] as! String)
                 eventCatArea.append(eventObject?["Area: category 5 Standing"] as! String)
+                eventCatArea.append(eventObject?["Area: category 4"] as! String)
+                eventCatArea.append(eventObject?["Area: category 3"] as! String)
+                eventCatArea.append(eventObject?["Area: category 2"] as! String)
+                eventCatArea.append(eventObject?["Area: category 1"] as! String)
+                
+                
+                
+                
                 
                 
                 var eventCatPrice = [Int]()
                 
-                if let cat1 = eventObject?["Category 1: Price"] as? Int{ eventCatPrice.append(cat1)
-                }
-                else{
-                    eventCatPrice.append(0)
-                }
-                if let cat2 = eventObject?["Category : Price"] as? Int{ eventCatPrice.append(cat2)
-                }
-                else{
-                    eventCatPrice.append(0)
-                }
-                if let cat3 = eventObject?["Category 3: Price"] as? Int{ eventCatPrice.append(cat3)
-                }
-                else{
-                    eventCatPrice.append(0)
-                }
-                if let cat4 = eventObject?["Category 4: Price"] as? Int{ eventCatPrice.append(cat4)
-                }
-                else{
-                    eventCatPrice.append(0)
-                }
                 if let cat5 = eventObject?["Category 5(standing area): Price"] as? Int{ eventCatPrice.append(cat5)
                 }
                 else{
                     eventCatPrice.append(0)
                 }
                 
+                if let cat4 = eventObject?["Category 4: Price"] as? Int{ eventCatPrice.append(cat4)
+                }
+                else{
+                    eventCatPrice.append(0)
+                }
+                
+                if let cat3 = eventObject?["Category 3: Price"] as? Int{ eventCatPrice.append(cat3)
+                }
+                else{
+                    eventCatPrice.append(0)
+                }
+
+                if let cat2 = eventObject?["Category : Price"] as? Int{ eventCatPrice.append(cat2)
+                }
+                else{
+                    eventCatPrice.append(0)
+                }
+                
+                if let cat1 = eventObject?["Category 1: Price"] as? Int{ eventCatPrice.append(cat1)
+                }
+                else{
+                    eventCatPrice.append(0)
+                }
+                
+                
                 
                 var eventCatSeats = [Int]()
                 
-                if let seat1 = eventObject?["Category 1: Number of seat available"] as? Int{ eventCatSeats.append(seat1)
+                if let seat5 = eventObject?["Category 5: Number of seat available"] as? Int{ eventCatSeats.append(seat5)
+                }
+                else{
+                    eventCatSeats.append(0)
+                }
+                
+                if let seat4 = eventObject?["Category 4: Number of seat available"] as? Int{ eventCatSeats.append(seat4)
+                }
+                else{
+                    eventCatSeats.append(0)
+                }
+                
+                if let seat3 = eventObject?["Category 3: Number of seat available"] as? Int{ eventCatSeats.append(seat3)
                 }
                 else{
                     eventCatSeats.append(0)
@@ -381,22 +365,14 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 else{
                     eventCatSeats.append(0)
                 }
-                if let seat3 = eventObject?["Category 3: Number of seat available"] as? Int{ eventCatSeats.append(seat3)
-                }
-                else{
-                    eventCatSeats.append(0)
-                }
-                if let seat4 = eventObject?["Category 4: Number of seat available"] as? Int{ eventCatSeats.append(seat4)
-                }
-                else{
-                    eventCatSeats.append(0)
-                }
-                if let seat5 = eventObject?["Category 5: Number of seat available"] as? Int{ eventCatSeats.append(seat5)
+                
+                if let seat1 = eventObject?["Category 1: Number of seat available"] as? Int{ eventCatSeats.append(seat1)
                 }
                 else{
                     eventCatSeats.append(0)
                 }
                 
+
                 var eventAvailCat = [String]()
                 var eventAvailPrice = [Int]()
                 var eventAvailSeats = [Int]()
@@ -413,25 +389,8 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 
                 let seating1 = Seating(categories: eventAvailCat, price: eventAvailPrice, noSeatsAvail: eventAvailSeats , noCategories: no_avail_cat)
                 
-                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String)
+                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, bannerURL: eventBannerURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String)
                 
-                /*print(type(of: eventArtist))
-                print(type(of: eventLocation))
-                print(type(of: eventDate))
-                print(type(of: eventTime))
-                print(type(of: eventArtistRanking))
-                print(type(of: eventDayinWeek))
-                print(type(of: eventID))
-                print(type(of: eventStatus))
-                print(type(of: eventVenue))
-                print(type(of: eventGenre))
-                print(type(of: eventMonth))
-                print(type(of: eventTimezone))
-                print(type(of: eventImageURL))
-                print(type(of: eventWeekend))*/
-                
-                
-                /*let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, imageURL: eventImageURL as! String, weekend: eventWeekend as! String)*/
                 
                 self.events.append(event1!)
             }

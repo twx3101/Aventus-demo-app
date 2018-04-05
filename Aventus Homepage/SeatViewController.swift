@@ -23,6 +23,8 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var categoryPicker: UIPickerView!
     
     @IBOutlet weak var ticketPicker: UIPickerView!
+
+    @IBOutlet weak var eventView: UIView!
     
     @IBOutlet weak var pickerView: UIView!
     
@@ -127,9 +129,12 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         super.viewDidLoad()
         view.backgroundColor = colors.bg
         
+        //eventView.layer.cornerRadius = 15.0
+        //eventView.clipsToBounds = true
+        
         pickerView.layer.cornerRadius = 15.0
         pickerView.clipsToBounds = true
-        pickerView.backgroundColor = .white
+        pickerView.backgroundColor = colors.greyBg
         
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
@@ -165,7 +170,6 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         selectedCategory = categoriesData[0]
         selectedPrice = Int(priceData[0])!
-        
         
 
     }
