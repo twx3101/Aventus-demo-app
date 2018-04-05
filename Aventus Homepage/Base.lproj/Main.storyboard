@@ -454,16 +454,16 @@
                                 <rect key="frame" x="16" y="234" width="343" height="270"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ipH-jj-BTH" userLabel="TicketStackView">
-                                        <rect key="frame" x="173" y="0.0" width="170" height="245.5"/>
+                                        <rect key="frame" x="173" y="0.0" width="170" height="249"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tickets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdg-wg-IUF" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="170" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="170" height="33"/>
                                                 <fontDescription key="fontDescription" name="Sarabun" family="Sarabun" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7h6-js-bPe">
-                                                <rect key="frame" x="0.0" y="29.5" width="170" height="216"/>
+                                                <rect key="frame" x="0.0" y="33" width="170" height="216"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="170" id="mzm-lI-6nh"/>
                                                 </constraints>
@@ -475,16 +475,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PnY-pX-Gwu" userLabel="CatStackView">
-                                        <rect key="frame" x="0.0" y="0.0" width="170" height="245.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="249"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-sO-EuZ" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="170" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="170" height="33"/>
                                                 <fontDescription key="fontDescription" name="Sarabun" family="Sarabun" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OKB-iG-wZ0">
-                                                <rect key="frame" x="0.0" y="29.5" width="170" height="216"/>
+                                                <rect key="frame" x="0.0" y="33" width="170" height="216"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="170" id="M8P-Wm-ifR"/>
                                                 </constraints>
@@ -496,7 +496,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UP-wU-xmj">
-                                        <rect key="frame" x="137.5" y="220" width="67" height="38"/>
+                                        <rect key="frame" x="148" y="220" width="46" height="41"/>
                                         <accessibility key="accessibilityConfiguration" identifier="seatLayoutPopUp"/>
                                         <fontDescription key="fontDescription" name="Sarabun" family="Sarabun" pointSize="22"/>
                                         <state key="normal" title="Layout">
@@ -519,7 +519,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhp-up-iQp" customClass="RoundButton" customModule="Aventus_Homepage" customModuleProvider="target">
-                                <rect key="frame" x="16" y="526" width="343" height="42"/>
+                                <rect key="frame" x="16" y="526" width="343" height="45"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="X3d-YD-Hos"/>

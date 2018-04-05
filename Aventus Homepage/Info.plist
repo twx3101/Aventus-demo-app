@@ -4,10 +4,10 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>fonts/EthRomainEthon.ttf</string>
-		<string>fonts/Sarabun-Regular.ttf</string>
-		<string>fonts/Sarabun-Bold.ttf</string>
-		<string>fonts/Nexa Light.otf</string>
+		<string>EthRomainEthon.ttf</string>
+		<string>Sarabun-Regular.ttf</string>
+		<string>Sarabun-Bold.ttf</string>
+		<string>Nexa Light.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

@@ -18,10 +18,10 @@
 		A18FF15F204C607300DE4692 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18FF15E204C607300DE4692 /* UnitTests.swift */; };
 		A1AB3169204C529500F5A6A1 /* Aventus_Database_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AB3168204C529500F5A6A1 /* Aventus_Database_Tests.swift */; };
 		A1AB3177204C533100F5A6A1 /* Test_Databse_Fake_Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AB3176204C533100F5A6A1 /* Test_Databse_Fake_Data.swift */; };
-		BF0A131C2076C35500B98981 /* Sarabun-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF0A13192076C28000B98981 /* Sarabun-Regular.ttf */; };
-		BF0A131D2076C36700B98981 /* EthRomainEthon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF0A13162076C28000B98981 /* EthRomainEthon.ttf */; };
-		BF0A131E2076C36A00B98981 /* Nexa Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF0A13172076C28000B98981 /* Nexa Light.otf */; };
-		BF0A131F2076C36C00B98981 /* Sarabun-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF0A13182076C28000B98981 /* Sarabun-Bold.ttf */; };
+		BF0A13232076C7C600B98981 /* EthRomainEthon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF0A13162076C28000B98981 /* EthRomainEthon.ttf */; };
+		BF0A13242076C7C800B98981 /* Sarabun-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF0A13182076C28000B98981 /* Sarabun-Bold.ttf */; };
+		BF0A13252076C7CA00B98981 /* Nexa Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF0A13172076C28000B98981 /* Nexa Light.otf */; };
+		BF0A13262076C7CC00B98981 /* Sarabun-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF0A13192076C28000B98981 /* Sarabun-Regular.ttf */; };
 		BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1607012044A36B00241A2D /* HeaderLabel.swift */; };
 		BF1607042044ADC700241A2D /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1607032044ADC700241A2D /* BodyLabel.swift */; };
 		BF337ED720764A9C00B4D2E1 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF337ED620764A9C00B4D2E1 /* SearchTextField.swift */; };
@@ -116,10 +116,10 @@
 		A1ECFFC5204B109B006DE0C0 /* Aventus HomepageTests2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aventus HomepageTests2.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1ECFFC9204B109B006DE0C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA6B0AEFFA9500FD09E18E5C /* Pods_Aventus_HomepageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_HomepageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF0A13162076C28000B98981 /* EthRomainEthon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EthRomainEthon.ttf; sourceTree = "<group>"; };
-		BF0A13172076C28000B98981 /* Nexa Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nexa Light.otf"; sourceTree = "<group>"; };
-		BF0A13182076C28000B98981 /* Sarabun-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sarabun-Bold.ttf"; sourceTree = "<group>"; };
-		BF0A13192076C28000B98981 /* Sarabun-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sarabun-Regular.ttf"; sourceTree = "<group>"; };
+		BF0A13162076C28000B98981 /* EthRomainEthon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = EthRomainEthon.ttf; path = fonts/EthRomainEthon.ttf; sourceTree = "<group>"; };
+		BF0A13172076C28000B98981 /* Nexa Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa Light.otf"; path = "fonts/Nexa Light.otf"; sourceTree = "<group>"; };
+		BF0A13182076C28000B98981 /* Sarabun-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sarabun-Bold.ttf"; path = "fonts/Sarabun-Bold.ttf"; sourceTree = "<group>"; };
+		BF0A13192076C28000B98981 /* Sarabun-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sarabun-Regular.ttf"; path = "fonts/Sarabun-Regular.ttf"; sourceTree = "<group>"; };
 		BF1607012044A36B00241A2D /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
 		BF1607032044ADC700241A2D /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
 		BF337ED620764A9C00B4D2E1 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTextField.swift; path = "/Users/kk2017/demo-app/Aventus Homepage/SearchTextField.swift"; sourceTree = "<absolute>"; };
@@ -264,18 +264,6 @@
 			path = "Aventus HomepageTests2";
 			sourceTree = "<group>";
 		};
-		BF0A131A2076C28000B98981 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				BF0A13162076C28000B98981 /* EthRomainEthon.ttf */,
-				BF0A13172076C28000B98981 /* Nexa Light.otf */,
-				BF0A13182076C28000B98981 /* Sarabun-Bold.ttf */,
-				BF0A13192076C28000B98981 /* Sarabun-Regular.ttf */,
-			);
-			name = fonts;
-			path = "/Users/kk2017/demo-app/Aventus Homepage/fonts";
-			sourceTree = "<absolute>";
-		};
 		BF7B71AE20236FCC009E5598 = {
 			isa = PBXGroup;
 			children = (
@@ -307,7 +295,10 @@
 		BF7B71B920236FCC009E5598 /* Aventus Homepage */ = {
 			isa = PBXGroup;
 			children = (
-				BF0A131A2076C28000B98981 /* fonts */,
+				BF0A13162076C28000B98981 /* EthRomainEthon.ttf */,
+				BF0A13172076C28000B98981 /* Nexa Light.otf */,
+				BF0A13182076C28000B98981 /* Sarabun-Bold.ttf */,
+				BF0A13192076C28000B98981 /* Sarabun-Regular.ttf */,
 				457E32D220659C7E00B7224B /* WarningLabel.swift */,
 				457E32D020659C6200B7224B /* CustomSegmentedControl.swift */,
 				BF51ED4E20432787003D0219 /* ColorHelper.swift */,
@@ -577,12 +568,12 @@
 			files = (
 				BF7B71C520236FCC009E5598 /* LaunchScreen.storyboard in Resources */,
 				2F7E52B120758BD1003B96D7 /* GoogleService-Info.plist in Resources */,
+				BF0A13262076C7CC00B98981 /* Sarabun-Regular.ttf in Resources */,
 				BF7B71C220236FCC009E5598 /* Assets.xcassets in Resources */,
-				BF0A131C2076C35500B98981 /* Sarabun-Regular.ttf in Resources */,
+				BF0A13232076C7C600B98981 /* EthRomainEthon.ttf in Resources */,
+				BF0A13242076C7C800B98981 /* Sarabun-Bold.ttf in Resources */,
 				BF7B71C020236FCC009E5598 /* Main.storyboard in Resources */,
-				BF0A131D2076C36700B98981 /* EthRomainEthon.ttf in Resources */,
-				BF0A131F2076C36C00B98981 /* Sarabun-Bold.ttf in Resources */,
-				BF0A131E2076C36A00B98981 /* Nexa Light.otf in Resources */,
+				BF0A13252076C7CA00B98981 /* Nexa Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
