@@ -125,6 +125,8 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 
     }
 
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = colors.bg
@@ -134,7 +136,9 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         pickerView.layer.cornerRadius = 15.0
         pickerView.clipsToBounds = true
-        pickerView.backgroundColor = colors.greyBg
+        //pickerView.backgroundColor = colors.greyBg
+        pickerView.layer.borderWidth = 1.5
+        pickerView.layer.borderColor = UIColor.black.cgColor
         
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
@@ -146,7 +150,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         labelView.layer.backgroundColor = UIColor.white.withAlphaComponent(0.5).cgColor
  
-        Alamofire.request((eventLoaded?.imageURL)!).responseImage { response in
+        Alamofire.request((eventLoaded?.bannerURL)!).responseImage { response in
             debugPrint(response)
             
             if let image = response.result.value{

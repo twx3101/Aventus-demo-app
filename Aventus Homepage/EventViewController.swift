@@ -61,52 +61,50 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
             event = events[indexPath.row]
         }
 
-        let txtLabel = event.artist + " - " + event.location
+        let txtLabel = (event.artist).uppercased() + " " + event.location
         
         let mutableString = NSMutableAttributedString(string: txtLabel)
         
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location: 0, length: txtLabel.count))
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.bodyText, range: NSRange(location: 0, length: txtLabel.count))
         
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.bodyText, range: NSRange(location: 0, length: event.artist.count))
+        mutableString.addAttribute(NSFontAttributeName, value: UIFont(name: "Nexa Light", size: 21) as Any, range: NSRange(location: 0, length: event.artist.count))
         
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.headerText, range: NSRange(location: 0, length: event.artist.count))
         
-        
+
         cell.artistLabel.attributedText = mutableString
         
-        cell.locationDatetimeLabel.text = event.datetime + ", " + event.time
-        cell.locationDatetimeLabel.textColor = .white
-        
-        print(event.bannerURL)
+        cell.locationDatetimeLabel.text = event.formattedDate + ", " + event.time
+        cell.locationDatetimeLabel.textColor = colors.bodyText
 
         Alamofire.request(event.bannerURL).responseImage { response in
             debugPrint(response)
-            
-            
+
             if let image = response.result.value{
-                
-                let size = CGSize(width: 358.0, height: 190.0)
-                let aspectScaledToFitImage = image.af_imageAspectScaled(toFit: size)
-                cell.artistPhoto.image = aspectScaledToFitImage
-                
+                cell.artistPhoto.image = image
+    
             }
-            
-            //let size = CGSize(width: 100.0, height: 100.0)
-            
-            // Scale image to size disregarding aspect ratio
-            //let image = image.af_imageScaled(to: size)
         }
-        
-        cell.backgroundColor = colors.bg
+
+        cell.layer.cornerRadius = 15.0
+        cell.layer.masksToBounds = true
+        cell.clipsToBounds = true
         
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //let itemSizeWidth = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
-        let itemSizeWidth = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10))
+        let itemSizeWidth = collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right)
+        //let itemSizeWidth = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right))
+        
+        //let itemSizeWidth = collectionView.frame.width
         //let itemSizeHeight = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right))
-        let itemSizeHeight: CGFloat = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2 + 20
+        let itemSizeHeight: CGFloat = collectionView.frame.height / 3
+        
+
+        
+        
         return CGSize(width: itemSizeWidth, height: itemSizeHeight)
     }
     
@@ -208,6 +206,8 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         collectionView.dataSource = self
         
         view.backgroundColor = colors.bg
+        collectionView.backgroundColor = colors.bg
+    
         // Do any additional setup after loading the view.
         // Load events to display
         
@@ -271,6 +271,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 let eventObject = event.value as? [String: AnyObject]
                 let eventArtist = eventObject?["Fake Mainstream Events"]
                 let eventDate = eventObject?["Local Date"]
+                let eventFormattedDate = eventObject?["Local Date (uk format)"]
                 let eventLocation = eventObject?["Fake City"]
                 let eventTime = eventObject?["Local Time (formatted)"]
                 //let eventTime = eventObject?["Local Time"]
@@ -300,11 +301,6 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 eventCatArea.append(eventObject?["Area: category 3"] as! String)
                 eventCatArea.append(eventObject?["Area: category 2"] as! String)
                 eventCatArea.append(eventObject?["Area: category 1"] as! String)
-                
-                
-                
-                
-                
                 
                 var eventCatPrice = [Int]()
                 
@@ -389,7 +385,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 
                 let seating1 = Seating(categories: eventAvailCat, price: eventAvailPrice, noSeatsAvail: eventAvailSeats , noCategories: no_avail_cat)
                 
-                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, bannerURL: eventBannerURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String)
+                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, formattedDate: eventFormattedDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, bannerURL: eventBannerURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String)
                 
                 
                 self.events.append(event1!)

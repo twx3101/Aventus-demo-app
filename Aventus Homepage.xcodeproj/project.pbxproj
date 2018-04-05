@@ -23,6 +23,7 @@
 		BF337ED720764A9C00B4D2E1 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF337ED620764A9C00B4D2E1 /* SearchTextField.swift */; };
 		BF337ED920764EAD00B4D2E1 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF337ED820764EAD00B4D2E1 /* EventView.swift */; };
 		BF337EDB2076567A00B4D2E1 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = BF337EDA2076567A00B4D2E1 /* fonts */; };
+		BF337EDF20768C8300B4D2E1 /* DescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF337EDE20768C8300B4D2E1 /* DescriptionLabel.swift */; };
 		BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF40F12E2030971400E280BB /* SeatViewController.swift */; };
 		BF51ED4F20432787003D0219 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED4E20432787003D0219 /* ColorHelper.swift */; };
 		BF51ED51204331B9003D0219 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED50204331B9003D0219 /* RecordButton.swift */; };
@@ -117,6 +118,7 @@
 		BF337ED620764A9C00B4D2E1 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTextField.swift; path = "/Users/kk2017/demo-app/Aventus Homepage/SearchTextField.swift"; sourceTree = "<absolute>"; };
 		BF337ED820764EAD00B4D2E1 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		BF337EDA2076567A00B4D2E1 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../Desktop/fonts; sourceTree = "<group>"; };
+		BF337EDE20768C8300B4D2E1 /* DescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLabel.swift; sourceTree = "<group>"; };
 		BF40F12E2030971400E280BB /* SeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatViewController.swift; sourceTree = "<group>"; };
 		BF51ED4E20432787003D0219 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		BF51ED50204331B9003D0219 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				BF51ED5420433BBD003D0219 /* UtterLabel.swift */,
 				BF1607012044A36B00241A2D /* HeaderLabel.swift */,
 				BF1607032044ADC700241A2D /* BodyLabel.swift */,
+				BF337EDE20768C8300B4D2E1 /* DescriptionLabel.swift */,
 				BF51ED50204331B9003D0219 /* RecordButton.swift */,
 				BF933144204471160002A3C8 /* RoundButton.swift */,
 				BF337ED620764A9C00B4D2E1 /* SearchTextField.swift */,
@@ -767,6 +770,7 @@
 				BF83B2C62075109C00EA2405 /* EventCollectionViewCell.swift in Sources */,
 				BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */,
 				457E32D720659C7E00B7224B /* ProfileViewController.swift in Sources */,
+				BF337EDF20768C8300B4D2E1 /* DescriptionLabel.swift in Sources */,
 				BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */,
 				BF76AE3020264CD5006274FE /* Event.swift in Sources */,
 			);

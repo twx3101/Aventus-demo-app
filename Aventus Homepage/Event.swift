@@ -17,6 +17,8 @@ class Event{
         var location: String //Fake Generated City
         
         var datetime: String
+    
+        var formattedDate: String
         
         var description: String?
         
@@ -111,7 +113,7 @@ class Event{
          }*/
         
     
-    init?(artist: String, location: String, datetime: String, description: String?, photo: UIImage?, seating: Seating, time: String, artist_ranking: Int, day_in_week: String, event_ID: String, event_status: String, venue: String, genre: String, month: String, timezone: String, city: String, imageURL: String, bannerURL: String, address: String, weekend: String){
+    init?(artist: String, location: String, datetime: String, formattedDate: String, description: String?, photo: UIImage?, seating: Seating, time: String, artist_ranking: Int, day_in_week: String, event_ID: String, event_status: String, venue: String, genre: String, month: String, timezone: String, city: String, imageURL: String, bannerURL: String, address: String, weekend: String){
             
             guard !artist.isEmpty && !location.isEmpty && !datetime.isEmpty else{
                 return nil
@@ -120,6 +122,7 @@ class Event{
             self.artist = artist
             self.location = location
             self.datetime = datetime
+            self.formattedDate = formattedDate
             self.description = description
             self.photo = photo
             self.time = time

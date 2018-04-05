@@ -32,7 +32,7 @@ struct colors{
     static var tableBg = UIColorFromHex(rgbValue: 0xACA2B2, alpha: 1)
     
     // table header text color
-    static var headerText = UIColor.purple
+    static var headerText = UIColorFromHex(rgbValue: greenCol, alpha: 1)
     
     // table header background color
     static var headerBg = UIColorFromHex(rgbValue: 0x1E0E2B, alpha: 1)
@@ -40,7 +40,7 @@ struct colors{
     // table body text color
     //static var bodyText = UIColorFromHex(rgbValue: 0xe11693, alpha: 1)
     //static var bodyText = UIColorFromHex(rgbValue: 0x1f0f34, alpha: 1)
-    static var bodyText = UIColorFromHex(rgbValue: 0xBA267A, alpha: 1)
+    static var bodyText = UIColorFromHex(rgbValue: whiteCol, alpha: 1)
     
     
     // utterance text
