@@ -131,8 +131,8 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         super.viewDidLoad()
         view.backgroundColor = colors.bg
         
-        //eventView.layer.cornerRadius = 15.0
-        //eventView.clipsToBounds = true
+        eventView.layer.cornerRadius = 15.0
+        eventView.clipsToBounds = true
         
         pickerView.layer.cornerRadius = 15.0
         pickerView.clipsToBounds = true

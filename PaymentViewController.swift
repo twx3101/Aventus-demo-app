@@ -35,29 +35,6 @@ class PaymentViewController: UIViewController {
     
     var total: Int = 0
     
-
-    
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "ConfirmSegue" {
-            
-            let detailViewController = segue.destination as! ConfirmationViewController
-            
-            detailViewController.payment = payment
-            
-        }
-        
-        /*if nameTextField.text != "" {
-            OperationQueue.main.addOperation {
-                self.performSegue(withIdentifier: "ConfirmSegue", sender: self)
-            }
-        }*/
-    }
-    
-    func confirmPayment() {
-        self.performSegue(withIdentifier: "ConfirmSegue", sender: self)
-    }*/
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
