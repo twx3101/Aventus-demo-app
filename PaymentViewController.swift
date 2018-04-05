@@ -23,6 +23,8 @@ class PaymentViewController: UIViewController {
     
     @IBOutlet weak var summaryView: UIView!
     
+    @IBOutlet weak var artistPhoto: UIImageView!
+    
     @IBOutlet weak var detailLabel: UILabel!
     
     @IBOutlet weak var totalLabel: UILabel!
@@ -41,6 +43,8 @@ class PaymentViewController: UIViewController {
         self.view.backgroundColor = colors.bg
 
         summaryView.backgroundColor = colors.buttonBg
+        
+        //artistPhoto.image = 
 
         detailLabel.text = (event?.artist)! + ", " + (payment?.category)!
         
@@ -48,13 +52,6 @@ class PaymentViewController: UIViewController {
         totalLabel.text = "£" + String((payment?.selectedSeats)!*(payment?.price)!)
         
 
-        
-        //self.performSegue(withIdentifier: "ConfirmSegue", sender: self)
-        
-        //NotificationCenter.default.addObserver(self, selector: #selector(confirmPayment), name: NSNotification.Name(rawValue: "ConfirmSegue"), object: nil)
-        //count = (payment?.selectedSeats.count)! + 1
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

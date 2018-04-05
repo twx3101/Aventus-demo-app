@@ -10,6 +10,14 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Sarabun-Bold.ttf">
+            <string>Sarabun-Bold</string>
+        </array>
+        <array key="Sarabun-Regular.ttf">
+            <string>Sarabun</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Page View Controller-->
         <scene sceneID="Wts-7S-HhY">
@@ -409,13 +417,13 @@
                                         <rect key="frame" x="0.0" y="132" width="343" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frQ-EC-Nht" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                <rect key="frame" x="297" y="4" width="42" height="20.5"/>
+                                                <rect key="frame" x="4" y="4" width="42" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV2-ud-0nr" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                <rect key="frame" x="297" y="25.5" width="42" height="20.5"/>
+                                                <rect key="frame" x="4" y="25.5" width="42" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -424,11 +432,11 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="cV2-ud-0nr" secondAttribute="bottom" constant="4" id="DGl-fM-AUH"/>
-                                            <constraint firstAttribute="trailing" secondItem="cV2-ud-0nr" secondAttribute="trailing" constant="4" id="EAS-1O-BgE"/>
                                             <constraint firstAttribute="height" constant="50" id="Q0x-Ai-wZq"/>
+                                            <constraint firstItem="cV2-ud-0nr" firstAttribute="leading" secondItem="Tu0-YD-tZ9" secondAttribute="leading" constant="4" id="iEM-gK-NhN"/>
+                                            <constraint firstItem="frQ-EC-Nht" firstAttribute="leading" secondItem="Tu0-YD-tZ9" secondAttribute="leading" constant="4" id="ml5-c9-dFc"/>
                                             <constraint firstItem="frQ-EC-Nht" firstAttribute="top" secondItem="Tu0-YD-tZ9" secondAttribute="top" constant="4" id="mlS-aA-b9c"/>
                                             <constraint firstAttribute="width" constant="343" id="nnq-I5-n8U"/>
-                                            <constraint firstAttribute="trailing" secondItem="frQ-EC-Nht" secondAttribute="trailing" constant="4" id="zUB-Pn-dch"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -446,36 +454,37 @@
                                 <rect key="frame" x="16" y="234" width="343" height="270"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ipH-jj-BTH" userLabel="TicketStackView">
-                                        <rect key="frame" x="173" y="0.0" width="170" height="236.5"/>
+                                        <rect key="frame" x="173" y="0.0" width="170" height="245.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tickets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdg-wg-IUF" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="170" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="170" height="29.5"/>
+                                                <fontDescription key="fontDescription" name="Sarabun" family="Sarabun" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7h6-js-bPe">
-                                                <rect key="frame" x="0.0" y="20.5" width="170" height="216"/>
+                                                <rect key="frame" x="0.0" y="29.5" width="170" height="216"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="170" id="mzm-lI-6nh"/>
                                                 </constraints>
                                             </pickerView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="bdg-wg-IUF" firstAttribute="top" secondItem="ipH-jj-BTH" secondAttribute="top" constant="20" id="9cr-Ks-20b"/>
                                             <constraint firstAttribute="width" constant="170" id="Bh9-II-m0i"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PnY-pX-Gwu" userLabel="CatStackView">
-                                        <rect key="frame" x="0.0" y="0.0" width="170" height="236.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="245.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-sO-EuZ" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="170" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-sO-EuZ" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="170" height="29.5"/>
+                                                <fontDescription key="fontDescription" name="Sarabun" family="Sarabun" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OKB-iG-wZ0">
-                                                <rect key="frame" x="0.0" y="20.5" width="170" height="216"/>
+                                                <rect key="frame" x="0.0" y="29.5" width="170" height="216"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="170" id="M8P-Wm-ifR"/>
                                                 </constraints>
@@ -483,66 +492,72 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="170" id="PPR-8m-tlk"/>
+                                            <constraint firstItem="LPh-sO-EuZ" firstAttribute="top" secondItem="PnY-pX-Gwu" secondAttribute="top" constant="20" id="xJH-gg-wF5"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UP-wU-xmj">
+                                        <rect key="frame" x="137.5" y="220" width="67" height="38"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="seatLayoutPopUp"/>
+                                        <fontDescription key="fontDescription" name="Sarabun" family="Sarabun" pointSize="22"/>
+                                        <state key="normal" title="Layout">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showLayoutButton:" destination="PPN-Wq-gpx" eventType="touchUpInside" id="9gj-t1-eQZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ipH-jj-BTH" secondAttribute="trailing" id="5Er-rl-Tw3"/>
                                     <constraint firstItem="PnY-pX-Gwu" firstAttribute="leading" secondItem="YLd-ms-5ya" secondAttribute="leading" id="5GR-64-RpA"/>
+                                    <constraint firstItem="8UP-wU-xmj" firstAttribute="top" secondItem="YLd-ms-5ya" secondAttribute="top" constant="220" id="Dz9-0G-2E1"/>
                                     <constraint firstItem="ipH-jj-BTH" firstAttribute="top" secondItem="YLd-ms-5ya" secondAttribute="top" id="HfH-Pk-6PP"/>
+                                    <constraint firstItem="8UP-wU-xmj" firstAttribute="centerX" secondItem="YLd-ms-5ya" secondAttribute="centerX" id="Par-c4-B86"/>
                                     <constraint firstAttribute="height" constant="270" id="sQf-NN-2uZ"/>
                                     <constraint firstAttribute="width" constant="343" id="tjA-dH-afy"/>
                                     <constraint firstItem="PnY-pX-Gwu" firstAttribute="top" secondItem="YLd-ms-5ya" secondAttribute="top" id="y0d-Y3-9PF"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="VmM-mz-ztS">
-                                <rect key="frame" x="16" y="520" width="343" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UP-wU-xmj" customClass="RoundButton" customModule="Aventus_Homepage" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="30"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="seatLayoutPopUp"/>
-                                        <state key="normal" title="Layout"/>
-                                        <connections>
-                                            <action selector="showLayoutButton:" destination="PPN-Wq-gpx" eventType="touchUpInside" id="9gj-t1-eQZ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhp-up-iQp" customClass="RoundButton" customModule="Aventus_Homepage" customModuleProvider="target">
-                                        <rect key="frame" x="179.5" y="0.0" width="163.5" height="30"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Purchase"/>
-                                        <connections>
-                                            <action selector="purchaseButton:" destination="PPN-Wq-gpx" eventType="touchUpInside" id="9Xy-mf-sLs"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhp-up-iQp" customClass="RoundButton" customModule="Aventus_Homepage" customModuleProvider="target">
+                                <rect key="frame" x="16" y="526" width="343" height="42"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="343" id="8m8-JN-J6W"/>
-                                    <constraint firstAttribute="height" constant="30" id="YhH-Md-Mw6"/>
+                                    <constraint firstAttribute="width" constant="343" id="X3d-YD-Hos"/>
                                 </constraints>
-                            </stackView>
+                                <fontDescription key="fontDescription" name="Sarabun-Bold" family="Sarabun" pointSize="25"/>
+                                <state key="normal" title="Purchase">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="purchaseButton:" destination="PPN-Wq-gpx" eventType="touchUpInside" id="9Xy-mf-sLs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Mb0-1f-oi8" firstAttribute="top" secondItem="bHF-Xu-Vfa" secondAttribute="bottom" id="4fo-9l-M1B"/>
                             <constraint firstItem="sB4-xZ-nOT" firstAttribute="trailing" secondItem="nqJ-H0-mU7" secondAttribute="trailingMargin" id="J0E-LV-jcc"/>
                             <constraint firstItem="bHF-Xu-Vfa" firstAttribute="centerX" secondItem="nqJ-H0-mU7" secondAttribute="centerX" id="Od6-X2-c33"/>
-                            <constraint firstItem="VmM-mz-ztS" firstAttribute="top" secondItem="YLd-ms-5ya" secondAttribute="bottom" constant="16" id="P9t-aW-tuy"/>
-                            <constraint firstItem="VmM-mz-ztS" firstAttribute="centerX" secondItem="nqJ-H0-mU7" secondAttribute="centerX" id="XBC-Iw-FCf"/>
+                            <constraint firstItem="Rhp-up-iQp" firstAttribute="top" secondItem="sB4-xZ-nOT" secondAttribute="bottom" constant="300" id="VLl-5X-reR"/>
                             <constraint firstItem="sB4-xZ-nOT" firstAttribute="top" secondItem="fzn-Va-zEa" secondAttribute="bottom" constant="24" id="kJi-qF-h5S"/>
                             <constraint firstItem="sB4-xZ-nOT" firstAttribute="leading" secondItem="nqJ-H0-mU7" secondAttribute="leadingMargin" id="ntX-Hf-9nz"/>
                             <constraint firstItem="YLd-ms-5ya" firstAttribute="top" secondItem="sB4-xZ-nOT" secondAttribute="bottom" constant="8" id="ooD-lx-mKN"/>
                             <constraint firstItem="YLd-ms-5ya" firstAttribute="centerX" secondItem="nqJ-H0-mU7" secondAttribute="centerX" id="uqj-Xk-zlm"/>
+                            <constraint firstItem="Rhp-up-iQp" firstAttribute="centerX" secondItem="nqJ-H0-mU7" secondAttribute="centerX" id="x9f-3R-PhC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ly3-gZ-ohW"/>
                     <connections>
                         <outlet property="artistLabel" destination="frQ-EC-Nht" id="F0O-9m-Fkl"/>
                         <outlet property="artistPhoto" destination="pny-ET-V8O" id="7xM-4O-LV2"/>
+                        <outlet property="categoryLabel" destination="LPh-sO-EuZ" id="daE-IS-sl7"/>
                         <outlet property="categoryPicker" destination="OKB-iG-wZ0" id="gtu-fc-C6X"/>
                         <outlet property="eventView" destination="sB4-xZ-nOT" id="AK4-AM-6Mi"/>
                         <outlet property="labelView" destination="Tu0-YD-tZ9" id="NlR-JJ-1dc"/>
+                        <outlet property="layoutButton" destination="8UP-wU-xmj" id="K45-Ra-meC"/>
                         <outlet property="locationDateTimeLabel" destination="cV2-ud-0nr" id="Vxq-h2-fdJ"/>
                         <outlet property="pickerView" destination="YLd-ms-5ya" id="aWG-bA-t4s"/>
+                        <outlet property="ticketLabel" destination="bdg-wg-IUF" id="z2F-va-i7X"/>
                         <outlet property="ticketPicker" destination="7h6-js-bPe" id="R6S-aC-i48"/>
                     </connections>
                 </viewController>
@@ -748,6 +763,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="y1i-mg-VuH"/>
                     <connections>
+                        <outlet property="artistPhoto" destination="Vf1-oV-pZY" id="lE7-4q-KE9"/>
                         <outlet property="cardNoTextField" destination="3g7-e4-cb6" id="y2h-oR-eua"/>
                         <outlet property="cvvTextField" destination="UNl-Zv-fay" id="YdV-NU-6vo"/>
                         <outlet property="detailLabel" destination="VN0-oH-gME" id="Jn7-9B-vl5"/>

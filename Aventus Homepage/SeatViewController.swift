@@ -10,13 +10,16 @@ import UIKit
 import Alamofire
 
 class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
-    
-    
-    
-    
+
     @IBOutlet weak var artistLabel: UILabel!
     
+    @IBOutlet weak var categoryLabel: HeaderLabel!
+    
+    @IBOutlet weak var ticketLabel: HeaderLabel!
+    
     @IBOutlet weak var locationDateTimeLabel: UILabel!
+    
+    @IBOutlet weak var layoutButton: UIButton!
     
     @IBOutlet weak var artistPhoto: UIImageView!
     
@@ -81,14 +84,14 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             topLabel.textColor = labelColor
             
             topLabel.textAlignment = .center
-            topLabel.font = UIFont.boldSystemFont(ofSize: 18)
+            topLabel.font = UIFont(name: "Sarabun", size: 25)
             view.addSubview(topLabel)
             
             let bottomLabel = UILabel(frame: CGRect(x: 0, y: pickerHeight/2, width: pickerWidth*2, height: 30 ))
             bottomLabel.text = "£" + priceData[row]
             bottomLabel.textColor = labelColor
             bottomLabel.textAlignment = .center
-            bottomLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightThin)
+            bottomLabel.font = UIFont(name: "Sarabun", size: 25)
             view.addSubview(bottomLabel)
             
         } else {
@@ -101,7 +104,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             topLabel.text = ticketData[row]
             topLabel.textColor = labelColor
             topLabel.textAlignment = .center
-            topLabel.font = UIFont.systemFont(ofSize: 32, weight: UIFontWeightThin)
+            topLabel.font = UIFont(name: "Sarabun", size: 36)
             view.addSubview(topLabel)
             
         }
@@ -138,17 +141,39 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         pickerView.clipsToBounds = true
         //pickerView.backgroundColor = colors.greyBg
         pickerView.layer.borderWidth = 1.5
-        pickerView.layer.borderColor = UIColor.black.cgColor
+        pickerView.layer.borderColor = (colors.border).cgColor
+        //pickerView.transform = CGAffineTransformMak
         
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
         ticketPicker.delegate = self
         ticketPicker.dataSource = self
         
-        artistLabel.text = (eventLoaded?.artist)! + " - " + (eventLoaded?.location)!
-        locationDateTimeLabel.text = (eventLoaded?.datetime)! + ", " + (eventLoaded?.time)!
+        //layoutButton.layer.backgroundColor = (colors.headerTwoText).cgColor
+        layoutButton.setTitleColor(colors.headerTwoText, for: UIControlState.normal)
         
-        labelView.layer.backgroundColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        categoryLabel.textColor = colors.headerTwoText
+        ticketLabel.textColor = colors.headerTwoText
+       // artistLabel.text = (eventLoaded?.artist)! + " - " + (eventLoaded?.location)!
+        //locationDateTimeLabel.text = (eventLoaded?.datetime)! + ", " + (eventLoaded?.time)!
+        
+        //labelView.layer.backgroundColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        
+        let txtLabel = ((eventLoaded?.artist)?.uppercased())! + " " + (eventLoaded?.location)!
+        
+        let mutableString = NSMutableAttributedString(string: txtLabel)
+        
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.bodyText, range: NSRange(location: 0, length: txtLabel.count))
+        
+        mutableString.addAttribute(NSFontAttributeName, value: UIFont(name: "Nexa Light", size: 21) as Any, range: NSRange(location: 0, length: (eventLoaded?.artist.count)!))
+        
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.headerText, range: NSRange(location: 0, length: (eventLoaded?.artist.count)!))
+        
+        
+        artistLabel.attributedText = mutableString
+        
+        locationDateTimeLabel.text = (eventLoaded?.formattedDate)! + ", " + (eventLoaded?.time)!
+        locationDateTimeLabel.textColor = colors.bodyText
  
         Alamofire.request((eventLoaded?.bannerURL)!).responseImage { response in
             debugPrint(response)

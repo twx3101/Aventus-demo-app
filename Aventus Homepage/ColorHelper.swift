@@ -33,6 +33,8 @@ struct colors{
     
     // table header text color
     static var headerText = UIColorFromHex(rgbValue: greenCol, alpha: 1)
+    //Header 2 seating and cat
+    static var headerTwoText = UIColorFromHex(rgbValue: neonBlueCol, alpha: 1)
     
     // table header background color
     static var headerBg = UIColorFromHex(rgbValue: 0x1E0E2B, alpha: 1)
@@ -42,6 +44,8 @@ struct colors{
     //static var bodyText = UIColorFromHex(rgbValue: 0x1f0f34, alpha: 1)
     static var bodyText = UIColorFromHex(rgbValue: whiteCol, alpha: 1)
     
+    //border
+    static var border = UIColorFromHex(rgbValue: pinkCol, alpha: 1)
     
     // utterance text
     static var utterText = UIColorFromHex(rgbValue: pinkCol, alpha: 1)
@@ -72,7 +76,7 @@ struct colors{
     static var buttonBg = UIColorFromHex(rgbValue: greyCol, alpha: 1)
     
     // button text
-    static var buttonText = UIColorFromHex(rgbValue: 0x1f0f34, alpha: 1)
+    static var buttonText = UIColorFromHex(rgbValue: whiteCol, alpha: 1)
 
 }
 
@@ -84,3 +88,4 @@ func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
     
     return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
 }
+
