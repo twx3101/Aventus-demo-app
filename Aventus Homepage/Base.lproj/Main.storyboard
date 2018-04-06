@@ -650,45 +650,68 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="276-Nf-5bF">
-                                <rect key="frame" x="16" y="36" width="343" height="548.5"/>
+                                <rect key="frame" x="16" y="68" width="343" height="430"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2SZ-aj-e4o">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="298.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="180"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xof-Od-tpd" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uk2-jg-8ZB" customClass="EventView">
-                                                <rect key="frame" x="0.0" y="28.5" width="343" height="270"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uk2-jg-8ZB" customClass="EventView" customModule="Aventus_Homepage" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="180"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abs-Ya-Xwz">
-                                                        <rect key="frame" x="179" y="53" width="143" height="21"/>
+                                                    <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VkW-BY-WZY">
+                                                        <rect key="frame" x="15" y="13" width="313" height="249"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VN0-oH-gME">
-                                                        <rect key="frame" x="15" y="8" width="307" height="37"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <prototypes>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SummaryTableViewCell" id="l8g-nI-YUS" customClass="SummaryTableViewCell" customModule="Aventus_Homepage" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="28" width="313" height="44"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="l8g-nI-YUS" id="yJU-S6-OiC">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="313" height="44"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKg-hq-bPH">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLH-Mv-L2h">
+                                                                            <rect key="frame" x="271" y="0.0" width="42" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="JLH-Mv-L2h" firstAttribute="top" secondItem="yJU-S6-OiC" secondAttribute="top" id="65W-4h-8Eu"/>
+                                                                        <constraint firstItem="jKg-hq-bPH" firstAttribute="leading" secondItem="yJU-S6-OiC" secondAttribute="leading" id="Hfa-wl-vtd"/>
+                                                                        <constraint firstItem="jKg-hq-bPH" firstAttribute="top" secondItem="yJU-S6-OiC" secondAttribute="top" id="pTW-Oj-xXH"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="JLH-Mv-L2h" secondAttribute="trailing" id="xgM-WJ-hFo"/>
+                                                                    </constraints>
+                                                                </tableViewCellContentView>
+                                                                <connections>
+                                                                    <outlet property="detailLabel" destination="jKg-hq-bPH" id="hWa-WE-mDT"/>
+                                                                    <outlet property="detailRightLabel" destination="JLH-Mv-L2h" id="kYW-pP-O5m"/>
+                                                                </connections>
+                                                            </tableViewCell>
+                                                        </prototypes>
+                                                    </tableView>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="270" id="hmB-z7-c69"/>
+                                                    <constraint firstAttribute="height" constant="180" id="hmB-z7-c69"/>
                                                     <constraint firstAttribute="width" constant="343" id="jOj-gY-UIL"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Uk2-jg-8ZB" firstAttribute="top" secondItem="2SZ-aj-e4o" secondAttribute="top" constant="2" id="8eB-vq-GVe"/>
+                                            <constraint firstItem="Uk2-jg-8ZB" firstAttribute="leading" secondItem="2SZ-aj-e4o" secondAttribute="leading" id="SYB-KF-1Ih"/>
+                                            <constraint firstItem="Uk2-jg-8ZB" firstAttribute="centerX" secondItem="2SZ-aj-e4o" secondAttribute="centerX" id="fO9-GX-5Oh"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OHp-c8-bhO">
-                                        <rect key="frame" x="0.0" y="314.5" width="343" height="234"/>
+                                        <rect key="frame" x="0.0" y="196" width="343" height="234"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ad-ll-O7U" customClass="GeneralView" customModule="Aventus_Homepage" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="82"/>
@@ -755,12 +778,20 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xof-Od-tpd" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
+                                <rect key="frame" x="16" y="44" width="73" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="276-Nf-5bF" firstAttribute="leading" secondItem="ued-Ui-kPU" secondAttribute="leadingMargin" id="7Ev-J0-0jt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="276-Nf-5bF" secondAttribute="trailing" id="Hm6-Ld-p0D"/>
-                            <constraint firstItem="276-Nf-5bF" firstAttribute="top" secondItem="Mlw-2f-8DO" secondAttribute="bottom" constant="16" id="Xv2-et-ahq"/>
+                            <constraint firstItem="276-Nf-5bF" firstAttribute="top" secondItem="Xof-Od-tpd" secondAttribute="top" constant="24" id="Xv2-et-ahq"/>
+                            <constraint firstItem="Xof-Od-tpd" firstAttribute="top" secondItem="Mlw-2f-8DO" secondAttribute="bottom" constant="24" id="cbA-M1-iAg"/>
+                            <constraint firstItem="Xof-Od-tpd" firstAttribute="leading" secondItem="ued-Ui-kPU" secondAttribute="leadingMargin" id="i8e-2P-b5V"/>
                             <constraint firstItem="LMY-GL-fP4" firstAttribute="centerX" secondItem="ued-Ui-kPU" secondAttribute="centerX" id="kSa-EL-P4m"/>
                             <constraint firstItem="2KM-w9-jRD" firstAttribute="top" secondItem="LMY-GL-fP4" secondAttribute="bottom" constant="4" id="xOk-eh-hGd"/>
                         </constraints>
@@ -769,11 +800,10 @@
                     <connections>
                         <outlet property="cardNoTextField" destination="3g7-e4-cb6" id="y2h-oR-eua"/>
                         <outlet property="cvvTextField" destination="UNl-Zv-fay" id="YdV-NU-6vo"/>
-                        <outlet property="detailLabel" destination="VN0-oH-gME" id="Jn7-9B-vl5"/>
                         <outlet property="expiryTextField" destination="lPa-br-eR1" id="pge-OM-h5g"/>
                         <outlet property="nameTextField" destination="S99-sV-s4I" id="Ky5-4q-ETX"/>
+                        <outlet property="summaryTableView" destination="VkW-BY-WZY" id="Czn-Rd-T1X"/>
                         <outlet property="summaryView" destination="Uk2-jg-8ZB" id="mks-iM-PrD"/>
-                        <outlet property="totalLabel" destination="Abs-Ya-Xwz" id="6Ns-9H-bMJ"/>
                         <outlet property="warningLabel" destination="eUK-ln-nWh" id="ymy-a5-Z8m"/>
                     </connections>
                 </viewController>

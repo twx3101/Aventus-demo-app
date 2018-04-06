@@ -36,6 +36,8 @@ struct colors{
     //Header 2 seating and cat
     static var headerTwoText = UIColorFromHex(rgbValue: neonBlueCol, alpha: 1)
     
+    static var headerThreeText = UIColorFromHex(rgbValue: pinkCol ,alpha: 1)
+    
     // table header background color
     static var headerBg = UIColorFromHex(rgbValue: 0x1E0E2B, alpha: 1)
     

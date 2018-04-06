@@ -16,7 +16,7 @@ class DetailTextField : UITextField {
     
     func sharedInit(){
         //Border
-        self.layer.cornerRadius = 15.0;
+        self.layer.cornerRadius = 6.0;
         self.layer.borderWidth = 1.5
         self.layer.borderColor = colors.textFieldBorder.cgColor
         

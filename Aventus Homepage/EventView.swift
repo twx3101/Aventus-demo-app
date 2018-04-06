@@ -14,11 +14,16 @@ class EventView: UIView {
         super.init(frame:frame)
         sharedInit()
     }
-    
+    /*
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    */
     
+    required init?(coder aDecoder: NSCoder){
+        super.init(coder: aDecoder)
+    }
+ 
     
     func sharedInit(){
         self.layer.cornerRadius = 15.0
