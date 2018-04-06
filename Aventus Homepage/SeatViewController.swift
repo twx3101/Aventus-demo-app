@@ -211,16 +211,16 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     @IBAction func showLayoutButton(_ sender: RoundButton) {
         
-        /*let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
         
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
-        popOverVC.didMove(toParentViewController: self)*/
+        popOverVC.didMove(toParentViewController: self)
         
-        let popOverVC = storyboard?.instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
+        /*let popOverVC = storyboard?.instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
         
-        present(popOverVC, animated: true, completion: nil)
+        present(popOverVC, animated: true, completion: nil)*/
         
     }
     

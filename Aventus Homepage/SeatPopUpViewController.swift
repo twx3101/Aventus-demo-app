@@ -19,7 +19,7 @@ class SeatPopUpViewController: UIViewController, UIViewControllerTransitioningDe
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goPreviousPage(_:))))
         
-        //self.showAnimate()
+        self.showAnimate()
         // Do any additional setup after loading the view.
     }
 
@@ -41,7 +41,7 @@ class SeatPopUpViewController: UIViewController, UIViewControllerTransitioningDe
 
     /*@IBAction func closeButton(_ sender: UIButton) {
         self.removeAnimate()
-    }
+    }*/
 
     
     func showAnimate()
@@ -65,10 +65,11 @@ class SeatPopUpViewController: UIViewController, UIViewControllerTransitioningDe
                 self.view.removeFromSuperview()
             }
         });
-    }*/
+    }
     
     @objc func goPreviousPage(_ tap: UITapGestureRecognizer) {
-        presentingViewController?.dismiss(animated: true, completion: nil)
+        removeAnimate()
+        //presentingViewController?.dismiss(animated: true, completion: nil)
         
     }
 }

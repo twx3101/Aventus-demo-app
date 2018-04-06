@@ -593,21 +593,9 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UD1-jE-q66">
                                         <rect key="frame" x="0.0" y="198" width="343" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oN-56-g5o">
-                                                <rect key="frame" x="152" y="0.0" width="39" height="30"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Close"/>
-                                                <connections>
-                                                    <action selector="closeButton:" destination="bty-bU-TJ5" eventType="touchUpInside" id="DqN-C3-TjX"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="1oN-56-g5o" firstAttribute="centerX" secondItem="UD1-jE-q66" secondAttribute="centerX" id="0bG-91-ZBh"/>
                                             <constraint firstAttribute="height" constant="30" id="KvZ-WK-RpD"/>
-                                            <constraint firstItem="1oN-56-g5o" firstAttribute="centerY" secondItem="UD1-jE-q66" secondAttribute="centerY" id="clD-4I-R4U"/>
                                         </constraints>
                                     </view>
                                 </subviews>
