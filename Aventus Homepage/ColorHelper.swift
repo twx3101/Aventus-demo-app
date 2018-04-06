@@ -18,15 +18,21 @@ struct colors{
     static var neonBlueCol: UInt32 = 0x4C2DB0
     static var greyCol: UInt32 = 0xEAEAEC
     static var darkGreyCol: UInt32 =  0x878696
-    
+    static var darkPurpleCol: UInt32 = 0x280844
     
     // background color
     //static var bg = UIColorFromHex(rgbValue: purpleCol, alpha: 1)
+    static var darkpurpleBg = UIColorFromHex(rgbValue: darkPurpleCol, alpha: 1)
     
     static var bg = UIColorFromHex(rgbValue: greyCol, alpha: 1)
     
     static var greyBg = UIColorFromHex(rgbValue: greyCol, alpha: 1)
     
+    static var purpleBg = UIColorFromHex(rgbValue: purpleCol, alpha:1)
+    
+    static var neonblueBg = UIColorFromHex(rgbValue: neonBlueCol, alpha: 1)
+    
+    static var whiteText = UIColorFromHex(rgbValue: whiteCol, alpha: 1)
     
     // table background color
     static var tableBg = UIColorFromHex(rgbValue: 0xACA2B2, alpha: 1)
