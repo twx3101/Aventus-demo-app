@@ -107,7 +107,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     @IBAction func help(_ sender: UIButton) {
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "HelpPage") as! HelpViewController
         
-        
+        present(detailViewController, animated: true, completion: nil)
         
         //detailViewController.pageVC = self.parent as! PageViewController
     }

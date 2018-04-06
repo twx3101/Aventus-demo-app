@@ -650,13 +650,13 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="276-Nf-5bF">
-                                <rect key="frame" x="16" y="68" width="343" height="430"/>
+                                <rect key="frame" x="16" y="68" width="343" height="410"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2SZ-aj-e4o">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="180"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="160"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uk2-jg-8ZB" customClass="EventView" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="180"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="160"/>
                                                 <subviews>
                                                     <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VkW-BY-WZY">
                                                         <rect key="frame" x="15" y="13" width="313" height="249"/>
@@ -699,7 +699,7 @@
                                                     </tableView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="180" id="hmB-z7-c69"/>
+                                                    <constraint firstAttribute="height" constant="160" id="hmB-z7-c69"/>
                                                     <constraint firstAttribute="width" constant="343" id="jOj-gY-UIL"/>
                                                 </constraints>
                                             </view>
@@ -711,7 +711,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OHp-c8-bhO">
-                                        <rect key="frame" x="0.0" y="196" width="343" height="234"/>
+                                        <rect key="frame" x="0.0" y="176" width="343" height="234"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ad-ll-O7U" customClass="GeneralView" customModule="Aventus_Homepage" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="82"/>
@@ -777,6 +777,9 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="2SZ-aj-e4o" firstAttribute="top" secondItem="276-Nf-5bF" secondAttribute="top" constant="16" id="aue-Sa-5bs"/>
+                                </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xof-Od-tpd" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
                                 <rect key="frame" x="16" y="44" width="73" height="20.5"/>
@@ -970,14 +973,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fn0-yh-QHs" customClass="RoundButton" customModule="Aventus_Homepage" customModuleProvider="target">
-                                <rect key="frame" x="167" y="617" width="41" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Home"/>
-                                <connections>
-                                    <action selector="goHome:" destination="RHm-Sl-2ZB" eventType="touchUpInside" id="1lc-5V-dFg"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

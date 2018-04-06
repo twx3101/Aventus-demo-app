@@ -17,11 +17,12 @@ class DetailTextField : UITextField {
     func sharedInit(){
         //Border
         self.layer.cornerRadius = 6.0;
-        self.layer.borderWidth = 1.5
+        self.layer.borderWidth = 0.5
         self.layer.borderColor = colors.textFieldBorder.cgColor
         
         //Background
         self.backgroundColor = colors.textFieldBg
+        self.font = UIFont(name: "Sarabun", size: 24)
         
         //Text
         //self.textColor = UIColor.black

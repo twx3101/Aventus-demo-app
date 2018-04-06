@@ -8,13 +8,14 @@
 
 import UIKit
 
-class HelpViewController: UIViewController {
-    
-    var pageVC: PageViewController?
+class HelpViewController: UIViewController, UIViewControllerTransitioningDelegate {
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = colors.bg
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goPreviousPage(_:))))
 
         // Do any additional setup after loading the view.
     }
@@ -23,6 +24,7 @@ class HelpViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*
@@ -34,14 +36,10 @@ class HelpViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func goHome(_ sender: RoundButton) {
-        //let pageViewController = parent as! PageViewController
-        
-        let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomePage") as! ViewController
-        
-        pageVC?.pages[1] = homeViewController
-        
-        pageVC?.setViewControllers([homeViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+    @objc func goPreviousPage(_ tap: UITapGestureRecognizer) {
+        presentingViewController?.dismiss(animated: true, completion: nil)
+
     }
+    
     
 }

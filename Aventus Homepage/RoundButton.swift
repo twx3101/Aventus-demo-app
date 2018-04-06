@@ -37,6 +37,8 @@ class RoundButton: UIButton{
         layer.shadowOpacity = 0.5
         clipsToBounds = true
         
+        titleLabel?.font = UIFont(name: "Sarabun-Bold", size: 24)
+        
         setTitleColor(colors.buttonText, for: UIControlState.normal)
     }
     

@@ -16,7 +16,7 @@ class SearchTextField : UITextField {
     func sharedInit(){
         //Border
         self.layer.cornerRadius = 15.0;
-        self.layer.borderWidth = 1.5
+        self.layer.borderWidth = 1.2
         self.layer.borderColor = colors.textFieldBorder.cgColor
         
         self.clipsToBounds = true

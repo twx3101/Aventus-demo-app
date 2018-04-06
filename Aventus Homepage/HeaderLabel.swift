@@ -26,7 +26,7 @@ class HeaderLabel: UILabel{
     func sharedInit(){
 
         textColor = colors.headerThreeText
-        font = UIFont(name: "Sarabun", size: 24)
+        font = UIFont(name: "Sarabun", size: 26)
     }
     
     
