@@ -19,6 +19,7 @@ class EventCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var descriptionView: UIView!
     
+    @IBOutlet weak var priceLabel: DescriptionLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

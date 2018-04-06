@@ -23,7 +23,6 @@ class PaymentViewController: UIViewController {
     
     @IBOutlet weak var summaryView: UIView!
     
-    @IBOutlet weak var artistPhoto: UIImageView!
     
     @IBOutlet weak var detailLabel: UILabel!
     
@@ -43,8 +42,7 @@ class PaymentViewController: UIViewController {
         self.view.backgroundColor = colors.bg
 
         summaryView.backgroundColor = colors.buttonBg
-        
-        //artistPhoto.image = 
+    
 
         detailLabel.text = (event?.artist)! + ", " + (payment?.category)!
         

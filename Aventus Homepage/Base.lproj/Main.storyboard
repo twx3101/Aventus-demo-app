@@ -329,6 +329,13 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PriceLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNj-aG-IDz" customClass="DescriptionLabel" customModule="Aventus_Homepage" customModuleProvider="target">
+                                                                    <rect key="frame" x="281" y="35" width="42" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="60" id="nbw-UO-uM0"/>
@@ -348,6 +355,7 @@
                                                     <outlet property="artistPhoto" destination="0Vh-MM-hHu" id="DDP-C8-yX9"/>
                                                     <outlet property="descriptionView" destination="jTn-dj-HzH" id="xG9-8h-Jg0"/>
                                                     <outlet property="locationDatetimeLabel" destination="ORl-Vq-2CA" id="AcK-Oa-Mop"/>
+                                                    <outlet property="priceLabel" destination="FNj-aG-IDz" id="qE2-WH-JwZ"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -642,10 +650,10 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="276-Nf-5bF">
-                                <rect key="frame" x="16" y="36" width="343" height="460.5"/>
+                                <rect key="frame" x="16" y="36" width="343" height="548.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2SZ-aj-e4o">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="210.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="298.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xof-Od-tpd" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
@@ -654,12 +662,8 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uk2-jg-8ZB" customClass="EventView">
-                                                <rect key="frame" x="0.0" y="28.5" width="343" height="182"/>
+                                                <rect key="frame" x="0.0" y="28.5" width="343" height="270"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vf1-oV-pZY">
-                                                        <rect key="frame" x="0.0" y="-1" width="335" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abs-Ya-Xwz">
                                                         <rect key="frame" x="179" y="53" width="143" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -677,14 +681,14 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="Uk2-jg-8ZB" secondAttribute="height" multiplier="358:190" id="enp-V0-oYL"/>
+                                                    <constraint firstAttribute="height" constant="270" id="hmB-z7-c69"/>
                                                     <constraint firstAttribute="width" constant="343" id="jOj-gY-UIL"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OHp-c8-bhO">
-                                        <rect key="frame" x="0.0" y="226.5" width="343" height="234"/>
+                                        <rect key="frame" x="0.0" y="314.5" width="343" height="234"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ad-ll-O7U" customClass="GeneralView" customModule="Aventus_Homepage" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="82"/>
@@ -763,7 +767,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="y1i-mg-VuH"/>
                     <connections>
-                        <outlet property="artistPhoto" destination="Vf1-oV-pZY" id="lE7-4q-KE9"/>
                         <outlet property="cardNoTextField" destination="3g7-e4-cb6" id="y2h-oR-eua"/>
                         <outlet property="cvvTextField" destination="UNl-Zv-fay" id="YdV-NU-6vo"/>
                         <outlet property="detailLabel" destination="VN0-oH-gME" id="Jn7-9B-vl5"/>

@@ -76,6 +76,8 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         cell.locationDatetimeLabel.text = event.formattedDate + ", " + event.time
         cell.locationDatetimeLabel.textColor = colors.bodyText
+        
+        cell.priceLabel.text = "From " + "£" + String(event.minPrice) + " - " + String(event.maxPrice)
 
         Alamofire.request(event.bannerURL).responseImage { response in
             debugPrint(response)
@@ -270,29 +272,31 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
             for event in snapshot.children.allObjects as![DataSnapshot]{
                 let eventObject = event.value as? [String: AnyObject]
                 let eventArtist = eventObject?["Fake Mainstream Events"]
+                
                 let eventDate = eventObject?["Local Date"]
                 let eventFormattedDate = eventObject?["Local Date (uk format)"]
                 let eventLocation = eventObject?["Fake City"]
                 let eventTime = eventObject?["Local Time (formatted)"]
-                //let eventTime = eventObject?["Local Time"]
-                //let eventTime = "8.30"
+                let eventDayinWeek = eventObject?["Day in week"]
                 
                 let eventArtistRanking = eventObject?["Artist Ranking"]
-                let eventDayinWeek = eventObject?["Day in week"]
+                
                 let eventID = eventObject?["Event ID"]
-                //let eventID = "1"
+
                 let eventImageURL = eventObject?["Fake Artist Pc JPEG URL"]
                 let eventBannerURL = eventObject?["Fake Artist Banner"]
-                //let eventImageURL = "https://images.sk-static.com/images/media/img/col6/20151201-145152-307273.jpg"
+
                 let eventStatus = eventObject?["Event Status"]
+                
                 let eventVenue = eventObject?["Fake Venue"]
                 let eventGenre = eventObject?["Genre"]
                 let eventMonth = eventObject?["Month"]
                 let eventTimezone = eventObject?["Timezone"]
-                //let eventTimezone = "111"
                 let eventAddress = eventObject?["Venue address"]
                 let eventCity = eventObject?["Venue city"]
                 let eventWeekend = eventObject?["Weekend"]
+                
+                
                 
                 var eventCatArea = [String]()
                 
@@ -367,7 +371,9 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 else{
                     eventCatSeats.append(0)
                 }
-                
+
+                let eventMinPrice = eventCatPrice.min()
+                let eventMaxPrice = eventCatPrice.max()
 
                 var eventAvailCat = [String]()
                 var eventAvailPrice = [Int]()
@@ -385,7 +391,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 
                 let seating1 = Seating(categories: eventAvailCat, price: eventAvailPrice, noSeatsAvail: eventAvailSeats , noCategories: no_avail_cat)
                 
-                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, formattedDate: eventFormattedDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, bannerURL: eventBannerURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String)
+                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, formattedDate: eventFormattedDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, bannerURL: eventBannerURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String, minPrice: eventMinPrice as! Int, maxPrice: eventMaxPrice as! Int)
                 
                 
                 self.events.append(event1!)
