@@ -426,13 +426,13 @@
                                         <rect key="frame" x="0.0" y="132" width="343" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frQ-EC-Nht" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                <rect key="frame" x="4" y="4" width="42" height="20.5"/>
+                                                <rect key="frame" x="8" y="-18" width="42" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV2-ud-0nr" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                <rect key="frame" x="4" y="25.5" width="42" height="20.5"/>
+                                                <rect key="frame" x="8" y="25.5" width="42" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -442,9 +442,9 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="cV2-ud-0nr" secondAttribute="bottom" constant="4" id="DGl-fM-AUH"/>
                                             <constraint firstAttribute="height" constant="50" id="Q0x-Ai-wZq"/>
-                                            <constraint firstItem="cV2-ud-0nr" firstAttribute="leading" secondItem="Tu0-YD-tZ9" secondAttribute="leading" constant="4" id="iEM-gK-NhN"/>
-                                            <constraint firstItem="frQ-EC-Nht" firstAttribute="leading" secondItem="Tu0-YD-tZ9" secondAttribute="leading" constant="4" id="ml5-c9-dFc"/>
-                                            <constraint firstItem="frQ-EC-Nht" firstAttribute="top" secondItem="Tu0-YD-tZ9" secondAttribute="top" constant="4" id="mlS-aA-b9c"/>
+                                            <constraint firstItem="cV2-ud-0nr" firstAttribute="leading" secondItem="Tu0-YD-tZ9" secondAttribute="leading" constant="8" id="iEM-gK-NhN"/>
+                                            <constraint firstItem="frQ-EC-Nht" firstAttribute="leading" secondItem="Tu0-YD-tZ9" secondAttribute="leading" constant="8" id="ml5-c9-dFc"/>
+                                            <constraint firstItem="frQ-EC-Nht" firstAttribute="top" secondItem="Tu0-YD-tZ9" secondAttribute="top" constant="-18" id="mlS-aA-b9c"/>
                                             <constraint firstAttribute="width" constant="343" id="nnq-I5-n8U"/>
                                         </constraints>
                                     </view>
