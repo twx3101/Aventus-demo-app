@@ -109,7 +109,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         present(detailViewController, animated: true, completion: nil)
         
-        //detailViewController.pageVC = self.parent as! PageViewController
     }
     
     @IBAction func microphonePress(_ sender: UIButton) {

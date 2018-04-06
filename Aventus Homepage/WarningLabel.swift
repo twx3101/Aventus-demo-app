@@ -26,6 +26,7 @@ class WarningLabel: UILabel{
     func sharedInit(){
         
         textColor = colors.warningText
+        font = UIFont(name: "Sarabun", size: 22)
         
     }
     

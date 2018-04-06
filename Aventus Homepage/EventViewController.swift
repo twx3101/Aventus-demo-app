@@ -97,76 +97,18 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         let itemSizeWidth = collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right)
-        //let itemSizeWidth = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right))
-        
-        //let itemSizeWidth = collectionView.frame.width
-        //let itemSizeHeight = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right))
-        let itemSizeHeight: CGFloat = collectionView.frame.height / 3
-        
 
-        
-        
+        let itemSizeHeight: CGFloat = collectionView.frame.height / 3
+
         return CGSize(width: itemSizeWidth, height: itemSizeHeight)
     }
     
-
-    
-    /*func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cellIdentifier = "EventTableViewCell"
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventTableViewCell else{
-            fatalError("The dequeued cell is not an instance of EventTableViewCell.")
-        }
-        let event : Event
-        if isFiltering{
-            event = filteredEvents[indexPath.row]
-        }
-        else {
-            event = events[indexPath.row]
-        }
-        cell.artistLabel.text = event.artist
-        cell.locationDatetimeLabel.text = event.location
-        cell.descriptionLabel.text = event.datetime + " " + event.time
-        Alamofire.request(event.imageURL).responseImage { response in
-            debugPrint(response)
-            
-            if let image = response.result.value{
-                cell.artistPhoto.image = image
-            }
-        }
-        cell.backgroundColor = colors.tableBg
-        return cell
-        
-    }*/
-    
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowSeatSegue" {
-            let detailViewController = segue.destination as! SeatViewController
-            
-            let myIndexPath = self.tableView.indexPathForSelectedRow!
-            let row = myIndexPath.row
-            
-            if isFiltering{
-                detailViewController.eventLoaded = filteredEvents[row]
-            }
-            else{
-                detailViewController.eventLoaded = events[row]
-            }
-            
-            
-            /*if(detailViewController.seating != nil) {
-             detailViewController.seating.image = UIImage(named: "Seating")
-             }*/
-            
-        }
-    }*/
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let pageViewController = self.parent as! PageViewController
-        
-        //let detailViewController = pageViewController.pages[3] as! SeatViewController
+
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
         
         if isFiltering {
@@ -180,30 +122,8 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
     
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print("section: \(indexPath.section)")
-        print(indexPath.row)
-        let pageViewController = self.parent as! PageViewController
-        
-        //let detailViewController = pageViewController.pages[3] as! SeatViewController
-        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
-        
-        if isFiltering {
-            detailViewController.eventLoaded = filteredEvents[indexPath.row]
-        } else {
-            detailViewController.eventLoaded = events[indexPath.row]
-        }
-        
-        pageViewController.pages[3] = detailViewController
-        
-        pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
-
-    }*/
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.tableView.delegate = self
-        //self.tableView.dataSource = self
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -231,6 +151,12 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func help(_ sender: UIButton) {
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "HelpPage") as! HelpViewController
+        
+        present(detailViewController, animated: true, completion: nil)
     }
     
     func isFilteringBar() -> Bool{

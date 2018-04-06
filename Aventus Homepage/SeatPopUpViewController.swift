@@ -69,7 +69,6 @@ class SeatPopUpViewController: UIViewController, UIViewControllerTransitioningDe
     
     @objc func goPreviousPage(_ tap: UITapGestureRecognizer) {
         removeAnimate()
-        //presentingViewController?.dismiss(animated: true, completion: nil)
         
     }
 }

@@ -125,7 +125,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             let attributes :Dictionary = [NSFontAttributeName : labelFont]
             
             // Create attributed string
-            var attrString = NSAttributedString(string: self.summaryItems[indexPath.row+1], attributes:attributes)
+            let attrString = NSAttributedString(string: self.summaryItems[indexPath.row+1], attributes:attributes)
             cell.detailRightLabel?.attributedText = attrString
             cell.detailLabel?.text = self.summaryItems[indexPath.row]
             cell.detailLabel?.textAlignment = .left
@@ -152,7 +152,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     */
     @IBAction func confirmButton(_ sender: UIButton) {
         if nameTextField.text != "" && cardNoTextField.text != "" && expiryTextField.text != "" && cvvTextField.text != "" {
-            let pageViewController = self.parent as! PageViewController
+            /*let pageViewController = self.parent as! PageViewController
             
             let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
             
@@ -162,7 +162,25 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             pageViewController.pages[5] = detailViewController
             
-            pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)*/
+            
+            let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
+            
+            popOverVC.event = event
+            popOverVC.payment = payment
+            
+            
+            
+            //popOverVC.modalPresentationStyle = .overFullScreen
+            //popOverVC.modalTransitionStyle = .crossDissolve
+            
+            //present(popOverVC, animated: true, completion: nil)
+            
+            self.addChildViewController(popOverVC)
+            popOverVC.view.frame = self.view.frame
+            self.view.addSubview(popOverVC.view)
+            popOverVC.didMove(toParentViewController: self)
+            
             
             
         }

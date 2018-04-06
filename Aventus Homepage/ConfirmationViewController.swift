@@ -14,23 +14,47 @@ class ConfirmationViewController: UIViewController{
     
     var payment: Payment?
     
-    @IBOutlet weak var summaryView: UIView!
-    
-    @IBOutlet weak var detailLabel: UILabel!
-    
-    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var confirmView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = colors.bg
+        self.view.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
         
-        summaryView.backgroundColor = colors.buttonBg
+        confirmView.backgroundColor = colors.bg
+        confirmView.layer.borderWidth = 1.5
+        confirmView.layer.borderColor = (colors.border).cgColor
         
-        detailLabel.text = (event?.artist)! + ", " + (payment?.category)!
+        confirmView.layer.masksToBounds = false
+        confirmView.layer.shadowColor = UIColor.black.cgColor
+        confirmView.layer.shadowOpacity = 0.5
+        confirmView.layer.shadowOffset = CGSize(width: -1, height: 1)
+        confirmView.layer.shadowRadius = 1
+        confirmView.layer.shadowPath = UIBezierPath(rect: confirmView.bounds).cgPath
+        confirmView.layer.shouldRasterize = true
+        confirmView.layer.rasterizationScale = UIScreen.main.scale
+        //summaryView.backgroundColor = colors.buttonBg
+        
+        //summaryView.layer.borderWidth = 1.5
+        
+        //detailLabel.text = (event?.artist)! + ", " + (payment?.category)!
         
         //totalLabel.text = String((payment?.selectedSeats)!)
-        totalLabel.text = "£" + String((payment?.selectedSeats)!*(payment?.price)!)
+        //totalLabel.text = "£" + String((payment?.selectedSeats)!*(payment?.price)!)
+        
+        //preferredContentSize = CGSize(width: 200, height: 300)
+        //self.showAnimate()
 
+    }
+    
+    func showAnimate()
+    {
+        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        //self.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        self.view.alpha = 0.0;
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.alpha = 1.0
+            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        });
     }
 
     override func didReceiveMemoryWarning() {
