@@ -10,19 +10,24 @@ import UIKit
 import Alamofire
 
 class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
-    
-    
-    
-    
+
     @IBOutlet weak var artistLabel: UILabel!
     
+    @IBOutlet weak var categoryLabel: HeaderLabel!
+    
+    @IBOutlet weak var ticketLabel: HeaderLabel!
+    
     @IBOutlet weak var locationDateTimeLabel: UILabel!
+    
+    @IBOutlet weak var layoutButton: UIButton!
     
     @IBOutlet weak var artistPhoto: UIImageView!
     
     @IBOutlet weak var categoryPicker: UIPickerView!
     
     @IBOutlet weak var ticketPicker: UIPickerView!
+
+    @IBOutlet weak var eventView: UIView!
     
     @IBOutlet weak var pickerView: UIView!
     
@@ -79,14 +84,14 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             topLabel.textColor = labelColor
             
             topLabel.textAlignment = .center
-            topLabel.font = UIFont.boldSystemFont(ofSize: 18)
+            topLabel.font = UIFont(name: "Sarabun", size: 25)
             view.addSubview(topLabel)
             
             let bottomLabel = UILabel(frame: CGRect(x: 0, y: pickerHeight/2, width: pickerWidth*2, height: 30 ))
             bottomLabel.text = "£" + priceData[row]
             bottomLabel.textColor = labelColor
             bottomLabel.textAlignment = .center
-            bottomLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightThin)
+            bottomLabel.font = UIFont(name: "Sarabun", size: 25)
             view.addSubview(bottomLabel)
             
         } else {
@@ -99,7 +104,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             topLabel.text = ticketData[row]
             topLabel.textColor = labelColor
             topLabel.textAlignment = .center
-            topLabel.font = UIFont.systemFont(ofSize: 32, weight: UIFontWeightThin)
+            topLabel.font = UIFont(name: "Sarabun", size: 36)
             view.addSubview(topLabel)
             
         }
@@ -123,25 +128,54 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 
     }
 
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = colors.bg
         
+        eventView.layer.cornerRadius = 15.0
+        eventView.clipsToBounds = true
+        
         pickerView.layer.cornerRadius = 15.0
         pickerView.clipsToBounds = true
-        pickerView.backgroundColor = .white
+        //pickerView.backgroundColor = colors.greyBg
+        pickerView.layer.borderWidth = 1.2
+        pickerView.layer.borderColor = (colors.border).cgColor
+        //pickerView.transform = CGAffineTransformMak
         
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
         ticketPicker.delegate = self
         ticketPicker.dataSource = self
         
-        artistLabel.text = (eventLoaded?.artist)! + " - " + (eventLoaded?.location)!
-        locationDateTimeLabel.text = (eventLoaded?.datetime)! + ", " + (eventLoaded?.time)!
+        //layoutButton.layer.backgroundColor = (colors.headerTwoText).cgColor
+        layoutButton.setTitleColor(colors.headerTwoText, for: UIControlState.normal)
         
-        labelView.layer.backgroundColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        categoryLabel.textColor = colors.headerTwoText
+        ticketLabel.textColor = colors.headerTwoText
+       // artistLabel.text = (eventLoaded?.artist)! + " - " + (eventLoaded?.location)!
+        //locationDateTimeLabel.text = (eventLoaded?.datetime)! + ", " + (eventLoaded?.time)!
+        
+        //labelView.layer.backgroundColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        
+        let txtLabel = ((eventLoaded?.artist)?.uppercased())! + " " + (eventLoaded?.location)!
+        
+        let mutableString = NSMutableAttributedString(string: txtLabel)
+        
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.bodyText, range: NSRange(location: 0, length: txtLabel.count))
+        
+        mutableString.addAttribute(NSFontAttributeName, value: UIFont(name: "Nexa Light", size: 21) as Any, range: NSRange(location: 0, length: (eventLoaded?.artist.count)!))
+        
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.headerText, range: NSRange(location: 0, length: (eventLoaded?.artist.count)!))
+        
+        
+        artistLabel.attributedText = mutableString
+        
+        locationDateTimeLabel.text = (eventLoaded?.formattedDate)! + ", " + (eventLoaded?.time)!
+        locationDateTimeLabel.textColor = colors.bodyText
  
-        Alamofire.request((eventLoaded?.imageURL)!).responseImage { response in
+        Alamofire.request((eventLoaded?.bannerURL)!).responseImage { response in
             debugPrint(response)
             
             if let image = response.result.value{
@@ -166,7 +200,6 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         selectedCategory = categoriesData[0]
         selectedPrice = Int(priceData[0])!
         
-        
 
     }
     
@@ -184,6 +217,11 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParentViewController: self)
+        
+        /*let popOverVC = storyboard?.instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
+        
+        present(popOverVC, animated: true, completion: nil)*/
+        
     }
     
     @IBAction func purchaseButton(_ sender: RoundButton) {

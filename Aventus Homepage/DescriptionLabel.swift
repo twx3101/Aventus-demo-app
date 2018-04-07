@@ -1,14 +1,14 @@
 //
-//  WarningLabel.swift
+//  DescriptionLabel.swift
 //  Aventus Homepage
 //
-//  Created by Krongsiriwat, Krantharat on 05/03/2018.
+//  Created by Krongsiriwat, Krantharat on 05/04/2018.
 //  Copyright © 2018 Krongsiriwat, Krantharat. All rights reserved.
 //
 
 import UIKit
 
-class WarningLabel: UILabel{
+class DescriptionLabel: UILabel{
     override init(frame: CGRect){
         super.init(frame: frame)
         sharedInit()
@@ -24,13 +24,11 @@ class WarningLabel: UILabel{
     }
     
     func sharedInit(){
-        
-        textColor = colors.warningText
-        font = UIFont(name: "Sarabun", size: 22)
+
+        font = UIFont(name:"Sarabun", size:24)
         
     }
     
     
 }
-
 

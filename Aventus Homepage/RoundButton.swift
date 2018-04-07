@@ -24,11 +24,11 @@ class RoundButton: UIButton{
     }
     
     func sharedInit(){
-        layer.backgroundColor = colors.buttonBg.cgColor
+        layer.backgroundColor = colors.headerTwoText.cgColor
         
         layer.cornerRadius = 15.0
         //layer.borderWidth = 1.0
-        //layer.borderColor = colors.infoText.cgColor
+        //layer.borderColor = .clear
         
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
@@ -36,6 +36,8 @@ class RoundButton: UIButton{
         layer.shadowRadius = 1.0
         layer.shadowOpacity = 0.5
         clipsToBounds = true
+        
+        titleLabel?.font = UIFont(name: "Sarabun-Bold", size: 24)
         
         setTitleColor(colors.buttonText, for: UIControlState.normal)
     }

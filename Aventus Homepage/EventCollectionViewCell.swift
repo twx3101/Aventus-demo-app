@@ -10,7 +10,6 @@ import UIKit
 
 class EventCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var artistLabel: UILabel!
     
@@ -18,12 +17,23 @@ class EventCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var artistPhoto: UIImageView!
     
+    @IBOutlet weak var descriptionView: UIView!
+    
+    @IBOutlet weak var priceLabel: DescriptionLabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        containerView.layer.cornerRadius = 15.0
-        containerView.clipsToBounds = true
-        containerView.layer.masksToBounds = true
-        containerView.backgroundColor = colors.buttonBg
+        
+        //containerView.layer.cornerRadius = 15.0
+        //containerView.clipsToBounds = true
+        //containerView.layer.masksToBounds = true
+        //containerView.backgroundColor = colors.bg
+        
+        //artistPhoto.layer.cornerRadius = 15.0
+        //artistPhoto.clipsToBounds = true
+        
+        //descriptionView.backgroundColor = colors.bg
+        //descriptionView.backgroundColor = UIColor.white.withAlphaComponent(0.2)
     }
     
 }

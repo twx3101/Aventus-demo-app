@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaymentViewController: UIViewController {
+class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet weak var warningLabel: UILabel!
@@ -23,9 +23,8 @@ class PaymentViewController: UIViewController {
     
     @IBOutlet weak var summaryView: UIView!
     
-    @IBOutlet weak var detailLabel: UILabel!
     
-    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var summaryTableView: UITableView!
     
     var event: Event?
     
@@ -34,58 +33,114 @@ class PaymentViewController: UIViewController {
     var count: Int = 0
     
     var total: Int = 0
+ 
+    var summaryItems = [String]()
     
-
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "ConfirmSegue" {
-            
-            let detailViewController = segue.destination as! ConfirmationViewController
-            
-            detailViewController.payment = payment
-            
-        }
-        
-        /*if nameTextField.text != "" {
-            OperationQueue.main.addOperation {
-                self.performSegue(withIdentifier: "ConfirmSegue", sender: self)
-            }
-        }*/
-    }
-    
-    func confirmPayment() {
-        self.performSegue(withIdentifier: "ConfirmSegue", sender: self)
-    }
-
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.view.backgroundColor = colors.bg
+        
+        summaryTableView.delegate = self
+        summaryTableView.dataSource = self
 
         summaryView.backgroundColor = colors.buttonBg
+        
+        let thickness: CGFloat = 0.5
+        let borderColor = (colors.border).cgColor
+        
+        let topBorder = CALayer()
+        topBorder.backgroundColor = borderColor
+        topBorder.frame = CGRect(x: 0, y:0, width: summaryView.frame.width, height: thickness)
+        
+        let bottomBorder = CALayer()
+        bottomBorder.backgroundColor = borderColor
+        bottomBorder.frame = CGRect(x: 0, y: summaryView.frame.height, width: summaryView.frame.width, height: thickness)
+        
+        summaryView.layer.addSublayer(topBorder)
+        summaryView.layer.addSublayer(bottomBorder)
+        
+        let text_total = String((payment?.selectedSeats)!*(payment?.price)!)
 
-        detailLabel.text = (event?.artist)! + ", " + (payment?.category)!
         
-        //totalLabel.text = String((payment?.selectedSeats)!)
-        totalLabel.text = "£" + String((payment?.selectedSeats)!*(payment?.price)!)
-        
+        let text_1line = (event?.artist)!
+        let text_12line = (event?.venue)! + ", " + (event?.location)!
+        let text_2line = (event?.datetime)! + "   " + (event?.time)!
 
         
-        //self.performSegue(withIdentifier: "ConfirmSegue", sender: self)
+        let price: String = String((payment?.price)!)
+        let selectedSeats: String = String((payment?.selectedSeats)!)
         
-        //NotificationCenter.default.addObserver(self, selector: #selector(confirmPayment), name: NSNotification.Name(rawValue: "ConfirmSegue"), object: nil)
-        //count = (payment?.selectedSeats.count)! + 1
+        var text_cat = ""
+        if (payment?.category == "Standing area"){
+            text_cat = (payment?.category)!
+        }else{
+            text_cat = "Category " + (payment?.category)!
+        }
         
-        // Do any additional setup after loading the view.
+        let text_3line = text_cat + " (£" + price + ")" + " X " + selectedSeats
+        let text_4line = "Total: £" + text_total
+        
+        
+        summaryItems = [text_1line,text_12line, text_2line, text_3line, text_4line]
+        
+        
+        
     }
-
+   
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 30
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)-> Int{
+        return self.summaryItems.count-1
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        
+        let cellIdentifier = "SummaryTableViewCell"
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SummaryTableViewCell
+        
+        
+        /*guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? EventCollectionViewCell else{
+            fatalError("The dequeued cell is not an instance of EventCollectionViewCell.")
+        }*/
+        cell.detailLabel.font = UIFont(name : "Sarabun",size : 24)
+        
+        cell.backgroundColor = colors.bg
+        
+        //let cell:SummaryTableViewCell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "SummaryTableViewCell") as! SummaryTableViewCell
+        if( indexPath.row == self.summaryItems.count-2){
+            let labelFont = UIFont(name: "Sarabun-Bold", size: 25)
+            let attributes :Dictionary = [NSFontAttributeName : labelFont]
+            
+            // Create attributed string
+            let attrString = NSAttributedString(string: self.summaryItems[indexPath.row+1], attributes:attributes)
+            cell.detailRightLabel?.attributedText = attrString
+            cell.detailLabel?.text = self.summaryItems[indexPath.row]
+            cell.detailLabel?.textAlignment = .left
+        }else{
+            cell.detailLabel?.text = self.summaryItems[indexPath.row]
+            cell.detailLabel?.textAlignment = .left
+            cell.detailRightLabel?.text = ""
+        
+        }
+      
+        
+        return cell
+    }
+ 
+    
     /*
     // MARK: - Navigation
 
@@ -97,7 +152,7 @@ class PaymentViewController: UIViewController {
     */
     @IBAction func confirmButton(_ sender: UIButton) {
         if nameTextField.text != "" && cardNoTextField.text != "" && expiryTextField.text != "" && cvvTextField.text != "" {
-            let pageViewController = self.parent as! PageViewController
+            /*let pageViewController = self.parent as! PageViewController
             
             let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
             
@@ -107,7 +162,25 @@ class PaymentViewController: UIViewController {
             
             pageViewController.pages[5] = detailViewController
             
-            pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)*/
+            
+            let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
+            
+            popOverVC.event = event
+            popOverVC.payment = payment
+            
+            
+            
+            //popOverVC.modalPresentationStyle = .overFullScreen
+            //popOverVC.modalTransitionStyle = .crossDissolve
+            
+            //present(popOverVC, animated: true, completion: nil)
+            
+            self.addChildViewController(popOverVC)
+            popOverVC.view.frame = self.view.frame
+            self.view.addSubview(popOverVC.view)
+            popOverVC.didMove(toParentViewController: self)
+            
             
             
         }

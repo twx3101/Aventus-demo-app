@@ -61,99 +61,54 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
             event = events[indexPath.row]
         }
 
-        let txtLabel = event.artist + " - " + event.location
+        let txtLabel = (event.artist).uppercased() + " " + event.location
         
         let mutableString = NSMutableAttributedString(string: txtLabel)
         
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location: 0, length: txtLabel.count))
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.bodyText, range: NSRange(location: 0, length: txtLabel.count))
         
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.bodyText, range: NSRange(location: 0, length: event.artist.count))
+        mutableString.addAttribute(NSFontAttributeName, value: UIFont(name: "Nexa Light", size: 21) as Any, range: NSRange(location: 0, length: event.artist.count))
         
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.headerText, range: NSRange(location: 0, length: event.artist.count))
         
-        
+
         cell.artistLabel.attributedText = mutableString
         
-        cell.locationDatetimeLabel.text = event.datetime + ", " + event.time
-        cell.locationDatetimeLabel.textColor = .white
+        cell.locationDatetimeLabel.text = event.formattedDate + ", " + event.time
+        cell.locationDatetimeLabel.textColor = colors.bodyText
+        
+        cell.priceLabel.text = "From " + "£" + String(event.minPrice) + " - " + String(event.maxPrice)
 
-        Alamofire.request(event.imageURL).responseImage { response in
+        Alamofire.request(event.bannerURL).responseImage { response in
             debugPrint(response)
-            
+
             if let image = response.result.value{
                 cell.artistPhoto.image = image
+    
             }
         }
-        
-        cell.backgroundColor = colors.bg
+
+        cell.layer.cornerRadius = 15.0
+        cell.layer.masksToBounds = true
+        cell.clipsToBounds = true
         
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSizeWidth = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
-        //let itemSizeHeight = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right))
-        let itemSizeHeight: CGFloat = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2 + 20
+        
+        let itemSizeWidth = collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right)
+
+        let itemSizeHeight: CGFloat = collectionView.frame.height / 3
+
         return CGSize(width: itemSizeWidth, height: itemSizeHeight)
     }
     
-
-    
-    /*func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cellIdentifier = "EventTableViewCell"
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventTableViewCell else{
-            fatalError("The dequeued cell is not an instance of EventTableViewCell.")
-        }
-        let event : Event
-        if isFiltering{
-            event = filteredEvents[indexPath.row]
-        }
-        else {
-            event = events[indexPath.row]
-        }
-        cell.artistLabel.text = event.artist
-        cell.locationDatetimeLabel.text = event.location
-        cell.descriptionLabel.text = event.datetime + " " + event.time
-        Alamofire.request(event.imageURL).responseImage { response in
-            debugPrint(response)
-            
-            if let image = response.result.value{
-                cell.artistPhoto.image = image
-            }
-        }
-        cell.backgroundColor = colors.tableBg
-        return cell
-        
-    }*/
-    
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowSeatSegue" {
-            let detailViewController = segue.destination as! SeatViewController
-            
-            let myIndexPath = self.tableView.indexPathForSelectedRow!
-            let row = myIndexPath.row
-            
-            if isFiltering{
-                detailViewController.eventLoaded = filteredEvents[row]
-            }
-            else{
-                detailViewController.eventLoaded = events[row]
-            }
-            
-            
-            /*if(detailViewController.seating != nil) {
-             detailViewController.seating.image = UIImage(named: "Seating")
-             }*/
-            
-        }
-    }*/
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let pageViewController = self.parent as! PageViewController
-        
-        //let detailViewController = pageViewController.pages[3] as! SeatViewController
+
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
         
         if isFiltering {
@@ -167,34 +122,14 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
     
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print("section: \(indexPath.section)")
-        print(indexPath.row)
-        let pageViewController = self.parent as! PageViewController
-        
-        //let detailViewController = pageViewController.pages[3] as! SeatViewController
-        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
-        
-        if isFiltering {
-            detailViewController.eventLoaded = filteredEvents[indexPath.row]
-        } else {
-            detailViewController.eventLoaded = events[indexPath.row]
-        }
-        
-        pageViewController.pages[3] = detailViewController
-        
-        pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
-
-    }*/
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.tableView.delegate = self
-        //self.tableView.dataSource = self
         collectionView.delegate = self
         collectionView.dataSource = self
         
         view.backgroundColor = colors.bg
+        collectionView.backgroundColor = colors.bg
+    
         // Do any additional setup after loading the view.
         // Load events to display
         
@@ -217,57 +152,12 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    /*func parseJSON(){
-     let url = String(format: "https://sheetsu.com/apis/v1.0bu/c2358558ce5f")
-     let serviceURL = URL(string: url)
-     var request = URLRequest(url: serviceURL!)
-     
-     request.httpMethod = "GET"
-     request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
-     
-     let session = URLSession.shared
-     
-     session.dataTask(with: request) { (data, response, error) in
-     
-     if let data = data{
-     do{
-     let json =  try JSONSerialization.jsonObject(with: data, options: [])
-     if let event_list = json as? NSArray{
-     for i in 0 ..< event_list.count {
-     let eve = event_list[i] as? [String:Any]
-     let event1 = Event(json:eve!)
-     self.events.append(event1!)
-     }
-     }
-     }
-     
-     catch{
-     print(error)
-     return
-     }
-     
-     //convert JSON data into Event Class
-     
-     print("HELLO")
-     
-     DispatchQueue.main.async{ [unowned self] in
-     self.tableView.reloadData()
-     }
-     
-     }
-     }.resume()
-     }*/
+
+    @IBAction func help(_ sender: UIButton) {
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "HelpPage") as! HelpViewController
+        
+        present(detailViewController, animated: true, completion: nil)
+    }
     
     func isFilteringBar() -> Bool{
         if(searchController.isActive && !searchBarIsEmpty()){
@@ -308,69 +198,89 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
             for event in snapshot.children.allObjects as![DataSnapshot]{
                 let eventObject = event.value as? [String: AnyObject]
                 let eventArtist = eventObject?["Fake Mainstream Events"]
+                
                 let eventDate = eventObject?["Local Date"]
+                let eventFormattedDate = eventObject?["Local Date (uk format)"]
                 let eventLocation = eventObject?["Fake City"]
                 let eventTime = eventObject?["Local Time (formatted)"]
-                //let eventTime = eventObject?["Local Time"]
-                //let eventTime = "8.30"
+                let eventDayinWeek = eventObject?["Day in week"]
                 
                 let eventArtistRanking = eventObject?["Artist Ranking"]
-                let eventDayinWeek = eventObject?["Day in week"]
+                
                 let eventID = eventObject?["Event ID"]
-                //let eventID = "1"
+
                 let eventImageURL = eventObject?["Fake Artist Pc JPEG URL"]
-                //let eventImageURL = "https://images.sk-static.com/images/media/img/col6/20151201-145152-307273.jpg"
+                let eventBannerURL = eventObject?["Fake Artist Banner"]
+
                 let eventStatus = eventObject?["Event Status"]
+                
                 let eventVenue = eventObject?["Fake Venue"]
                 let eventGenre = eventObject?["Genre"]
                 let eventMonth = eventObject?["Month"]
                 let eventTimezone = eventObject?["Timezone"]
-                //let eventTimezone = "111"
                 let eventAddress = eventObject?["Venue address"]
                 let eventCity = eventObject?["Venue city"]
                 let eventWeekend = eventObject?["Weekend"]
                 
+                
+                
                 var eventCatArea = [String]()
                 
-                eventCatArea.append(eventObject?["Area: category 1"] as! String)
-                eventCatArea.append(eventObject?["Area: category 2"] as! String)
-                eventCatArea.append(eventObject?["Area: category 3"] as! String)
-                eventCatArea.append(eventObject?["Area: category 4"] as! String)
                 eventCatArea.append(eventObject?["Area: category 5 Standing"] as! String)
-                
+                eventCatArea.append(eventObject?["Area: category 4"] as! String)
+                eventCatArea.append(eventObject?["Area: category 3"] as! String)
+                eventCatArea.append(eventObject?["Area: category 2"] as! String)
+                eventCatArea.append(eventObject?["Area: category 1"] as! String)
                 
                 var eventCatPrice = [Int]()
                 
-                if let cat1 = eventObject?["Category 1: Price"] as? Int{ eventCatPrice.append(cat1)
-                }
-                else{
-                    eventCatPrice.append(0)
-                }
-                if let cat2 = eventObject?["Category : Price"] as? Int{ eventCatPrice.append(cat2)
-                }
-                else{
-                    eventCatPrice.append(0)
-                }
-                if let cat3 = eventObject?["Category 3: Price"] as? Int{ eventCatPrice.append(cat3)
-                }
-                else{
-                    eventCatPrice.append(0)
-                }
-                if let cat4 = eventObject?["Category 4: Price"] as? Int{ eventCatPrice.append(cat4)
-                }
-                else{
-                    eventCatPrice.append(0)
-                }
                 if let cat5 = eventObject?["Category 5(standing area): Price"] as? Int{ eventCatPrice.append(cat5)
                 }
                 else{
                     eventCatPrice.append(0)
                 }
                 
+                if let cat4 = eventObject?["Category 4: Price"] as? Int{ eventCatPrice.append(cat4)
+                }
+                else{
+                    eventCatPrice.append(0)
+                }
+                
+                if let cat3 = eventObject?["Category 3: Price"] as? Int{ eventCatPrice.append(cat3)
+                }
+                else{
+                    eventCatPrice.append(0)
+                }
+
+                if let cat2 = eventObject?["Category : Price"] as? Int{ eventCatPrice.append(cat2)
+                }
+                else{
+                    eventCatPrice.append(0)
+                }
+                
+                if let cat1 = eventObject?["Category 1: Price"] as? Int{ eventCatPrice.append(cat1)
+                }
+                else{
+                    eventCatPrice.append(0)
+                }
+                
+                
                 
                 var eventCatSeats = [Int]()
                 
-                if let seat1 = eventObject?["Category 1: Number of seat available"] as? Int{ eventCatSeats.append(seat1)
+                if let seat5 = eventObject?["Category 5: Number of seat available"] as? Int{ eventCatSeats.append(seat5)
+                }
+                else{
+                    eventCatSeats.append(0)
+                }
+                
+                if let seat4 = eventObject?["Category 4: Number of seat available"] as? Int{ eventCatSeats.append(seat4)
+                }
+                else{
+                    eventCatSeats.append(0)
+                }
+                
+                if let seat3 = eventObject?["Category 3: Number of seat available"] as? Int{ eventCatSeats.append(seat3)
                 }
                 else{
                     eventCatSeats.append(0)
@@ -381,22 +291,16 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 else{
                     eventCatSeats.append(0)
                 }
-                if let seat3 = eventObject?["Category 3: Number of seat available"] as? Int{ eventCatSeats.append(seat3)
-                }
-                else{
-                    eventCatSeats.append(0)
-                }
-                if let seat4 = eventObject?["Category 4: Number of seat available"] as? Int{ eventCatSeats.append(seat4)
-                }
-                else{
-                    eventCatSeats.append(0)
-                }
-                if let seat5 = eventObject?["Category 5: Number of seat available"] as? Int{ eventCatSeats.append(seat5)
-                }
-                else{
-                    eventCatSeats.append(0)
-                }
                 
+                if let seat1 = eventObject?["Category 1: Number of seat available"] as? Int{ eventCatSeats.append(seat1)
+                }
+                else{
+                    eventCatSeats.append(0)
+                }
+
+                let eventMinPrice = eventCatPrice.min()
+                let eventMaxPrice = eventCatPrice.max()
+
                 var eventAvailCat = [String]()
                 var eventAvailPrice = [Int]()
                 var eventAvailSeats = [Int]()
@@ -413,25 +317,8 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 
                 let seating1 = Seating(categories: eventAvailCat, price: eventAvailPrice, noSeatsAvail: eventAvailSeats , noCategories: no_avail_cat)
                 
-                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String)
+                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, formattedDate: eventFormattedDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, bannerURL: eventBannerURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String, minPrice: eventMinPrice as! Int, maxPrice: eventMaxPrice as! Int)
                 
-                /*print(type(of: eventArtist))
-                print(type(of: eventLocation))
-                print(type(of: eventDate))
-                print(type(of: eventTime))
-                print(type(of: eventArtistRanking))
-                print(type(of: eventDayinWeek))
-                print(type(of: eventID))
-                print(type(of: eventStatus))
-                print(type(of: eventVenue))
-                print(type(of: eventGenre))
-                print(type(of: eventMonth))
-                print(type(of: eventTimezone))
-                print(type(of: eventImageURL))
-                print(type(of: eventWeekend))*/
-                
-                
-                /*let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, imageURL: eventImageURL as! String, weekend: eventWeekend as! String)*/
                 
                 self.events.append(event1!)
             }

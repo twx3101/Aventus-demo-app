@@ -8,12 +8,16 @@
 
 import UIKit
 
-class SeatPopUpViewController: UIViewController {
+class SeatPopUpViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        //self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        //self.view.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        view.backgroundColor = UIColor.clear
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goPreviousPage(_:))))
         
         self.showAnimate()
         // Do any additional setup after loading the view.
@@ -35,9 +39,9 @@ class SeatPopUpViewController: UIViewController {
     }
     */
 
-    @IBAction func closeButton(_ sender: UIButton) {
+    /*@IBAction func closeButton(_ sender: UIButton) {
         self.removeAnimate()
-    }
+    }*/
 
     
     func showAnimate()
@@ -61,5 +65,10 @@ class SeatPopUpViewController: UIViewController {
                 self.view.removeFromSuperview()
             }
         });
+    }
+    
+    @objc func goPreviousPage(_ tap: UITapGestureRecognizer) {
+        removeAnimate()
+        
     }
 }
