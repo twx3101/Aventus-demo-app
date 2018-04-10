@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1EFEF15BCA00AB75AF21BDC9 /* Pods_Aventus_HomepageTests2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1534D3CCB716116C2B8FE568 /* Pods_Aventus_HomepageTests2.framework */; };
+		2F00AC63207D17E300B0F967 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F00AC62207D17E200B0F967 /* SearchTextField.swift */; };
 		2F7E52B120758BD1003B96D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7E52B020758BD1003B96D7 /* GoogleService-Info.plist */; };
 		457E32D120659C6200B7224B /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E32D020659C6200B7224B /* CustomSegmentedControl.swift */; };
 		457E32D520659C7E00B7224B /* WarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E32D220659C7E00B7224B /* WarningLabel.swift */; };
@@ -24,7 +25,6 @@
 		BF0A13262076C7CC00B98981 /* Sarabun-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF0A13192076C28000B98981 /* Sarabun-Regular.ttf */; };
 		BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1607012044A36B00241A2D /* HeaderLabel.swift */; };
 		BF1607042044ADC700241A2D /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1607032044ADC700241A2D /* BodyLabel.swift */; };
-		BF337ED720764A9C00B4D2E1 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF337ED620764A9C00B4D2E1 /* SearchTextField.swift */; };
 		BF337ED920764EAD00B4D2E1 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF337ED820764EAD00B4D2E1 /* EventView.swift */; };
 		BF337EDF20768C8300B4D2E1 /* DescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF337EDE20768C8300B4D2E1 /* DescriptionLabel.swift */; };
 		BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF40F12E2030971400E280BB /* SeatViewController.swift */; };
@@ -96,6 +96,7 @@
 /* Begin PBXFileReference section */
 		1534D3CCB716116C2B8FE568 /* Pods_Aventus_HomepageTests2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_HomepageTests2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15973FF8ED2F30FB0506552E /* Pods-Aventus Homepage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus Homepage.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage.release.xcconfig"; sourceTree = "<group>"; };
+		2F00AC62207D17E200B0F967 /* SearchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		2F7E52B020758BD1003B96D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3801DE766E1697792EDB2A4C /* Pods_Aventus_Homepage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_Homepage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		457E32D020659C6200B7224B /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
@@ -123,7 +124,6 @@
 		BF0A13192076C28000B98981 /* Sarabun-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sarabun-Regular.ttf"; path = "fonts/Sarabun-Regular.ttf"; sourceTree = "<group>"; };
 		BF1607012044A36B00241A2D /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
 		BF1607032044ADC700241A2D /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
-		BF337ED620764A9C00B4D2E1 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTextField.swift; path = "/Users/kk2017/demo-app/Aventus Homepage/SearchTextField.swift"; sourceTree = "<absolute>"; };
 		BF337ED820764EAD00B4D2E1 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		BF337EDE20768C8300B4D2E1 /* DescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLabel.swift; sourceTree = "<group>"; };
 		BF40F12E2030971400E280BB /* SeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +297,7 @@
 		BF7B71B920236FCC009E5598 /* Aventus Homepage */ = {
 			isa = PBXGroup;
 			children = (
+				2F00AC62207D17E200B0F967 /* SearchTextField.swift */,
 				BF0A13162076C28000B98981 /* EthRomainEthon.ttf */,
 				BF0A13172076C28000B98981 /* Nexa Light.otf */,
 				BF0A13182076C28000B98981 /* Sarabun-Bold.ttf */,
@@ -310,7 +311,6 @@
 				BF337EDE20768C8300B4D2E1 /* DescriptionLabel.swift */,
 				BF51ED50204331B9003D0219 /* RecordButton.swift */,
 				BF933144204471160002A3C8 /* RoundButton.swift */,
-				BF337ED620764A9C00B4D2E1 /* SearchTextField.swift */,
 				BF93314620448ABB0002A3C8 /* DetailTextField.swift */,
 				BF337ED820764EAD00B4D2E1 /* EventView.swift */,
 				BF7B71BE20236FCC009E5598 /* Main.storyboard */,
@@ -768,10 +768,10 @@
 				BF7B71BD20236FCC009E5598 /* ViewController.swift in Sources */,
 				457E32D120659C6200B7224B /* CustomSegmentedControl.swift in Sources */,
 				BF5946972038743A00A0A493 /* Payment.swift in Sources */,
+				2F00AC63207D17E300B0F967 /* SearchTextField.swift in Sources */,
 				BFD17E19202CD729008CB952 /* EventViewController.swift in Sources */,
 				BF7B71BB20236FCC009E5598 /* AppDelegate.swift in Sources */,
 				BF337ED920764EAD00B4D2E1 /* EventView.swift in Sources */,
-				BF337ED720764A9C00B4D2E1 /* SearchTextField.swift in Sources */,
 				BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */,
 				BF93314720448ABB0002A3C8 /* DetailTextField.swift in Sources */,
 				BFA6C53D20757EE000AD0601 /* HelpViewController.swift in Sources */,

@@ -35,6 +35,8 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var textControl: UITextField!
     
+    var contextContent : [AnyHashable : Any]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -118,7 +120,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
             print("if")
         }
         else {
-            CapitoController.getInstance().push(toTalk: self, withDialogueContext: nil)
+            CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContent)
                 self.transcription.text = ""
         }
     }
@@ -161,7 +163,7 @@ extension ViewController{
    func handle(text:String){
         self.showProcessingHUD(text: "Processing...")
         
-        CapitoController.getInstance().text(self, input: text, withDialogueContext: nil)
+        CapitoController.getInstance().text(self, input: text, withDialogueContext: contextContent)
     }
     
     func handle(response: CapitoResponse){
@@ -179,8 +181,13 @@ extension ViewController{
         if let task = context["task"] as? String{
             if task == "Navigate"{
                 //TODO
-                print("Success!")
-                handleNavigate(context: context)
+                
+                let contextContents = handleNavigate(context: context)
+                
+                let pageViewController = self.parent as! PageViewController
+                let eventViewController = pageViewController.pages[2] as! EventViewController
+                eventViewController.isFiltering = true
+                eventViewController.filteredItems = contextContents
             }
             else if task == "BuyTicket"{
                 //TODO
@@ -196,16 +203,17 @@ extension ViewController{
             //handle nil data
             print("NIL Data")
         }
+        self.contextContent = context
     }
     
-    func handleNavigate(context: [AnyHashable : Any]){
+    func handleNavigate(context: [AnyHashable : Any]) -> [String : Any]{
         var contextContents = [String: Any]()
-//        artist: String
+        //        artist: String
         if let artist = context["artist"] as? String{
             contextContents["artist"] = artist
-
+            
         }
-//        location: String
+        //        location: String
         if let location = context["location"] as?  String{
             contextContents["location"] = location
         }
@@ -257,13 +265,12 @@ extension ViewController{
         
         // Find events a period of time from current time
         if var end_week = context["end_week"] as? String{
-         
+            
             if end_week[end_week.startIndex] == "+"{
                 end_week.remove(at: end_week.startIndex)
                 let addWeekBy = Int(end_week)
                 
                 daysToAdd += addWeekBy! * 7
-                
             }
         }
         
@@ -276,14 +283,14 @@ extension ViewController{
                 
             }
         }
-            
+        
         if var end_month = context["end_month"] as? String{
             if end_month[end_month.startIndex] == "+"{
                 end_month.remove(at: end_month.startIndex)
                 let addMonthBy = Int(end_month)
-                    
+                
                 monthsToAdd = monthsToAdd + addMonthBy!
-                    
+                
             }
         }
         
@@ -297,9 +304,9 @@ extension ViewController{
             cal.timeZone = TimeZone(abbreviation: "GMT")!
             let start_date = contextContents["start_date"] as! Date
             let d = DateComponents(year: yearsToAdd, month: monthsToAdd, day: daysToAdd)
-        
+            
             let futureDate = cal.date(byAdding: d, to: start_date)
-        
+            
             contextContents["end_date"] = futureDate
         }
         // if there is no end_date, then set end_Date to the next day
@@ -345,13 +352,33 @@ extension ViewController{
             contextContents["end_date"] = endDate
         }
         
+        //handling price // not sure if this works
+        if let amount = context["amount"] as? Int{
+            contextContents["amount"] = amount
+        }
+        
+        //need to handle context for this
+        if let priceComparison = context["priceComparison"] as? String{
+            contextContents["priceComparison"] = priceComparison
+        }
+        if let numTickets = context["numTickets"] as? Int{
+            contextContents["numTickets"] = numTickets
+        }
+        if let ticketType = context["ticketType"] as? String{
+            contextContents["ticketType"] = ticketType
+        }
+        
+        if let seatArea = context["seatArea"] as? String{
+            contextContents["seatArea"] = seatArea
+        }
+        
+        
+        return contextContents
 
-        // handle time to day, month, seating for price, currency, time for day Part, comparison is contextual, need to handle end_hour
-        let pageViewController = self.parent as! PageViewController
-        let eventViewController = pageViewController.pages[2] as! EventViewController
-        eventViewController.isFiltering = true
-        eventViewController.filteredItems = contextContents
-            
+    }
+    
+    func handleNavigateStatic(){
+        //open help
     }
     
     func setCurrentDate() -> Date{
