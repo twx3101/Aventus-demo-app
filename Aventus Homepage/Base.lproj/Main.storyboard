@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jHu-rk-thc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jHu-rk-thc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -370,6 +370,9 @@
                                     <constraint firstAttribute="height" constant="50" id="fVC-3f-Ted"/>
                                 </constraints>
                                 <state key="normal" image="icons8-microphone-96"/>
+                                <connections>
+                                    <action selector="MicrophonePress:" destination="mXJ-Mo-iGK" eventType="touchUpInside" id="OrV-q4-mFH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -387,6 +390,8 @@
                     <navigationItem key="navigationItem" id="ueM-Mi-MlC"/>
                     <connections>
                         <outlet property="collectionView" destination="niN-YW-AIk" id="uyu-Pq-pVO"/>
+                        <outlet property="mic2" destination="brS-tJ-rnE" id="0ya-pi-s8f"/>
+                        <outlet property="textControl2" destination="Efy-n0-4hM" id="fBW-f3-rDS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iLX-Ef-G5l" sceneMemberID="firstResponder"/>

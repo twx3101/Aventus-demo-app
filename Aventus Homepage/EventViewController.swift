@@ -10,22 +10,36 @@ import UIKit
 import FirebaseDatabase
 import Alamofire
 import AlamofireImage
+import CapitoSpeechKit
+import MBProgressHUD
 
-class EventViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+
+class EventViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var mic2: UIButton!
+    @IBOutlet weak var textControl2: UITextField!
     
+    lazy var readyMic: UIImage = {
+        return UIImage(named: "icons8-microphone-96")!
+    }()
+    lazy var pressedMic: UIImage = {
+        return UIImage(named: "microphone_on")!
+    }()
     
     let cellIdentifier = "EventCollectionViewCell"
     
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle!
+ 
+    var isRecording : Bool = false
     
     var events = [Event]()
     var filteredEvents = [Event]()
     var isFiltering : Bool = false
     var filteredItems = Dictionary<String,Any>()
     let searchController = UISearchController(searchResultsController: nil)
+    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -129,7 +143,6 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         view.backgroundColor = colors.bg
         collectionView.backgroundColor = colors.bg
-    
         // Do any additional setup after loading the view.
         // Load events to display
         
@@ -142,7 +155,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
             //tableView.tableHeaderView = searchController.searchBar
         }
         definesPresentationContext = true
-        
+        self.textControl2.delegate = self
         loadEvents()
         
         
@@ -386,7 +399,127 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         collectionView.reloadData()
         //tableView.reloadData()
     }
+    
+    @IBAction func MicrophonePress(_ sender: UIButton) {
+        
+        if self.isRecording {
+            CapitoController.getInstance().cancelTalking()
+            print("if")
+        }
+        else {
+            CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
+        }
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if let text = self.textControl2.text{
+            print("Sending Text event:\(text)")
+            self.handle(text: text)
+            
+        }
+        textField.text = ""
+        return true
+    }
 }
+
+extension EventViewController{
+    func handle(text:String){
+        self.showProcessingHUD(text: "Processing...")
+        
+        CapitoController.getInstance().text(self, input: text, withDialogueContext: contextContents.shared.context)
+    }
+    
+    func handle(response: CapitoResponse){
+        //print("handle")
+        if response.messageType == "WARNING"{
+            //self.showErrorMessage(text: response.message)
+        }
+        else{
+            handlingContext().bootstrapView(response: response)
+            
+            self.isFiltering = true
+            self.filteredItems = contextContents.shared.contextContent
+            self.filterContentofEvents(contextContent: self.filteredItems)
+            self.collectionView.reloadData()
+            
+        }
+    }
+}
+
+extension EventViewController{
+    
+    func showProcessingHUD(text: String){
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.mode = .indeterminate
+        hud.minShowTime = 1.0
+        hud.label.text = "Processing"
+        hud.detailsLabel.text = text
+    }
+    func hideProcessingHUD(){
+        MBProgressHUD.hide(for: self.view, animated: true)
+    }
+    
+    func showError(_ error: Error) {
+        print(error.localizedDescription)
+    }
+    
+}
+
+extension EventViewController: SpeechDelegate{
+    
+    func speechControllerDidBeginRecording() {
+        self.isRecording = true
+        //change microphone to show busy recording
+        self.mic2.setImage(pressedMic, for: .normal)
+    }
+    
+    func speechControllerDidFinishRecording() {
+        self.isRecording = false
+        self.mic2.setImage(readyMic, for: .normal)
+    }
+    
+    func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
+        self.showProcessingHUD(text: "Processing...")
+    }
+    
+    func speechControllerDidFinish(withResults response: CapitoResponse!) {
+        self.hideProcessingHUD()
+        self.handle(response: response)
+    }
+    
+    func speechControllerDidFinishWithError(_ error: Error!) {
+        self.hideProcessingHUD()
+        self.showError(error)
+    }
+}
+
+/*
+ extension ViewController: UISearchBarDelegate {
+ func searchButtonPressed(_ searchBar: UISearchBar){
+ self.textControlBar.resignFirstResponder()
+ 
+ if let text = searchBar.text{
+ print("Sending text event: \(text)")
+ self.onTextControlClick(nil)
+ self.handle(text: text)
+ }
+ }
+ }
+ */
+extension EventViewController: TextDelegate{
+    func textControllerDidFinish(withResults response: CapitoResponse!) {
+        self.hideProcessingHUD()
+        self.handle(response: response)
+    }
+    
+    func textControllerDidFinishWithError(_ error: Error!){
+        self.hideProcessingHUD()
+        self.showError(error)
+    }
+}
+
 extension EventViewController: UISearchResultsUpdating{
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -401,6 +534,5 @@ extension Date{
         return (min(date1, date2) ... max(date1, date2)).contains(self)
     }
 }
-
 
 
