@@ -167,10 +167,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qac-BT-IBr" userLabel="TranscriptionLabel">
-                                <rect key="frame" x="67" y="493" width="240" height="82"/>
+                                <rect key="frame" x="16" y="493" width="343" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aV-4p-vmM" userLabel="SearchBarView">
@@ -214,6 +213,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5L9-F7-l1V">
+                                <rect key="frame" x="302" y="617" width="49" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.051855699339533601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetContext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q3u-pM-X8M"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -231,6 +239,7 @@
                     <navigationItem key="navigationItem" id="JzQ-rS-r6Q"/>
                     <connections>
                         <outlet property="microphone" destination="syZ-Cf-8hp" id="yy1-wF-Kic"/>
+                        <outlet property="resetBut" destination="5L9-F7-l1V" id="rR1-U4-CLD"/>
                         <outlet property="textControl" destination="ysO-qi-qd7" id="APJ-CR-32F"/>
                         <outlet property="transcription" destination="Qac-BT-IBr" id="mdc-wO-y2p"/>
                         <outlet property="utter1Label" destination="ug6-cg-Hl4" id="Y5y-p3-9gM"/>

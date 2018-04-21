@@ -45,6 +45,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var textControl: UITextField!
     
+    @IBOutlet weak var resetBut: UIButton!
     //var contextContent : [AnyHashable : Any]?
     
     override func viewDidLoad() {
@@ -134,6 +135,12 @@ class ViewController: UIViewController, UITextFieldDelegate{
                 self.transcription.text = ""
         }
     }
+    
+    @IBAction func resetContext(_ sender: Any) {
+        contextContents.shared.context = nil
+        transcription.text = "Resetted!"
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if let text = self.textControl.text{
