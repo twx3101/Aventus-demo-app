@@ -61,7 +61,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         summaryView.layer.addSublayer(topBorder)
         summaryView.layer.addSublayer(bottomBorder)
         
-        let text_total = String((payment?.selectedSeats)!*(payment?.price)!)
+        let text_total = String(format:"%.02f",Double((payment?.selectedSeats)!)*(payment?.price)!)
 
         
         let text_1line = (event?.artist)!
@@ -69,7 +69,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         let text_2line = (event?.datetime)! + "   " + (event?.time)!
 
         
-        let price: String = String((payment?.price)!)
+        let price: String = String(format:"%.02f", (payment?.price)!)
         let selectedSeats: String = String((payment?.selectedSeats)!)
         
         var text_cat = ""

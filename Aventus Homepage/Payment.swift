@@ -14,13 +14,13 @@ class Payment{
     
     var category: String
     
-    var price: Int
+    var price: Double
     
     var selectedSeats: Int
     
     // MARK: Initialization
     
-    init(category: String, price: Int, selectedSeats: Int){
+    init(category: String, price: Double, selectedSeats: Int){
         
         self.category = category
         self.price = price

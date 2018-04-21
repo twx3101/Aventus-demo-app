@@ -14,7 +14,7 @@ class Seating{
     
     var categories: [String]
     
-    var price: [Int]
+    var price: [Double]
     
     var noSeatsAvail: [Int]
     
@@ -25,12 +25,13 @@ class Seating{
     
     // MARK: Initialization
     
-    init(categories: [String], price: [Int], noSeatsAvail: [Int], noCategories: Int){
+    init(categories: [String], price: [Double], noSeatsAvail: [Int], noCategories: Int){
         
         self.categories = categories
         self.price = price
         self.noSeatsAvail = noSeatsAvail
         self.noCategories = noCategories
+
     }
     
 }

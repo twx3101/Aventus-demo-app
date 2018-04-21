@@ -54,9 +54,9 @@ class Event{
         
         var weekend: String
     
-    var minPrice: Int
+        var minPrice: Double
     
-    var maxPrice: Int
+        var maxPrice: Double
         
         
         
@@ -117,7 +117,7 @@ class Event{
          }*/
         
     
-    init?(artist: String, location: String, datetime: String, formattedDate: String, description: String?, photo: UIImage?, seating: Seating, time: String, artist_ranking: Int, day_in_week: String, event_ID: String, event_status: String, venue: String, genre: String, month: String, timezone: String, city: String, imageURL: String, bannerURL: String, address: String, weekend: String, minPrice: Int, maxPrice: Int){
+    init?(artist: String, location: String, datetime: String, formattedDate: String, description: String?, photo: UIImage?, seating: Seating, time: String, artist_ranking: Int, day_in_week: String, event_ID: String, event_status: String, venue: String, genre: String, month: String, timezone: String, city: String, imageURL: String, bannerURL: String, address: String, weekend: String, minPrice: Double, maxPrice: Double){
             
             guard !artist.isEmpty && !location.isEmpty && !datetime.isEmpty else{
                 return nil

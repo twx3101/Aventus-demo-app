@@ -45,7 +45,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     var selectedCategory: String = ""
     
-    var selectedPrice: Int = 0
+    var selectedPrice: Double = 0
     
     var selectedTicket: Int = 0
     
@@ -118,7 +118,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if(pickerView.tag==0) {
             selectedCategory = categoriesData[row]
-            selectedPrice = Int(priceData[row])!
+            selectedPrice = Double(priceData[row])!
             
             //print(selectedCategory)
         } else {
@@ -190,7 +190,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let noCategories = (seating!.noCategories)
         
         for i in 0..<noCategories {
-            priceData.append(String(seating!.price[i]))
+            priceData.append(String(format:"%.02f", seating!.price[i]))
         }
         let noSeats = 6
         for i in 0..<noSeats {
@@ -198,7 +198,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         
         selectedCategory = categoriesData[0]
-        selectedPrice = Int(priceData[0])!
+        selectedPrice = Double(priceData[0])!
         
 
     }

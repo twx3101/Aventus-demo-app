@@ -197,13 +197,17 @@ class handlingContext{
         }
         
         //handling price // not sure if this works
-        if let amount = context["amount"] as? Int{
-            contextContents["amount"] = amount
+        if let amount = context["amount"] as? String{
+            print("HELLO3", amount)
+            contextContents["amount"] = Double(amount)
+            
         }
         
         //need to handle context for this
-        if let priceComparison = context["priceComparison"] as? String{
+        if let priceComparison = context["priceComprison"] as? String{
+            print("HELLO4", priceComparison)
             contextContents["priceComparison"] = priceComparison
+            
         }
         if let numTickets = context["numTickets"] as? Int{
             contextContents["numTickets"] = numTickets

@@ -33,6 +33,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
     var refHandle: DatabaseHandle!
  
     var isRecording : Bool = false
+    var priceLimit : Double = 10
     
     var events = [Event]()
     var filteredEvents = [Event]()
@@ -245,33 +246,33 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 eventCatArea.append(eventObject?["Area: category 2"] as! String)
                 eventCatArea.append(eventObject?["Area: category 1"] as! String)
                 
-                var eventCatPrice = [Int]()
+                var eventCatPrice = [Double]()
                 
-                if let cat5 = eventObject?["Category 5(standing area): Price"] as? Int{ eventCatPrice.append(cat5)
+                if let cat5 = eventObject?["Category 5(standing area): Price"] as? Double{ eventCatPrice.append(cat5)
                 }
                 else{
                     eventCatPrice.append(0)
                 }
                 
-                if let cat4 = eventObject?["Category 4: Price"] as? Int{ eventCatPrice.append(cat4)
+                if let cat4 = eventObject?["Category 4: Price"] as? Double{ eventCatPrice.append(cat4)
                 }
                 else{
                     eventCatPrice.append(0)
                 }
                 
-                if let cat3 = eventObject?["Category 3: Price"] as? Int{ eventCatPrice.append(cat3)
+                if let cat3 = eventObject?["Category 3: Price"] as? Double{ eventCatPrice.append(cat3)
                 }
                 else{
                     eventCatPrice.append(0)
                 }
 
-                if let cat2 = eventObject?["Category : Price"] as? Int{ eventCatPrice.append(cat2)
+                if let cat2 = eventObject?["Category : Price"] as? Double{ eventCatPrice.append(cat2)
                 }
                 else{
                     eventCatPrice.append(0)
                 }
                 
-                if let cat1 = eventObject?["Category 1: Price"] as? Int{ eventCatPrice.append(cat1)
+                if let cat1 = eventObject?["Category 1: Price"] as? Double{ eventCatPrice.append(cat1)
                 }
                 else{
                     eventCatPrice.append(0)
@@ -315,7 +316,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 let eventMaxPrice = eventCatPrice.max()
 
                 var eventAvailCat = [String]()
-                var eventAvailPrice = [Int]()
+                var eventAvailPrice = [Double]()
                 var eventAvailSeats = [Int]()
                 var no_avail_cat: Int = 0
                 
@@ -330,7 +331,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 
                 let seating1 = Seating(categories: eventAvailCat, price: eventAvailPrice, noSeatsAvail: eventAvailSeats , noCategories: no_avail_cat)
                 
-                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, formattedDate: eventFormattedDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, bannerURL: eventBannerURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String, minPrice: eventMinPrice as! Int, maxPrice: eventMaxPrice as! Int)
+                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, formattedDate: eventFormattedDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, bannerURL: eventBannerURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String, minPrice: eventMinPrice as! Double, maxPrice: eventMaxPrice as! Double)
                 
                 
                 self.events.append(event1!)
@@ -393,7 +394,47 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                     return eventDate == (start_date)
                 }
             }
-            
+        
+        }
+        
+        if let amount = contextContent["amount"] as? Double{
+            print("HELLO", amount)
+            if let priceComparison = contextContent["priceComparison"] as? String{
+                print("HELLO2", priceComparison)
+                switch priceComparison {
+                    case "<=" :
+                        filteredEvents = filteredEvents.filter{
+                            return $0.minPrice <= amount
+                    }
+                    case "<" :
+                        filteredEvents = filteredEvents.filter{
+                            return $0.minPrice < amount
+                        }
+                    case ">" :
+                        filteredEvents = filteredEvents.filter{
+                            return $0.minPrice > amount
+                        }
+                    case ">=" :
+                        filteredEvents = filteredEvents.filter{
+                            return $0.minPrice >= amount
+                        }
+                    case "~" :
+                        filteredEvents = filteredEvents.filter{
+                            return ($0.minPrice <= amount + priceLimit && $0.minPrice >= amount - priceLimit)
+                        }
+                    case "=" :
+                        filteredEvents = filteredEvents.filter{
+                            return $0.minPrice == amount
+                        }
+                    default:
+                        print("Unknown price comparison operator")
+                    }
+            }
+            else {
+                filteredEvents = filteredEvents.filter{
+                    return $0.minPrice <= amount
+                }
+            }
         }
         
         collectionView.reloadData()
