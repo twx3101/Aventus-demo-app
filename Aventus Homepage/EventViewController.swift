@@ -370,7 +370,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
         if let genre = contextContent["genre"] as? String{
             filteredEvents = filteredEvents.filter({( event:Event) -> Bool in
-                return event.genre.lowercased().contains(genre.lowercased())
+                return genre.lowercased().contains(event.genre.lowercased().replacingOccurrences(of: "/", with: " "))
             })
         }
         if let start_date = contextContent["start_date"] as? Date{
