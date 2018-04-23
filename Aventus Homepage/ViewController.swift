@@ -169,15 +169,105 @@ extension ViewController{
         }
         else{
             handlingContext().bootstrapView(response: response)
-            let pageViewController = self.parent as! PageViewController
+           
             
-            let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "EventPage") as! EventViewController
+            if let task = response.context["task"] as? String{
+                
+                if task == "Navigate"{
+                    handleNavigate()
+                }
+                if task == "BuyTicket" || task == "BuyTickets"{
+                    handleBuyTickets()
+                }
+                
+            }
+        }
+    }
+    func handleNavigate(){
+        let pageViewController = self.parent as! PageViewController
+        let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "EventPage") as! EventViewController
+        
+        pageViewController.pages[2] = nextViewController
+        
+        nextViewController.isFiltering = true
+        nextViewController.filteredItems = contextContents.shared.contextContent
+        
+        pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+    }
+    func handleBuyTickets(){
+        
+        var categoryNum : Int?
+        var number: Int?
+        
+        let pageViewController = self.parent as! PageViewController
+        
+        let nextViewController = pageViewController.pages[2] as! EventViewController
+        
+        let noOfEvents = nextViewController.filteredEvents
+        
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
+        
+        pageViewController.pages[3] = detailViewController
+        
+        if let numTickets = contextContents.shared.contextContent["numTickets"] as? String{
             
-            pageViewController.pages[2] = nextViewController
+            number = Int(numTickets)
+            detailViewController.selectedTicket = number!
+           
+        }
+        if let category = contextContents.shared.contextContent["ticketType"] as? String{
             
-            nextViewController.isFiltering = true
-            nextViewController.filteredItems = contextContents.shared.contextContent
+            switch category{
+            case "A":
+                categoryNum = 1
+            case "B":
+                categoryNum = 2
+            case "C":
+                categoryNum = 3
+            case "D":
+                categoryNum = 4
+            case "Standing":
+                categoryNum = 0
+            default:
+                categoryNum = 0
+            }
+            detailViewController.category = categoryNum!
+        }
+        
+        print("HELLO2")
+      
+        
+       
+        if noOfEvents.count == 1{
+            print("Hello3", noOfEvents.count)
             
+            if number != nil && categoryNum != nil{
+                let paymentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PaymentPage") as! PaymentViewController
+                
+                pageViewController.pages[4] = paymentViewController
+                paymentViewController.event = detailViewController.eventLoaded
+                let selectedCategories = detailViewController.categoriesData[categoryNum!]
+                let selectedPrice = detailViewController.priceData[categoryNum!]
+                let price = Double(selectedPrice)
+                
+                
+                paymentViewController.payment = Payment(category: selectedCategories, price: price!, selectedSeats: number!)
+            }
+            else if number != nil{
+                
+                detailViewController.eventLoaded = nextViewController.filteredEvents[0]
+                pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            }
+            else if categoryNum != nil{
+                 detailViewController.eventLoaded = nextViewController.filteredEvents[0]
+                pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            }
+        }
+        else if noOfEvents.count == 0{
+            //TODO
+            pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        }
+        else{
             pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         }
     }

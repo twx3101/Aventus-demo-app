@@ -49,6 +49,8 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     var selectedTicket: Int = 0
     
+    var category: Int = 0
+    
     let pickerWidth = 100
     
     let pickerHeight = 80
@@ -149,6 +151,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         ticketPicker.delegate = self
         ticketPicker.dataSource = self
         
+        
         //layoutButton.layer.backgroundColor = (colors.headerTwoText).cgColor
         layoutButton.setTitleColor(colors.headerTwoText, for: UIControlState.normal)
         
@@ -197,9 +200,11 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             ticketData.append(String(i))
         }
         
-        selectedCategory = categoriesData[0]
-        selectedPrice = Double(priceData[0])!
+        selectedCategory = categoriesData[category]
+        selectedPrice = Double(priceData[category])!
         
+        categoryPicker.selectRow(category, inComponent: 0, animated: false)
+        ticketPicker.selectRow(selectedTicket, inComponent: 0, animated: false)
 
     }
     

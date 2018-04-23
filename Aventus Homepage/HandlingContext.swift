@@ -33,8 +33,9 @@ class handlingContext{
                 
                 contextContents.shared.contextContent = handleNavigate(context: context)
             }
-            else if task == "BuyTicket"{
+            else if task == "BuyTicket" || task == "BuyTickets"{
                 //TODO
+                 contextContents.shared.contextContent = handleNavigate(context: context)
             }
             else if task == "SelectSeat"{
                 //TODO
@@ -209,7 +210,7 @@ class handlingContext{
             contextContents["priceComparison"] = priceComparison
             
         }
-        if let numTickets = context["numTickets"] as? Int{
+        if let numTickets = context["numTickets"] as? String{
             contextContents["numTickets"] = numTickets
         }
         if let ticketType = context["ticketType"] as? String{
