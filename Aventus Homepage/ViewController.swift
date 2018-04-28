@@ -184,11 +184,22 @@ extension ViewController{
         }
     }
     func handleNavigate(){
+        var nextViewController : EventViewController
+        
         let pageViewController = self.parent as! PageViewController
-        let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "EventPage") as! EventViewController
         
-        pageViewController.pages[2] = nextViewController
+        if pageViewController.instantiated[2] == false{
+            nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "EventPage") as! EventViewController
         
+            pageViewController.pages[2] = nextViewController
+            pageViewController.instantiated[2] = true
+        }
+        else{
+            nextViewController = pageViewController.pages[2] as! EventViewController
+            nextViewController.isFiltering = true
+            nextViewController.filteredItems = contextContents.shared.contextContent
+            nextViewController.filterContentofEvents(contextContent: nextViewController.filteredItems)
+        }
         nextViewController.isFiltering = true
         nextViewController.filteredItems = contextContents.shared.contextContent
         
@@ -198,13 +209,29 @@ extension ViewController{
         
         var categoryNum : Int?
         var number: Int?
-        
+        var nextViewController : EventViewController
         let pageViewController = self.parent as! PageViewController
         
-        let nextViewController = pageViewController.pages[2] as! EventViewController
+        
+        if pageViewController.instantiated[2] == false{
+            nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "EventPage") as! EventViewController
+            
+            pageViewController.pages[2] = nextViewController
+            pageViewController.instantiated[2] = true
+            
+            nextViewController.isFiltering = true
+            nextViewController.filteredItems = contextContents.shared.contextContent
+        }
+        else{
+            nextViewController = pageViewController.pages[2] as! EventViewController
+            nextViewController.isFiltering = true
+            nextViewController.filteredItems = contextContents.shared.contextContent
+            nextViewController.filterContentofEvents(contextContent: nextViewController.filteredItems)
+        }
         
         let noOfEvents = nextViewController.filteredEvents
         
+        //instatiated ticket buying page
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
         
         pageViewController.pages[3] = detailViewController
@@ -267,6 +294,8 @@ extension ViewController{
             //TODO
             pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         }
+            
+            //go back to event page  if there's more than 1 event to select from
         else{
             pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         }

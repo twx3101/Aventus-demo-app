@@ -17,12 +17,19 @@ class handlingContext{
         //process
         print("Response Code: %@", response.responseCode)
         print("Message Text: %@", response.message)
-        print("Context: %@", response.context)
-        print("Data: %@", response.data)
+        print("This is Context: %@", response.context)
+        print("This is Data: %@", response.semanticOutput)
         
-        
-        //app-specific code to handle responses
-        self.parseData(context: response.context)
+                //app-specific code to handle responses
+       
+        self.parseData(context: response.semanticOutput)
+        if contextContents.shared.context == nil{
+            contextContents.shared.context = response.semanticOutput
+        }
+        else{
+            contextContents.shared.context = response.context
+        }
+
     }
     
     func parseData(context: [AnyHashable : Any]){
@@ -48,29 +55,36 @@ class handlingContext{
             //handle nil data
             print("NIL Data")
         }
-        contextContents.shared.context = context
+        
     }
     
     func handleNavigate(context: [AnyHashable : Any]) -> [String : Any]{
-        var contextContents = [String: Any]()
+        var contextContent = contextContents.shared.contextContent
         //        artist: String
         if let artist = context["artist"] as? String{
-            contextContents["artist"] = artist
+        
+            if let compArtist = contextContent["artist"] as? String{
+                if artist != compArtist{
+                    resetData()
+                    contextContent = contextContents.shared.contextContent
+                }
+            }
+            contextContent["artist"] = artist
             
         }
         //        location: String
         if let location = context["location"] as?  String{
-            contextContents["location"] = location
+            contextContent["location"] = location
         }
         
         //        venue: String
         if let venue = context["venue"] as? String{
-            contextContents["venue"] = venue
+            contextContent["venue"] = venue
         }
         
         //        genre: String
         if let genre = context["musicGenre"] as? String{
-            contextContents["genre"] = genre
+            contextContent["genre"] = genre
         }
         
         // handling time: AnyHashable("start_datetime")
@@ -83,13 +97,13 @@ class handlingContext{
             cal.timeZone = TimeZone(abbreviation: "GMT")!
             let c = DateComponents(year: year, month: month, day: day )
             
-            contextContents["start_date"] = cal.date(from: c)!
+            contextContent["start_date"] = cal.date(from: c)!
         }
         if let end_datetime = context["end_datetime"] as? [String: Int]{
             //if start_date is empty, set date to current time
             
-            if contextContents.index(forKey: "start_datetime") == nil {
-                contextContents["start_date"] = setCurrentDate()
+            if contextContent.index(forKey: "start_datetime") == nil {
+                contextContent["start_date"] = setCurrentDate()
             }
             var cal = Calendar.current
             cal.timeZone = TimeZone(abbreviation: "GMT")!
@@ -100,7 +114,7 @@ class handlingContext{
             
             let d = DateComponents(year: end_year, month: end_month, day: end_day)
             
-            contextContents["end_date"] = cal.date(from: d)
+            contextContent["end_date"] = cal.date(from: d)
             
         }
         
@@ -141,41 +155,41 @@ class handlingContext{
         
         if (daysToAdd != 0 || monthsToAdd != 0 || yearsToAdd != 0){
             // if no start date is set, set date to current day
-            if contextContents.index(forKey: "start_datetime") == nil  {
-                contextContents["start_date"] = setCurrentDate()
+            if contextContent.index(forKey: "start_datetime") == nil  {
+                contextContent["start_date"] = setCurrentDate()
             }
             // set end date to current date + no. of days to add
             var cal = Calendar.current
             cal.timeZone = TimeZone(abbreviation: "GMT")!
-            let start_date = contextContents["start_date"] as! Date
+            let start_date = contextContent["start_date"] as! Date
             let d = DateComponents(year: yearsToAdd, month: monthsToAdd, day: daysToAdd)
             
             let futureDate = cal.date(byAdding: d, to: start_date)
             
-            contextContents["end_date"] = futureDate
+            contextContent["end_date"] = futureDate
         }
         // if there is no end_date, then set end_Date to the next day
-        if contextContents.index(forKey: "end_date") == nil && contextContents.index(forKey: "start_date") != nil{
+        if contextContent.index(forKey: "end_date") == nil && contextContent.index(forKey: "start_date") != nil{
             var cal = Calendar.current
             cal.timeZone = TimeZone(abbreviation: "GMT")!
-            let start_date = contextContents["start_date"] as! Date
+            let start_date = contextContent["start_date"] as! Date
             let d = DateComponents(day: 1)
             
             let futureDate = cal.date(byAdding: d, to: start_date)
             
-            contextContents["end_date"] = futureDate
+            contextContent["end_date"] = futureDate
         }
         
         
         //handling time of day and hour
         if let dayPart = context["dayPart"] as? String{
-            if contextContents.index(forKey: "start_datetime") == nil  {
-                contextContents["start_date"] = setCurrentDate()
+            if contextContent.index(forKey: "start_datetime") == nil  {
+                contextContent["start_date"] = setCurrentDate()
             }
             
             var cal = Calendar.current
             cal.timeZone = TimeZone(abbreviation: "GMT")!
-            let start_date = contextContents["start_date"] as! Date
+            let start_date = contextContent["start_date"] as! Date
             var d = DateComponents(hour: 0)
             var e = DateComponents(hour: 0)
             if dayPart == "Day"{
@@ -193,36 +207,36 @@ class handlingContext{
             let futureDate = cal.date(byAdding: d, to: start_date)
             let endDate = cal.date(byAdding: e, to: start_date)
             
-            contextContents["start_date"] = futureDate
-            contextContents["end_date"] = endDate
+            contextContent["start_date"] = futureDate
+            contextContent["end_date"] = endDate
         }
         
         //handling price // not sure if this works
         if let amount = context["amount"] as? String{
             print("HELLO3", amount)
-            contextContents["amount"] = Double(amount)
+            contextContent["amount"] = Double(amount)
             
         }
         
         //need to handle context for this
         if let priceComparison = context["priceComprison"] as? String{
             print("HELLO4", priceComparison)
-            contextContents["priceComparison"] = priceComparison
+            contextContent["priceComparison"] = priceComparison
             
         }
         if let numTickets = context["numTickets"] as? String{
-            contextContents["numTickets"] = numTickets
+            contextContent["numTickets"] = numTickets
         }
         if let ticketType = context["ticketType"] as? String{
-            contextContents["ticketType"] = ticketType
+            contextContent["ticketType"] = ticketType
         }
         
         if let seatArea = context["seatArea"] as? String{
-            contextContents["seatArea"] = seatArea
+            contextContent["seatArea"] = seatArea
         }
         
         
-        return contextContents
+        return contextContent
         
     }
     
@@ -241,6 +255,12 @@ class handlingContext{
         c.minute = 0
         c.second = 0
         return cal.date(from: c)!
+    }
+    
+    func resetData(){
+        print("Data Reset")
+        contextContents.shared.context = nil
+        contextContents.shared.contextContent = [String:Any]()
     }
 }
 

@@ -438,6 +438,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
         
         collectionView.reloadData()
+        print("Hello, i did reload")
         //tableView.reloadData()
     }
     
@@ -479,15 +480,97 @@ extension EventViewController{
         }
         else{
             handlingContext().bootstrapView(response: response)
-            
-            self.isFiltering = true
-            self.filteredItems = contextContents.shared.contextContent
-            self.filterContentofEvents(contextContent: self.filteredItems)
-            self.collectionView.reloadData()
-            
+            if let task = response.context["task"] as? String{
+                self.isFiltering = true
+                self.filteredItems = contextContents.shared.contextContent
+                self.filterContentofEvents(contextContent: self.filteredItems)
+                self.collectionView.reloadData()
+                
+                if task == "BuyTicket" || task == "BuyTickets"{
+                    handleBuyTickets()
+                }
+            }
         }
     }
+    
+    func handleBuyTickets(){
+        var categoryNum : Int?
+        var number: Int?
+        
+        let pageViewController = self.parent as! PageViewController
+       
+        let noOfEvents = self.filteredEvents
+        
+        //instatiated ticket buying page
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
+        
+        pageViewController.pages[3] = detailViewController
+        
+        if let numTickets = contextContents.shared.contextContent["numTickets"] as? String{
+            
+            number = Int(numTickets)
+            detailViewController.selectedTicket = number!
+            
+        }
+        if let category = contextContents.shared.contextContent["ticketType"] as? String{
+            
+            switch category{
+            case "A":
+                categoryNum = 1
+            case "B":
+                categoryNum = 2
+            case "C":
+                categoryNum = 3
+            case "D":
+                categoryNum = 4
+            case "Standing":
+                categoryNum = 0
+            default:
+                categoryNum = 0
+            }
+            detailViewController.category = categoryNum!
+        }
+        
+        print("HELLO2")
+        
+        if noOfEvents.count == 1{
+            print("Hello3", noOfEvents.count)
+            
+            if number != nil && categoryNum != nil{
+                let paymentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PaymentPage") as! PaymentViewController
+                
+                pageViewController.pages[4] = paymentViewController
+                paymentViewController.event = detailViewController.eventLoaded
+                let selectedCategories = detailViewController.categoriesData[categoryNum!]
+                let selectedPrice = detailViewController.priceData[categoryNum!]
+                let price = Double(selectedPrice)
+                
+                
+                paymentViewController.payment = Payment(category: selectedCategories, price: price!, selectedSeats: number!)
+            }
+            else if number != nil{
+                
+                detailViewController.eventLoaded = self.filteredEvents[0]
+                pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            }
+            else if categoryNum != nil{
+                detailViewController.eventLoaded = self.filteredEvents[0]
+                pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            }
+        }
+        else if noOfEvents.count == 0{
+            //TODO
+        
+        }
+            
+            //go back to event page  if there's more than 1 event to select from
+        else{
+           //print message
+        }
+    }
+    
 }
+
 
 extension EventViewController{
     
