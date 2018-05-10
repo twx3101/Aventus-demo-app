@@ -325,13 +325,6 @@
                                                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jTn-dj-HzH" userLabel="DescriptionView">
                                                             <rect key="frame" x="0.0" y="66" width="331" height="60"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQz-wx-aZh" customClass="DescriptionLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="331" height="30"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORl-Vq-2CA" customClass="DescriptionLabel" customModule="Aventus_Homepage" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="30" width="331" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -341,6 +334,13 @@
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PriceLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNj-aG-IDz" customClass="DescriptionLabel" customModule="Aventus_Homepage" customModuleProvider="target">
                                                                     <rect key="frame" x="223" y="32" width="100" height="26"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQz-wx-aZh" customClass="DescriptionLabel" customModule="Aventus_Homepage" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="331" height="30"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
@@ -433,20 +433,31 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sB4-xZ-nOT" userLabel="EventView" customClass="EventView">
                                 <rect key="frame" x="16" y="44" width="343" height="182"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EventImage" translatesAutoresizingMaskIntoConstraints="NO" id="pny-ET-V8O">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="16"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pny-ET-V8O">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="182"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="pny-ET-V8O" secondAttribute="height" multiplier="358:190" id="m5m-eo-SRq"/>
+                                        </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tu0-YD-tZ9" userLabel="LabelView">
-                                        <rect key="frame" x="0.0" y="132" width="343" height="50"/>
+                                        <rect key="frame" x="8" y="118" width="343" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frQ-EC-Nht" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="-18" width="42" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="343" id="BaZ-Ek-W3g"/>
+                                                    <constraint firstAttribute="height" constant="30" id="lCO-O9-OGI"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV2-ud-0nr" customClass="HeaderLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="25.5" width="42" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="26" width="343" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="343" id="WPJ-18-JGA"/>
+                                                    <constraint firstAttribute="height" constant="30" id="sVu-bU-PeS"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -455,10 +466,10 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="cV2-ud-0nr" secondAttribute="bottom" constant="4" id="DGl-fM-AUH"/>
-                                            <constraint firstAttribute="height" constant="50" id="Q0x-Ai-wZq"/>
-                                            <constraint firstItem="cV2-ud-0nr" firstAttribute="leading" secondItem="Tu0-YD-tZ9" secondAttribute="leading" constant="8" id="iEM-gK-NhN"/>
-                                            <constraint firstItem="frQ-EC-Nht" firstAttribute="leading" secondItem="Tu0-YD-tZ9" secondAttribute="leading" constant="8" id="ml5-c9-dFc"/>
-                                            <constraint firstItem="frQ-EC-Nht" firstAttribute="top" secondItem="Tu0-YD-tZ9" secondAttribute="top" constant="-18" id="mlS-aA-b9c"/>
+                                            <constraint firstAttribute="height" constant="60" id="Q0x-Ai-wZq"/>
+                                            <constraint firstItem="cV2-ud-0nr" firstAttribute="leading" secondItem="Tu0-YD-tZ9" secondAttribute="leading" id="iEM-gK-NhN"/>
+                                            <constraint firstItem="frQ-EC-Nht" firstAttribute="leading" secondItem="Tu0-YD-tZ9" secondAttribute="leading" id="ml5-c9-dFc"/>
+                                            <constraint firstItem="frQ-EC-Nht" firstAttribute="top" secondItem="Tu0-YD-tZ9" secondAttribute="top" id="mlS-aA-b9c"/>
                                             <constraint firstAttribute="width" constant="343" id="nnq-I5-n8U"/>
                                         </constraints>
                                     </view>
@@ -469,12 +480,12 @@
                                     <constraint firstAttribute="trailing" secondItem="pny-ET-V8O" secondAttribute="trailing" id="EOi-9F-VCC"/>
                                     <constraint firstAttribute="width" constant="343" id="IWF-L8-cdH"/>
                                     <constraint firstItem="pny-ET-V8O" firstAttribute="leading" secondItem="sB4-xZ-nOT" secondAttribute="leading" id="KN2-Lz-aef"/>
-                                    <constraint firstAttribute="bottom" secondItem="Tu0-YD-tZ9" secondAttribute="bottom" id="c7N-qD-0qt"/>
-                                    <constraint firstAttribute="trailing" secondItem="Tu0-YD-tZ9" secondAttribute="trailing" id="tNj-vv-fIe"/>
+                                    <constraint firstItem="Tu0-YD-tZ9" firstAttribute="leading" secondItem="sB4-xZ-nOT" secondAttribute="leading" constant="8" id="nWl-DJ-AOU"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tu0-YD-tZ9" secondAttribute="bottom" constant="4" id="ykA-B0-eeD"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLd-ms-5ya" userLabel="PickerView">
-                                <rect key="frame" x="16" y="234" width="343" height="270"/>
+                                <rect key="frame" x="16" y="258" width="343" height="270"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ipH-jj-BTH" userLabel="TicketStackView">
                                         <rect key="frame" x="173" y="0.0" width="170" height="249"/>
@@ -493,8 +504,8 @@
                                             </pickerView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="bdg-wg-IUF" firstAttribute="top" secondItem="ipH-jj-BTH" secondAttribute="top" constant="20" id="9cr-Ks-20b"/>
                                             <constraint firstAttribute="width" constant="170" id="Bh9-II-m0i"/>
+                                            <constraint firstItem="bdg-wg-IUF" firstAttribute="top" secondItem="ipH-jj-BTH" secondAttribute="top" constant="20" id="fWi-HY-Las"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PnY-pX-Gwu" userLabel="CatStackView">
@@ -515,7 +526,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="170" id="PPR-8m-tlk"/>
-                                            <constraint firstItem="LPh-sO-EuZ" firstAttribute="top" secondItem="PnY-pX-Gwu" secondAttribute="top" constant="20" id="xJH-gg-wF5"/>
+                                            <constraint firstItem="LPh-sO-EuZ" firstAttribute="top" secondItem="PnY-pX-Gwu" secondAttribute="top" constant="20" id="UWP-HI-C0o"/>
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UP-wU-xmj">
@@ -542,7 +553,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhp-up-iQp" customClass="RoundButton" customModule="Aventus_Homepage" customModuleProvider="target">
-                                <rect key="frame" x="16" y="526" width="343" height="45"/>
+                                <rect key="frame" x="16" y="556" width="343" height="45"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="X3d-YD-Hos"/>
@@ -561,10 +572,10 @@
                             <constraint firstItem="Mb0-1f-oi8" firstAttribute="top" secondItem="bHF-Xu-Vfa" secondAttribute="bottom" id="4fo-9l-M1B"/>
                             <constraint firstItem="sB4-xZ-nOT" firstAttribute="trailing" secondItem="nqJ-H0-mU7" secondAttribute="trailingMargin" id="J0E-LV-jcc"/>
                             <constraint firstItem="bHF-Xu-Vfa" firstAttribute="centerX" secondItem="nqJ-H0-mU7" secondAttribute="centerX" id="Od6-X2-c33"/>
-                            <constraint firstItem="Rhp-up-iQp" firstAttribute="top" secondItem="sB4-xZ-nOT" secondAttribute="bottom" constant="300" id="VLl-5X-reR"/>
+                            <constraint firstItem="Rhp-up-iQp" firstAttribute="top" secondItem="YLd-ms-5ya" secondAttribute="bottom" constant="28" id="VLl-5X-reR"/>
                             <constraint firstItem="sB4-xZ-nOT" firstAttribute="top" secondItem="fzn-Va-zEa" secondAttribute="bottom" constant="24" id="kJi-qF-h5S"/>
                             <constraint firstItem="sB4-xZ-nOT" firstAttribute="leading" secondItem="nqJ-H0-mU7" secondAttribute="leadingMargin" id="ntX-Hf-9nz"/>
-                            <constraint firstItem="YLd-ms-5ya" firstAttribute="top" secondItem="sB4-xZ-nOT" secondAttribute="bottom" constant="8" id="ooD-lx-mKN"/>
+                            <constraint firstItem="YLd-ms-5ya" firstAttribute="top" secondItem="sB4-xZ-nOT" secondAttribute="bottom" constant="32" id="ooD-lx-mKN"/>
                             <constraint firstItem="YLd-ms-5ya" firstAttribute="centerX" secondItem="nqJ-H0-mU7" secondAttribute="centerX" id="uqj-Xk-zlm"/>
                             <constraint firstItem="Rhp-up-iQp" firstAttribute="centerX" secondItem="nqJ-H0-mU7" secondAttribute="centerX" id="x9f-3R-PhC"/>
                         </constraints>
@@ -994,7 +1005,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="EventImage" width="16" height="16"/>
         <image name="HelpIcon" width="50" height="50"/>
         <image name="Seating" width="280" height="198"/>
         <image name="background" width="428" height="134"/>
