@@ -22,34 +22,9 @@ class ConfirmationViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+        self.view.backgroundColor = colors.bg
         
-     //   confirmView.backgroundColor = colors.neonblueBg
         confirmView.backgroundColor = colors.darkpurpleBg
-        //  confirmView.layer.borderWidth = 1.5
-        //confirmView.layer.borderColor = (colors.border).cgColor
-      
-        /*
-        confirmView.layer.masksToBounds = false
-        confirmView.layer.shadowColor = UIColor.black.cgColor
-        confirmView.layer.shadowOpacity = 0.5
-        confirmView.layer.shadowOffset = CGSize(width: -1, height: 1)
-        confirmView.layer.shadowRadius = 1
-        confirmView.layer.shadowPath = UIBezierPath(rect: confirmView.bounds).cgPath
-        confirmView.layer.shouldRasterize = true
-        confirmView.layer.rasterizationScale = UIScreen.main.scale
-        */
-        //summaryView.backgroundColor = colors.buttonBg
-        
-        //summaryView.layer.borderWidth = 1.5
-        
-        //detailLabel.text = (event?.artist)! + ", " + (payment?.category)!
-        
-        //totalLabel.text = String((payment?.selectedSeats)!)
-        //totalLabel.text = "£" + String((payment?.selectedSeats)!*(payment?.price)!)
-        
-        //preferredContentSize = CGSize(width: 200, height: 300)
-        //self.showAnimate()
         
         labelConfirm.lineBreakMode = .byWordWrapping
         labelConfirm.numberOfLines = 0
@@ -85,7 +60,7 @@ class ConfirmationViewController: UIViewController{
     @IBAction func viewTicket(_ sender: RoundButton) {
         let pageViewController = self.parent as! PageViewController
         
-        let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfilePage") as! ViewController
+        let homeViewController = storyboard?.instantiateViewController(withIdentifier: "HomePage") as! ViewController
         
         pageViewController.pages[0] = homeViewController
         pageViewController.setViewControllers([homeViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)

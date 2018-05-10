@@ -856,7 +856,6 @@
                                         </constraints>
                                         <state key="normal" title="View tickets"/>
                                         <connections>
-                                            <action selector="goHome:" destination="BI1-Lz-PkS" eventType="touchUpInside" id="bDf-vi-ixP"/>
                                             <action selector="viewTicket:" destination="BI1-Lz-PkS" eventType="touchUpInside" id="jZz-2p-vRp"/>
                                         </connections>
                                     </button>

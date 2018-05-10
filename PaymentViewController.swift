@@ -164,22 +164,27 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)*/
             
+            let pageViewController = self.parent as! PageViewController
+            
             let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
             
             popOverVC.event = event
             popOverVC.payment = payment
             
+            pageViewController.pages[5] = popOverVC
+            
+            pageViewController.setViewControllers([popOverVC], direction: UIPageViewControllerNavigationDirection.forward , animated: true, completion: nil)
             
             
-            //popOverVC.modalPresentationStyle = .overFullScreen
-            //popOverVC.modalTransitionStyle = .crossDissolve
+            /*let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
             
-            //present(popOverVC, animated: true, completion: nil)
+            popOverVC.event = event
+            popOverVC.payment = payment
             
             self.addChildViewController(popOverVC)
             popOverVC.view.frame = self.view.frame
             self.view.addSubview(popOverVC.view)
-            popOverVC.didMove(toParentViewController: self)
+            popOverVC.didMove(toParentViewController: self)*/
             
             
             
