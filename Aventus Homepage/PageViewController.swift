@@ -6,12 +6,18 @@
 //  Copyright © 2018 Krongsiriwat, Krantharat. All rights reserved.
 //
 
+
+
+
+
 import UIKit
 
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     var pages = [UIViewController]()
     var instantiated = [Bool](repeating: false, count: 6)
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -120,8 +120,11 @@ class ViewController: UIViewController, UITextFieldDelegate{
     @IBAction func help(_ sender: UIButton) {
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "HelpPage") as! HelpViewController
         
-        present(detailViewController, animated: true, completion: nil)
+        let pageViewController = self.parent as! PageViewController
         
+        detailViewController.pageIndex = pageViewController.pages.index(of: self)
+        
+        present(detailViewController, animated: true, completion: nil)
     }
     
     @IBAction func microphonePress(_ sender: UIButton) {

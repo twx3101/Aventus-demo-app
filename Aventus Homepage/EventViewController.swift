@@ -92,7 +92,9 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         cell.locationDatetimeLabel.text = event.formattedDate + ", " + event.time
         cell.locationDatetimeLabel.textColor = colors.bodyText
         
-        cell.priceLabel.text = "From " + "£" + String(event.minPrice) + " - " + String(event.maxPrice)
+        cell.priceLabel.text = "£" + String(Int(event.minPrice)) + " - " + String(Int(event.maxPrice))
+        
+        cell.priceLabel.textColor = colors.bodyText
 
         Alamofire.request(event.bannerURL).responseImage { response in
             debugPrint(response)
@@ -168,7 +170,12 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
 
     @IBAction func help(_ sender: UIButton) {
+        
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "HelpPage") as! HelpViewController
+        
+        let pageViewController = self.parent as! PageViewController
+        
+        detailViewController.pageIndex = pageViewController.pages.index(of: self)
         
         present(detailViewController, animated: true, completion: nil)
     }
@@ -312,8 +319,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                     eventCatSeats.append(0)
                 }
 
-                let eventMinPrice = eventCatPrice.min()
-                let eventMaxPrice = eventCatPrice.max()
+                
 
                 var eventAvailCat = [String]()
                 var eventAvailPrice = [Double]()
@@ -328,6 +334,9 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                         no_avail_cat = no_avail_cat+1
                     }
                 }
+                
+                let eventMinPrice = eventAvailPrice.min()
+                let eventMaxPrice = eventAvailPrice.max()
                 
                 let seating1 = Seating(categories: eventAvailCat, price: eventAvailPrice, noSeatsAvail: eventAvailSeats , noCategories: no_avail_cat)
                 
