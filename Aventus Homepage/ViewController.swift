@@ -9,6 +9,8 @@
 import UIKit
 import CapitoSpeechKit
 import MBProgressHUD
+import BRYXBanner
+
 
 class contextContents {
     static let shared = contextContents()
@@ -23,14 +25,22 @@ class contextContents {
 //TODO: add busy microphone button, add transcription textbox, add Errorlabels, add textDelegate
 
 class ViewController: UIViewController, UITextFieldDelegate{
+    
     lazy var readyMic: UIImage = {
         return UIImage(named: "icons8-microphone-96")!
     }()
+    
     lazy var pressedMic: UIImage = {
         return UIImage(named: "microphone_on")!
     }()
+    
     var isRecording: Bool = false
+    
     var controller: CapitoController?
+    
+    var popup: UIView!
+    
+    var alert:UIAlertController!
     
     // MARK: Properties
     @IBOutlet weak var utter1Label: UILabel!
@@ -114,7 +124,18 @@ class ViewController: UIViewController, UITextFieldDelegate{
         pathLayer.add(group, forKey: "move")
         
     }
+    
+    func showAlert() {
+        
+        let banner = Banner(title: "Aventus", subtitle: "Done Listening", image: UIImage(named: "Icon"), backgroundColor: colors.neonblueBg)
+        
+        banner.position = BannerPosition.bottom
+        banner.dismissesOnTap = true
+        
+        banner.show(duration: 2.0)
 
+    }
+    
     // MARK: Actions
     
     @IBAction func help(_ sender: UIButton) {
@@ -132,6 +153,9 @@ class ViewController: UIViewController, UITextFieldDelegate{
         if self.isRecording {
             CapitoController.getInstance().cancelTalking()
             print("if")
+            
+            showAlert()
+            
         }
         else {
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)

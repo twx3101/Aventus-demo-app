@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.6.0)
   - AlamofireImage (3.3.0):
     - Alamofire (~> 4.5)
+  - BRYXBanner (0.8.0)
   - CapitoSpeechKit (3.5.7):
     - RestKit (~> 0.27.2)
     - SpeechKit (~> 2.2)
@@ -64,6 +65,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - BRYXBanner
   - CapitoSpeechKit
   - Firebase
   - Firebase/Core
@@ -73,6 +75,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  BRYXBanner: 406c3775789136531da6f3c98058be2f16e08a34
   CapitoSpeechKit: 23ce854be0e2ede8874b25ed5c8dd3807edf7fc2
   Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
   FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
@@ -90,6 +93,6 @@ SPEC CHECKSUMS:
   SpeechKit: f9b9498a7e8696ec284c1fb2722750736bddbc14
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
 
-PODFILE CHECKSUM: fad99ebc56034bfe09545a633cd00ade0ce35724
+PODFILE CHECKSUM: 1cc70864ef5a86ff234ccf00ff49832119d1c994
 
 COCOAPODS: 1.4.0
