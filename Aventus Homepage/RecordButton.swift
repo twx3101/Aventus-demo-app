@@ -24,7 +24,7 @@ class RecordButton: UIButton{
     }
     
     func sharedInit(){
-        layer.backgroundColor = colors.buttonBg.cgColor
+        //layer.backgroundColor = colors.buttonBg.cgColor
         
         layer.cornerRadius = frame.height/2
         

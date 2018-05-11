@@ -14,7 +14,7 @@ struct pageNo {
     static var seat: Int = 3
     static var payment: Int = 4
     static var confirm: Int = 5
-    
+
 }
 
 

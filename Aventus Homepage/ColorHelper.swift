@@ -24,6 +24,8 @@ struct colors{
     //static var bg = UIColorFromHex(rgbValue: purpleCol, alpha: 1)
     static var darkpurpleBg = UIColorFromHex(rgbValue: darkPurpleCol, alpha: 1)
     
+    static var white = UIColorFromHex(rgbValue: whiteCol, alpha: 1)
+    
     static var bg = UIColorFromHex(rgbValue: greyCol, alpha: 1)
     
     static var greyBg = UIColorFromHex(rgbValue: greyCol, alpha: 1)

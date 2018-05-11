@@ -85,7 +85,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         cell.locationDatetimeLabel.text = event.formattedDate + ", " + event.time
         cell.locationDatetimeLabel.textColor = colors.bodyText
         
-        cell.priceLabel.text = "£" + String(Int(event.minPrice)) + " - " + String(Int(event.maxPrice))
+        cell.priceLabel.text = "From £" + String(Int(event.minPrice)) + " - " + String(Int(event.maxPrice))
         
         cell.priceLabel.textColor = colors.bodyText
 

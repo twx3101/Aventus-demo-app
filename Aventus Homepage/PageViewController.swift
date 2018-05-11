@@ -29,6 +29,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         let paymentPage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "PaymentPage")
         let confirmPage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage")
         
+
         pages.append(profilePage)
         pages.append(homePage)
         pages.append(eventPage)

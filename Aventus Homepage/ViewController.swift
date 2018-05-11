@@ -10,6 +10,7 @@ import UIKit
 import CapitoSpeechKit
 import MBProgressHUD
 import BRYXBanner
+import SideMenu
 
 
 class contextContents {
@@ -55,14 +56,31 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var resetBut: UIButton!
     //var contextContent : [AnyHashable : Any]?
+    @IBOutlet weak var menuView: UIView!
+    
+    @IBOutlet weak var searchBarView: UIView!
+    
+    @IBOutlet weak var headView: UIView!
+    
+    
+    @IBOutlet weak var searchButton: UIButton!
+    
+    @IBOutlet weak var menuButton: UIButton!
+    
+    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = colors.bg
+        self.view.backgroundColor = colors.white
         
-        // Do any additional setup after loading the view, typically from a nib.
         self.textControl.delegate = self
+
+        searchBarView.isHidden = true
+        
+        menuView.isHidden = true
+        
+        //menuView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closePage(_:))))
     }
     
     func showAlert() {
@@ -75,7 +93,10 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     // MARK: Actions
     
-    @IBAction func help(_ sender: UIButton) {
+
+    @IBAction func navHelp(_ sender: UIButton) {
+        
+        menuView.isHidden = false
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "HelpPage") as! HelpViewController
         
         let pageViewController = self.parent as! PageViewController
@@ -84,6 +105,55 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         present(detailViewController, animated: true, completion: nil)
     }
+    
+    @objc func hideMenu(_ tap: UITapGestureRecognizer) {
+        
+        menuView.isHidden = true
+    
+        searchButton.isEnabled = true
+        microphone.isEnabled = true
+        
+    }
+    
+    func hideMenu() {
+        menuView.isHidden = true
+        
+        searchButton.isEnabled = true
+        microphone.isEnabled = true
+        
+    }
+    
+    @IBAction func showMenu(_ sender: UIButton) {
+        
+        menuView.isHidden = false
+        menuView.backgroundColor = colors.greyBg
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideMenu(_:))))
+        
+        searchButton.isEnabled = false
+        microphone.isEnabled = false
+        
+    }
+    
+    
+    @IBAction func showSearchBar(_ sender: UIButton) {
+
+        UIView.animate(withDuration: 0.5, animations: {
+            self.searchBarView.isHidden = false
+            self.headView.isHidden = true
+        }, completion: { finished in self.textControl.becomeFirstResponder()})
+        
+    }
+    
+    
+    @IBAction func hideSearchBar(_ sender: UIButton) {
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.searchBarView.isHidden = true
+            self.headView.isHidden = false
+        }, completion: nil)
+        
+    }
+    
     
     @IBAction func microphonePress(_ sender: UIButton) {
         
