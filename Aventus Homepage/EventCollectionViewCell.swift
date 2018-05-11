@@ -24,16 +24,6 @@ class EventCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        //containerView.layer.cornerRadius = 15.0
-        //containerView.clipsToBounds = true
-        //containerView.layer.masksToBounds = true
-        //containerView.backgroundColor = colors.bg
-        
-        //artistPhoto.layer.cornerRadius = 15.0
-        //artistPhoto.clipsToBounds = true
-        
-        //descriptionView.backgroundColor = colors.bg
-        //descriptionView.backgroundColor = UIColor.white.withAlphaComponent(0.2)
     }
     
 }

@@ -27,9 +27,7 @@ class RoundButton: UIButton{
         layer.backgroundColor = colors.headerTwoText.cgColor
         
         layer.cornerRadius = 15.0
-        //layer.borderWidth = 1.0
-        //layer.borderColor = .clear
-        
+
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         layer.masksToBounds = false

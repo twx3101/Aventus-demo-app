@@ -31,7 +31,7 @@ class HelpViewController: UIViewController, UIViewControllerTransitioningDelegat
         var labels = [UILabel]()
         
         switch(index) {
-        case page.home:
+        case pageNo.home:
 
             let label1 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
             label1.text = "\"Hello from home\""
@@ -48,7 +48,7 @@ class HelpViewController: UIViewController, UIViewControllerTransitioningDelegat
             
             labels.append(label3)
             
-        case page.event:
+        case pageNo.event:
             
             let label1 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
             label1.text = "\"Hello from event\""

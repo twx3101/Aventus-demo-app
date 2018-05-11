@@ -204,15 +204,9 @@
                                     <constraint firstItem="gTq-MV-DtX" firstAttribute="top" secondItem="1aV-4p-vmM" secondAttribute="top" id="lI3-6v-2Ny"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="xbD-Vd-LKW">
-                                <rect key="frame" x="0.0" y="84" width="375" height="133"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="xbD-Vd-LKW">
+                                <rect key="frame" x="0.0" y="104" width="375" height="134"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G0T-Bw-pX4" customClass="SineView" customModule="Aventus_Homepage" customModuleProvider="target">
-                                <rect key="frame" x="67" y="413" width="240" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5L9-F7-l1V">
                                 <rect key="frame" x="302" y="617" width="49" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -227,13 +221,16 @@
                         <constraints>
                             <constraint firstItem="ug6-cg-Hl4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Ce-Zn-195"/>
                             <constraint firstItem="Y5a-nW-cBV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="20" id="EIX-eD-DKd"/>
+                            <constraint firstAttribute="trailing" secondItem="xbD-Vd-LKW" secondAttribute="trailing" id="EsY-43-Bv1"/>
                             <constraint firstItem="syZ-Cf-8hp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="300" id="GvR-Dj-Z5S"/>
                             <constraint firstItem="1aV-4p-vmM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="NvZ-Mg-fYo"/>
                             <constraint firstItem="ug6-cg-Hl4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-40" id="OO0-BF-sZz"/>
                             <constraint firstItem="Y5a-nW-cBV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UDa-WN-POb"/>
                             <constraint firstItem="1aV-4p-vmM" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ccE-LQ-4ZB"/>
                             <constraint firstItem="syZ-Cf-8hp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gcT-lS-CL1"/>
+                            <constraint firstItem="xbD-Vd-LKW" firstAttribute="top" secondItem="1aV-4p-vmM" secondAttribute="bottom" constant="48" id="mvH-N7-TqQ"/>
                             <constraint firstItem="1aV-4p-vmM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="yNo-Mk-EhE"/>
+                            <constraint firstItem="xbD-Vd-LKW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zhG-aH-wUB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JzQ-rS-r6Q"/>
@@ -244,7 +241,6 @@
                         <outlet property="transcription" destination="Qac-BT-IBr" id="mdc-wO-y2p"/>
                         <outlet property="utter1Label" destination="ug6-cg-Hl4" id="Y5y-p3-9gM"/>
                         <outlet property="utter2Label" destination="Y5a-nW-cBV" id="RAH-fU-TBL"/>
-                        <outlet property="waveFrame" destination="G0T-Bw-pX4" id="uei-7Y-kKr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

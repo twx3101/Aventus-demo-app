@@ -57,13 +57,6 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         let cellIdentifier = "EventCollectionViewCell"
         
-        /*let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! EventCollectionViewCell
-        
-        let title = UILabel(frame: CGRect(x: 0, y: 0, width: cell.bounds.size.width, height: cell.bounds.size.height))
-        cell.contentView.addSubview(title)
-        title.text = "hi"
-        title.textColor = UIColor.yellow*/
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? EventCollectionViewCell else{
             fatalError("The dequeued cell is not an instance of EventCollectionViewCell.")
         }

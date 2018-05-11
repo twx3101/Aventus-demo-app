@@ -24,9 +24,6 @@ class DetailTextField : UITextField {
         self.backgroundColor = colors.textFieldBg
         self.font = UIFont(name: "Sarabun", size: 24)
         
-        //Text
-        //self.textColor = UIColor.black
-        //self.textAlignment = NSTextAlignment.center
     }
     
 }

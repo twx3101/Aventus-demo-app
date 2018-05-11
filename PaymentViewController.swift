@@ -23,7 +23,6 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var summaryView: UIView!
     
-    
     @IBOutlet weak var summaryTableView: UITableView!
     
     var event: Event?
@@ -63,7 +62,6 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let text_total = String(format:"%.02f",Double((payment?.selectedSeats)!)*(payment?.price)!)
 
-        
         let text_1line = (event?.artist)!
         let text_12line = (event?.venue)! + ", " + (event?.location)!
         let text_2line = (event?.datetime)! + "   " + (event?.time)!
@@ -81,11 +79,8 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let text_3line = text_cat + " (£" + price + ")" + " X " + selectedSeats
         let text_4line = "Total: £" + text_total
-        
-        
+
         summaryItems = [text_1line,text_12line, text_2line, text_3line, text_4line]
-        
-        
         
     }
    
@@ -111,15 +106,11 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SummaryTableViewCell
         
-        
-        /*guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? EventCollectionViewCell else{
-            fatalError("The dequeued cell is not an instance of EventCollectionViewCell.")
-        }*/
         cell.detailLabel.font = UIFont(name : "Sarabun",size : 24)
         
         cell.backgroundColor = colors.bg
         
-        //let cell:SummaryTableViewCell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "SummaryTableViewCell") as! SummaryTableViewCell
+
         if( indexPath.row == self.summaryItems.count-2){
             let labelFont = UIFont(name: "Sarabun-Bold", size: 25)
             let attributes :Dictionary = [NSFontAttributeName : labelFont]
@@ -141,15 +132,6 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
  
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func confirmButton(_ sender: UIButton) {
         if nameTextField.text != "" && cardNoTextField.text != "" && expiryTextField.text != "" && cvvTextField.text != "" {
             /*let pageViewController = self.parent as! PageViewController

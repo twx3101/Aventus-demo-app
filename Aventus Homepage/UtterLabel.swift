@@ -24,11 +24,7 @@ class UtterLabel: UILabel{
     }
     
     func sharedInit(){
-        //layer.masksToBounds = true
-        //layer.cornerRadius = 5
-        //clipsToBounds = true
-        //layer.borderColor = colors.bg.cgColor
-        //layer.borderWidth = 1.0
+
         textColor = colors.utterText
         font = UIFont(name:"Sarabun",size:28)
         

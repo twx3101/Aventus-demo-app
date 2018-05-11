@@ -33,8 +33,6 @@
 		BF51ED51204331B9003D0219 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED50204331B9003D0219 /* RecordButton.swift */; };
 		BF51ED5520433BBD003D0219 /* UtterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED5420433BBD003D0219 /* UtterLabel.swift */; };
 		BF5946972038743A00A0A493 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5946962038743A00A0A493 /* Payment.swift */; };
-		BF5946992038ADFC00A0A493 /* PaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5946982038ADFC00A0A493 /* PaymentTableViewCell.swift */; };
-		BF59469B2038D69C00A0A493 /* ConfirmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59469A2038D69C00A0A493 /* ConfirmTableViewCell.swift */; };
 		BF59469D2038E25900A0A493 /* SeatPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59469C2038E25900A0A493 /* SeatPopUpViewController.swift */; };
 		BF76AE3020264CD5006274FE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF76AE2F20264CD5006274FE /* Event.swift */; };
 		BF7B71BB20236FCC009E5598 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B71BA20236FCC009E5598 /* AppDelegate.swift */; };
@@ -49,11 +47,9 @@
 		BF933145204471160002A3C8 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF933144204471160002A3C8 /* RoundButton.swift */; };
 		BF93314720448ABB0002A3C8 /* DetailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93314620448ABB0002A3C8 /* DetailTextField.swift */; };
 		BFA6C53D20757EE000AD0601 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6C53C20757EE000AD0601 /* HelpViewController.swift */; };
-		BFA6D2FC203850C300DFA67B /* SeatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6D2FB203850C300DFA67B /* SeatTableViewCell.swift */; };
 		BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */; };
 		BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60C2035C3E200050B8A /* Seating.swift */; };
 		BFD17E19202CD729008CB952 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD17E18202CD729008CB952 /* EventViewController.swift */; };
-		BFD17E1F202CDF0B008CB952 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */; };
 		BFE01B1F2077C1C0002BA3E2 /* SummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE01B1E2077C1C0002BA3E2 /* SummaryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -134,8 +130,6 @@
 		BF51ED50204331B9003D0219 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		BF51ED5420433BBD003D0219 /* UtterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtterLabel.swift; sourceTree = "<group>"; };
 		BF5946962038743A00A0A493 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
-		BF5946982038ADFC00A0A493 /* PaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTableViewCell.swift; sourceTree = "<group>"; };
-		BF59469A2038D69C00A0A493 /* ConfirmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewCell.swift; sourceTree = "<group>"; };
 		BF59469C2038E25900A0A493 /* SeatPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatPopUpViewController.swift; sourceTree = "<group>"; };
 		BF76AE2F20264CD5006274FE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BF7B71B720236FCC009E5598 /* Aventus Homepage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aventus Homepage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,11 +148,9 @@
 		BF933144204471160002A3C8 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		BF93314620448ABB0002A3C8 /* DetailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextField.swift; sourceTree = "<group>"; };
 		BFA6C53C20757EE000AD0601 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
-		BFA6D2FB203850C300DFA67B /* SeatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatTableViewCell.swift; sourceTree = "<group>"; };
 		BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		BFBAF60C2035C3E200050B8A /* Seating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seating.swift; sourceTree = "<group>"; };
 		BFD17E18202CD729008CB952 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
-		BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		BFE01B1E2077C1C0002BA3E2 /* SummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTableViewCell.swift; sourceTree = "<group>"; };
 		DFF61EBBE04522FA8C689EA8 /* Pods-Aventus Homepage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus Homepage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage.debug.xcconfig"; sourceTree = "<group>"; };
 		E2606FF670C7DF7CDCD8D7C4 /* Pods-Aventus HomepageTests2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus HomepageTests2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus HomepageTests2/Pods-Aventus HomepageTests2.release.xcconfig"; sourceTree = "<group>"; };
@@ -327,16 +319,12 @@
 				457E32D320659C7E00B7224B /* PageViewController.swift */,
 				457E32D420659C7E00B7224B /* ProfileViewController.swift */,
 				BF7B71BC20236FCC009E5598 /* ViewController.swift */,
-				BFD17E1E202CDF0B008CB952 /* EventTableViewCell.swift */,
 				BF83B2C52075109C00EA2405 /* EventCollectionViewCell.swift */,
 				BFD17E18202CD729008CB952 /* EventViewController.swift */,
-				BFA6D2FB203850C300DFA67B /* SeatTableViewCell.swift */,
 				BF40F12E2030971400E280BB /* SeatViewController.swift */,
 				BF59469C2038E25900A0A493 /* SeatPopUpViewController.swift */,
 				BFE01B1E2077C1C0002BA3E2 /* SummaryTableViewCell.swift */,
-				BF5946982038ADFC00A0A493 /* PaymentTableViewCell.swift */,
 				BF8588242030B729005C9D7D /* PaymentViewController.swift */,
-				BF59469A2038D69C00A0A493 /* ConfirmTableViewCell.swift */,
 				BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */,
 				BFA6C53C20757EE000AD0601 /* HelpViewController.swift */,
 				BF7B71C120236FCC009E5598 /* Assets.xcassets */,
@@ -769,10 +757,8 @@
 				BF933145204471160002A3C8 /* RoundButton.swift in Sources */,
 				BF51ED5520433BBD003D0219 /* UtterLabel.swift in Sources */,
 				BF51ED51204331B9003D0219 /* RecordButton.swift in Sources */,
-				BFA6D2FC203850C300DFA67B /* SeatTableViewCell.swift in Sources */,
 				BF8588252030B729005C9D7D /* PaymentViewController.swift in Sources */,
 				BFE01B1F2077C1C0002BA3E2 /* SummaryTableViewCell.swift in Sources */,
-				BF5946992038ADFC00A0A493 /* PaymentTableViewCell.swift in Sources */,
 				BF7B71BD20236FCC009E5598 /* ViewController.swift in Sources */,
 				457E32D120659C6200B7224B /* CustomSegmentedControl.swift in Sources */,
 				BF5946972038743A00A0A493 /* Payment.swift in Sources */,
@@ -787,10 +773,8 @@
 				BF59469D2038E25900A0A493 /* SeatPopUpViewController.swift in Sources */,
 				457E32D620659C7E00B7224B /* PageViewController.swift in Sources */,
 				BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */,
-				BFD17E1F202CDF0B008CB952 /* EventTableViewCell.swift in Sources */,
 				BF1607042044ADC700241A2D /* BodyLabel.swift in Sources */,
 				BF51ED4F20432787003D0219 /* ColorHelper.swift in Sources */,
-				BF59469B2038D69C00A0A493 /* ConfirmTableViewCell.swift in Sources */,
 				BF83B2C62075109C00EA2405 /* EventCollectionViewCell.swift in Sources */,
 				2F8E5A8C2083AB2E0023231F /* HandlingContext.swift in Sources */,
 				BF87431B20A4D3DC00253304 /* PageHelper.swift in Sources */,
@@ -1031,7 +1015,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				"HEADER_SEARCH_PATHS[arch=*]" = "$(PODS_ROOT)/Firebase/Core/Sources (non-recursive)";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(PODS_ROOT)/Firebase/Core/Sources",
+					"(non-recursive)",
+				);
 				INFOPLIST_FILE = "Aventus HomepageTests2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

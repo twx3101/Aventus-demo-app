@@ -38,13 +38,11 @@ class ConfirmationViewController: UIViewController{
         confirmViewTicketButton.layer.backgroundColor = (colors.headerThreeText).cgColor
         confirmViewTicketButton.layer.cornerRadius = 15
         
-        
     }
     
     func showAnimate()
     {
         self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        //self.view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         self.view.alpha = 0.0;
         UIView.animate(withDuration: 0.25, animations: {
             self.view.alpha = 1.0
@@ -62,7 +60,7 @@ class ConfirmationViewController: UIViewController{
         
         let homeViewController = storyboard?.instantiateViewController(withIdentifier: "HomePage") as! ViewController
         
-        pageViewController.pages[0] = homeViewController
+        pageViewController.pages[1] = homeViewController
         pageViewController.setViewControllers([homeViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
     

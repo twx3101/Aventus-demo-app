@@ -6,13 +6,15 @@
 //  Copyright © 2018 Krongsiriwat, Krantharat. All rights reserved.
 //
 
-struct page {
+struct pageNo {
+    
     static var profile: Int = 0
     static var home: Int = 1
     static var event: Int = 2
     static var seat: Int = 3
     static var payment: Int = 4
     static var confirm: Int = 5
+    
 }
 
 

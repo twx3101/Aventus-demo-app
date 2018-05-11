@@ -17,8 +17,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     var pages = [UIViewController]()
     var instantiated = [Bool](repeating: false, count: 6)
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -45,7 +43,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         let cur = pages.index(of: viewController)!
 
-        if cur == 0 || cur == 5 {
+        if cur == pageNo.profile || cur == pageNo.confirm {
             return nil
         }
         
@@ -58,7 +56,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         let cur = pages.index(of: viewController)!
         
-        if cur >= 2 {
+        if cur >= pageNo.event {
             return nil
         }
         

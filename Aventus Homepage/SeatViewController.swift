@@ -87,6 +87,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             
             topLabel.textAlignment = .center
             topLabel.font = UIFont(name: "Sarabun", size: 25)
+            
             view.addSubview(topLabel)
             
             let bottomLabel = UILabel(frame: CGRect(x: 0, y: pickerHeight/2, width: pickerWidth*2, height: 30 ))
@@ -94,6 +95,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             bottomLabel.textColor = labelColor
             bottomLabel.textAlignment = .center
             bottomLabel.font = UIFont(name: "Sarabun", size: 25)
+            
             view.addSubview(bottomLabel)
             
         } else {
@@ -107,6 +109,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             topLabel.textColor = labelColor
             topLabel.textAlignment = .center
             topLabel.font = UIFont(name: "Sarabun", size: 36)
+            
             view.addSubview(topLabel)
             
         }
@@ -121,11 +124,8 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         if(pickerView.tag==0) {
             selectedCategory = categoriesData[row]
             selectedPrice = Double(priceData[row])!
-            
-            //print(selectedCategory)
         } else {
             selectedTicket = Int(ticketData[row])!
-            //print(ticketData[row])
         }
 
     }
@@ -139,31 +139,23 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         eventView.layer.cornerRadius = 15.0
         eventView.clipsToBounds = true
         
-        //labelView.isHidden = true
-        
         pickerView.layer.cornerRadius = 15.0
         pickerView.clipsToBounds = true
-        //pickerView.backgroundColor = colors.greyBg
         pickerView.layer.borderWidth = 1.2
         pickerView.layer.borderColor = (colors.border).cgColor
-        //pickerView.transform = CGAffineTransformMak
-        
+
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
+        
         ticketPicker.delegate = self
         ticketPicker.dataSource = self
         
         
-        //layoutButton.layer.backgroundColor = (colors.headerTwoText).cgColor
         layoutButton.setTitleColor(colors.headerTwoText, for: UIControlState.normal)
         
         categoryLabel.textColor = colors.headerTwoText
         ticketLabel.textColor = colors.headerTwoText
-       // artistLabel.text = (eventLoaded?.artist)! + " - " + (eventLoaded?.location)!
-        //locationDateTimeLabel.text = (eventLoaded?.datetime)! + ", " + (eventLoaded?.time)!
-        
-        //labelView.layer.backgroundColor = UIColor.white.withAlphaComponent(0.5).cgColor
-        
+
         let txtLabel = ((eventLoaded?.artist)?.uppercased())! + " " + (eventLoaded?.location)!
         
         let mutableString = NSMutableAttributedString(string: txtLabel)
@@ -173,7 +165,6 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         mutableString.addAttribute(NSFontAttributeName, value: UIFont(name: "Nexa Light", size: 21) as Any, range: NSRange(location: 0, length: (eventLoaded?.artist.count)!))
         
         mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.headerText, range: NSRange(location: 0, length: (eventLoaded?.artist.count)!))
-        
         
         artistLabel.attributedText = mutableString
         
@@ -224,11 +215,7 @@ class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParentViewController: self)
-        
-        /*let popOverVC = storyboard?.instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
-        
-        present(popOverVC, animated: true, completion: nil)*/
-        
+
     }
     
     @IBAction func purchaseButton(_ sender: RoundButton) {
