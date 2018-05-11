@@ -49,6 +49,7 @@
 		BFA6C53D20757EE000AD0601 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6C53C20757EE000AD0601 /* HelpViewController.swift */; };
 		BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */; };
 		BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60C2035C3E200050B8A /* Seating.swift */; };
+		BFBD7FA620A628E2000BA93B /* AVTBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD7FA520A628E2000BA93B /* AVTBaseViewController.swift */; };
 		BFD17E19202CD729008CB952 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD17E18202CD729008CB952 /* EventViewController.swift */; };
 		BFE01B1F2077C1C0002BA3E2 /* SummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE01B1E2077C1C0002BA3E2 /* SummaryTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -150,6 +151,7 @@
 		BFA6C53C20757EE000AD0601 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		BFBAF60C2035C3E200050B8A /* Seating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seating.swift; sourceTree = "<group>"; };
+		BFBD7FA520A628E2000BA93B /* AVTBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVTBaseViewController.swift; sourceTree = "<group>"; };
 		BFD17E18202CD729008CB952 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		BFE01B1E2077C1C0002BA3E2 /* SummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTableViewCell.swift; sourceTree = "<group>"; };
 		DFF61EBBE04522FA8C689EA8 /* Pods-Aventus Homepage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus Homepage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus Homepage/Pods-Aventus Homepage.debug.xcconfig"; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				BFBAF60C2035C3E200050B8A /* Seating.swift */,
 				BF5946962038743A00A0A493 /* Payment.swift */,
 				BF76AE2F20264CD5006274FE /* Event.swift */,
+				BFBD7FA520A628E2000BA93B /* AVTBaseViewController.swift */,
 				457E32D320659C7E00B7224B /* PageViewController.swift */,
 				457E32D420659C7E00B7224B /* ProfileViewController.swift */,
 				BF7B71BC20236FCC009E5598 /* ViewController.swift */,
@@ -761,6 +764,7 @@
 				BF51ED51204331B9003D0219 /* RecordButton.swift in Sources */,
 				BF8588252030B729005C9D7D /* PaymentViewController.swift in Sources */,
 				BFE01B1F2077C1C0002BA3E2 /* SummaryTableViewCell.swift in Sources */,
+				BFBD7FA620A628E2000BA93B /* AVTBaseViewController.swift in Sources */,
 				BF7B71BD20236FCC009E5598 /* ViewController.swift in Sources */,
 				457E32D120659C6200B7224B /* CustomSegmentedControl.swift in Sources */,
 				BF5946972038743A00A0A493 /* Payment.swift in Sources */,

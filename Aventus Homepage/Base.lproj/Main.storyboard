@@ -227,7 +227,7 @@
                                     <constraint firstItem="day-eu-553" firstAttribute="top" secondItem="IB9-qR-BqS" secondAttribute="top" id="q8L-kT-c6V"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aV-4p-vmM" userLabel="SearchBarView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aV-4p-vmM" userLabel="SearchBarView" customClass="MainView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="75"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Search for events ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ysO-qi-qd7" userLabel="TextBar" customClass="SearchTextField" customModule="Aventus_Homepage" customModuleProvider="target">
@@ -459,15 +459,25 @@
                                     <action selector="MicrophonePress:" destination="mXJ-Mo-iGK" eventType="touchUpInside" id="OrV-q4-mFH"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headbg" translatesAutoresizingMaskIntoConstraints="NO" id="h9f-jg-zJR" userLabel="headBackground">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="h9f-jg-zJR" secondAttribute="height" multiplier="680:120" id="U7n-gK-dGQ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="bRe-Z8-uaQ" firstAttribute="top" secondItem="brS-tJ-rnE" secondAttribute="bottom" id="2Zz-YI-8Xt"/>
+                            <constraint firstItem="h9f-jg-zJR" firstAttribute="leading" secondItem="jyg-6q-0Cz" secondAttribute="leading" id="6aP-1x-v9M"/>
                             <constraint firstItem="brS-tJ-rnE" firstAttribute="top" secondItem="L26-U9-gVd" secondAttribute="bottom" constant="16" id="II2-ux-y0h"/>
                             <constraint firstItem="brS-tJ-rnE" firstAttribute="centerX" secondItem="jyg-6q-0Cz" secondAttribute="centerX" id="J9f-o8-NdB"/>
                             <constraint firstItem="L26-U9-gVd" firstAttribute="leading" secondItem="jyg-6q-0Cz" secondAttribute="leadingMargin" id="MTY-c0-y4v"/>
                             <constraint firstItem="GXV-AX-jTf" firstAttribute="leading" secondItem="jyg-6q-0Cz" secondAttribute="leadingMargin" id="WZe-8g-Nji"/>
                             <constraint firstItem="L26-U9-gVd" firstAttribute="trailing" secondItem="jyg-6q-0Cz" secondAttribute="trailingMargin" id="hYz-Ng-gbL"/>
+                            <constraint firstItem="h9f-jg-zJR" firstAttribute="width" secondItem="h9f-jg-zJR" secondAttribute="height" multiplier="680:120" id="hj8-Je-W7Z"/>
+                            <constraint firstAttribute="trailing" secondItem="h9f-jg-zJR" secondAttribute="trailing" id="k7a-Ua-xa6"/>
                             <constraint firstItem="GXV-AX-jTf" firstAttribute="trailing" secondItem="jyg-6q-0Cz" secondAttribute="trailingMargin" id="m7Y-Tk-u2E"/>
+                            <constraint firstItem="h9f-jg-zJR" firstAttribute="top" secondItem="jyg-6q-0Cz" secondAttribute="top" id="nlj-v8-SVr"/>
                             <constraint firstItem="GXV-AX-jTf" firstAttribute="top" secondItem="jyg-6q-0Cz" secondAttribute="topMargin" constant="16" id="ySY-3B-LoJ"/>
                             <constraint firstItem="L26-U9-gVd" firstAttribute="top" secondItem="GXV-AX-jTf" secondAttribute="bottom" constant="24" id="yaE-iP-UyN"/>
                         </constraints>

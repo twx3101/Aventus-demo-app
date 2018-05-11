@@ -14,7 +14,7 @@ import CapitoSpeechKit
 import MBProgressHUD
 
 
-class EventViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mic2: UIButton!
@@ -151,7 +151,13 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
             //tableView.tableHeaderView = searchController.searchBar
         }
         definesPresentationContext = true
-        self.textControl2.delegate = self
+        //self.textControl2.delegate = self
+        self.textControl.delegate = self
+        
+        
+        menuButton.addTarget(self, action: #selector(showMenu), for:    .touchUpInside)
+        
+        
         loadEvents()
         
         
@@ -161,6 +167,31 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func showMenu() {
+        
+        showMenuBase()
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideMenu(_:))))
+        
+        mic2.isEnabled = false
+        
+    }
+    
+    @objc func hideMenu(_ tap: UITapGestureRecognizer) {
+        
+        hideMenuBase()
+        mic2.isEnabled = true
+        
+    }
+    
+    /*func hideMenu() {
+        menuView.isHidden = true
+        
+        searchButton.isEnabled = true
+        mic2.isEnabled = true
+        
+    }*/
 
     @IBAction func help(_ sender: UIButton) {
         
@@ -458,7 +489,8 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        if let text = self.textControl2.text{
+        //if let text = self.textControl2.text{
+        if let text = self.textControl.text {
             print("Sending Text event:\(text)")
             self.handle(text: text)
             

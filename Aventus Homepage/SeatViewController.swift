@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class SeatViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerViewDataSource{
 
     @IBOutlet weak var artistLabel: UILabel!
     

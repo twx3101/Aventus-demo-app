@@ -62,7 +62,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var headView: UIView!
     
-    
     @IBOutlet weak var searchButton: UIButton!
     
     @IBOutlet weak var menuButton: UIButton!
@@ -80,6 +79,8 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         menuView.isHidden = true
         
+        
+        
         //menuView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closePage(_:))))
     }
     
@@ -96,7 +97,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
 
     @IBAction func navHelp(_ sender: UIButton) {
         
-        menuView.isHidden = false
+        hideMenu()
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "HelpPage") as! HelpViewController
         
         let pageViewController = self.parent as! PageViewController
@@ -122,6 +123,8 @@ class ViewController: UIViewController, UITextFieldDelegate{
         microphone.isEnabled = true
         
     }
+    
+    
     
     @IBAction func showMenu(_ sender: UIButton) {
         
