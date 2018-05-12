@@ -298,6 +298,8 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         if self.isRecording {
             controller?.cancelTalking()
             print("if")
+            
+            helper.showAlert()
         }
         else {
             controller?.push(toTalk: self, withDialogueContext: contextContents.shared.context)

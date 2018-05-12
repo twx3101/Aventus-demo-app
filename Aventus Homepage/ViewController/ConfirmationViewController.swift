@@ -58,7 +58,7 @@ class ConfirmationViewController: UIViewController{
     @IBAction func viewTicket(_ sender: RoundButton) {
         let pageViewController = self.parent as! PageViewController
         
-        let homeViewController = storyboard?.instantiateViewController(withIdentifier: "HomePage") as! ViewController
+        let homeViewController = storyboard?.instantiateViewController(withIdentifier: "HomePage") as! HomeViewController
         
         pageViewController.pages[1] = homeViewController
         pageViewController.setViewControllers([homeViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)

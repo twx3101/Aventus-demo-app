@@ -457,6 +457,8 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         if self.isRecording {
             CapitoController.getInstance().cancelTalking()
             print("if")
+            
+            helper.showAlert()
         }
         else {
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)

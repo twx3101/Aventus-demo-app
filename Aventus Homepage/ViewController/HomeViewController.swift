@@ -9,8 +9,7 @@
 import UIKit
 import CapitoSpeechKit
 import MBProgressHUD
-import BRYXBanner
-import SideMenu
+
 
 
 class contextContents {
@@ -25,7 +24,7 @@ class contextContents {
 
 //TODO: add busy microphone button, add transcription textbox, add Errorlabels, add textDelegate
 
-class ViewController: AVTBaseViewController{
+class HomeViewController: AVTBaseViewController{
     
     lazy var readyMic: UIImage = {
         return UIImage(named: "icons8-microphone-96")!
@@ -68,13 +67,7 @@ class ViewController: AVTBaseViewController{
         
     }
     
-    func showAlert() {
-        
-        let banner = Banner(title: "Aventus", subtitle: "Done Listening", image: UIImage(named: "Icon"), backgroundColor: colors.neonblueBg)
-        banner.dismissesOnTap = true
-        banner.show(duration: 2.0)
 
-    }
     
     // MARK: Actions
 
@@ -107,7 +100,7 @@ class ViewController: AVTBaseViewController{
             CapitoController.getInstance().cancelTalking()
             print("if")
             
-            showAlert()
+            helper.showAlert()
             
         }
         else {
@@ -134,7 +127,7 @@ class ViewController: AVTBaseViewController{
    
 }
 
-extension ViewController{
+extension HomeViewController{
     
    func handle(text:String){
         self.showProcessingHUD(text: "Processing...")
@@ -283,7 +276,7 @@ extension ViewController{
 }
 
 //errors
-extension ViewController{
+extension HomeViewController{
     
     func showProcessingHUD(text: String){
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -302,7 +295,7 @@ extension ViewController{
     
 }
 
-extension ViewController: SpeechDelegate{
+extension HomeViewController: SpeechDelegate{
     
     func speechControllerDidBeginRecording() {
         self.isRecording = true
@@ -344,7 +337,7 @@ extension ViewController: SpeechDelegate{
     }
  }
 */
- extension ViewController: TextDelegate{
+ extension HomeViewController: TextDelegate{
     func textControllerDidFinish(withResults response: CapitoResponse!) {
         self.hideProcessingHUD()
     self.handle(response: response)

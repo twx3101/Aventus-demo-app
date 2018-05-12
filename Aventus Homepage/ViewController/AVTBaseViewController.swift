@@ -107,7 +107,7 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     }
     
     func navHelp() {
-        //hideMenu()
+        hideMenuBase()
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "HelpPage") as! HelpViewController
         
         let pageViewController = self.parent as! PageViewController

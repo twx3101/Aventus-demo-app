@@ -209,19 +209,19 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         var stringToReturn : String
         
         switch self.payment?.category{
-            case "A":
+        case "A"?:
             stringToReturn = "Category 4: "
             seatCategory = 4
-            case "B":
+        case "B"?:
             stringToReturn = "Category 3: "
             seatCategory = 3
-            case "C":
+        case "C"?:
             stringToReturn = "Category 2: "
             seatCategory = 2
-            case "D":
+        case "D"?:
             stringToReturn = "Category 1: "
             seatCategory = 1
-        case "Standing area":
+        case "Standing area"?:
             stringToReturn = "Category 5: "
             seatCategory = 0
         default:
