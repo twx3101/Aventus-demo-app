@@ -48,6 +48,9 @@
 		BF93314720448ABB0002A3C8 /* DetailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF93314620448ABB0002A3C8 /* DetailTextField.swift */; };
 		BFA6C53D20757EE000AD0601 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6C53C20757EE000AD0601 /* HelpViewController.swift */; };
 		BFA98FD120A7611400553773 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA98FD020A7611400553773 /* Helper.swift */; };
+		BFA98FD320A763C400553773 /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA98FD220A763C400553773 /* ExpandableHeaderView.swift */; };
+		BFA98FD520A7642D00553773 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA98FD420A7642D00553773 /* TicketViewController.swift */; };
+		BFA98FD720A764B600553773 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA98FD620A764B600553773 /* Section.swift */; };
 		BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */; };
 		BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60C2035C3E200050B8A /* Seating.swift */; };
 		BFBD7FA620A628E2000BA93B /* AVTBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD7FA520A628E2000BA93B /* AVTBaseViewController.swift */; };
@@ -151,6 +154,9 @@
 		BF93314620448ABB0002A3C8 /* DetailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTextField.swift; sourceTree = "<group>"; };
 		BFA6C53C20757EE000AD0601 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		BFA98FD020A7611400553773 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		BFA98FD220A763C400553773 /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
+		BFA98FD420A7642D00553773 /* TicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
+		BFA98FD620A764B600553773 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		BFBAF60C2035C3E200050B8A /* Seating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seating.swift; sourceTree = "<group>"; };
 		BFBD7FA520A628E2000BA93B /* AVTBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVTBaseViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +288,7 @@
 				BF933144204471160002A3C8 /* RoundButton.swift */,
 				BF93314620448ABB0002A3C8 /* DetailTextField.swift */,
 				BF337ED820764EAD00B4D2E1 /* EventView.swift */,
+				BFA98FD220A763C400553773 /* ExpandableHeaderView.swift */,
 			);
 			path = CustomSwiftObjects;
 			sourceTree = "<group>";
@@ -301,6 +308,7 @@
 				BFBAF60C2035C3E200050B8A /* Seating.swift */,
 				BF5946962038743A00A0A493 /* Payment.swift */,
 				BF76AE2F20264CD5006274FE /* Event.swift */,
+				BFA98FD620A764B600553773 /* Section.swift */,
 			);
 			path = AVTObjects;
 			sourceTree = "<group>";
@@ -332,6 +340,7 @@
 				BF8588242030B729005C9D7D /* PaymentViewController.swift */,
 				BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */,
 				BFA6C53C20757EE000AD0601 /* HelpViewController.swift */,
+				BFA98FD420A7642D00553773 /* TicketViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -808,6 +817,7 @@
 				BF51ED51204331B9003D0219 /* RecordButton.swift in Sources */,
 				BF8588252030B729005C9D7D /* PaymentViewController.swift in Sources */,
 				BFE01B1F2077C1C0002BA3E2 /* SummaryTableViewCell.swift in Sources */,
+				BFA98FD320A763C400553773 /* ExpandableHeaderView.swift in Sources */,
 				BFBD7FA620A628E2000BA93B /* AVTBaseViewController.swift in Sources */,
 				BF7B71BD20236FCC009E5598 /* HomeViewController.swift in Sources */,
 				457E32D120659C6200B7224B /* CustomSegmentedControl.swift in Sources */,
@@ -816,8 +826,10 @@
 				BFD17E19202CD729008CB952 /* EventViewController.swift in Sources */,
 				BF7B71BB20236FCC009E5598 /* AppDelegate.swift in Sources */,
 				BF337ED920764EAD00B4D2E1 /* EventView.swift in Sources */,
+				BFA98FD520A7642D00553773 /* TicketViewController.swift in Sources */,
 				BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */,
 				BF93314720448ABB0002A3C8 /* DetailTextField.swift in Sources */,
+				BFA98FD720A764B600553773 /* Section.swift in Sources */,
 				BFA6C53D20757EE000AD0601 /* HelpViewController.swift in Sources */,
 				457E32D520659C7E00B7224B /* WarningLabel.swift in Sources */,
 				BF59469D2038E25900A0A493 /* SeatPopUpViewController.swift in Sources */,
