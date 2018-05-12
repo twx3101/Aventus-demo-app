@@ -24,23 +24,31 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     var SCALE: Float!
     
     var sideMargin: Int  = 20
-    var topMargin: Int = 40
+    var topMargin: Int = 35
     var buttonSize: Int = 30
     var textfieldHeight: Int = 30
     var textfieldWidth: Int = 0
     var menuWidth: Int = 200
+    
+    var leftItemX: Int = 0
+    var rightItemX: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menuButton.frame = CGRect(x: sideMargin, y: topMargin, width: buttonSize, height: buttonSize)
+        leftItemX = sideMargin
+        rightItemX = Int(self.view.frame.width) - sideMargin - buttonSize
+        
+        textfieldWidth = Int(self.view.frame.width) - (sideMargin*2) - buttonSize
+        
+        menuButton.frame = CGRect(x: leftItemX, y: topMargin, width: buttonSize, height: buttonSize)
         //menuButton.addTarget(self, action: #selector(openMenu), for:    .touchUpInside)
         menuButton.setImage(UIImage(named: "menu"), for: UIControlState())
         menuButton.tintColor = .white
         
         view.addSubview(menuButton)
         
-        searchButton.frame = CGRect(x: Int(self.view.frame.width) - sideMargin, y: topMargin, width: buttonSize, height: buttonSize)
+        searchButton.frame = CGRect(x: rightItemX, y: topMargin, width: buttonSize, height: buttonSize)
         searchButton.addTarget(self, action: #selector(showSearchBarView), for:    .touchUpInside)
         searchButton.setImage(UIImage(named: "search"), for: UIControlState())
         searchButton.tintColor = .white
@@ -48,13 +56,13 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(menuButton)
         view.addSubview(searchButton)
         
-        textfieldWidth = Int(self.view.frame.width) - (sideMargin*2)
         
-        textControl.frame = CGRect(x: sideMargin, y: topMargin, width: textfieldWidth, height: textfieldHeight)
+        
+        textControl.frame = CGRect(x: leftItemX, y: topMargin, width: textfieldWidth, height: textfieldHeight)
         
         textControl.delegate = self
         
-        cancelButton.frame = CGRect(x: Int(self.view.frame.width) - sideMargin, y: topMargin, width: buttonSize, height: buttonSize)
+        cancelButton.frame = CGRect(x: rightItemX, y: topMargin, width: buttonSize, height: buttonSize)
         cancelButton.addTarget(self, action: #selector(hideSearchBarView), for:    .touchUpInside)
         cancelButton.setImage(UIImage(named: "cancel"), for: UIControlState())
         cancelButton.tintColor = .white
