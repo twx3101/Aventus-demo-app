@@ -228,34 +228,24 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
             //Getting information for events
             for event in snapshot.children.allObjects as![DataSnapshot]{
                 let eventObject = event.value as? [String: AnyObject]
-                let eventArtist = eventObject?["Fake Mainstream Events"]
-                
+                let eventArtist = eventObject?["Events"]
                 let eventDate = eventObject?["Local Date"]
                 let eventFormattedDate = eventObject?["Local Date (uk format)"]
-                let eventLocation = eventObject?["Fake City"]
+                let eventLocation = eventObject?["City"]
                 let eventTime = eventObject?["Local Time (formatted)"]
                 let eventDayinWeek = eventObject?["Day in week"]
-                
                 let eventArtistRanking = eventObject?["Artist Ranking"]
-                
-                let eventID = eventObject?["Event ID"]
-
-                let eventImageURL = eventObject?["Fake Artist Pc JPEG URL"]
+                let eventID = eventObject?["eventDesc"]
                 let eventBannerURL = eventObject?["Fake Artist Banner"]
-
                 let eventStatus = eventObject?["Event Status"]
-                
-                let eventVenue = eventObject?["Fake Venue"]
+                let eventVenue = eventObject?["Venue"]
                 let eventGenre = eventObject?["Genre"]
                 let eventMonth = eventObject?["Month"]
                 let eventTimezone = eventObject?["Timezone"]
-                let eventAddress = eventObject?["Venue address"]
-                let eventCity = eventObject?["Venue city"]
                 let eventWeekend = eventObject?["Weekend"]
-                
-                
-                
                 var eventCatArea = [String]()
+                
+                let eventList = eventObject?["list"]
                 
                 eventCatArea.append(eventObject?["Area: category 5 Standing"] as! String)
                 eventCatArea.append(eventObject?["Area: category 4"] as! String)
@@ -283,7 +273,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
                     eventCatPrice.append(0)
                 }
 
-                if let cat2 = eventObject?["Category : Price"] as? Double{ eventCatPrice.append(cat2)
+                if let cat2 = eventObject?["Category 2: Price"] as? Double{ eventCatPrice.append(cat2)
                 }
                 else{
                     eventCatPrice.append(0)
@@ -350,7 +340,8 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
                 
                 let seating1 = Seating(categories: eventAvailCat, price: eventAvailPrice, noSeatsAvail: eventAvailSeats , noCategories: no_avail_cat)
                 
-                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, formattedDate: eventFormattedDate as! String, description: nil, photo: nil, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, city: eventCity as! String, imageURL: eventImageURL as! String, bannerURL: eventBannerURL as! String, address: eventAddress as! String, weekend: eventWeekend as! String, minPrice: eventMinPrice as! Double, maxPrice: eventMaxPrice as! Double)
+             
+                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, formattedDate: eventFormattedDate as! String, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, bannerURL: eventBannerURL as! String, weekend: eventWeekend as! String, minPrice: eventMinPrice as! Double, maxPrice: eventMaxPrice as! Double, event_list: eventList as! Int)
                 
                 
                 self.events.append(event1!)
@@ -567,6 +558,8 @@ extension EventViewController{
                 
                 
                 paymentViewController.payment = Payment(category: selectedCategories, price: price!, selectedSeats: number!)
+                
+                pageViewController.setViewControllers([paymentViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
             }
             else if number != nil{
                 

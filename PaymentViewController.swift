@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -25,7 +26,8 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var summaryTableView: UITableView!
     
-    
+    var ref: DatabaseReference!
+    var refHandle: DatabaseHandle!
     
     var event: Event?
 
@@ -34,6 +36,8 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     var count: Int = 0
     
     var total: Int = 0
+    
+    var seatCategory: Int = 0
  
     var summaryItems = [String]()
     
@@ -148,17 +152,40 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)*/
             
+         
             let pageViewController = self.parent as! PageViewController
+          
+            let id = String((self.event?.event_list)! - 1)
+            let category = convert()
+            let seat = self.event?.seating
+            var no = seat?.noSeatsAvail[seatCategory]
+            no = (no)! - (payment?.selectedSeats)!
             
+            if no! < 0{
+                let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
+                
+                self.addChildViewController(popOverVC)
+                popOverVC.view.frame = self.view.frame
+                self.view.addSubview(popOverVC.view)
+                popOverVC.didMove(toParentViewController: self)
+                
+            
+            }else{
+            
+                
+                
             let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
-            
+                
             popOverVC.event = event
             popOverVC.payment = payment
+            seat?.noSeatsAvail[seatCategory] = no!
             
+            
+            let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
             pageViewController.pages[5] = popOverVC
             
             pageViewController.setViewControllers([popOverVC], direction: UIPageViewControllerNavigationDirection.forward , animated: true, completion: nil)
-            
+            }
             
             /*let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
             
@@ -176,6 +203,34 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         else {
             warningLabel.text = "Please fill out the form."
         }
+    }
+    
+    func convert() -> String{
+        var stringToReturn : String
+        
+        switch self.payment?.category{
+            case "A":
+            stringToReturn = "Category 4: "
+            seatCategory = 4
+            case "B":
+            stringToReturn = "Category 3: "
+            seatCategory = 3
+            case "C":
+            stringToReturn = "Category 2: "
+            seatCategory = 2
+            case "D":
+            stringToReturn = "Category 1: "
+            seatCategory = 1
+        case "Standing area":
+            stringToReturn = "Category 5: "
+            seatCategory = 0
+        default:
+            stringToReturn = "Category 5: "
+            seatCategory = 0
+        }
+        stringToReturn += "Number of seat available"
+        
+        return stringToReturn
     }
 
 }
