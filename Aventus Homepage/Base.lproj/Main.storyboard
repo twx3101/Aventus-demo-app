@@ -511,7 +511,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLd-ms-5ya" userLabel="PickerView">
-                                <rect key="frame" x="16" y="280" width="343" height="270"/>
+                                <rect key="frame" x="16" y="280" width="343" height="320"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ipH-jj-BTH" userLabel="TicketStackView">
                                         <rect key="frame" x="173" y="0.0" width="170" height="249"/>
@@ -566,6 +566,17 @@
                                             <action selector="showLayoutButton:" destination="PPN-Wq-gpx" eventType="touchUpInside" id="9gj-t1-eQZ"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhp-up-iQp" customClass="RoundButton" customModule="Aventus_Homepage" customModuleProvider="target">
+                                        <rect key="frame" x="32" y="269" width="279" height="45"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Sarabun-Bold" family="Sarabun" pointSize="25"/>
+                                        <state key="normal" title="Purchase">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="purchaseButton:" destination="PPN-Wq-gpx" eventType="touchUpInside" id="9Xy-mf-sLs"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ipH-jj-BTH" secondAttribute="trailing" id="5Er-rl-Tw3"/>
@@ -573,22 +584,14 @@
                                     <constraint firstItem="8UP-wU-xmj" firstAttribute="top" secondItem="YLd-ms-5ya" secondAttribute="top" constant="220" id="Dz9-0G-2E1"/>
                                     <constraint firstItem="ipH-jj-BTH" firstAttribute="top" secondItem="YLd-ms-5ya" secondAttribute="top" id="HfH-Pk-6PP"/>
                                     <constraint firstItem="8UP-wU-xmj" firstAttribute="centerX" secondItem="YLd-ms-5ya" secondAttribute="centerX" id="Par-c4-B86"/>
-                                    <constraint firstAttribute="height" constant="270" id="sQf-NN-2uZ"/>
+                                    <constraint firstItem="Rhp-up-iQp" firstAttribute="leading" secondItem="YLd-ms-5ya" secondAttribute="leading" constant="32" id="cOr-QF-QuI"/>
                                     <constraint firstAttribute="width" constant="343" id="tjA-dH-afy"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rhp-up-iQp" secondAttribute="trailing" constant="32" id="vb0-Cy-X1E"/>
+                                    <constraint firstItem="Rhp-up-iQp" firstAttribute="top" secondItem="8UP-wU-xmj" secondAttribute="bottom" constant="8" id="xJr-0k-kos"/>
                                     <constraint firstItem="PnY-pX-Gwu" firstAttribute="top" secondItem="YLd-ms-5ya" secondAttribute="top" id="y0d-Y3-9PF"/>
+                                    <constraint firstAttribute="height" constant="320" id="zNm-Sx-iNm"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhp-up-iQp" customClass="RoundButton" customModule="Aventus_Homepage" customModuleProvider="target">
-                                <rect key="frame" x="16" y="566" width="343" height="45"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Sarabun-Bold" family="Sarabun" pointSize="25"/>
-                                <state key="normal" title="Purchase">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="purchaseButton:" destination="PPN-Wq-gpx" eventType="touchUpInside" id="9Xy-mf-sLs"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headbg" translatesAutoresizingMaskIntoConstraints="NO" id="zYP-uO-zDV" userLabel="headBackground">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                 <constraints>
@@ -605,14 +608,10 @@
                             <constraint firstItem="sB4-xZ-nOT" firstAttribute="trailing" secondItem="nqJ-H0-mU7" secondAttribute="trailingMargin" id="J0E-LV-jcc"/>
                             <constraint firstItem="bHF-Xu-Vfa" firstAttribute="centerX" secondItem="nqJ-H0-mU7" secondAttribute="centerX" id="Od6-X2-c33"/>
                             <constraint firstItem="zYP-uO-zDV" firstAttribute="leading" secondItem="nqJ-H0-mU7" secondAttribute="leading" id="VBT-l4-WHd"/>
-                            <constraint firstItem="Rhp-up-iQp" firstAttribute="top" secondItem="YLd-ms-5ya" secondAttribute="bottom" constant="16" id="VLl-5X-reR"/>
-                            <constraint firstItem="Rhp-up-iQp" firstAttribute="leading" secondItem="nqJ-H0-mU7" secondAttribute="leadingMargin" id="bSI-Vz-wXQ"/>
                             <constraint firstAttribute="trailing" secondItem="zYP-uO-zDV" secondAttribute="trailing" id="hH8-06-AYS"/>
                             <constraint firstItem="sB4-xZ-nOT" firstAttribute="leading" secondItem="nqJ-H0-mU7" secondAttribute="leadingMargin" id="ntX-Hf-9nz"/>
                             <constraint firstItem="YLd-ms-5ya" firstAttribute="top" secondItem="sB4-xZ-nOT" secondAttribute="bottom" constant="16" id="ooD-lx-mKN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Rhp-up-iQp" secondAttribute="trailing" id="uVD-iS-Wnd"/>
                             <constraint firstItem="YLd-ms-5ya" firstAttribute="centerX" secondItem="nqJ-H0-mU7" secondAttribute="centerX" id="uqj-Xk-zlm"/>
-                            <constraint firstItem="Rhp-up-iQp" firstAttribute="centerX" secondItem="nqJ-H0-mU7" secondAttribute="centerX" id="x9f-3R-PhC"/>
                             <constraint firstItem="sB4-xZ-nOT" firstAttribute="top" secondItem="zYP-uO-zDV" secondAttribute="bottom" constant="16" id="y8u-7W-9Cr"/>
                         </constraints>
                     </view>
@@ -649,10 +648,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eAR-Z7-7ni">
-                                <rect key="frame" x="16" y="234.5" width="343" height="198"/>
+                                <rect key="frame" x="16" y="192.5" width="343" height="282"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seating" translatesAutoresizingMaskIntoConstraints="NO" id="fFA-jN-6Ky">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="198"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="282"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -1074,7 +1073,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Seating" width="280" height="198"/>
+        <image name="Seating" width="287" height="282"/>
         <image name="confirmation" width="256" height="256"/>
         <image name="headbg" width="679" height="134"/>
         <image name="icons8-microphone-96" width="50" height="50"/>

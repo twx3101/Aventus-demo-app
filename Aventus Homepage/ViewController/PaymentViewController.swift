@@ -171,31 +171,42 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             
             }else{
-            
                 
                 
-            let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
+                /*//var tickets: [Ticket] = []
+                //var seats: Int
+                //seats = (payment?.selectedSeats)!
+                for var i in 0..<no {
+                    let currentTicket = Ticket(_id: 1, _category: (payment?.category)!)
+                    tickets.append(currentTicket)
+                }
+            
+                var userBookings: [Booking] = []
                 
-            popOverVC.event = event
-            popOverVC.payment = payment
-            seat?.noSeatsAvail[seatCategory] = no!
-            
-            
-            let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
-            pageViewController.pages[5] = popOverVC
-            
-            pageViewController.setViewControllers([popOverVC], direction: UIPageViewControllerNavigationDirection.forward , animated: true, completion: nil)
+                if let readBookings = UserDefaults.standard.object(forKey: "Booking") {
+                    userBookings = readBookings as! [Booking]
+           
+                }
+                
+                let currentBooking = Booking(_event: event!, _tickets: tickets)
+                
+                userBookings.append(currentBooking)
+                
+                UserDefaults.standard.set(userBookings, forKey: "Booking")*/
+                
+                
+                let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
+                
+                popOverVC.event = event
+                popOverVC.payment = payment
+                seat?.noSeatsAvail[seatCategory] = no!
+                
+                
+                let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
+                pageViewController.pages[5] = popOverVC
+                
+                pageViewController.setViewControllers([popOverVC], direction: UIPageViewControllerNavigationDirection.forward , animated: true, completion: nil)
             }
-            
-            /*let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
-            
-            popOverVC.event = event
-            popOverVC.payment = payment
-            
-            self.addChildViewController(popOverVC)
-            popOverVC.view.frame = self.view.frame
-            self.view.addSubview(popOverVC.view)
-            popOverVC.didMove(toParentViewController: self)*/
             
             
             
