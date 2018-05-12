@@ -25,7 +25,7 @@ class contextContents {
 
 //TODO: add busy microphone button, add transcription textbox, add Errorlabels, add textDelegate
 
-class ViewController: UIViewController, UITextFieldDelegate{
+class ViewController: AVTBaseViewController{
     
     lazy var readyMic: UIImage = {
         return UIImage(named: "icons8-microphone-96")!
@@ -52,21 +52,10 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var transcription: UILabel!
     
-    @IBOutlet weak var textControl: UITextField!
-    
     @IBOutlet weak var resetBut: UIButton!
-    //var contextContent : [AnyHashable : Any]?
-    @IBOutlet weak var menuView: UIView!
     
-    @IBOutlet weak var searchBarView: UIView!
+    var menuTap: UITapGestureRecognizer!
     
-    @IBOutlet weak var headView: UIView!
-    
-    @IBOutlet weak var searchButton: UIButton!
-    
-    @IBOutlet weak var menuButton: UIButton!
-    
-    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,14 +63,9 @@ class ViewController: UIViewController, UITextFieldDelegate{
         self.view.backgroundColor = colors.white
         
         self.textControl.delegate = self
-
-        searchBarView.isHidden = true
         
-        menuView.isHidden = true
+        menuButton.addTarget(self, action: #selector(showMenu), for:    .touchUpInside)
         
-        
-        
-        //menuView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closePage(_:))))
     }
     
     func showAlert() {
@@ -93,67 +77,26 @@ class ViewController: UIViewController, UITextFieldDelegate{
     }
     
     // MARK: Actions
-    
 
-    @IBAction func navHelp(_ sender: UIButton) {
-        
-        hideMenu()
-        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "HelpPage") as! HelpViewController
-        
-        let pageViewController = self.parent as! PageViewController
-        
-        detailViewController.pageIndex = pageViewController.pages.index(of: self)
-        
-        present(detailViewController, animated: true, completion: nil)
-    }
-    
+
     @objc func hideMenu(_ tap: UITapGestureRecognizer) {
         
-        menuView.isHidden = true
-    
-        searchButton.isEnabled = true
+        hideMenuBase()
+        
+        view.removeGestureRecognizer(menuTap)
         microphone.isEnabled = true
+        
         
     }
     
-    func hideMenu() {
-        menuView.isHidden = true
+    func showMenu() {
         
-        searchButton.isEnabled = true
-        microphone.isEnabled = true
+        showMenuBase()
         
-    }
-    
-    
-    
-    @IBAction func showMenu(_ sender: UIButton) {
+        menuTap = UITapGestureRecognizer(target: self, action: #selector(hideMenu(_:)))
+        view.addGestureRecognizer(menuTap)
         
-        menuView.isHidden = false
-        menuView.backgroundColor = colors.greyBg
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideMenu(_:))))
-        
-        searchButton.isEnabled = false
         microphone.isEnabled = false
-        
-    }
-    
-    
-    @IBAction func showSearchBar(_ sender: UIButton) {
-
-        UIView.animate(withDuration: 0.5, animations: {
-            self.searchBarView.isHidden = false
-            self.headView.isHidden = true
-        }, completion: { finished in self.textControl.becomeFirstResponder()})
-        
-    }
-    
-    
-    @IBAction func hideSearchBar(_ sender: UIButton) {
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            self.searchBarView.isHidden = true
-            self.headView.isHidden = false
-        }, completion: nil)
         
     }
     

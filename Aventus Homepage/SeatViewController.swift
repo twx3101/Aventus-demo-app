@@ -45,6 +45,8 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
     }()
     var isRecording : Bool = false
     
+    var menuTap: UITapGestureRecognizer!
+    
     var eventLoaded: Event?
     
     var seating: Seating?
@@ -70,6 +72,9 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
     let controller = CapitoController.getInstance()
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        pickerView.subviews.forEach({
+            $0.isHidden = $0.frame.height < 1.0
+        })
         return 1
     }
     
@@ -148,15 +153,25 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = colors.bg
+        view.backgroundColor = colors.greyBg
         
-        eventView.layer.cornerRadius = 15.0
+        eventView.layer.cornerRadius = 5.0
         eventView.clipsToBounds = true
         
-        pickerView.layer.cornerRadius = 15.0
+        //pickerView.layer.cornerRadius = 15.0
+        //pickerView.clipsToBounds = true
+        //pickerView.layer.borderWidth = 1.2
+        //pickerView.layer.borderColor = (colors.border).cgColor
+        pickerView.layer.backgroundColor = (colors.white).cgColor
+        
+        pickerView.layer.cornerRadius = 5.0
+        
+        pickerView.layer.shadowColor = UIColor.black.cgColor
+        pickerView.layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
+        pickerView.layer.masksToBounds = false
+        pickerView.layer.shadowRadius = 2.0
+        pickerView.layer.shadowOpacity = 1.0
         pickerView.clipsToBounds = true
-        pickerView.layer.borderWidth = 1.2
-        pickerView.layer.borderColor = (colors.border).cgColor
 
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
@@ -211,8 +226,16 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         selectedPrice = Double(priceData[category])!
         
         categoryPicker.selectRow(category, inComponent: 0, animated: false)
+        categoryPicker.showsSelectionIndicator = false
         ticketPicker.selectRow(selectedTicket, inComponent: 0, animated: false)
+        ticketPicker.showsSelectionIndicator = false
+        
+        categoryPicker.subviews[1].isHidden = true
+        categoryPicker.subviews[2].isHidden = true
 
+        
+        menuButton.addTarget(self, action: #selector(showMenu), for:    .touchUpInside)
+    
     }
     
 
@@ -220,6 +243,27 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         super.didReceiveMemoryWarning()
     }
     
+    
+    func showMenu() {
+        
+        showMenuBase()
+        
+        menuTap = UITapGestureRecognizer(target: self, action: #selector(hideMenu(_:)))
+        view.addGestureRecognizer(menuTap)
+        
+        micButton.isEnabled = false
+        
+    }
+    
+    @objc func hideMenu(_ tap: UITapGestureRecognizer) {
+        
+        hideMenuBase()
+        
+        view.removeGestureRecognizer(menuTap)
+        micButton.isEnabled = true
+        
+        
+    }
     
     @IBAction func showLayoutButton(_ sender: RoundButton) {
         

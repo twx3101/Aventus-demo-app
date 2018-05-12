@@ -18,7 +18,6 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mic2: UIButton!
-    @IBOutlet weak var textControl2: UITextField!
     
     lazy var readyMic: UIImage = {
         return UIImage(named: "icons8-microphone-96")!
@@ -100,7 +99,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
             }
         }
 
-        cell.layer.cornerRadius = 15.0
+        cell.layer.cornerRadius = 5.0
         cell.layer.masksToBounds = true
         cell.clipsToBounds = true
         
@@ -144,8 +143,6 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         
         view.backgroundColor = colors.bg
         collectionView.backgroundColor = colors.bg
-        // Do any additional setup after loading the view.
-        // Load events to display
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -159,9 +156,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         //self.textControl2.delegate = self
         self.textControl.delegate = self
         
-        
         menuButton.addTarget(self, action: #selector(showMenu), for:    .touchUpInside)
-        
         
         loadEvents()
         
@@ -193,17 +188,6 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         
         collectionView.isUserInteractionEnabled = true
         
-    }
-
-    @IBAction func help(_ sender: UIButton) {
-        
-        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "HelpPage") as! HelpViewController
-        
-        let pageViewController = self.parent as! PageViewController
-        
-        detailViewController.pageIndex = pageViewController.pages.index(of: self)
-        
-        present(detailViewController, animated: true, completion: nil)
     }
     
     func isFilteringBar() -> Bool{
