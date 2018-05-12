@@ -11,6 +11,21 @@ class SearchTextField : UITextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         sharedInit()
+        
+        //fatalError("init(coder:) has not been implemented")
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        sharedInit()
+    }
+
+    init(frame: CGRect, arg1: CGFloat, arg2: String) {
+        super.init(frame: frame)
+        
+        self.layer.cornerRadius = arg1
+        print(arg2)
+        print("Instantiated")
     }
     
     func sharedInit(){

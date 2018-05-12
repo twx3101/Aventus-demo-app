@@ -18,7 +18,7 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     var menuButton: UIButton = UIButton(type: UIButtonType.system)
     var searchButton: UIButton = UIButton(type: UIButtonType.system)
 
-    var textControl: UITextField = UITextField()
+    var textControl: UITextField = SearchTextField(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
     var cancelButton: UIButton = UIButton(type: UIButtonType.system)
     
     var SCALE: Float!
@@ -53,7 +53,7 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         
         
         textControl.frame = CGRect(x: sideMargin, y: topMargin, width: textfieldWidth, height: textfieldHeight)
-        textControl.backgroundColor = UIColor.gray
+        textControl.backgroundColor = colors.white
         
         textControl.placeholder = "Search for Events ..."
         textControl.font = UIFont.systemFont(ofSize: 15)

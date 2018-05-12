@@ -41,6 +41,8 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     var filteredItems = Dictionary<String,Any>()
     let searchController = UISearchController(searchResultsController: nil)
     
+    var menuTap: UITapGestureRecognizer!
+    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -117,6 +119,9 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        print("clicked")
+        
         let pageViewController = self.parent as! PageViewController
 
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
@@ -172,26 +177,23 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         
         showMenuBase()
         
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideMenu(_:))))
+        menuTap = UITapGestureRecognizer(target: self, action: #selector(hideMenu(_:)))
+        view.addGestureRecognizer(menuTap)
         
         mic2.isEnabled = false
         
     }
     
     @objc func hideMenu(_ tap: UITapGestureRecognizer) {
-        
+    
         hideMenuBase()
+        
+        view.removeGestureRecognizer(menuTap)
         mic2.isEnabled = true
+        
+        collectionView.isUserInteractionEnabled = true
         
     }
-    
-    /*func hideMenu() {
-        menuView.isHidden = true
-        
-        searchButton.isEnabled = true
-        mic2.isEnabled = true
-        
-    }*/
 
     @IBAction func help(_ sender: UIButton) {
         
