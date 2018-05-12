@@ -100,7 +100,7 @@ class HomeViewController: AVTBaseViewController{
             CapitoController.getInstance().cancelTalking()
             print("if")
             
-            helper.showAlert()
+            helper.showAlert(message: "Done Listening")
             
         }
         else {
@@ -141,11 +141,11 @@ extension HomeViewController{
             //self.showErrorMessage(text: response.message)
         }
         else{
-            handlingContext().bootstrapView(response: response)
+            
            
             
-            if let task = response.context["task"] as? String{
-                
+            if let task = response.semanticOutput["task"] as? String{
+                handlingContext().bootstrapView(response: response)
                 if task == "Navigate"{
                     handleNavigate()
                 }
@@ -153,6 +153,9 @@ extension HomeViewController{
                     handleBuyTickets()
                 }
                 
+            }
+            else{
+                helper.showAlert(message: "Sorry, I couldn't understand that")
             }
         }
     }
@@ -215,7 +218,7 @@ extension HomeViewController{
             detailViewController.selectedTicket = number!
            
         }
-        if let category = contextContents.shared.contextContent["ticketType"] as? String{
+        if let category = contextContents.shared.contextContent["seatArea"] as? String{
             
             switch category{
             case "A":

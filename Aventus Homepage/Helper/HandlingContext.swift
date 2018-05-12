@@ -62,15 +62,27 @@ class handlingContext{
         var contextContent = contextContents.shared.contextContent
         //        artist: String
         if let artist = context["artist"] as? String{
-        
+            if (contextContent["genre"] as? String) != nil{
+                resetData()
+                contextContent = contextContents.shared.contextContent
+            }
             if let compArtist = contextContent["artist"] as? String{
                 if artist != compArtist{
                     resetData()
                     contextContent = contextContents.shared.contextContent
                 }
             }
+            
             contextContent["artist"] = artist
             
+        }
+        //        genre: String
+        if let genre = context["musicGenre"] as? String{
+            if (contextContent["artist"] as? String) != nil{
+                resetData()
+                contextContent = contextContents.shared.contextContent
+            }
+            contextContent["genre"] = genre
         }
         //        location: String
         if let location = context["location"] as?  String{
@@ -82,11 +94,8 @@ class handlingContext{
             contextContent["venue"] = venue
         }
         
-        //        genre: String
-        if let genre = context["musicGenre"] as? String{
-            contextContent["genre"] = genre
-        }
-        
+  
+  
         // handling time: AnyHashable("start_datetime")
         if let datetime = context["start_datetime"] as? [String : AnyObject]{
             let day = datetime["day"] as? Int

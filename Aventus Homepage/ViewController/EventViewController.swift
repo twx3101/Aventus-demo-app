@@ -359,52 +359,51 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     }
     
     func filterContentofEvents(contextContent: Dictionary<String, Any>){
-        //reset to populate new events
-        filteredEvents = events
-        
+        var newEvents = events
         
         if let artist = contextContent["artist"] as? String{
-            filteredEvents = filteredEvents.filter({( event:Event) -> Bool in
+            newEvents = newEvents.filter({( event:Event) -> Bool in
                 return event.artist.lowercased().contains(artist.lowercased())
             })
         }
         if let location = contextContent["location"] as? String{
-            filteredEvents = filteredEvents.filter({( event:Event) -> Bool in
+            newEvents = newEvents.filter({( event:Event) -> Bool in
                 return event.location.lowercased().contains(location.lowercased())
             })
         }
         if let venue  = contextContent["venue"] as? String{
-            filteredEvents = filteredEvents.filter({( event:Event) -> Bool in
+            newEvents = newEvents.filter({( event:Event) -> Bool in
                 return event.venue.lowercased().contains(venue.lowercased())
             })
         }
         if let genre = contextContent["genre"] as? String{
-            filteredEvents = filteredEvents.filter({( event:Event) -> Bool in
+            
+            newEvents = newEvents.filter({( event:Event) -> Bool in
                 return genre.lowercased().contains(event.genre.lowercased().replacingOccurrences(of: "/", with: " "))
             })
         }
         if let start_date = contextContent["start_date"] as? Date{
             
             let dateformatter = DateFormatter()
-            dateformatter.dateFormat = "yyyy-MM-dd hh:mm a"
+            dateformatter.dateFormat = "MM/dd/yyyy hh:mm a"
             dateformatter.locale = Locale(identifier: "en_US_POSIX")
             dateformatter.timeZone = TimeZone(abbreviation: "GMT")
             
             //range of dateas
             if let end_date = contextContent["end_date"] as? Date{
-                filteredEvents = filteredEvents.filter{
+                newEvents = newEvents.filter{
                     let dateTime = $0.datetime + " " + $0.time
                     let eventDate = dateformatter.date(from: dateTime)
                     return(eventDate!.isBetween(start_date, and: end_date))
                 }
             }
             else{
-                filteredEvents = filteredEvents.filter{
+                newEvents = newEvents.filter{
                     let eventDate = dateformatter.date(from: $0.datetime)
                     return eventDate == (start_date)
                 }
             }
-        
+            
         }
         
         if let amount = contextContent["amount"] as? Double{
@@ -412,44 +411,50 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
             if let priceComparison = contextContent["priceComparison"] as? String{
                 print("HELLO2", priceComparison)
                 switch priceComparison {
-                    case "<=" :
-                        filteredEvents = filteredEvents.filter{
-                            return $0.minPrice <= amount
+                case "<=" :
+                    newEvents = newEvents.filter{
+                        return $0.minPrice <= amount
                     }
-                    case "<" :
-                        filteredEvents = filteredEvents.filter{
-                            return $0.minPrice < amount
-                        }
-                    case ">" :
-                        filteredEvents = filteredEvents.filter{
-                            return $0.minPrice > amount
-                        }
-                    case ">=" :
-                        filteredEvents = filteredEvents.filter{
-                            return $0.minPrice >= amount
-                        }
-                    case "~" :
-                        filteredEvents = filteredEvents.filter{
-                            return ($0.minPrice <= amount + priceLimit && $0.minPrice >= amount - priceLimit)
-                        }
-                    case "=" :
-                        filteredEvents = filteredEvents.filter{
-                            return $0.minPrice == amount
-                        }
-                    default:
-                        print("Unknown price comparison operator")
+                case "<" :
+                    newEvents = newEvents.filter{
+                        return $0.minPrice < amount
                     }
+                case ">" :
+                    newEvents = newEvents.filter{
+                        return $0.minPrice > amount
+                    }
+                case ">=" :
+                    newEvents = newEvents.filter{
+                        return $0.minPrice >= amount
+                    }
+                case "~" :
+                    newEvents = newEvents.filter{
+                        return ($0.minPrice <= amount + priceLimit && $0.minPrice >= amount - priceLimit)
+                    }
+                case "=" :
+                    newEvents = newEvents.filter{
+                        return $0.minPrice == amount
+                    }
+                default:
+                    print("Unknown price comparison operator")
+                }
             }
             else {
-                filteredEvents = filteredEvents.filter{
+                newEvents = newEvents.filter{
                     return $0.minPrice <= amount
                 }
             }
         }
-        
-        collectionView.reloadData()
-        print("Hello, i did reload")
-        //tableView.reloadData()
+        if newEvents.count > 0{
+            filteredEvents = newEvents
+            collectionView.reloadData()
+            print("Hello, i did reload")
+            collectionView.setContentOffset(.zero, animated: true)
+            //tableView.reloadData()
+        }
+        else{
+            //print warning message
+        }
     }
     
     @IBAction func MicrophonePress(_ sender: UIButton) {
@@ -458,7 +463,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
             CapitoController.getInstance().cancelTalking()
             print("if")
             
-            helper.showAlert()
+            helper.showAlert(message: "Done Listening")
         }
         else {
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
@@ -493,7 +498,7 @@ extension EventViewController{
         }
         else{
             handlingContext().bootstrapView(response: response)
-            if let task = response.context["task"] as? String{
+            if let task = response.semanticOutput["task"] as? String{
                 self.isFiltering = true
                 self.filteredItems = contextContents.shared.contextContent
                 self.filterContentofEvents(contextContent: self.filteredItems)
@@ -525,7 +530,7 @@ extension EventViewController{
             detailViewController.selectedTicket = number!
             
         }
-        if let category = contextContents.shared.contextContent["ticketType"] as? String{
+        if let category = contextContents.shared.contextContent["seatArea"] as? String{
             
             switch category{
             case "A":
@@ -550,6 +555,9 @@ extension EventViewController{
             print("Hello3", noOfEvents.count)
             
             if number != nil && categoryNum != nil{
+                detailViewController.eventLoaded = self.filteredEvents[0]
+                pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+                
                 let paymentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PaymentPage") as! PaymentViewController
                 
                 pageViewController.pages[4] = paymentViewController

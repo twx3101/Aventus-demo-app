@@ -11,9 +11,9 @@ import BRYXBanner
 
 class helper {
     
-    static func showAlert() {
+    static func showAlert(message: String) {
         
-        let banner = Banner(title: "Aventus", subtitle: "Done Listening", image: UIImage(named: "Icon"), backgroundColor: colors.neonblueBg)
+        let banner = Banner(title: "Aventus", subtitle: message, image: UIImage(named: "Icon"), backgroundColor: colors.neonblueBg)
         banner.dismissesOnTap = true
         banner.show(duration: 2.0)
         

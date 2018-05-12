@@ -299,7 +299,7 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
             controller?.cancelTalking()
             print("if")
             
-            helper.showAlert()
+            helper.showAlert(message: "Done Listening")
         }
         else {
             controller?.push(toTalk: self, withDialogueContext: contextContents.shared.context)
@@ -322,7 +322,7 @@ extension SeatViewController{
         }
         else{
             handlingContext().bootstrapView(response: response)
-            if let task = response.context["task"] as? String{
+            if let task = response.semanticOutput["task"] as? String{
                 //self.isFiltering = true
                 //self.filteredItems = contextContents.shared.contextContent
                 //self.filterContentofEvents(contextContent: self.filteredItems)
@@ -357,7 +357,7 @@ extension SeatViewController{
             self.selectedTicket = number!
             
         }
-        if let category = contextContents.shared.contextContent["ticketType"] as? String{
+        if let category = contextContents.shared.contextContent["seatArea"] as? String{
             
             switch category{
             case "A":
@@ -388,6 +388,7 @@ extension SeatViewController{
             let price = Double(selectedPrice)
             
             paymentViewController.payment = Payment(category: selectedCategories, price: price!, selectedSeats: number!)
+            pageViewController.setViewControllers([paymentViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         }
         else if number != nil{
             
