@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jHu-rk-thc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jHu-rk-thc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -513,7 +513,7 @@
                                 </constraints>
                                 <state key="normal" image="icons8-microphone-96"/>
                                 <connections>
-                                    <action selector="recordButton:" destination="PPN-Wq-gpx" eventType="touchUpInside" id="PJi-YD-kSo"/>
+                                    <action selector="micPress:" destination="PPN-Wq-gpx" eventType="touchUpInside" id="fl9-Nc-2Gv"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sB4-xZ-nOT" userLabel="EventView" customClass="EventView">
@@ -676,6 +676,7 @@
                         <outlet property="labelView" destination="Tu0-YD-tZ9" id="NlR-JJ-1dc"/>
                         <outlet property="layoutButton" destination="8UP-wU-xmj" id="K45-Ra-meC"/>
                         <outlet property="locationDateTimeLabel" destination="cV2-ud-0nr" id="Vxq-h2-fdJ"/>
+                        <outlet property="micButton" destination="bHF-Xu-Vfa" id="Ik5-b4-UUh"/>
                         <outlet property="pickerView" destination="YLd-ms-5ya" id="aWG-bA-t4s"/>
                         <outlet property="ticketLabel" destination="bdg-wg-IUF" id="z2F-va-i7X"/>
                         <outlet property="ticketPicker" destination="7h6-js-bPe" id="R6S-aC-i48"/>
@@ -738,9 +739,6 @@
                                     <constraint firstAttribute="height" constant="50" id="oz4-gg-eA9"/>
                                 </constraints>
                                 <state key="normal" image="icons8-microphone-96"/>
-                                <connections>
-                                    <action selector="recordButton:" destination="x2Z-KW-Ak7" eventType="touchUpInside" id="oAx-sS-jSe"/>
-                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="276-Nf-5bF">
                                 <rect key="frame" x="16" y="68" width="343" height="376.5"/>

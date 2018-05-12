@@ -1021,10 +1021,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				"HEADER_SEARCH_PATHS[arch=*]" = (
-					"$(PODS_ROOT)/Firebase/Core/Sources",
-					"(non-recursive)",
-				);
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(PODS_ROOT)/Firebase/Core/Sources (non-recursive)";
 				INFOPLIST_FILE = "Aventus HomepageTests2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

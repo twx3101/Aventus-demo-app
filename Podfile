@@ -14,6 +14,7 @@ target 'Aventus Homepage' do
   pod 'CapitoSpeechKit'
   pod 'MBProgressHUD'
   pod 'BRYXBanner'
+  pod 'SideMenu'
 
 target 'Aventus HomepageTests2' do
     inherit! :search_paths

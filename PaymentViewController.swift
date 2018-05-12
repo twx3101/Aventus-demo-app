@@ -25,8 +25,10 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var summaryTableView: UITableView!
     
-    var event: Event?
     
+    
+    var event: Event?
+
     var payment: Payment?
     
     var count: Int = 0
@@ -175,5 +177,5 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             warningLabel.text = "Please fill out the form."
         }
     }
-    
+
 }
