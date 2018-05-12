@@ -23,57 +23,41 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     
     var SCALE: Float!
     
-    var sideMargin: Int  = 40
-    var topMargin: Int = 20
+    var sideMargin: Int  = 20
+    var topMargin: Int = 40
     var buttonSize: Int = 30
     var textfieldHeight: Int = 30
     var textfieldWidth: Int = 0
-    var menuWidth: Int = 120
+    var menuWidth: Int = 200
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         textfieldWidth = Int(self.view.frame.width) - (sideMargin*2)
-
-        menuButton.frame = CGRect(x: 0 + sideMargin, y: topMargin, width: buttonSize, height: buttonSize)
+        menuButton.frame = CGRect(x: sideMargin, y: topMargin, width: buttonSize, height: buttonSize)
         //menuButton.addTarget(self, action: #selector(openMenu), for:    .touchUpInside)
         menuButton.setImage(UIImage(named: "menu"), for: UIControlState())
         menuButton.tintColor = .white
         
-        self.view.addSubview(menuButton)
+        view.addSubview(menuButton)
         
         searchButton.frame = CGRect(x: Int(self.view.frame.width) - sideMargin, y: topMargin, width: buttonSize, height: buttonSize)
         searchButton.addTarget(self, action: #selector(showSearchBarView), for:    .touchUpInside)
         searchButton.setImage(UIImage(named: "search"), for: UIControlState())
         searchButton.tintColor = .white
         
-        
         view.addSubview(menuButton)
         view.addSubview(searchButton)
         
+        textfieldWidth = Int(self.view.frame.width) - (sideMargin*2)
         
         textControl.frame = CGRect(x: sideMargin, y: topMargin, width: textfieldWidth, height: textfieldHeight)
-        textControl.backgroundColor = colors.white
         
-        textControl.placeholder = "Search for Events ..."
-        textControl.font = UIFont.systemFont(ofSize: 15)
-        textControl.borderStyle = UITextBorderStyle.roundedRect
-        textControl.autocorrectionType = UITextAutocorrectionType.no
-        textControl.keyboardType = UIKeyboardType.default
-        textControl.returnKeyType = UIReturnKeyType.done
-        textControl.clearButtonMode = UITextFieldViewMode.whileEditing;
-        textControl.contentVerticalAlignment = UIControlContentVerticalAlignment.center
-        
-        textControl.isEnabled = true
-        textControl.isUserInteractionEnabled = true
-        textControl.allowsEditingTextAttributes = true
         textControl.delegate = self
         
         cancelButton.frame = CGRect(x: Int(self.view.frame.width) - sideMargin, y: topMargin, width: buttonSize, height: buttonSize)
         cancelButton.addTarget(self, action: #selector(hideSearchBarView), for:    .touchUpInside)
         cancelButton.setImage(UIImage(named: "cancel"), for: UIControlState())
         cancelButton.tintColor = .white
-        
         
         view.addSubview(cancelButton)
         view.addSubview(textControl)
@@ -86,6 +70,7 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         helpButton.addTarget(self, action: #selector(navHelp), for:    .touchUpInside)
         helpButton.setImage(UIImage(named: "search"), for: UIControlState())
         helpButton.setTitle("Help", for: UIControlState())
+        
         
         ticketButton.frame = CGRect(x: sideMargin/2, y: (Int(self.view.frame.height/2) + 20), width: buttonSize, height: buttonSize)
         ticketButton.addTarget(self, action: #selector(navTicket), for:    .touchUpInside)
@@ -103,6 +88,12 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     }
     
     func navTicket() {
+        
+        hideMenuBase()
+
+        let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "TicketPage") as! TicketViewController
+        
+        present(detailViewController, animated: true, completion: nil)
     
     }
     

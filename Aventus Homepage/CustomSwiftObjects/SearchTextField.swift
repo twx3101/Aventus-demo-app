@@ -28,7 +28,37 @@ class SearchTextField : UITextField {
         print("Instantiated")
     }
     
+    let padding = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 7);
+    
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return UIEdgeInsetsInsetRect(bounds, padding)
+    }
+    
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return UIEdgeInsetsInsetRect(bounds, padding)
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return UIEdgeInsetsInsetRect(bounds, padding)
+    }
+    
     func sharedInit(){
+        
+        //textControl.backgroundColor = colors.white
+        
+        self.placeholder = "Search for Events ..."
+        //textControl.borderStyle = UITextBorderStyle.roundedRect
+        //textControl.autocorrectionType = UITextAutocorrectionType.no
+        //textControl.keyboardType = UIKeyboardType.default
+        //textControl.returnKeyType = UIReturnKeyType.done
+        //textControl.clearButtonMode = UITextFieldViewMode.whileEditing;
+        //textControl.contentVerticalAlignment = UIControlContentVerticalAlignment.center
+        
+        self.isEnabled = true
+        self.isUserInteractionEnabled = true
+        self.allowsEditingTextAttributes = true
+        
+        
         //Border
         self.layer.cornerRadius = 15.0;
         self.layer.borderWidth = 1.2
@@ -40,12 +70,9 @@ class SearchTextField : UITextField {
         self.backgroundColor = colors.textFieldBg
         
         textColor = colors.textFieldText
-        //textColor = UIColor.yellow
         font = UIFont(name: "Sarabun", size: 24)
         //Text
         
-        //self.textColor = colors.textFieldText
-        //self.textAlignment = NSTextAlignment.center
     }
     
 }

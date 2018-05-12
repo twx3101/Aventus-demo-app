@@ -147,7 +147,7 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("no data")
         }
         
-        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goPreviousPage(_:))))
         
     }
     
@@ -163,7 +163,10 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    
+    @objc func goPreviousPage(_ tap: UITapGestureRecognizer) {
+        presentingViewController?.dismiss(animated: true, completion: nil)
+        
+    }
     
     
 }

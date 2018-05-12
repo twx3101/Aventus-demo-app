@@ -278,8 +278,6 @@
 				2F00AC62207D17E200B0F967 /* SearchTextField.swift */,
 				457E32D220659C7E00B7224B /* WarningLabel.swift */,
 				457E32D020659C6200B7224B /* CustomSegmentedControl.swift */,
-				BF51ED4E20432787003D0219 /* ColorHelper.swift */,
-				BF87431A20A4D3DC00253304 /* PageHelper.swift */,
 				BF51ED5420433BBD003D0219 /* UtterLabel.swift */,
 				BF1607012044A36B00241A2D /* HeaderLabel.swift */,
 				BF1607032044ADC700241A2D /* BodyLabel.swift */,
@@ -293,13 +291,15 @@
 			path = CustomSwiftObjects;
 			sourceTree = "<group>";
 		};
-		BF5AF3D520A75D450063884A /* HelperFunctions */ = {
+		BF5AF3D520A75D450063884A /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				2F8E5A8B2083AB2E0023231F /* HandlingContext.swift */,
 				BFA98FD020A7611400553773 /* Helper.swift */,
+				BF87431A20A4D3DC00253304 /* PageHelper.swift */,
+				BF51ED4E20432787003D0219 /* ColorHelper.swift */,
 			);
-			path = HelperFunctions;
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		BF5AF3D620A75D5C0063884A /* AVTObjects */ = {
@@ -379,7 +379,7 @@
 				BF5AF3D920A75DDB0063884A /* ViewController */,
 				BF5AF3D820A75DB40063884A /* Fonts */,
 				BF5AF3D620A75D5C0063884A /* AVTObjects */,
-				BF5AF3D520A75D450063884A /* HelperFunctions */,
+				BF5AF3D520A75D450063884A /* Helper */,
 				BF5AF3D320A75CFE0063884A /* CustomSwiftObjects */,
 				BF7B71BE20236FCC009E5598 /* Main.storyboard */,
 				BF7B71BA20236FCC009E5598 /* AppDelegate.swift */,
