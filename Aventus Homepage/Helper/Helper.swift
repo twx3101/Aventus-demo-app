@@ -18,4 +18,28 @@ class helper {
         banner.show(duration: 2.0)
         
     }
+    
+    static func retrieveDataFromKey(key: String) -> [Booking] {
+        
+        let ud = UserDefaults.standard
+        var bookings: [Booking] = []
+        
+        if let dataRetrieved = ud.object(forKey: key) as? NSData{
+            bookings = (NSKeyedUnarchiver.unarchiveObject(with: dataRetrieved as Data) as? [Booking])!
+        } else {
+            bookings = []
+        }
+        
+        return bookings
+    }
+    
+    static func saveDataForKey(key: String, data: [Booking]) {
+        
+        let ud = UserDefaults.standard
+        
+        let dataToSave = NSKeyedArchiver.archivedData(withRootObject: data)
+        ud.set(dataToSave, forKey: key)
+        ud.synchronize()
+    }
+    
 }

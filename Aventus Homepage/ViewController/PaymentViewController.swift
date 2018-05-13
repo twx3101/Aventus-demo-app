@@ -161,6 +161,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             var no = seat?.noSeatsAvail[seatCategory]
             no = (no)! - (payment?.selectedSeats)!
             
+            
             if no! < 0{
                 let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
                 
@@ -173,26 +174,23 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             }else{
                 
                 
-                /*//var tickets: [Ticket] = []
-                //var seats: Int
-                //seats = (payment?.selectedSeats)!
-                for var i in 0..<no {
-                    let currentTicket = Ticket(_id: 1, _category: (payment?.category)!)
+                var tickets: [Ticket] = []
+                var seats: Int
+                seats = (payment?.selectedSeats)!
+                for var i in 0..<seats {
+                    let randomId = Int(arc4random_uniform(100))
+                    let currentTicket = Ticket(_id: randomId, _category: payment?.category)
                     tickets.append(currentTicket)
                 }
             
-                var userBookings: [Booking] = []
+                //UserDefaults.standard.removeObject(forKey: "Booking")
                 
-                if let readBookings = UserDefaults.standard.object(forKey: "Booking") {
-                    userBookings = readBookings as! [Booking]
-           
-                }
+                var userBookings: [Booking] = helper.retrieveDataFromKey(key: "Bookings")
                 
-                let currentBooking = Booking(_event: event!, _tickets: tickets)
-                
+                let currentBooking = Booking(event: event!, tickets: tickets)
                 userBookings.append(currentBooking)
                 
-                UserDefaults.standard.set(userBookings, forKey: "Booking")*/
+                helper.saveDataForKey(key: "Bookings", data: userBookings)
                 
                 
                 let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
@@ -202,7 +200,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 seat?.noSeatsAvail[seatCategory] = no!
                 
                 
-                let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
+                //let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
                 pageViewController.pages[5] = popOverVC
                 
                 pageViewController.setViewControllers([popOverVC], direction: UIPageViewControllerNavigationDirection.forward , animated: true, completion: nil)

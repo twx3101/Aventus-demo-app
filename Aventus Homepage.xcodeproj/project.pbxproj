@@ -384,8 +384,8 @@
 			children = (
 				BF5AF3D920A75DDB0063884A /* ViewController */,
 				BF5AF3D820A75DB40063884A /* Fonts */,
-				BF5AF3D620A75D5C0063884A /* AVTObjects */,
 				BF5AF3D520A75D450063884A /* Helper */,
+				BF5AF3D620A75D5C0063884A /* AVTObjects */,
 				BF5AF3D320A75CFE0063884A /* CustomSwiftObjects */,
 				BF7B71BE20236FCC009E5598 /* Main.storyboard */,
 				BF7B71BA20236FCC009E5598 /* AppDelegate.swift */,

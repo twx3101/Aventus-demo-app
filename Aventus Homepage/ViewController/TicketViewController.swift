@@ -123,6 +123,7 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        self.view.backgroundColor = colors.greyBg
         
         headerWidth = Double(self.view.frame.width - self.view.layoutMargins.left - self.view.layoutMargins.right)
         headerHeight = SCALE*headerWidth
