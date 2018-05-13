@@ -46,23 +46,25 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
+        
+        cell.backgroundColor = .clear
 
-        let detailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: cell.contentView.frame.width, height: cell.contentView.frame.height))
+        let detailLabel = UILabel(frame: CGRect(x: 20, y: 0, width: cell.contentView.frame.width, height: cell.contentView.frame.height))
         //detailLabel.text = sections[indexPath.section].movies[indexPath.row]
         
-        detailLabel.text = userBookings[indexPath.section].noTickets
-        detailLabel.textAlignment = .center
+        detailLabel.text = "Category: " + userBookings[indexPath.section].category!
+        //detailLabel.textAlignment = .center
         detailLabel.textColor = UIColor.black
         
-        let qrImageView =  UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let qrImageView =  UIImageView(frame: CGRect(x: self.view.frame.width - 80, y: 0, width: 40, height: 40))
         qrImageView.image = UIImage(named: "qrcode")
-        qrImageView.center.x = self.view.frame.width/2
+        //qrImageView.center.x = self.view.frame.width/2
         
-        let ticketImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.contentView.frame.width, height: cell.contentView.frame.height))
+        let ticketImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: cell.contentView.frame.height))
         ticketImageView.image = UIImage(named: "ticket")
         ticketImageView.center.x = self.view.frame.width/2
         
-        cell.insertSubview(qrImageView, at: 50)
+        cell.insertSubview(qrImageView, at: Int(self.view.frame.width))
         cell.insertSubview(ticketImageView, at: 0)
         
         cell.addSubview(detailLabel)
@@ -71,10 +73,9 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
             if (userBookings[indexPath.section].expanded == "0") {
                 cell.isHidden = true
-                print("hide")
             } else {
                 cell.isHidden = false
-                print("unhide")
+
             }
         }
         
@@ -116,7 +117,22 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         artistLabel.textAlignment = .center
         artistLabel.textColor = UIColor.black
         
+        let dateLabel = UILabel(frame: CGRect(x: 0.0, y: headerHeight*2/5, width: headerWidth, height: 100))
+        
+        dateLabel.text = userBookings[section].eventDatetime
+        dateLabel.textAlignment = .center
+        dateLabel.textColor = UIColor.black
+    
+        let venueLabel = UILabel(frame: CGRect(x: 0.0, y: headerHeight/2, width: headerWidth, height: 100))
+        
+        venueLabel.text = userBookings[section].eventVenue! + " , " + userBookings[section].eventLocation!
+        venueLabel.textAlignment = .center
+        venueLabel.textColor = UIColor.black
+        
+        
         header.addSubview(artistLabel)
+        header.addSubview(dateLabel)
+        header.addSubview(venueLabel)
         
         return header
     }
@@ -150,6 +166,9 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
     
         self.view.backgroundColor = colors.greyBg
+        tableView.backgroundColor = colors.greyBg
+        
+        //helper.setBackground(view: self.view, image: "ticketBg")
         
         headerWidth = Double(self.view.frame.width - self.view.layoutMargins.left - self.view.layoutMargins.right)
         headerHeight = SCALE*headerWidth

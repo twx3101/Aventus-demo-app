@@ -79,17 +79,19 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         menuView.backgroundColor = colors.menuBar
         
         
-        helpButton.frame = CGRect(x: sideMargin/2, y: (Int(self.view.frame.height/2) - 20) , width: buttonSize, height: buttonSize)
+        helpButton.frame = CGRect(x: sideMargin/5, y: (Int(self.view.frame.height/2) - 50) , width: menuWidth, height: buttonSize)
         helpButton.addTarget(self, action: #selector(navHelp), for:    .touchUpInside)
+        helpButton.tintColor = .white
         helpButton.setImage(UIImage(named: "helpIcon"), for: UIControlState())
-        helpButton.setTitle("Help", for: UIControlState())
+        helpButton.setTitle("  Help", for: UIControlState())
         
         
-        ticketButton.frame = CGRect(x: sideMargin/2, y: (Int(self.view.frame.height/2) + 20), width: buttonSize, height: buttonSize)
+        ticketButton.frame = CGRect(x: sideMargin/5, y: (Int(self.view.frame.height/2) + 50), width: menuWidth, height: buttonSize)
+        ticketButton.tintColor = .white
         ticketButton.addTarget(self, action: #selector(navTicket), for:    .touchUpInside)
         ticketButton.setImage(UIImage(named: "ticketIcon"), for: UIControlState())
-        ticketButton.setTitle("Ticket", for: UIControlState())
-
+        ticketButton.setTitle("  Ticket", for: UIControlState())
+        
         
         view.addSubview(menuView)
         view.addSubview(helpButton)
