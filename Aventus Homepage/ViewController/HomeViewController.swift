@@ -9,7 +9,7 @@
 import UIKit
 import CapitoSpeechKit
 import MBProgressHUD
-
+import AVFoundation
 
 
 class contextContents {
@@ -25,7 +25,8 @@ class contextContents {
 //TODO: add busy microphone button, add transcription textbox, add Errorlabels, add textDelegate
 
 class HomeViewController: AVTBaseViewController{
-    
+    let startSound : SystemSoundID = 1110
+    let endSound : SystemSoundID = 1111
     lazy var readyMic: UIImage = {
         return UIImage(named: "icons8-microphone-96")!
     }()
@@ -97,6 +98,7 @@ class HomeViewController: AVTBaseViewController{
     @IBAction func microphonePress(_ sender: UIButton) {
         
         if self.isRecording {
+            AudioServicesPlaySystemSound(endSound)
             CapitoController.getInstance().cancelTalking()
             print("if")
             
@@ -104,6 +106,7 @@ class HomeViewController: AVTBaseViewController{
             
         }
         else {
+            AudioServicesPlaySystemSound(startSound)
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
                 self.transcription.text = ""
         }

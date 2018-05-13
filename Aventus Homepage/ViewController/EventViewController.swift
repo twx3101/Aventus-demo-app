@@ -12,6 +12,8 @@ import Alamofire
 import AlamofireImage
 import CapitoSpeechKit
 import MBProgressHUD
+import AVFoundation
+
 
 
 class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
@@ -458,14 +460,18 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     }
     
     @IBAction func MicrophonePress(_ sender: UIButton) {
+        let startSound: SystemSoundID = 1110
+        let endSound : SystemSoundID = 1111
         
         if self.isRecording {
+            AudioServicesPlaySystemSound(endSound)
             CapitoController.getInstance().cancelTalking()
             print("if")
             
             helper.showAlert(message: "Done Listening")
         }
         else {
+            AudioServicesPlaySystemSound(startSound)
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
         }
         

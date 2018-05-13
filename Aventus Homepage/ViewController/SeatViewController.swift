@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import CapitoSpeechKit
 import MBProgressHUD
+import AVFoundation
 
 class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerViewDataSource{
 
@@ -253,6 +254,7 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         
         micButton.isEnabled = false
         
+        
     }
     
     @objc func hideMenu(_ tap: UITapGestureRecognizer) {
@@ -295,14 +297,19 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
     @IBAction func micPress(_ sender: UIButton) {
+        let startSound: SystemSoundID = 1110
+        let endSound : SystemSoundID = 1111
+        
         if self.isRecording {
             controller?.cancelTalking()
             print("if")
+            AudioServicesPlaySystemSound(endSound)
             
             helper.showAlert(message: "Done Listening")
         }
         else {
             controller?.push(toTalk: self, withDialogueContext: contextContents.shared.context)
+            AudioServicesPlaySystemSound(startSound)
         }
 
     }
