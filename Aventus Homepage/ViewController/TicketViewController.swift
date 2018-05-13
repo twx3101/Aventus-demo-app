@@ -9,9 +9,11 @@
 import UIKit
 
 class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ExpandableHeaderViewDelegate  {
-    
+
+    var userBookings: [Booking] = []
     
     @IBOutlet weak var tableView: UITableView!
+
     
     let SCALE: Double = 143.0/401
     
@@ -29,11 +31,14 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     ]
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        //return sections.count
+        return userBookings.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].movies.count
+        //return sections[section].movies.count
+        
+        return Int(userBookings[section].noTickets!)!
     }
     
     
@@ -43,7 +48,9 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = UITableViewCell()
 
         let detailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: cell.contentView.frame.width, height: cell.contentView.frame.height))
-        detailLabel.text = sections[indexPath.section].movies[indexPath.row]
+        //detailLabel.text = sections[indexPath.section].movies[indexPath.row]
+        
+        detailLabel.text = userBookings[indexPath.section].noTickets
         detailLabel.textAlignment = .center
         detailLabel.textColor = UIColor.black
         
@@ -55,11 +62,14 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.addSubview(detailLabel)
         
-        if indexPath.section == (sections.count - 1) {
-            if sections[indexPath.section].expanded  {
-                cell.isHidden = false
-            } else {
+        if indexPath.section == (userBookings.count - 1) {
+            print(userBookings[indexPath.section].expanded, "hello")
+            if (userBookings[indexPath.section].expanded == "0") {
                 cell.isHidden = true
+                print("hide")
+            } else {
+                cell.isHidden = false
+                print("unhide")
             }
         }
         
@@ -72,7 +82,7 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if(sections[indexPath.section].expanded) {
+        if(userBookings[indexPath.section].expanded == "1") {
             return CGFloat(cellHeight)
         } else {
             return 0
@@ -86,7 +96,7 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = ExpandableHeaderView()
         
-        header.customInit(title: sections[section].genre, section: section, delegate: self)
+        header.customInit(title: userBookings[section].eventArtist!, section: section, delegate: self)
         
         let bgImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: headerHeight) )
         bgImageView.image = UIImage(named: "mainTicket")
@@ -96,7 +106,8 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let artistLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: 100))
         
-        artistLabel.text = sections[section].genre
+        //artistLabel.text = sections[section].genre
+        artistLabel.text = userBookings[section].eventArtist
         artistLabel.textAlignment = .center
         artistLabel.textColor = UIColor.black
         
@@ -106,14 +117,24 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func toggleSection(header: ExpandableHeaderView, section: Int) {
-        sections[section].expanded = !sections[section].expanded
+        
+        if (userBookings[section].expanded == "0") {
+            userBookings[section].expanded = "1"
+            
+        } else {
+            userBookings[section].expanded = "0"
+        }
+        
+        print(userBookings[section].expanded)
         
         tableView.beginUpdates()
         
+        let noTick = Int(userBookings[section].noTickets!)!
         
+        print(userBookings[section].noTickets)
         
-        for i in 0..<sections[section].movies.count {
-
+        print(noTick)
+        for i in 0..<noTick {
             tableView.reloadRows(at: [IndexPath(row: i, section: section)], with: .automatic)
         }
         tableView.endUpdates()
@@ -133,26 +154,12 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         tableView.allowsSelection = false
         
-        //let tickets: [String] = ["ll"]
+        userBookings = helper.retrieveDataFromKey(key: "Bookings")
         
-        //UserDefaults.standard.set(tickets, forKey: "Key")
-        
-        if let readtickets = UserDefaults.standard.object(forKey: "Test") {
-            let arrayTickets = readtickets as! [String]
-            //print(string!)
-            
-            for ticket in arrayTickets {
-                print(ticket)
-            }
-        } else {
-            print("no data")
-        }
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goPreviousPage(_:))))
         
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

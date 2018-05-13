@@ -239,18 +239,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headbg" translatesAutoresizingMaskIntoConstraints="NO" id="syH-VJ-WKC" userLabel="headBackground">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="syH-VJ-WKC" secondAttribute="height" multiplier="680:120" id="m6O-gX-S8f"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="secondbg" translatesAutoresizingMaskIntoConstraints="NO" id="xbD-Vd-LKW">
-                                <rect key="frame" x="0.0" y="66" width="375" height="134"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="xbD-Vd-LKW" secondAttribute="height" multiplier="375:134" id="xIi-WS-gaQ"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5L9-F7-l1V">
                                 <rect key="frame" x="302" y="617" width="49" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -260,22 +248,24 @@
                                     <action selector="resetContext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q3u-pM-X8M"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w4A-Nh-s4M">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="w4A-Nh-s4M" secondAttribute="height" multiplier="15:8" id="lm2-jG-RuO"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ug6-cg-Hl4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Ce-Zn-195"/>
-                            <constraint firstItem="xbD-Vd-LKW" firstAttribute="top" secondItem="syH-VJ-WKC" secondAttribute="bottom" id="1ec-Rb-o4V"/>
-                            <constraint firstAttribute="trailing" secondItem="xbD-Vd-LKW" secondAttribute="trailing" id="9V1-BV-d9b"/>
-                            <constraint firstItem="syH-VJ-WKC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Bev-Kc-Iyp"/>
-                            <constraint firstAttribute="trailing" secondItem="syH-VJ-WKC" secondAttribute="trailing" id="BpF-Hi-elH"/>
                             <constraint firstItem="Y5a-nW-cBV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="20" id="EIX-eD-DKd"/>
-                            <constraint firstAttribute="trailing" secondItem="xbD-Vd-LKW" secondAttribute="trailing" id="EsY-43-Bv1"/>
                             <constraint firstItem="syZ-Cf-8hp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="300" id="GvR-Dj-Z5S"/>
+                            <constraint firstItem="w4A-Nh-s4M" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Kds-NL-uYG"/>
                             <constraint firstItem="ug6-cg-Hl4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-40" id="OO0-BF-sZz"/>
                             <constraint firstItem="Y5a-nW-cBV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UDa-WN-POb"/>
-                            <constraint firstItem="syH-VJ-WKC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="XXH-yy-llB"/>
-                            <constraint firstItem="xbD-Vd-LKW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ffA-24-xNB"/>
                             <constraint firstItem="syZ-Cf-8hp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gcT-lS-CL1"/>
+                            <constraint firstAttribute="trailing" secondItem="w4A-Nh-s4M" secondAttribute="trailing" id="oxo-JG-58s"/>
+                            <constraint firstItem="w4A-Nh-s4M" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uEU-6V-q6b"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JzQ-rS-r6Q"/>
@@ -1086,8 +1076,8 @@
         <image name="Seating" width="287" height="282"/>
         <image name="confirmation" width="256" height="256"/>
         <image name="headbg" width="679" height="134"/>
+        <image name="homeBg" width="587" height="349"/>
         <image name="icons8-microphone-96" width="50" height="50"/>
-        <image name="secondbg" width="676" height="176"/>
         <image name="user" width="112" height="112"/>
     </resources>
 </document>

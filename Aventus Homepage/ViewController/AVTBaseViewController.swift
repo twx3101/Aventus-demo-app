@@ -24,8 +24,9 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     var SCALE: Float!
     
     var sideMargin: Int  = 20
-    var topMargin: Int = 35
+    var topMargin: Int = 24
     var buttonSize: Int = 30
+    var menuButtonSize: Int = 20
     var textfieldHeight: Int = 30
     var textfieldWidth: Int = 0
     var menuWidth: Int = 200
@@ -41,9 +42,10 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         
         textfieldWidth = Int(self.view.frame.width) - (sideMargin*2) - buttonSize
         
-        menuButton.frame = CGRect(x: leftItemX, y: topMargin, width: buttonSize, height: buttonSize)
+        menuButton.frame = CGRect(x: leftItemX + (buttonSize - menuButtonSize)/2, y: topMargin + (buttonSize - menuButtonSize)/2, width: menuButtonSize, height: menuButtonSize)
         //menuButton.addTarget(self, action: #selector(openMenu), for:    .touchUpInside)
         menuButton.setImage(UIImage(named: "menu"), for: UIControlState())
+    
         menuButton.tintColor = .white
         
         view.addSubview(menuButton)

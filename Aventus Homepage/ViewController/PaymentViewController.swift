@@ -166,10 +166,11 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                     tickets.append(currentTicket)
                 }
             
-                
+                //UserDefaults.standard.removeObject(forKey: "Bookings")
+            
                 var userBookings: [Booking] = helper.retrieveDataFromKey(key: "Bookings")
                 
-                let currentBooking = Booking(event: event!, tickets: tickets)
+                let currentBooking = Booking(event: event!, payment: payment!)
                 userBookings.append(currentBooking)
                 
                 helper.saveDataForKey(key: "Bookings", data: userBookings)
@@ -189,7 +190,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 seat?.noSeatsAvail[seatCategory] = no!
                 
                 
-                //let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
+                let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
                 pageViewController.pages[5] = popOverVC
                 
                 pageViewController.setViewControllers([popOverVC], direction: UIPageViewControllerNavigationDirection.forward , animated: true, completion: nil)

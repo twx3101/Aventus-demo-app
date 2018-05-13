@@ -29,7 +29,7 @@ class helper {
         } else {
             bookings = []
         }
-        
+        //print(bookings[0].noTickets)
         return bookings
     }
     

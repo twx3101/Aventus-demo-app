@@ -60,7 +60,7 @@ class HomeViewController: AVTBaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = colors.white
+        self.view.backgroundColor = colors.greyBg
         
         self.textControl.delegate = self
         
