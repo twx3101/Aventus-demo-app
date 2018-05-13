@@ -73,7 +73,7 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(textControl)
         
         menuView.frame = CGRect(x: 0, y: 0 , width: menuWidth, height: Int(self.view.frame.size.height))
-        menuView.backgroundColor = colors.greyBg
+        menuView.backgroundColor = colors.menuBar
         
         
         helpButton.frame = CGRect(x: sideMargin/2, y: (Int(self.view.frame.height/2) - 20) , width: buttonSize, height: buttonSize)

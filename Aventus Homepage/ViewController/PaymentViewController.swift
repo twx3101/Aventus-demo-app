@@ -45,7 +45,12 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         super.viewDidLoad()
         
-        self.view.backgroundColor = colors.bg
+        //self.view.backgroundColor = colors.bg
+        
+        let bgImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: self.view.frame.height) )
+        bgImageView.image = UIImage(named: "paymentBg")
+        
+        self.view.insertSubview(bgImageView, at: 0)
         
         summaryTableView.delegate = self
         summaryTableView.dataSource = self

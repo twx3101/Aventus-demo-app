@@ -19,6 +19,7 @@ struct colors{
     static var greyCol: UInt32 = 0xEAEAEC
     static var darkGreyCol: UInt32 =  0x878696
     static var darkPurpleCol: UInt32 = 0x280844
+    static var lightPurpleCol: UInt32 = 0x500E47
     
     // background color
     //static var bg = UIColorFromHex(rgbValue: purpleCol, alpha: 1)
@@ -87,6 +88,8 @@ struct colors{
     
     // button text
     static var buttonText = UIColorFromHex(rgbValue: whiteCol, alpha: 1)
+    
+    static var menuBar = UIColorFromHex(rgbValue: lightPurpleCol, alpha: 0.28)
 
 }
 
