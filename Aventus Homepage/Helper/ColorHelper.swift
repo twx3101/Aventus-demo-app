@@ -89,7 +89,7 @@ struct colors{
     // button text
     static var buttonText = UIColorFromHex(rgbValue: whiteCol, alpha: 1)
     
-    static var menuBar = UIColorFromHex(rgbValue: lightPurpleCol, alpha: 0.28)
+    static var menuBar = UIColorFromHex(rgbValue: lightPurpleCol, alpha: 0.6)
 
 }
 

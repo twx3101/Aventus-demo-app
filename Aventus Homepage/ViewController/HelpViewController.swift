@@ -22,7 +22,10 @@ class HelpViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = colors.bg
+        
+        
+        //self.view.backgroundColor = colors.bg
+        helper.setBackground(view: self.view, image: "helpBg")
         
         headerLabel.textColor = colors.headerTwoText
         

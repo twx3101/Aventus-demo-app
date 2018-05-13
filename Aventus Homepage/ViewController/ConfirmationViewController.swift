@@ -14,16 +14,21 @@ class ConfirmationViewController: UIViewController{
     
     var payment: Payment?
     
-    @IBOutlet weak var confirmViewTicketButton: UIButton!
+    @IBOutlet weak var homeButton: UIButton!
     
-    @IBOutlet weak var confirmView: UIView!
+    @IBOutlet weak var ticketButton: UIButton!
     
-    @IBOutlet weak var labelConfirm: UtterLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        helper.setBackground(view: self.view, image: "confrimBg")
+        helper.setBackground(view: self.view, image: "confirmBg")
+        
+        self.view.bringSubview(toFront: homeButton)
+        self.view.bringSubview(toFront: ticketButton)
+        
+        homeButton.isEnabled = true
+        homeButton.isUserInteractionEnabled = true
         
         //confirmView.backgroundColor = colors.darkpurpleBg
         
@@ -46,12 +51,12 @@ class ConfirmationViewController: UIViewController{
     
     func showAnimate()
     {
-        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        /*self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         self.view.alpha = 0.0;
         UIView.animate(withDuration: 0.25, animations: {
             self.view.alpha = 1.0
             self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        });
+        });*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,15 +64,29 @@ class ConfirmationViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func viewTicket(_ sender: RoundButton) {
+
+    
+    @IBAction func goHome(_ sender: UIButton) {
+        print("hello")
         let pageViewController = self.parent as! PageViewController
         
         let homeViewController = storyboard?.instantiateViewController(withIdentifier: "HomePage") as! HomeViewController
         
         pageViewController.pages[1] = homeViewController
         pageViewController.setViewControllers([homeViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        
     }
     
+    @IBAction func goViewTicket(_ sender: UIButton) {
+        
+        let pageViewController = self.parent as! PageViewController
+        
+        let homeViewController = storyboard?.instantiateViewController(withIdentifier: "HomePage") as! HomeViewController
+        
+        pageViewController.pages[1] = homeViewController
+        pageViewController.setViewControllers([homeViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        
+        homeViewController.navTicket()
+    }
     
-
 }

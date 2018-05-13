@@ -25,11 +25,14 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     
     var sideMargin: Int  = 20
     var topMargin: Int = 24
+    
     var buttonSize: Int = 30
     var menuButtonSize: Int = 20
+    
     var textfieldHeight: Int = 30
     var textfieldWidth: Int = 0
-    var menuWidth: Int = 200
+    
+    var menuWidth: Int = 120
     
     var leftItemX: Int = 0
     var rightItemX: Int = 0
@@ -78,13 +81,14 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         
         helpButton.frame = CGRect(x: sideMargin/2, y: (Int(self.view.frame.height/2) - 20) , width: buttonSize, height: buttonSize)
         helpButton.addTarget(self, action: #selector(navHelp), for:    .touchUpInside)
-        helpButton.setImage(UIImage(named: "search"), for: UIControlState())
+        helpButton.setImage(UIImage(named: "helpIcon"), for: UIControlState())
         helpButton.setTitle("Help", for: UIControlState())
         
         
         ticketButton.frame = CGRect(x: sideMargin/2, y: (Int(self.view.frame.height/2) + 20), width: buttonSize, height: buttonSize)
         ticketButton.addTarget(self, action: #selector(navTicket), for:    .touchUpInside)
-        ticketButton.setImage(UIImage(named: "search"), for: UIControlState())
+        ticketButton.setImage(UIImage(named: "ticketIcon"), for: UIControlState())
+        ticketButton.setTitle("Ticket", for: UIControlState())
 
         
         view.addSubview(menuView)

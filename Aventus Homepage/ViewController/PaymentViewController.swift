@@ -160,15 +160,6 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             let pageViewController = self.parent as! PageViewController
           
             
-                
-                var tickets: [Ticket] = []
-                var seats: Int
-                seats = (payment?.selectedSeats)!
-                for var i in 0..<seats {
-                    let randomId = Int(arc4random_uniform(100))
-                    let currentTicket = Ticket(_id: randomId, _category: payment?.category)
-                    tickets.append(currentTicket)
-                }
             
                 //UserDefaults.standard.removeObject(forKey: "Bookings")
             
@@ -185,16 +176,21 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 popOverVC.event = event
                 popOverVC.payment = payment
             
+                var seats: Int
+                seats = (payment?.selectedSeats)!
+            
                 let id = String((self.event?.event_list)! - 1)
                 let category = convert()
                 let seat = self.event?.seating
+            
+            
                 var no = seat?.noSeatsAvail[seatCategory]
                 no = (no)! - seats
             
                 seat?.noSeatsAvail[seatCategory] = no!
                 
                 
-                let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
+                //let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
                 pageViewController.pages[5] = popOverVC
                 
                 pageViewController.setViewControllers([popOverVC], direction: UIPageViewControllerNavigationDirection.forward , animated: true, completion: nil)
