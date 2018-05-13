@@ -47,10 +47,9 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         //self.view.backgroundColor = colors.bg
         
-        let bgImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: self.view.frame.height) )
-        bgImageView.image = UIImage(named: "paymentBg")
+        helper.setBackground(view: self.view, image: "paymentBg")
         
-        self.view.insertSubview(bgImageView, at: 0)
+        
         
         summaryTableView.delegate = self
         summaryTableView.dataSource = self
@@ -234,6 +233,22 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         stringToReturn += "Number of seat available"
         
         return stringToReturn
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
     }
 
 }

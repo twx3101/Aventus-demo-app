@@ -22,11 +22,12 @@ class ConfirmationViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = colors.bg
         
-        confirmView.backgroundColor = colors.darkpurpleBg
+        helper.setBackground(view: self.view, image: "confrimBg")
         
-        labelConfirm.lineBreakMode = .byWordWrapping
+        //confirmView.backgroundColor = colors.darkpurpleBg
+        
+        /*labelConfirm.lineBreakMode = .byWordWrapping
         labelConfirm.numberOfLines = 0
         labelConfirm.textAlignment = .center
         labelConfirm.textColor = colors.headerText
@@ -39,7 +40,7 @@ class ConfirmationViewController: UIViewController{
         confirmViewTicketButton.layer.cornerRadius = 15
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)*/
         
     }
     
@@ -67,20 +68,6 @@ class ConfirmationViewController: UIViewController{
         pageViewController.setViewControllers([homeViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
-    }
 
 }

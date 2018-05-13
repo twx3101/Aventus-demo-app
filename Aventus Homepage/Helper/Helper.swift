@@ -42,4 +42,11 @@ class helper {
         ud.synchronize()
     }
     
+    static func setBackground(view: UIView, image: String) {
+        let bgImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height) )
+        bgImageView.image = UIImage(named: image)
+        
+        view.insertSubview(bgImageView, at: 0)
+    }
+    
 }
