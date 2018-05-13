@@ -288,7 +288,6 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
                 }
                 
                 
-                
                 var eventCatSeats = [Int]()
                 
                 if let seat5 = eventObject?["Category 5: Number of seat available"] as? Int{ eventCatSeats.append(seat5)

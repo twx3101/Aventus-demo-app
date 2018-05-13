@@ -38,6 +38,8 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
     
     @IBOutlet weak var micButton: UIButton!
     
+    @IBOutlet weak var warningLabel: WarningLabel!
+    
     lazy var readyMic: UIImage = {
         return UIImage(named: "icons8-microphone-96")!
     }()
@@ -51,6 +53,8 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
     var eventLoaded: Event?
     
     var seating: Seating?
+    
+    var seatCategory: Int = 0
     
     var categoriesData: [String] = [String]()
     
@@ -141,6 +145,7 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
     
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
         if(pickerView.tag==0) {
             selectedCategory = categoriesData[row]
             selectedPrice = Double(priceData[row])!
@@ -281,8 +286,20 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
     @IBAction func purchaseButton(_ sender: RoundButton) {
         
         if(selectedTicket==0) {
+            warningLabel.text = "Please select the number of tickets."
             return
         }
+        
+        convertStringCatToInt()
+        let seat = self.eventLoaded?.seating
+        var no = seat?.noSeatsAvail[seatCategory]
+        no = (no)! - selectedTicket
+
+        if no! < 0{
+            warningLabel.text = "There are no seats available. Please select another category."
+            return
+        }
+            
         
         let pageViewController = self.parent as! PageViewController
         
@@ -296,6 +313,27 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         
         pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
+    
+    func convertStringCatToInt() {
+    
+        switch self.selectedCategory{
+        case "A":
+            seatCategory = 1
+        case "B":
+            seatCategory = 2
+        case "C":
+            seatCategory = 3
+        case "D":
+            seatCategory = 4
+        case "Standing area":
+            seatCategory = 0
+        default:
+            seatCategory = 0
+        }
+
+    }
+    
+    
     @IBAction func micPress(_ sender: UIButton) {
         let startSound: SystemSoundID = 1110
         let endSound : SystemSoundID = 1111

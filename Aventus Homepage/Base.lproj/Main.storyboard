@@ -598,15 +598,24 @@
                                     <constraint firstAttribute="width" secondItem="zYP-uO-zDV" secondAttribute="height" multiplier="680:120" id="Uqc-6J-s2J"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGs-rn-ngz" customClass="WarningLabel" customModule="Aventus_Homepage" customModuleProvider="target">
+                                <rect key="frame" x="16" y="608" width="343" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zYP-uO-zDV" firstAttribute="top" secondItem="nqJ-H0-mU7" secondAttribute="top" id="1wC-su-n3F"/>
                             <constraint firstItem="Mb0-1f-oi8" firstAttribute="top" secondItem="bHF-Xu-Vfa" secondAttribute="bottom" id="4fo-9l-M1B"/>
                             <constraint firstItem="YLd-ms-5ya" firstAttribute="trailing" secondItem="nqJ-H0-mU7" secondAttribute="trailingMargin" id="APO-bP-Vla"/>
+                            <constraint firstItem="bGs-rn-ngz" firstAttribute="trailing" secondItem="nqJ-H0-mU7" secondAttribute="trailingMargin" id="ArU-y4-bua"/>
                             <constraint firstItem="YLd-ms-5ya" firstAttribute="leading" secondItem="nqJ-H0-mU7" secondAttribute="leadingMargin" id="FAF-3r-aZ4"/>
+                            <constraint firstItem="bGs-rn-ngz" firstAttribute="leading" secondItem="nqJ-H0-mU7" secondAttribute="leadingMargin" id="GAF-QS-FOr"/>
                             <constraint firstItem="sB4-xZ-nOT" firstAttribute="trailing" secondItem="nqJ-H0-mU7" secondAttribute="trailingMargin" id="J0E-LV-jcc"/>
                             <constraint firstItem="bHF-Xu-Vfa" firstAttribute="centerX" secondItem="nqJ-H0-mU7" secondAttribute="centerX" id="Od6-X2-c33"/>
+                            <constraint firstItem="bGs-rn-ngz" firstAttribute="top" secondItem="YLd-ms-5ya" secondAttribute="bottom" constant="8" id="Qy3-bP-ykp"/>
                             <constraint firstItem="zYP-uO-zDV" firstAttribute="leading" secondItem="nqJ-H0-mU7" secondAttribute="leading" id="VBT-l4-WHd"/>
                             <constraint firstAttribute="trailing" secondItem="zYP-uO-zDV" secondAttribute="trailing" id="hH8-06-AYS"/>
                             <constraint firstItem="sB4-xZ-nOT" firstAttribute="leading" secondItem="nqJ-H0-mU7" secondAttribute="leadingMargin" id="ntX-Hf-9nz"/>
@@ -629,6 +638,7 @@
                         <outlet property="pickerView" destination="YLd-ms-5ya" id="aWG-bA-t4s"/>
                         <outlet property="ticketLabel" destination="bdg-wg-IUF" id="z2F-va-i7X"/>
                         <outlet property="ticketPicker" destination="7h6-js-bPe" id="R6S-aC-i48"/>
+                        <outlet property="warningLabel" destination="bGs-rn-ngz" id="Ore-zN-cPH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JbZ-2F-aT8" sceneMemberID="firstResponder"/>

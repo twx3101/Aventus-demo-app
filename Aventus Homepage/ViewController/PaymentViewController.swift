@@ -155,24 +155,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
          
             let pageViewController = self.parent as! PageViewController
           
-            let id = String((self.event?.event_list)! - 1)
-            let category = convert()
-            let seat = self.event?.seating
-            var no = seat?.noSeatsAvail[seatCategory]
-            no = (no)! - (payment?.selectedSeats)!
             
-            
-            if no! < 0{
-                let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
-                
-                self.addChildViewController(popOverVC)
-                popOverVC.view.frame = self.view.frame
-                self.view.addSubview(popOverVC.view)
-                popOverVC.didMove(toParentViewController: self)
-                
-            
-            }else{
-                
                 
                 var tickets: [Ticket] = []
                 var seats: Int
@@ -183,7 +166,6 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                     tickets.append(currentTicket)
                 }
             
-                //UserDefaults.standard.removeObject(forKey: "Booking")
                 
                 var userBookings: [Booking] = helper.retrieveDataFromKey(key: "Bookings")
                 
@@ -197,6 +179,13 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 popOverVC.event = event
                 popOverVC.payment = payment
+            
+                let id = String((self.event?.event_list)! - 1)
+                let category = convert()
+                let seat = self.event?.seating
+                var no = seat?.noSeatsAvail[seatCategory]
+                no = (no)! - seats
+            
                 seat?.noSeatsAvail[seatCategory] = no!
                 
                 
@@ -204,7 +193,6 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 pageViewController.pages[5] = popOverVC
                 
                 pageViewController.setViewControllers([popOverVC], direction: UIPageViewControllerNavigationDirection.forward , animated: true, completion: nil)
-            }
             
             
             
@@ -220,16 +208,16 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch self.payment?.category{
         case "A"?:
             stringToReturn = "Category 4: "
-            seatCategory = 4
+            seatCategory = 1
         case "B"?:
             stringToReturn = "Category 3: "
-            seatCategory = 3
+            seatCategory = 2
         case "C"?:
             stringToReturn = "Category 2: "
-            seatCategory = 2
+            seatCategory = 3
         case "D"?:
             stringToReturn = "Category 1: "
-            seatCategory = 1
+            seatCategory = 4
         case "Standing area"?:
             stringToReturn = "Category 5: "
             seatCategory = 0
