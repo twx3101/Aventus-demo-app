@@ -149,6 +149,9 @@ extension HomeViewController{
             
             if let task = response.semanticOutput["task"] as? String{
                 handlingContext().bootstrapView(response: response)
+                if task == "NavigateStatic"{
+                    navHelp()
+                }
                 if task == "Navigate"{
                     handleNavigate()
                 }
@@ -162,6 +165,7 @@ extension HomeViewController{
             }
         }
     }
+  
     func handleNavigate(){
         var nextViewController : EventViewController
         

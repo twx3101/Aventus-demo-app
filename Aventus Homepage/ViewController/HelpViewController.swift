@@ -10,9 +10,9 @@ import UIKit
 
 class HelpViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
-    @IBOutlet weak var headerLabel: UtterLabel!
-
     @IBOutlet weak var utterView: UIStackView!
+    
+    @IBOutlet weak var headerView: UIView!
     
     let height = 40
     
@@ -27,34 +27,49 @@ class HelpViewController: UIViewController, UIViewControllerTransitioningDelegat
         //self.view.backgroundColor = colors.bg
         helper.setBackground(view: self.view, image: "helpBg")
         
-        headerLabel.textColor = colors.headerTwoText
+       
         
         let index: Int = pageIndex!
         
         var labels = [UILabel]()
+        let topLabel = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: 80))
+        topLabel.textColor = .white
+        topLabel.lineBreakMode = .byWordWrapping
+        topLabel.numberOfLines = 0
+        topLabel.textAlignment = .center
         
         switch(index) {
         case pageNo.home:
 
-            let label1 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
-            label1.text = "\"Hello from home\""
+            topLabel.text = "\"Buy me two standing tickets to Rihanna on 19th May\""
             
-            labels.append(label1)
+            //labels.append(label1)
 
             let label2 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
-            label2.text = "\"Hello from homehome\""
+            label2.text = "\"Find me rock events\""
             
             labels.append(label2)
             
             let label3 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
-            label3.text = "\"Hello from homehomehome\""
-            
+            label3.text = "\"Search for events in Birmingham\""
             labels.append(label3)
             
+            let label4 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            label4.text = "\"Find me tickets less than 20 pounds\""
+            
+            labels.append(label4)
+            
+            let label5 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            label5.text = "\"Find me events in the next 2 weeks\""
+            
+            labels.append(label5)
+            
+            
         case pageNo.event:
+             topLabel.text = "\"Show me tickets below 20 pounds\""
             
             let label1 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
-            label1.text = "\"Hello from event\""
+            label1.text = "\"Don't show me Justin Bieber events\""
             
             labels.append(label1)
             
@@ -68,9 +83,11 @@ class HelpViewController: UIViewController, UIViewControllerTransitioningDelegat
         }
         
         //utterView.frame.
-        utterView.distribution = .fill
-        utterView.alignment = .fill;
-        utterView.spacing = 32;
+        //utterView.distribution = .fill
+        //utterView.alignment = .fill
+        //utterView.spacing = 16;
+        
+        headerView.addSubview(topLabel)
         
         for var label in labels {
             label.center = self.view.center

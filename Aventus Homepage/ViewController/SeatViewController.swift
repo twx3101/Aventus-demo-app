@@ -368,10 +368,9 @@ extension SeatViewController{
         else{
             handlingContext().bootstrapView(response: response)
             if let task = response.semanticOutput["task"] as? String{
-                //self.isFiltering = true
-                //self.filteredItems = contextContents.shared.contextContent
-                //self.filterContentofEvents(contextContent: self.filteredItems)
-                //self.collectionView.reloadData()
+                if task == "NavigateStatic"{
+                    navHelp()
+                }
                 
                 if task == "BuyTicket" || task == "BuyTickets"{
                     handleBuyTickets()
