@@ -91,6 +91,7 @@ struct colors{
     
     static var menuBar = UIColorFromHex(rgbValue: lightPurpleCol, alpha: 0.6)
 
+
 }
 
 

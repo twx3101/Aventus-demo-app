@@ -58,12 +58,17 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         qrImageView.image = UIImage(named: "qrcode")
         qrImageView.center.x = self.view.frame.width/2
         
+        let ticketImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.contentView.frame.width, height: cell.contentView.frame.height))
+        ticketImageView.image = UIImage(named: "ticket")
+        ticketImageView.center.x = self.view.frame.width/2
+        
         cell.insertSubview(qrImageView, at: 50)
+        cell.insertSubview(ticketImageView, at: 0)
         
         cell.addSubview(detailLabel)
         
         if indexPath.section == (userBookings.count - 1) {
-            print(userBookings[indexPath.section].expanded, "hello")
+    
             if (userBookings[indexPath.section].expanded == "0") {
                 cell.isHidden = true
                 print("hide")

@@ -168,16 +168,16 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         //pickerView.clipsToBounds = true
         //pickerView.layer.borderWidth = 1.2
         //pickerView.layer.borderColor = (colors.border).cgColor
-        pickerView.layer.backgroundColor = (colors.white).cgColor
+        pickerView.layer.backgroundColor = (UIColor.white.withAlphaComponent(0.95)).cgColor
         
         pickerView.layer.cornerRadius = 5.0
         
-        pickerView.layer.shadowColor = UIColor.black.cgColor
-        pickerView.layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
-        pickerView.layer.masksToBounds = false
-        pickerView.layer.shadowRadius = 2.0
-        pickerView.layer.shadowOpacity = 1.0
-        pickerView.clipsToBounds = true
+//        pickerView.layer.shadowColor = UIColor.black.cgColor
+//        pickerView.layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
+//        pickerView.layer.masksToBounds = false
+//        pickerView.layer.shadowRadius = 2.0
+//        pickerView.layer.shadowOpacity = 1.0
+//        pickerView.clipsToBounds = true
 
         categoryPicker.delegate = self
         categoryPicker.dataSource = self

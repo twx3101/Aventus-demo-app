@@ -54,21 +54,21 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         summaryTableView.delegate = self
         summaryTableView.dataSource = self
 
-        summaryView.backgroundColor = colors.buttonBg
+        //summaryView.backgroundColor = colors.buttonBg
         
-        let thickness: CGFloat = 0.5
-        let borderColor = (colors.border).cgColor
-        
-        let topBorder = CALayer()
-        topBorder.backgroundColor = borderColor
-        topBorder.frame = CGRect(x: 0, y:0, width: summaryView.frame.width, height: thickness)
-        
-        let bottomBorder = CALayer()
-        bottomBorder.backgroundColor = borderColor
-        bottomBorder.frame = CGRect(x: 0, y: summaryView.frame.height, width: summaryView.frame.width, height: thickness)
-        
-        summaryView.layer.addSublayer(topBorder)
-        summaryView.layer.addSublayer(bottomBorder)
+//        let thickness: CGFloat = 0.5
+//        let borderColor = (colors.border).cgColor
+//
+//        let topBorder = CALayer()
+//        topBorder.backgroundColor = borderColor
+//        topBorder.frame = CGRect(x: 0, y:0, width: summaryView.frame.width, height: thickness)
+//
+//        let bottomBorder = CALayer()
+//        bottomBorder.backgroundColor = borderColor
+//        bottomBorder.frame = CGRect(x: 0, y: summaryView.frame.height, width: summaryView.frame.width, height: thickness)
+//
+//        summaryView.layer.addSublayer(topBorder)
+//        summaryView.layer.addSublayer(bottomBorder)
         
         let text_total = String(format:"%.02f",Double((payment?.selectedSeats)!)*(payment?.price)!)
 
@@ -118,23 +118,26 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.detailLabel.font = UIFont(name : "Sarabun",size : 24)
         
-        cell.backgroundColor = colors.bg
-        
+        cell.backgroundColor = .clear
+    
 
         if( indexPath.row == self.summaryItems.count-2){
             let labelFont = UIFont(name: "Sarabun-Bold", size: 25)
-            let attributes :Dictionary = [NSFontAttributeName : labelFont]
+            let color = UIColor.white
+            let attributes :Dictionary = [NSFontAttributeName : labelFont, NSForegroundColorAttributeName : color]
             
             // Create attributed string
             let attrString = NSAttributedString(string: self.summaryItems[indexPath.row+1], attributes:attributes)
             cell.detailRightLabel?.attributedText = attrString
             cell.detailLabel?.text = self.summaryItems[indexPath.row]
             cell.detailLabel?.textAlignment = .left
+            cell.detailLabel?.textColor = UIColor.white
         }else{
             cell.detailLabel?.text = self.summaryItems[indexPath.row]
             cell.detailLabel?.textAlignment = .left
             cell.detailRightLabel?.text = ""
-        
+            cell.detailLabel?.textColor = UIColor.white
+
         }
       
         
