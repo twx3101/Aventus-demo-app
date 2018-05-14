@@ -40,10 +40,14 @@ class HelpViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         switch(index) {
         case pageNo.home:
-
-            topLabel.text = "\"Buy me two standing tickets to Rihanna on 19th May\""
             
-            //labels.append(label1)
+            topLabel.text = "Here are some examples of what you can say to me"
+            
+            let label1 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            label1.text = "\"Buy me two standing tickets to Rihanna on 19th May\""
+            label1.lineBreakMode = .byWordWrapping
+            label1.numberOfLines = 0
+            labels.append(label1)
 
             let label2 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
             label2.text = "\"Find me rock events\""
@@ -59,14 +63,9 @@ class HelpViewController: UIViewController, UIViewControllerTransitioningDelegat
             
             labels.append(label4)
             
-            let label5 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
-            label5.text = "\"Find me events in the next 2 weeks\""
-            
-            labels.append(label5)
-            
             
         case pageNo.event:
-             topLabel.text = "\"Show me tickets below 20 pounds\""
+             topLabel.text = "Here you can filter your search results"
             
             let label1 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
             label1.text = "\"Don't show me Justin Bieber events\""
@@ -74,10 +73,42 @@ class HelpViewController: UIViewController, UIViewControllerTransitioningDelegat
             labels.append(label1)
             
             let label2 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
-            label2.text = "\"Hello from homehome\""
+            label2.text = "\"Find me events in the next 2 weeks\""
             
             labels.append(label2)
             
+            let label3 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            label3.text = "\"I want to go to Liverpool\""
+             
+            labels.append(label3)
+            
+            let label4 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            label4.text = "\"I want to go to pop music events\""
+             
+            labels.append(label4)
+            
+            let label5 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            label5.text = "\"I want to see events less than 20 quid\""
+             
+            labels.append(label4)
+        
+        case pageNo.seat:
+            topLabel.text = "Here I can help you purchase tickets for your event"
+            
+            let label1 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            label1.text = "\"Buy me 2 standing tickets\""
+            
+            labels.append(label1)
+            
+            let label2 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            label2.text = "\"Book 4 Category A seats\""
+            
+            labels.append(label2)
+            
+            let label3 = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            label3.text = "\"I want 1 Category B ticket\""
+            
+            labels.append(label3)
         default:
             print(index)
         }
