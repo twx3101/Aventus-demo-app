@@ -164,6 +164,7 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
             self.menuButton.isHidden = false
             self.searchButton.isHidden = false
         }, completion: nil)
+        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -183,3 +184,15 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     */
 
 }
+//
+//extension AVTBaseViewController {
+//    func hideKeyboardWhenTappedAround() {
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AVTBaseViewController.dismissKeyboard))
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
+//    }
+//    
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
+//}

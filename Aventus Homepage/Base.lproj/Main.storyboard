@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jHu-rk-thc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jHu-rk-thc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -237,15 +237,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5L9-F7-l1V">
-                                <rect key="frame" x="302" y="617" width="49" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.051855699339533601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Reset"/>
-                                <connections>
-                                    <action selector="resetContext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q3u-pM-X8M"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeBg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w4A-Nh-s4M">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                 <constraints>
@@ -269,7 +260,6 @@
                     <navigationItem key="navigationItem" id="JzQ-rS-r6Q"/>
                     <connections>
                         <outlet property="microphone" destination="syZ-Cf-8hp" id="yy1-wF-Kic"/>
-                        <outlet property="resetBut" destination="5L9-F7-l1V" id="rR1-U4-CLD"/>
                         <outlet property="transcription" destination="Qac-BT-IBr" id="mdc-wO-y2p"/>
                         <outlet property="utter1Label" destination="ug6-cg-Hl4" id="Y5y-p3-9gM"/>
                         <outlet property="utter2Label" destination="Y5a-nW-cBV" id="RAH-fU-TBL"/>

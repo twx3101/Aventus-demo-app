@@ -59,7 +59,6 @@ class HomeViewController: AVTBaseViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view.backgroundColor = colors.greyBg
         
         self.textControl.delegate = self
@@ -110,11 +109,6 @@ class HomeViewController: AVTBaseViewController{
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
                 self.transcription.text = ""
         }
-    }
-    
-    @IBAction func resetContext(_ sender: Any) {
-        contextContents.shared.context = nil
-        transcription.text = "Resetted!"
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

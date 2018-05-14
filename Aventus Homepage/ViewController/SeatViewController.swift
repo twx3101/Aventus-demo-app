@@ -161,6 +161,7 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         super.viewDidLoad()
         view.backgroundColor = colors.greyBg
         
+        
         eventView.layer.cornerRadius = 5.0
         eventView.clipsToBounds = true
         

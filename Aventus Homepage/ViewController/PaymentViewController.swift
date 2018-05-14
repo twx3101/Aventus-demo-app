@@ -46,14 +46,17 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         //self.view.backgroundColor = colors.bg
+        NotificationCenter.default.addObserver(self, selector: #selector(PaymentViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PaymentViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         helper.setBackground(view: self.view, image: "paymentBg")
         
-        
-        
         summaryTableView.delegate = self
         summaryTableView.dataSource = self
-
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        
+        view.addGestureRecognizer(tap)
         //summaryView.backgroundColor = colors.buttonBg
         
 //        let thickness: CGFloat = 0.5
@@ -93,7 +96,21 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         summaryItems = [text_1line,text_12line, text_2line, text_3line, text_4line]
         
     }
-   
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 30
     }
@@ -234,20 +251,9 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         return stringToReturn
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
-
 }

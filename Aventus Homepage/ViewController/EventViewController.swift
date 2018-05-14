@@ -32,6 +32,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle!
+    var serverStatus: Bool = false
  
     var isRecording : Bool = false
     var priceLimit : Double = 10
@@ -140,6 +141,8 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -217,7 +220,24 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
 
     
     private func loadEvents(){
-        
+        var blockchainEvents = [String]()
+        let url = "http://localhost:8080/";
+        Alamofire.request(url).responseJSON {
+            response in debugPrint(response)
+            if let json = response.result.value as? NSArray{
+                for event in json {
+                    let i = event as? [String: Any]
+                    let i2  = i!["eventdesc"] as! String
+                    blockchainEvents.append(i2)
+                    //      print(i2)
+                }
+                self.serverStatus = true
+            }
+            else{
+                //   print("Server offline")
+                self.serverStatus = false
+            }
+        }
         
         //Set the firebase reference
         ref = Database.database().reference()
@@ -342,10 +362,21 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
                 let seating1 = Seating(categories: eventAvailCat, price: eventAvailPrice, noSeatsAvail: eventAvailSeats , noCategories: no_avail_cat)
                 
              
-                let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, formattedDate: eventFormattedDate as! String, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, bannerURL: eventBannerURL as! String, weekend: eventWeekend as! String, minPrice: eventMinPrice as! Double, maxPrice: eventMaxPrice as! Double, event_list: eventList as! Int)
-                
-                
-                self.events.append(event1!)
+                if self.serverStatus == true {
+                    if blockchainEvents.contains(eventID as! String) {
+                        let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, formattedDate: eventFormattedDate as! String, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, bannerURL: eventBannerURL as! String, weekend: eventWeekend as! String, minPrice: eventMinPrice as! Double, maxPrice: eventMaxPrice as! Double, event_list: eventList as! Int)
+                        
+                        
+                        self.events.append(event1!)
+                    }
+                }
+                else{
+                    //server offlline
+                    let event1 = Event(artist: eventArtist as! String, location: eventLocation as! String, datetime: eventDate as! String, formattedDate: eventFormattedDate as! String, seating: seating1, time: eventTime as! String, artist_ranking: eventArtistRanking as! Int, day_in_week: eventDayinWeek as! String, event_ID: eventID as! String, event_status: eventStatus as! String, venue: eventVenue as! String, genre: eventGenre as! String, month: eventMonth as! String, timezone: eventTimezone as! String, bannerURL: eventBannerURL as! String, weekend: eventWeekend as! String, minPrice: eventMinPrice as! Double, maxPrice: eventMaxPrice as! Double, event_list: eventList as! Int)
+                    
+                    
+                    self.events.append(event1!)
+                }
             }
             if self.isFiltering{
                 self.filterContentofEvents(contextContent: self.filteredItems)
