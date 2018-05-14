@@ -15,7 +15,7 @@ class handlingContext{
     func bootstrapView(response: CapitoResponse){
         //print("bootstrapview")
         //process
-        print("Response Code: %@", response.responseCode)
+        //print("Response Code: %@", response.responseCode)
         print("Message Text: %@", response.message)
         print("This is Context: %@", response.context)
         print("This is Data: %@", response.semanticOutput)
@@ -63,12 +63,12 @@ class handlingContext{
         //        artist: String
         if let artist = context["artist"] as? String{
             if (contextContent["genre"] as? String) != nil{
-                resetData()
+                handlingContext.resetData()
                 contextContent = contextContents.shared.contextContent
             }
             if let compArtist = contextContent["artist"] as? String{
                 if artist != compArtist{
-                    resetData()
+                    handlingContext.resetData()
                     contextContent = contextContents.shared.contextContent
                 }
             }
@@ -79,7 +79,7 @@ class handlingContext{
         //        genre: String
         if let genre = context["musicGenre"] as? String{
             if (contextContent["artist"] as? String) != nil{
-                resetData()
+                handlingContext.resetData()
                 contextContent = contextContents.shared.contextContent
             }
             contextContent["genre"] = genre
@@ -266,7 +266,7 @@ class handlingContext{
         return cal.date(from: c)!
     }
     
-    func resetData(){
+    static func resetData(){
         print("Data Reset")
         contextContents.shared.context = nil
         contextContents.shared.contextContent = [String:Any]()

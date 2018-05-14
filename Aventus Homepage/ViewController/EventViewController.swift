@@ -12,7 +12,7 @@ import Alamofire
 import AlamofireImage
 import CapitoSpeechKit
 import MBProgressHUD
-import AVFoundation
+//import AVFoundation
 
 
 
@@ -94,7 +94,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         cell.priceLabel.textColor = colors.bodyText
 
         Alamofire.request(event.bannerURL).responseImage { response in
-            debugPrint(response)
+            //debugPrint(response)
 
             if let image = response.result.value{
                 cell.artistPhoto.image = image
@@ -222,22 +222,22 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     private func loadEvents(){
         var blockchainEvents = [String]()
         let url = "http://localhost:8080/";
-        Alamofire.request(url).responseJSON {
-            response in debugPrint(response)
-            if let json = response.result.value as? NSArray{
-                for event in json {
-                    let i = event as? [String: Any]
-                    let i2  = i!["eventdesc"] as! String
-                    blockchainEvents.append(i2)
-                    //      print(i2)
-                }
-                self.serverStatus = true
-            }
-            else{
-                //   print("Server offline")
-                self.serverStatus = false
-            }
-        }
+//        Alamofire.request(url).responseJSON {
+//            response in debugPrint(response)
+//            if let json = response.result.value as? NSArray{
+//                for event in json {
+//                    let i = event as? [String: Any]
+//                    let i2  = i!["eventdesc"] as! String
+//                    blockchainEvents.append(i2)
+//                    //      print(i2)
+//                }
+//                self.serverStatus = true
+//            }
+//            else{
+//                //   print("Server offline")
+//                self.serverStatus = false
+//            }
+//        }
         
         //Set the firebase reference
         ref = Database.database().reference()
@@ -380,9 +380,12 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
             }
             if self.isFiltering{
                 self.filterContentofEvents(contextContent: self.filteredItems)
-                print("SUCCESS!")
+                if self.filteredEvents.count == 0{
+                    handlingContext.resetData()
+                    helper.showAlert(message: "Sorry, I could not find any events")
+                }
                
-            }   else{
+            } else{
                 self.collectionView.reloadData()
             //self.tableView.reloadData()
             }
@@ -490,18 +493,18 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     }
     
     @IBAction func MicrophonePress(_ sender: UIButton) {
-        let startSound: SystemSoundID = 1110
-        let endSound : SystemSoundID = 1111
+       // let startSound: SystemSoundID = 1110
+        //let endSound : SystemSoundID = 1111
         
         if self.isRecording {
-            AudioServicesPlaySystemSound(endSound)
+           // AudioServicesPlaySystemSound(endSound)
             CapitoController.getInstance().cancelTalking()
             print("if")
             
             helper.showAlert(message: "Done Listening")
         }
         else {
-            AudioServicesPlaySystemSound(startSound)
+          //  AudioServicesPlaySystemSound(startSound)
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
         }
         

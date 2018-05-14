@@ -1084,7 +1084,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				"HEADER_SEARCH_PATHS[arch=*]" = "$(PODS_ROOT)/Firebase/Core/Sources (non-recursive)";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(PODS_ROOT)/Firebase/Core/Sources",
+					"(non-recursive)",
+				);
 				INFOPLIST_FILE = "Aventus HomepageTests2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1232,7 +1235,7 @@
 				INFOPLIST_FILE = "Aventus Homepage/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Aventus1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Aventus12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1248,7 +1251,7 @@
 				INFOPLIST_FILE = "Aventus Homepage/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Aventus1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Aventus12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

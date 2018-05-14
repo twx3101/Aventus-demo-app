@@ -54,7 +54,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         summaryTableView.delegate = self
         summaryTableView.dataSource = self
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PaymentViewController.dismissKeyboard))
         
         view.addGestureRecognizer(tap)
         //summaryView.backgroundColor = colors.buttonBg
@@ -141,7 +141,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         if( indexPath.row == self.summaryItems.count-2){
             let labelFont = UIFont(name: "Sarabun-Bold", size: 25)
             let color = UIColor.white
-            let attributes :Dictionary = [NSFontAttributeName : labelFont, NSForegroundColorAttributeName : color]
+            let attributes :Dictionary = [NSFontAttributeName : labelFont, NSForegroundColorAttributeName : color] as [String : Any]
             
             // Create attributed string
             let attrString = NSAttributedString(string: self.summaryItems[indexPath.row+1], attributes:attributes)

@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         controller?.setup(withID: "0848c593-9864-4205-bf86-4fb40c5b7744", host: "sysportal.test.a.cloud.capitosystems.com" , port: 443, useSSL: true)
         
         let status = controller?.connect()
-        print("CapitoSpeechKit status: ", status)
-        
+        //print("CapitoSpeechKit status: ", status)
+        FirebaseConfiguration.shared.setLoggerLevel(.min)
         FirebaseApp.configure()
         
         return true
