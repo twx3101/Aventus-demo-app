@@ -27,12 +27,6 @@ class contextContents {
 class HomeViewController: AVTBaseViewController{
    // let startSound : SystemSoundID = 1110
   //  let endSound : SystemSoundID = 1111
-
-    //var controller: CapitoController?
-    
-    var popup: UIView!
-    
-    var alert:UIAlertController!
     
     // MARK: Properties
     @IBOutlet weak var utter1Label: UILabel!
@@ -85,24 +79,7 @@ class HomeViewController: AVTBaseViewController{
         micButton.isEnabled = false
         
     }
-    
-    
-    /*@IBAction func microphonePress(_ sender: UIButton) {
-        
-        if self.isRecording {
-           // AudioServicesPlaySystemSound(endSound)
-            CapitoController.getInstance().cancelTalking()
-            print("if")
-            
-            helper.showAlert(message: "Done Listening")
-            
-        }
-        else {
-           // AudioServicesPlaySystemSound(startSound)
-            CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
-                self.transcription.text = ""
-        }
-    }*/
+
     
     override func micPress() {
         

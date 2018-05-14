@@ -218,19 +218,8 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     }
 
 }
-//
-//extension AVTBaseViewController {
-//    func hideKeyboardWhenTappedAround() {
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AVTBaseViewController.dismissKeyboard))
-//        tap.cancelsTouchesInView = false
-//        view.addGestureRecognizer(tap)
-//    }
-//    
-//    @objc func dismissKeyboard() {
-//        view.endEditing(true)
-//    }
-//}
 
+// Subclasses of AVTBaseViewController has differnt ways to handle the context, thus needs to override these functions
 extension AVTBaseViewController {
     
     func handle(text:String){
@@ -244,7 +233,6 @@ extension AVTBaseViewController {
     func handleBuyTickets() {
         fatalError("Subclasess of AVTBaseViewController need to implement handleBuyTickets()");
     }
-    
     
 }
 
@@ -262,13 +250,13 @@ extension AVTBaseViewController{
     }
     
     func showError(_ error: Error) {
-        print(error.localizedDescription)
     }
     
 }
 
-
+// Subclasses of AVTBaseViewController has differnt ways to handle the context, thus needs to override some of these functions
 extension AVTBaseViewController: SpeechDelegate{
+    
     func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
         fatalError("Subclasess of AVTBaseViewController need to implement speechControllerProcessing()");
     }
@@ -281,13 +269,13 @@ extension AVTBaseViewController: SpeechDelegate{
         fatalError("Subclasess of AVTBaseViewController need to implement speechControllerDidFinishWithError()");
     }
     
-    
+    // Change the image of microphone to prompt for user speech
     func speechControllerDidBeginRecording() {
         self.isRecording = true
-        //change microphone to show busy recording
         self.micButton.setImage(pressedMic, for: .normal)
     }
     
+    // Change the image back when users finish their speech
     func speechControllerDidFinishRecording() {
         self.isRecording = false
         self.micButton.setImage(readyMic, for: .normal)
@@ -295,6 +283,7 @@ extension AVTBaseViewController: SpeechDelegate{
 }
 
 extension AVTBaseViewController: TextDelegate{
+    
     func textControllerDidFinish(withResults response: CapitoResponse!) {
         self.hideProcessingHUD()
         self.handle(response: response)
