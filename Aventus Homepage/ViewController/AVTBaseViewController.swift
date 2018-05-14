@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CapitoSpeechKit
+import MBProgressHUD
 
 class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     
@@ -20,6 +22,18 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
 
     var textControl: UITextField = SearchTextField(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
     var cancelButton: UIButton = UIButton(type: UIButtonType.system)
+    
+    var micButton: UIButton = RecordButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    
+    lazy var readyMic: UIImage = {
+        return UIImage(named: "icons8-microphone-96")!
+    }()
+    
+    lazy var pressedMic: UIImage = {
+        return UIImage(named: "microphone_on")!
+    }()
+    
+    var isRecording: Bool = false
     
     var SCALE: Float!
     
@@ -97,10 +111,40 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(helpButton)
         view.addSubview(ticketButton)
         
+        
+        micButton.center.x = self.view.center.x
+        micButton.center.y = self.view.frame.maxY - 30
+        micButton.addTarget(self, action: #selector(micPress), for:    .touchUpInside)
+        micButton.setImage(UIImage(named: "icons8-microphone-96"), for: UIControlState())
+        
+        view.addSubview(micButton)
+        
+        //micButton.isEnabled = true
+        
+        
         hideMenuBase()
         hideSearchBarView()
         
         
+    }
+    
+    func micPress() {
+        // let startSound: SystemSoundID = 1110
+        //let endSound : SystemSoundID = 1111
+        
+        print("pressed")
+        
+        if self.isRecording {
+            // AudioServicesPlaySystemSound(endSound)
+            CapitoController.getInstance().cancelTalking()
+            print("if")
+            
+            helper.showAlert(message: "Done Listening")
+        }
+        else {
+            //  AudioServicesPlaySystemSound(startSound)
+            CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
+        }
     }
     
     func navTicket() {
@@ -173,15 +217,16 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if let text = self.textControl.text{
+            print("Sending Text event:\(text)")
+            self.handle(text: text)
+            
+        }
+        textField.text = ""
+        return true
     }
-    */
 
 }
 //
@@ -196,3 +241,78 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
 //        view.endEditing(true)
 //    }
 //}
+
+extension AVTBaseViewController {
+    
+    func handle(text:String){
+        fatalError("Subclasess of AVTBaseViewController need to implement handle()");
+    }
+    
+    func handle(response: CapitoResponse) {
+        fatalError("Subclasess of AVTBaseViewController need to implement handle()");
+    }
+    
+    func handleBuyTickets() {
+        fatalError("Subclasess of AVTBaseViewController need to implement handleBuyTickets()");
+    }
+    
+    
+}
+
+extension AVTBaseViewController{
+    
+    func showProcessingHUD(text: String){
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.mode = .indeterminate
+        hud.minShowTime = 1.0
+        hud.label.text = "Processing"
+        hud.detailsLabel.text = text
+    }
+    func hideProcessingHUD(){
+        MBProgressHUD.hide(for: self.view, animated: true)
+    }
+    
+    func showError(_ error: Error) {
+        print(error.localizedDescription)
+    }
+    
+}
+
+
+extension AVTBaseViewController: SpeechDelegate{
+    func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
+        fatalError("Subclasess of AVTBaseViewController need to implement speechControllerProcessing()");
+    }
+    
+    func speechControllerDidFinish(withResults response: CapitoResponse!) {
+        fatalError("Subclasess of AVTBaseViewController need to implement speechControllerDidFinish()");
+    }
+    
+    func speechControllerDidFinishWithError(_ error: Error!) {
+        fatalError("Subclasess of AVTBaseViewController need to implement speechControllerDidFinishWithError()");
+    }
+    
+    
+    func speechControllerDidBeginRecording() {
+        self.isRecording = true
+        //change microphone to show busy recording
+        self.micButton.setImage(pressedMic, for: .normal)
+    }
+    
+    func speechControllerDidFinishRecording() {
+        self.isRecording = false
+        self.micButton.setImage(readyMic, for: .normal)
+    }
+}
+
+extension AVTBaseViewController: TextDelegate{
+    func textControllerDidFinish(withResults response: CapitoResponse!) {
+        self.hideProcessingHUD()
+        self.handle(response: response)
+    }
+    
+    func textControllerDidFinishWithError(_ error: Error!){
+        self.hideProcessingHUD()
+        self.showError(error)
+    }
+}

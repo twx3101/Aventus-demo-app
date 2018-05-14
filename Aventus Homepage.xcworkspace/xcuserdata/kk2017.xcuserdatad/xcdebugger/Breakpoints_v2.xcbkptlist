@@ -216,7 +216,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aventus Homepage/ViewController/SeatViewController.swift"
-            timestampString = "547992749.39009"
+            timestampString = "548023392.865328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "231"
@@ -239,6 +239,38 @@
             endingLineNumber = "192"
             landmarkName = "confirmButton(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aventus_Homepage.PaymentViewController.confirmButton(__ObjC.UIButton) -&gt; ()"
+                  moduleName = "Aventus Homepage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kk2017/demo-app/Aventus%20Homepage/ViewController/PaymentViewController.swift"
+                  timestampString = "548025344.434386"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "3364">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Aventus_Homepage.PaymentViewController.confirmButton(__ObjC.UIButton) -&gt; ()"
+                  moduleName = "Aventus Homepage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kk2017/demo-app/Aventus%20Homepage/ViewController/PaymentViewController.swift"
+                  timestampString = "548025344.435977"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "7570">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

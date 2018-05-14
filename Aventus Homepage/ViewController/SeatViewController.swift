@@ -36,17 +36,17 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
     
     @IBOutlet weak var labelView: UIView!
     
-    @IBOutlet weak var micButton: UIButton!
+    //@IBOutlet weak var micButton: UIButton!
     
     @IBOutlet weak var warningLabel: WarningLabel!
     
-    lazy var readyMic: UIImage = {
+    /*lazy var readyMic: UIImage = {
         return UIImage(named: "icons8-microphone-96")!
     }()
     lazy var pressedMic: UIImage = {
         return UIImage(named: "microphone_on")!
-    }()
-    var isRecording : Bool = false
+    }()*/
+    //var isRecording : Bool = false
     
     var menuTap: UITapGestureRecognizer!
     
@@ -335,7 +335,7 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
     }
     
     
-    @IBAction func micPress(_ sender: UIButton) {
+    /*@IBAction func micPress(_ sender: UIButton) {
         //let startSound: SystemSoundID = 1110
       //  let endSound : SystemSoundID = 1111
         
@@ -351,17 +351,17 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
            // AudioServicesPlaySystemSound(startSound)
         }
 
-    }
+    }*/
 }
 
 extension SeatViewController{
-    func handle(text:String){
+    /*func handle(text:String){
         self.showProcessingHUD(text: "Processing...")
         
         CapitoController.getInstance().text(self, input: text, withDialogueContext: contextContents.shared.context)
-    }
+    }*/
     
-    func handle(response: CapitoResponse){
+    override func handle(response: CapitoResponse){
         //print("handle")
         if response.messageType == "WARNING"{
             //self.showErrorMessage(text: response.message)
@@ -383,7 +383,7 @@ extension SeatViewController{
         }
     }
     
-    func handleBuyTickets(){
+    override func handleBuyTickets(){
         var categoryNum : Int?
         var number: Int?
         
@@ -469,7 +469,7 @@ extension SeatViewController{
 }
 
 
-extension SeatViewController{
+/*extension SeatViewController{
     
     func showProcessingHUD(text: String){
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -486,11 +486,11 @@ extension SeatViewController{
         print(error.localizedDescription)
     }
     
-}
+}*/
 
-extension SeatViewController: SpeechDelegate{
+extension SeatViewController{
     
-    func speechControllerDidBeginRecording() {
+    /*func speechControllerDidBeginRecording() {
         self.isRecording = true
         //change microphone to show busy recording
         self.micButton.setImage(pressedMic, for: .normal)
@@ -499,24 +499,24 @@ extension SeatViewController: SpeechDelegate{
     func speechControllerDidFinishRecording() {
         self.isRecording = false
         self.micButton.setImage(readyMic, for: .normal)
-    }
+    }*/
     
-    func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
+    override func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
         self.showProcessingHUD(text: "Processing...")
     }
     
-    func speechControllerDidFinish(withResults response: CapitoResponse!) {
+    override func speechControllerDidFinish(withResults response: CapitoResponse!) {
         self.hideProcessingHUD()
         self.handle(response: response)
     }
     
-    func speechControllerDidFinishWithError(_ error: Error!) {
+    override func speechControllerDidFinishWithError(_ error: Error!) {
         self.hideProcessingHUD()
         self.showError(error)
     }
 }
 
-extension SeatViewController: TextDelegate{
+/*extension SeatViewController: TextDelegate{
     func textControllerDidFinish(withResults response: CapitoResponse!) {
         self.hideProcessingHUD()
         self.handle(response: response)
@@ -526,4 +526,4 @@ extension SeatViewController: TextDelegate{
         self.hideProcessingHUD()
         self.showError(error)
     }
-}
+}*/

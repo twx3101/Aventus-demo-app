@@ -27,17 +27,8 @@ class contextContents {
 class HomeViewController: AVTBaseViewController{
    // let startSound : SystemSoundID = 1110
   //  let endSound : SystemSoundID = 1111
-    lazy var readyMic: UIImage = {
-        return UIImage(named: "icons8-microphone-96")!
-    }()
-    
-    lazy var pressedMic: UIImage = {
-        return UIImage(named: "microphone_on")!
-    }()
-    
-    var isRecording: Bool = false
-    
-    var controller: CapitoController?
+
+    //var controller: CapitoController?
     
     var popup: UIView!
     
@@ -79,7 +70,7 @@ class HomeViewController: AVTBaseViewController{
         hideMenuBase()
         
         view.removeGestureRecognizer(menuTap)
-        microphone.isEnabled = true
+        micButton.isEnabled = true
         
         
     }
@@ -91,12 +82,12 @@ class HomeViewController: AVTBaseViewController{
         menuTap = UITapGestureRecognizer(target: self, action: #selector(hideMenu(_:)))
         view.addGestureRecognizer(menuTap)
         
-        microphone.isEnabled = false
+        micButton.isEnabled = false
         
     }
     
     
-    @IBAction func microphonePress(_ sender: UIButton) {
+    /*@IBAction func microphonePress(_ sender: UIButton) {
         
         if self.isRecording {
            // AudioServicesPlaySystemSound(endSound)
@@ -111,9 +102,27 @@ class HomeViewController: AVTBaseViewController{
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
                 self.transcription.text = ""
         }
+    }*/
+    
+    override func micPress() {
+        
+        print ("pressed")
+        if self.isRecording {
+            // AudioServicesPlaySystemSound(endSound)
+            CapitoController.getInstance().cancelTalking()
+            print("if")
+            
+            helper.showAlert(message: "Done Listening")
+            
+        }
+        else {
+            // AudioServicesPlaySystemSound(startSound)
+            CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
+            self.transcription.text = ""
+        }
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    /*func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if let text = self.textControl.text{
             print("Sending Text event:\(text)")
@@ -122,19 +131,19 @@ class HomeViewController: AVTBaseViewController{
         }
         textField.text = ""
         return true
-    }
+    }*/
    
 }
 
 extension HomeViewController{
     
-   func handle(text:String){
+   /*override func handle(text:String){
         self.showProcessingHUD(text: "Processing...")
         
         CapitoController.getInstance().text(self, input: text, withDialogueContext: contextContents.shared.context)
-    }
+    }*/
     
-    func handle(response: CapitoResponse){
+    override func handle(response: CapitoResponse){
         //print("handle")
         if response.messageType == "WARNING"{
             //self.showErrorMessage(text: response.message)
@@ -184,7 +193,7 @@ extension HomeViewController{
         
         pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
-    func handleBuyTickets(){
+    override func handleBuyTickets(){
         
         var categoryNum : Int?
         var number: Int?
@@ -282,7 +291,7 @@ extension HomeViewController{
 }
 
 //errors
-extension HomeViewController{
+/*extension HomeViewController{
     
     func showProcessingHUD(text: String){
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -299,11 +308,11 @@ extension HomeViewController{
         //print(error.localizedDescription)
     }
     
-}
+}*/
 
-extension HomeViewController: SpeechDelegate{
+extension HomeViewController{
     
-    func speechControllerDidBeginRecording() {
+    /*func speechControllerDidBeginRecording() {
         self.isRecording = true
         //change microphone to show busy recording
         self.microphone.setImage(pressedMic, for: .normal)
@@ -312,19 +321,19 @@ extension HomeViewController: SpeechDelegate{
     func speechControllerDidFinishRecording() {
         self.isRecording = false
         self.microphone.setImage(readyMic, for: .normal)
-    }
+    }*/
     
-    func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
+    override func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
         self.showProcessingHUD(text: "Processing...")
         self.transcription.text = String(format: "\"%@\"", transcription.firstResult().replacingOccurrences(of: " | ", with: " "))
     }
     
-    func speechControllerDidFinish(withResults response: CapitoResponse!) {
+    override func speechControllerDidFinish(withResults response: CapitoResponse!) {
         self.hideProcessingHUD()
         self.handle(response: response)
     }
     
-    func speechControllerDidFinishWithError(_ error: Error!) {
+    override func speechControllerDidFinishWithError(_ error: Error!) {
         self.hideProcessingHUD()
         self.showError(error)
     }
@@ -343,7 +352,7 @@ extension HomeViewController: SpeechDelegate{
     }
  }
 */
- extension HomeViewController: TextDelegate{
+ /*extension HomeViewController: TextDelegate{
     func textControllerDidFinish(withResults response: CapitoResponse!) {
         self.hideProcessingHUD()
     self.handle(response: response)
@@ -354,3 +363,4 @@ extension HomeViewController: SpeechDelegate{
         self.showError(error)
     }
  }
+*/

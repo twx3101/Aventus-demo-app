@@ -19,14 +19,8 @@ import MBProgressHUD
 class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var mic2: UIButton!
-    
-    lazy var readyMic: UIImage = {
-        return UIImage(named: "icons8-microphone-96")!
-    }()
-    lazy var pressedMic: UIImage = {
-        return UIImage(named: "microphone_on")!
-    }()
+
+
     
     let cellIdentifier = "EventCollectionViewCell"
     
@@ -34,7 +28,8 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     var refHandle: DatabaseHandle!
     var serverStatus: Bool = false
  
-    var isRecording : Bool = false
+    //var isRecording : Bool = false
+    
     var priceLimit : Double = 10
     
     var events = [Event]()
@@ -180,7 +175,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         menuTap = UITapGestureRecognizer(target: self, action: #selector(hideMenu(_:)))
         view.addGestureRecognizer(menuTap)
         
-        mic2.isEnabled = false
+        micButton.isEnabled = false
         
     }
     
@@ -189,7 +184,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         hideMenuBase()
         
         view.removeGestureRecognizer(menuTap)
-        mic2.isEnabled = true
+        micButton.isEnabled = true
         
         collectionView.isUserInteractionEnabled = true
         
@@ -510,7 +505,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         }
     }
     
-    @IBAction func MicrophonePress(_ sender: UIButton) {
+    /*@IBAction func MicrophonePress(_ sender: UIButton) {
        // let startSound: SystemSoundID = 1110
         //let endSound : SystemSoundID = 1111
         
@@ -526,9 +521,9 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
         }
         
-    }
+    }*/
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    /*func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         //if let text = self.textControl2.text{
         if let text = self.textControl.text {
@@ -538,17 +533,20 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         }
         textField.text = ""
         return true
-    }
+    }*/
 }
 
 extension EventViewController{
-    func handle(text:String){
+    
+    /*override func handle(text:String){
         self.showProcessingHUD(text: "Processing...")
         
         CapitoController.getInstance().text(self, input: text, withDialogueContext: contextContents.shared.context)
-    }
+    }*/
     
-    func handle(response: CapitoResponse){
+    
+    
+    override func handle(response: CapitoResponse){
         //print("handle")
         if response.messageType == "WARNING"{
             //self.showErrorMessage(text: response.message)
@@ -574,7 +572,7 @@ extension EventViewController{
         }
     }
     
-    func handleBuyTickets(){
+    override func handleBuyTickets(){
         var categoryNum : Int?
         var number: Int?
         
@@ -666,7 +664,7 @@ extension EventViewController{
 }
 
 
-extension EventViewController{
+/*extension EventViewController{
     
     func showProcessingHUD(text: String){
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -683,11 +681,11 @@ extension EventViewController{
         print(error.localizedDescription)
     }
     
-}
+}*/
 
-extension EventViewController: SpeechDelegate{
+extension EventViewController{
     
-    func speechControllerDidBeginRecording() {
+    /*func speechControllerDidBeginRecording() {
         self.isRecording = true
         //change microphone to show busy recording
         self.mic2.setImage(pressedMic, for: .normal)
@@ -696,18 +694,18 @@ extension EventViewController: SpeechDelegate{
     func speechControllerDidFinishRecording() {
         self.isRecording = false
         self.mic2.setImage(readyMic, for: .normal)
-    }
+    }*/
     
-    func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
+    override func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
         self.showProcessingHUD(text: "Processing...")
     }
     
-    func speechControllerDidFinish(withResults response: CapitoResponse!) {
+    override func speechControllerDidFinish(withResults response: CapitoResponse!) {
         self.hideProcessingHUD()
         self.handle(response: response)
     }
     
-    func speechControllerDidFinishWithError(_ error: Error!) {
+    override func speechControllerDidFinishWithError(_ error: Error!) {
         self.hideProcessingHUD()
         //self.showError(error)
     }
@@ -726,7 +724,7 @@ extension EventViewController: SpeechDelegate{
  }
  }
  */
-extension EventViewController: TextDelegate{
+/*extension EventViewController: TextDelegate{
     func textControllerDidFinish(withResults response: CapitoResponse!) {
         self.hideProcessingHUD()
         self.handle(response: response)
@@ -736,7 +734,7 @@ extension EventViewController: TextDelegate{
         self.hideProcessingHUD()
         self.showError(error)
     }
-}
+}*/
 
 extension EventViewController: UISearchResultsUpdating{
     

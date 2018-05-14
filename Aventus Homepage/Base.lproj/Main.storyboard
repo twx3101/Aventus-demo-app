@@ -219,18 +219,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="50" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syZ-Cf-8hp" customClass="RecordButton" customModule="Aventus_Homepage" customModuleProvider="target">
-                                <rect key="frame" x="162" y="609" width="50" height="50"/>
-                                <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="8TK-Wi-5sn"/>
-                                    <constraint firstAttribute="width" constant="50" id="GVj-dC-AGT"/>
-                                </constraints>
-                                <state key="normal" image="icons8-microphone-96"/>
-                                <connections>
-                                    <action selector="microphonePress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zTm-pu-L8B"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qac-BT-IBr" userLabel="TranscriptionLabel">
                                 <rect key="frame" x="16" y="493" width="343" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -248,18 +236,15 @@
                         <constraints>
                             <constraint firstItem="ug6-cg-Hl4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Ce-Zn-195"/>
                             <constraint firstItem="Y5a-nW-cBV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="20" id="EIX-eD-DKd"/>
-                            <constraint firstItem="syZ-Cf-8hp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="300" id="GvR-Dj-Z5S"/>
                             <constraint firstItem="w4A-Nh-s4M" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Kds-NL-uYG"/>
                             <constraint firstItem="ug6-cg-Hl4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-40" id="OO0-BF-sZz"/>
                             <constraint firstItem="Y5a-nW-cBV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UDa-WN-POb"/>
-                            <constraint firstItem="syZ-Cf-8hp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gcT-lS-CL1"/>
                             <constraint firstAttribute="trailing" secondItem="w4A-Nh-s4M" secondAttribute="trailing" id="oxo-JG-58s"/>
                             <constraint firstItem="w4A-Nh-s4M" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uEU-6V-q6b"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JzQ-rS-r6Q"/>
                     <connections>
-                        <outlet property="microphone" destination="syZ-Cf-8hp" id="yy1-wF-Kic"/>
                         <outlet property="transcription" destination="Qac-BT-IBr" id="mdc-wO-y2p"/>
                         <outlet property="utter1Label" destination="ug6-cg-Hl4" id="Y5y-p3-9gM"/>
                         <outlet property="utter2Label" destination="Y5a-nW-cBV" id="RAH-fU-TBL"/>
@@ -282,10 +267,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="L26-U9-gVd">
-                                <rect key="frame" x="16" y="82" width="343" height="519"/>
+                                <rect key="frame" x="16" y="82" width="343" height="525"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="niN-YW-AIk">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="519"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="525"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kuV-1j-p2c">
                                             <size key="itemSize" width="331" height="130"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -371,17 +356,6 @@
                                     </collectionView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brS-tJ-rnE" customClass="RecordButton" customModule="Aventus_Homepage" customModuleProvider="target">
-                                <rect key="frame" x="162" y="617" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="dfV-uQ-xCp"/>
-                                    <constraint firstAttribute="height" constant="50" id="fVC-3f-Ted"/>
-                                </constraints>
-                                <state key="normal" image="icons8-microphone-96"/>
-                                <connections>
-                                    <action selector="MicrophonePress:" destination="mXJ-Mo-iGK" eventType="touchUpInside" id="OrV-q4-mFH"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headbg" translatesAutoresizingMaskIntoConstraints="NO" id="h9f-jg-zJR" userLabel="headBackground">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                 <constraints>
@@ -390,12 +364,10 @@
                             </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="bRe-Z8-uaQ" firstAttribute="top" secondItem="brS-tJ-rnE" secondAttribute="bottom" id="2Zz-YI-8Xt"/>
                             <constraint firstItem="h9f-jg-zJR" firstAttribute="leading" secondItem="jyg-6q-0Cz" secondAttribute="leading" id="6aP-1x-v9M"/>
                             <constraint firstItem="L26-U9-gVd" firstAttribute="top" secondItem="h9f-jg-zJR" secondAttribute="bottom" constant="16" id="9um-s9-n8u"/>
-                            <constraint firstItem="brS-tJ-rnE" firstAttribute="top" secondItem="L26-U9-gVd" secondAttribute="bottom" constant="16" id="II2-ux-y0h"/>
-                            <constraint firstItem="brS-tJ-rnE" firstAttribute="centerX" secondItem="jyg-6q-0Cz" secondAttribute="centerX" id="J9f-o8-NdB"/>
                             <constraint firstItem="L26-U9-gVd" firstAttribute="leading" secondItem="jyg-6q-0Cz" secondAttribute="leadingMargin" id="MTY-c0-y4v"/>
+                            <constraint firstItem="bRe-Z8-uaQ" firstAttribute="top" secondItem="L26-U9-gVd" secondAttribute="bottom" constant="60" id="Qiw-MN-Dad"/>
                             <constraint firstItem="L26-U9-gVd" firstAttribute="trailing" secondItem="jyg-6q-0Cz" secondAttribute="trailingMargin" id="hYz-Ng-gbL"/>
                             <constraint firstAttribute="trailing" secondItem="h9f-jg-zJR" secondAttribute="trailing" id="k7a-Ua-xa6"/>
                             <constraint firstItem="h9f-jg-zJR" firstAttribute="top" secondItem="jyg-6q-0Cz" secondAttribute="top" id="nlj-v8-SVr"/>
@@ -404,7 +376,6 @@
                     <navigationItem key="navigationItem" id="ueM-Mi-MlC"/>
                     <connections>
                         <outlet property="collectionView" destination="niN-YW-AIk" id="uyu-Pq-pVO"/>
-                        <outlet property="mic2" destination="brS-tJ-rnE" id="0ya-pi-s8f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iLX-Ef-G5l" sceneMemberID="firstResponder"/>
@@ -426,17 +397,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seatBg" translatesAutoresizingMaskIntoConstraints="NO" id="5cE-HB-1NJ">
                                 <rect key="frame" x="0.0" y="280" width="375" height="382"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHF-Xu-Vfa" customClass="RecordButton" customModule="Aventus_Homepage" customModuleProvider="target">
-                                <rect key="frame" x="163" y="617" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="0tq-ri-8VM"/>
-                                    <constraint firstAttribute="height" constant="50" id="h2F-H1-2Sk"/>
-                                </constraints>
-                                <state key="normal" image="icons8-microphone-96"/>
-                                <connections>
-                                    <action selector="micPress:" destination="PPN-Wq-gpx" eventType="touchUpInside" id="fl9-Nc-2Gv"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sB4-xZ-nOT" userLabel="EventView">
                                 <rect key="frame" x="16" y="82" width="343" height="182"/>
                                 <subviews>
@@ -589,13 +549,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zYP-uO-zDV" firstAttribute="top" secondItem="nqJ-H0-mU7" secondAttribute="top" id="1wC-su-n3F"/>
-                            <constraint firstItem="Mb0-1f-oi8" firstAttribute="top" secondItem="bHF-Xu-Vfa" secondAttribute="bottom" id="4fo-9l-M1B"/>
                             <constraint firstItem="YLd-ms-5ya" firstAttribute="trailing" secondItem="nqJ-H0-mU7" secondAttribute="trailingMargin" id="APO-bP-Vla"/>
                             <constraint firstItem="bGs-rn-ngz" firstAttribute="trailing" secondItem="nqJ-H0-mU7" secondAttribute="trailingMargin" id="ArU-y4-bua"/>
                             <constraint firstItem="YLd-ms-5ya" firstAttribute="leading" secondItem="nqJ-H0-mU7" secondAttribute="leadingMargin" id="FAF-3r-aZ4"/>
                             <constraint firstItem="bGs-rn-ngz" firstAttribute="leading" secondItem="nqJ-H0-mU7" secondAttribute="leadingMargin" id="GAF-QS-FOr"/>
                             <constraint firstItem="sB4-xZ-nOT" firstAttribute="trailing" secondItem="nqJ-H0-mU7" secondAttribute="trailingMargin" id="J0E-LV-jcc"/>
-                            <constraint firstItem="bHF-Xu-Vfa" firstAttribute="centerX" secondItem="nqJ-H0-mU7" secondAttribute="centerX" id="Od6-X2-c33"/>
                             <constraint firstItem="bGs-rn-ngz" firstAttribute="top" secondItem="YLd-ms-5ya" secondAttribute="bottom" constant="8" id="Qy3-bP-ykp"/>
                             <constraint firstItem="zYP-uO-zDV" firstAttribute="leading" secondItem="nqJ-H0-mU7" secondAttribute="leading" id="VBT-l4-WHd"/>
                             <constraint firstAttribute="trailing" secondItem="5cE-HB-1NJ" secondAttribute="trailing" id="XLS-9K-biv"/>
@@ -619,7 +577,6 @@
                         <outlet property="labelView" destination="Tu0-YD-tZ9" id="NlR-JJ-1dc"/>
                         <outlet property="layoutButton" destination="8UP-wU-xmj" id="K45-Ra-meC"/>
                         <outlet property="locationDateTimeLabel" destination="cV2-ud-0nr" id="Vxq-h2-fdJ"/>
-                        <outlet property="micButton" destination="bHF-Xu-Vfa" id="Ik5-b4-UUh"/>
                         <outlet property="pickerView" destination="YLd-ms-5ya" id="aWG-bA-t4s"/>
                         <outlet property="ticketLabel" destination="bdg-wg-IUF" id="z2F-va-i7X"/>
                         <outlet property="ticketPicker" destination="7h6-js-bPe" id="R6S-aC-i48"/>
@@ -1007,7 +964,6 @@
         <image name="headbg" width="586" height="102"/>
         <image name="homeBg" width="586" height="336"/>
         <image name="homeIcon" width="25" height="25"/>
-        <image name="icons8-microphone-96" width="48" height="48"/>
         <image name="seatBg" width="292" height="314"/>
         <image name="ticketBg" width="585" height="223"/>
         <image name="ticketIcon" width="25" height="25"/>
