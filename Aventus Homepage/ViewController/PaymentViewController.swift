@@ -163,60 +163,38 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
  
     
     @IBAction func confirmButton(_ sender: UIButton) {
+        
+        // Proceed when the users complete the form 
         if nameTextField.text != "" && cardNoTextField.text != "" && expiryTextField.text != "" && cvvTextField.text != "" {
-            /*let pageViewController = self.parent as! PageViewController
             
-            let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
-            
-            detailViewController.event = event
-            
-            detailViewController.payment = payment
-            
-            pageViewController.pages[5] = detailViewController
-            
-            pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)*/
-            
-         
             let pageViewController = self.parent as! PageViewController
-          
             
-            
-                //UserDefaults.standard.removeObject(forKey: "Bookings")
-            
+                // Retrieve data from the users' phone, append the current booking to them and update the data
                 var userBookings: [Booking] = helper.retrieveDataFromKey(key: "Bookings")
-                
                 let currentBooking = Booking(event: event!, payment: payment!)
                 userBookings.append(currentBooking)
-                
                 helper.saveDataForKey(key: "Bookings", data: userBookings)
-                
-                
+            
                 let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
                 
                 popOverVC.event = event
                 popOverVC.payment = payment
             
+                // Update the number of tickets available in Firebase database
                 var seats: Int
                 seats = (payment?.selectedSeats)!
-            
                 let id = String((self.event?.event_list)! - 1)
                 let category = convert()
                 let seat = self.event?.seating
-            
-            
                 var no = seat?.noSeatsAvail[seatCategory]
                 no = (no)! - seats
             
                 seat?.noSeatsAvail[seatCategory] = no!
-                
-                
-                //let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
+
+                let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
                 pageViewController.pages[5] = popOverVC
                 
                 pageViewController.setViewControllers([popOverVC], direction: UIPageViewControllerNavigationDirection.forward , animated: true, completion: nil)
-            
-            
-            
         }
         else {
             warningLabel.text = "Please fill out the form."
