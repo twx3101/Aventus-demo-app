@@ -44,7 +44,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         let cur = pages.index(of: viewController)!
 
-        if cur == pageNo.profile || cur == pageNo.confirm {
+        if cur == pageNo.home || cur == pageNo.confirm {
             return nil
         }
         
