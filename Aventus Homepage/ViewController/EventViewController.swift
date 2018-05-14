@@ -393,7 +393,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         })
     }
     
-    func filterContentofEvents(contextContent: Dictionary<String, Any>){
+    func filterContentofEvents(contextContent: Dictionary<String, Any>) -> Int{
         var newEvents = events
         
         if let artist = contextContent["artist"] as? String{
@@ -481,15 +481,32 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
                 }
             }
         }
+//        if newEvents.count == 1{
+//            filteredEvents = newEvents
+//            collectionView.reloadData()
+//            collectionView.setContentOffset(.zero, animated: true)
+//
+//            let pageViewController = self.parent as! PageViewController
+//
+//            //instatiated ticket buying page
+//            let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
+//            detailViewController.eventLoaded = self.filteredEvents[0]
+//            pageViewController.pages[3] = detailViewController
+//
+//            pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+//
+//        }
         if newEvents.count > 0{
             filteredEvents = newEvents
             collectionView.reloadData()
             print("Hello, i did reload")
             collectionView.setContentOffset(.zero, animated: true)
             //tableView.reloadData()
+            return newEvents.count
         }
         else{
-            //print warning message
+            helper.showAlert(message: "Sorry I couldn't find any events")
+            return 0
         }
     }
     
@@ -547,8 +564,10 @@ extension EventViewController{
                     self.filteredItems = contextContents.shared.contextContent
                     self.filterContentofEvents(contextContent: self.filteredItems)
                     self.collectionView.reloadData()
+                    
                 }
                 if task == "BuyTicket" || task == "BuyTickets"{
+                
                     handleBuyTickets()
                 }
             }
@@ -558,6 +577,14 @@ extension EventViewController{
     func handleBuyTickets(){
         var categoryNum : Int?
         var number: Int?
+        
+        self.isFiltering = true
+        self.filteredItems = contextContents.shared.contextContent
+        let x = (self.filterContentofEvents(contextContent: self.filteredItems))
+        if x == 0{
+            helper.showAlert(message: "Sorry I couldn't find  any events")
+            return
+        }
         
         let pageViewController = self.parent as! PageViewController
        
@@ -628,10 +655,6 @@ extension EventViewController{
                 pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
             }
         }
-        else if noOfEvents.count == 0{
-            helper.showAlert(message: "I couldn't find any events")
-        
-        }
             
             //go back to event page  if there's more than 1 event to select from
         else{
@@ -686,7 +709,7 @@ extension EventViewController: SpeechDelegate{
     
     func speechControllerDidFinishWithError(_ error: Error!) {
         self.hideProcessingHUD()
-        self.showError(error)
+        //self.showError(error)
     }
 }
 

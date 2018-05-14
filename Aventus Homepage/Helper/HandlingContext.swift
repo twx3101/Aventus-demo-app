@@ -189,9 +189,9 @@ class handlingContext{
         
         if (daysToAdd != 0 || monthsToAdd != 0 || yearsToAdd != 0){
             // if no start date is set, set date to current day
-            if contextContent.index(forKey: "start_date") == nil  {
-                contextContent["start_date"] = setCurrentDate()
-            }
+            
+            contextContent["start_date"] = setCurrentDate()
+            
             // set end date to current date + no. of days to add
             var cal = Calendar.current
             cal.timeZone = TimeZone(abbreviation: "GMT")!

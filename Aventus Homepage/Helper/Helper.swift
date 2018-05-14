@@ -15,7 +15,7 @@ class helper {
         
         let banner = Banner(title: "Aventus", subtitle: message, image: UIImage(named: "Icon"), backgroundColor: colors.neonblueBg)
         banner.dismissesOnTap = true
-        banner.show(duration: 2.0)
+        banner.show(duration: 4.0)
         
     }
     

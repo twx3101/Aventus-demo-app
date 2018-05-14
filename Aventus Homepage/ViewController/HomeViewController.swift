@@ -64,9 +64,11 @@ class HomeViewController: AVTBaseViewController{
         self.textControl.delegate = self
         
         menuButton.addTarget(self, action: #selector(showMenu), for:    .touchUpInside)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         handlingContext.resetData()
     }
-    
 
     
     // MARK: Actions
