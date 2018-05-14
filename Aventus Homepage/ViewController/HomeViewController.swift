@@ -64,7 +64,7 @@ class HomeViewController: AVTBaseViewController{
         self.textControl.delegate = self
         
         menuButton.addTarget(self, action: #selector(showMenu), for:    .touchUpInside)
-        
+        handlingContext.resetData()
     }
     
 

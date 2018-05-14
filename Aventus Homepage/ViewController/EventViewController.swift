@@ -426,6 +426,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
             
             //range of dateas
             if let end_date = contextContent["end_date"] as? Date{
+                print(start_date, end_date, "hello4")
                 newEvents = newEvents.filter{
                     let dateTime = $0.datetime + " " + $0.time
                     let eventDate = dateformatter.date(from: dateTime)
@@ -623,14 +624,18 @@ extension EventViewController{
                 detailViewController.eventLoaded = self.filteredEvents[0]
                 pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
             }
+            else{
+                pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            }
         }
         else if noOfEvents.count == 0{
-            //TODO
+            helper.showAlert(message: "I couldn't find any events")
         
         }
             
             //go back to event page  if there's more than 1 event to select from
         else{
+            helper.showAlert(message: "Which event would you like to go to?")
            //print message
         }
     }

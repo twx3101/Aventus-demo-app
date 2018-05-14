@@ -86,12 +86,21 @@ class handlingContext{
         }
         //        location: String
         if let location = context["location"] as?  String{
-            contextContent["location"] = location
+           
+            if (contextContent["venue"] as? String) != nil{
+                handlingContext.resetData()
+                contextContent = contextContents.shared.contextContent
+            }
+             contextContent["location"] = location
         }
         
         //        venue: String
         if let venue = context["venue"] as? String{
             contextContent["venue"] = venue
+            if (contextContent["location"] as? String) != nil{
+                handlingContext.resetData()
+                contextContent = contextContents.shared.contextContent
+            }
         }
         
   
@@ -102,16 +111,26 @@ class handlingContext{
             let month = datetime["month"] as? Int
             let year = datetime["year"] as? Int
             
+            if let hour = datetime["hour"] as? Int{
+                let minute = datetime["minute"] as? Int
+                var cal = Calendar.current
+                cal.timeZone = TimeZone(abbreviation: "GMT")!
+                let c = DateComponents(year: year, month: month, day: day, hour: hour, minute: minute )
+                print(cal.date(from: c)!, "hello2")
+                contextContent["start_date"] = cal.date(from: c)!
+            }
+            else{
             var cal = Calendar.current
             cal.timeZone = TimeZone(abbreviation: "GMT")!
             let c = DateComponents(year: year, month: month, day: day )
-            
+            print(cal.date(from: c)!, "hello2")
             contextContent["start_date"] = cal.date(from: c)!
+            }
         }
         if let end_datetime = context["end_datetime"] as? [String: Int]{
             //if start_date is empty, set date to current time
             
-            if contextContent.index(forKey: "start_datetime") == nil {
+            if contextContent.index(forKey: "start_date") == nil {
                 contextContent["start_date"] = setCurrentDate()
             }
             var cal = Calendar.current
@@ -120,11 +139,17 @@ class handlingContext{
             let end_day = end_datetime["day"]
             let end_month = end_datetime["month"]
             let end_year = end_datetime["year"]
-            
-            let d = DateComponents(year: end_year, month: end_month, day: end_day)
-            
+            if let hour = end_datetime["hour"] as? Int{
+                let minute = end_datetime["minute"] as? Int
+                let d = DateComponents(year: end_year, month: end_month, day: end_day, hour: hour, minute: minute )
+                print(cal.date(from: d)!, "hello2")
+                contextContent["end_date"] = cal.date(from: d)!
+            }
+            else{
+            let d = DateComponents(year: end_year, month: end_month, day: end_day, hour: 23, minute: 59, second: 59)
+            print(cal.date(from: d)!, "hello3")
             contextContent["end_date"] = cal.date(from: d)
-            
+            }
         }
         
         var daysToAdd = 0
@@ -164,7 +189,7 @@ class handlingContext{
         
         if (daysToAdd != 0 || monthsToAdd != 0 || yearsToAdd != 0){
             // if no start date is set, set date to current day
-            if contextContent.index(forKey: "start_datetime") == nil  {
+            if contextContent.index(forKey: "start_date") == nil  {
                 contextContent["start_date"] = setCurrentDate()
             }
             // set end date to current date + no. of days to add
@@ -192,7 +217,7 @@ class handlingContext{
         
         //handling time of day and hour
         if let dayPart = context["dayPart"] as? String{
-            if contextContent.index(forKey: "start_datetime") == nil  {
+            if contextContent.index(forKey: "start_date") == nil  {
                 contextContent["start_date"] = setCurrentDate()
             }
             
