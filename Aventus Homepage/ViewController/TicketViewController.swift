@@ -23,21 +23,12 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var cellWidth: Double = 0
     var cellHeight: Double = 0
     
-    var sections = [
-        Section(genre: "A", movies: ["dd","dd","dd"], expanded: false),
-        Section(genre: "B", movies: ["ds", "s"], expanded: false),
-        Section(genre: "C", movies: ["A"], expanded: false)
-        
-    ]
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        //return sections.count
         return userBookings.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return sections[section].movies.count
-        
         return Int(userBookings[section].noTickets!)!
     }
     
@@ -50,15 +41,12 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.backgroundColor = .clear
 
         let detailLabel = UILabel(frame: CGRect(x: 20, y: 0, width: cell.contentView.frame.width, height: cell.contentView.frame.height))
-        //detailLabel.text = sections[indexPath.section].movies[indexPath.row]
         
         detailLabel.text = "Category: " + userBookings[indexPath.section].category!
-        //detailLabel.textAlignment = .center
         detailLabel.textColor = UIColor.black
         
         let qrImageView =  UIImageView(frame: CGRect(x: self.view.frame.width - 80, y: 0, width: 40, height: 40))
         qrImageView.image = UIImage(named: "qrcode")
-        //qrImageView.center.x = self.view.frame.width/2
         
         let ticketImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: cell.contentView.frame.height))
         ticketImageView.image = UIImage(named: "ticket")
@@ -69,8 +57,8 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.addSubview(detailLabel)
         
+        // Hide all rows in the last section if the section has not been clicked
         if indexPath.section == (userBookings.count - 1) {
-    
             if (userBookings[indexPath.section].expanded == "0") {
                 cell.isHidden = true
             } else {
@@ -78,7 +66,6 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
             }
         }
-        
         
         return cell
     }
@@ -112,7 +99,6 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let artistLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: 100))
         
-        //artistLabel.text = sections[section].genre
         artistLabel.text = userBookings[section].eventArtist
         artistLabel.textAlignment = .center
         artistLabel.textColor = UIColor.black
@@ -139,6 +125,7 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func toggleSection(header: ExpandableHeaderView, section: Int) {
         
+        
         if (userBookings[section].expanded == "0") {
             userBookings[section].expanded = "1"
             
@@ -146,13 +133,9 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             userBookings[section].expanded = "0"
         }
         
-        print(userBookings[section].expanded)
-        
         tableView.beginUpdates()
         
         let noTick = Int(userBookings[section].noTickets!)!
-        
-        print(userBookings[section].noTickets)
         
         print(noTick)
         for i in 0..<noTick {
@@ -168,18 +151,16 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.view.backgroundColor = colors.greyBg
         tableView.backgroundColor = colors.greyBg
         
-        //helper.setBackground(view: self.view, image: "ticketBg")
         
         headerWidth = Double(self.view.frame.width - self.view.layoutMargins.left - self.view.layoutMargins.right)
         headerHeight = SCALE*headerWidth
         
         cellWidth = headerWidth
         cellHeight = 44
-        
+
         tableView.allowsSelection = false
         
         userBookings = helper.retrieveDataFromKey(key: "Bookings")
-        
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goPreviousPage(_:))))
         

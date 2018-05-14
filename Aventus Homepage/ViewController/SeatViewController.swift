@@ -36,19 +36,9 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
     
     @IBOutlet weak var labelView: UIView!
     
-    //@IBOutlet weak var micButton: UIButton!
-    
     @IBOutlet weak var warningLabel: WarningLabel!
     
-    /*lazy var readyMic: UIImage = {
-        return UIImage(named: "icons8-microphone-96")!
-    }()
-    lazy var pressedMic: UIImage = {
-        return UIImage(named: "microphone_on")!
-    }()*/
-    //var isRecording : Bool = false
-    
-    var menuTap: UITapGestureRecognizer!
+    @IBOutlet weak var purchaseButton: RoundButton!
     
     var eventLoaded: Event?
     
@@ -161,31 +151,17 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         super.viewDidLoad()
         view.backgroundColor = colors.greyBg
         
-        
         eventView.layer.cornerRadius = 5.0
         eventView.clipsToBounds = true
         
-        //pickerView.layer.cornerRadius = 15.0
-        //pickerView.clipsToBounds = true
-        //pickerView.layer.borderWidth = 1.2
-        //pickerView.layer.borderColor = (colors.border).cgColor
         pickerView.layer.backgroundColor = (UIColor.white.withAlphaComponent(0.95)).cgColor
-        
         pickerView.layer.cornerRadius = 5.0
-        
-//        pickerView.layer.shadowColor = UIColor.black.cgColor
-//        pickerView.layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
-//        pickerView.layer.masksToBounds = false
-//        pickerView.layer.shadowRadius = 2.0
-//        pickerView.layer.shadowOpacity = 1.0
-//        pickerView.clipsToBounds = true
 
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
         
         ticketPicker.delegate = self
         ticketPicker.dataSource = self
-        
         
         layoutButton.setTitleColor(colors.headerTwoText, for: UIControlState.normal)
         
@@ -240,9 +216,6 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         categoryPicker.subviews[1].isHidden = true
         categoryPicker.subviews[2].isHidden = true
 
-        
-        menuButton.addTarget(self, action: #selector(showMenu), for:    .touchUpInside)
-    
     }
     
 
@@ -251,26 +224,14 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
     }
     
     
-    func showMenu() {
-        
-        showMenuBase()
-        
-        menuTap = UITapGestureRecognizer(target: self, action: #selector(hideMenu(_:)))
-        view.addGestureRecognizer(menuTap)
-        
-        micButton.isEnabled = false
-        
-        
+    override func showMenuBase() {
+        super.showMenuBase()
+        purchaseButton.isEnabled = false
     }
     
-    @objc func hideMenu(_ tap: UITapGestureRecognizer) {
-        
-        hideMenuBase()
-        
-        view.removeGestureRecognizer(menuTap)
-        micButton.isEnabled = true
-        
-        
+    override func hideMenuBase() {
+        super.hideMenuBase()
+        purchaseButton.isEnabled = true
     }
     
     @IBAction func showLayoutButton(_ sender: RoundButton) {
@@ -334,35 +295,11 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
 
     }
     
-    
-    /*@IBAction func micPress(_ sender: UIButton) {
-        //let startSound: SystemSoundID = 1110
-      //  let endSound : SystemSoundID = 1111
-        
-        if self.isRecording {
-            controller?.cancelTalking()
-            print("if")
-         //   AudioServicesPlaySystemSound(endSound)
-            
-            helper.showAlert(message: "Done Listening")
-        }
-        else {
-            controller?.push(toTalk: self, withDialogueContext: contextContents.shared.context)
-           // AudioServicesPlaySystemSound(startSound)
-        }
-
-    }*/
 }
 
 extension SeatViewController{
-    /*func handle(text:String){
-        self.showProcessingHUD(text: "Processing...")
-        
-        CapitoController.getInstance().text(self, input: text, withDialogueContext: contextContents.shared.context)
-    }*/
-    
+
     override func handle(response: CapitoResponse){
-        //print("handle")
         if response.messageType == "WARNING"{
             //self.showErrorMessage(text: response.message)
         }
@@ -388,13 +325,6 @@ extension SeatViewController{
         var number: Int?
         
         let pageViewController = self.parent as! PageViewController
-        
-        //let noOfEvents = self.filteredEvents
-        
-        //instatiated ticket buying page
-        //let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
-        
-        //pageViewController.pages[3] = detailViewController
         
         if let numTickets = contextContents.shared.contextContent["numTickets"] as? String{
             
@@ -469,37 +399,8 @@ extension SeatViewController{
 }
 
 
-/*extension SeatViewController{
-    
-    func showProcessingHUD(text: String){
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.mode = .indeterminate
-        hud.minShowTime = 1.0
-        hud.label.text = "Processing"
-        hud.detailsLabel.text = text
-    }
-    func hideProcessingHUD(){
-        MBProgressHUD.hide(for: self.view, animated: true)
-    }
-    
-    func showError(_ error: Error) {
-        print(error.localizedDescription)
-    }
-    
-}*/
-
 extension SeatViewController{
     
-    /*func speechControllerDidBeginRecording() {
-        self.isRecording = true
-        //change microphone to show busy recording
-        self.micButton.setImage(pressedMic, for: .normal)
-    }
-    
-    func speechControllerDidFinishRecording() {
-        self.isRecording = false
-        self.micButton.setImage(readyMic, for: .normal)
-    }*/
     
     override func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
         self.showProcessingHUD(text: "Processing...")
@@ -516,14 +417,3 @@ extension SeatViewController{
     }
 }
 
-/*extension SeatViewController: TextDelegate{
-    func textControllerDidFinish(withResults response: CapitoResponse!) {
-        self.hideProcessingHUD()
-        self.handle(response: response)
-    }
-    
-    func textControllerDidFinishWithError(_ error: Error!){
-        self.hideProcessingHUD()
-        self.showError(error)
-    }
-}*/

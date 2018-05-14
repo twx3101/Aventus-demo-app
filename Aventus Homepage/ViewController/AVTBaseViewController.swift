@@ -33,6 +33,8 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         return UIImage(named: "microphone_on")!
     }()
     
+    var menuTap: UITapGestureRecognizer!
+    
     var isRecording: Bool = false
     
     var SCALE: Float!
@@ -64,7 +66,7 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         
         menuButton.frame = CGRect(x: leftItemX + (buttonSize - menuButtonSize)/2, y: topMargin + (buttonSize - menuButtonSize)/2, width: menuButtonSize, height: menuButtonSize)
         menuButton.setImage(UIImage(named: "menu"), for: UIControlState())
-    
+        menuButton.addTarget(self, action: #selector(showMenuBase), for: .touchUpInside)
         menuButton.tintColor = .white
         
         view.addSubview(menuButton)
@@ -162,8 +164,13 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         present(detailViewController, animated: true, completion: nil)
     }
     
+    
+    
     // Show menu side bar
     func showMenuBase() {
+        menuTap = UITapGestureRecognizer(target: self, action: #selector(hideMenuBase))
+        view.addGestureRecognizer(menuTap)
+        micButton.isEnabled = false
         UIView.animate(withDuration: 1, animations: {
             self.menuView.isHidden = false
             self.ticketButton.isHidden = false
@@ -178,6 +185,10 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
             self.helpButton.isHidden = true
             self.menuView.isHidden = true
         }, completion: nil)
+        if menuTap != nil {
+            view.removeGestureRecognizer(menuTap)
+        }
+        micButton.isEnabled = true
     }
     
     // Show search bar

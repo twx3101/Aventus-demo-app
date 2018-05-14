@@ -578,6 +578,7 @@
                         <outlet property="layoutButton" destination="8UP-wU-xmj" id="K45-Ra-meC"/>
                         <outlet property="locationDateTimeLabel" destination="cV2-ud-0nr" id="Vxq-h2-fdJ"/>
                         <outlet property="pickerView" destination="YLd-ms-5ya" id="aWG-bA-t4s"/>
+                        <outlet property="purchaseButton" destination="Rhp-up-iQp" id="IZ2-m7-lg0"/>
                         <outlet property="ticketLabel" destination="bdg-wg-IUF" id="z2F-va-i7X"/>
                         <outlet property="ticketPicker" destination="7h6-js-bPe" id="R6S-aC-i48"/>
                         <outlet property="warningLabel" destination="bGs-rn-ngz" id="Ore-zN-cPH"/>

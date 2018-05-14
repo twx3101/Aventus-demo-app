@@ -9,8 +9,6 @@
 import UIKit
 import CapitoSpeechKit
 import MBProgressHUD
-//import AVFoundation
-
 
 class contextContents {
     static let shared = contextContents()
@@ -39,56 +37,24 @@ class HomeViewController: AVTBaseViewController{
     
     @IBOutlet weak var resetBut: UIButton!
     
-    var menuTap: UITapGestureRecognizer!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = colors.greyBg
-        
         self.textControl.delegate = self
         
-        menuButton.addTarget(self, action: #selector(showMenu), for:    .touchUpInside)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         handlingContext.resetData()
     }
-
     
     // MARK: Actions
-
-
-    @objc func hideMenu(_ tap: UITapGestureRecognizer) {
-        
-        hideMenuBase()
-        
-        view.removeGestureRecognizer(menuTap)
-        micButton.isEnabled = true
-        
-        
-    }
-    
-    func showMenu() {
-        
-        showMenuBase()
-        
-        menuTap = UITapGestureRecognizer(target: self, action: #selector(hideMenu(_:)))
-        view.addGestureRecognizer(menuTap)
-        
-        micButton.isEnabled = false
-        
-    }
-
-    
     override func micPress() {
         
-        print ("pressed")
         if self.isRecording {
             // AudioServicesPlaySystemSound(endSound)
             CapitoController.getInstance().cancelTalking()
-            print("if")
-            
             helper.showAlert(message: "Done Listening")
             
         }
@@ -99,27 +65,12 @@ class HomeViewController: AVTBaseViewController{
         }
     }
     
-    /*func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        if let text = self.textControl.text{
-            print("Sending Text event:\(text)")
-            self.handle(text: text)
-            
-        }
-        textField.text = ""
-        return true
-    }*/
-   
+
 }
 
 extension HomeViewController{
     
-   /*override func handle(text:String){
-        self.showProcessingHUD(text: "Processing...")
-        
-        CapitoController.getInstance().text(self, input: text, withDialogueContext: contextContents.shared.context)
-    }*/
-    
+
     override func handle(response: CapitoResponse){
         //print("handle")
         if response.messageType == "WARNING"{

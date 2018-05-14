@@ -38,7 +38,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     var filteredItems = Dictionary<String,Any>()
     let searchController = UISearchController(searchResultsController: nil)
     
-    var menuTap: UITapGestureRecognizer!
+    //var menuTap: UITapGestureRecognizer!
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -137,7 +137,6 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -149,45 +148,17 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         searchController.searchBar.placeholder = "Search Events"
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
-        } else {
-            //tableView.tableHeaderView = searchController.searchBar
         }
         definesPresentationContext = true
-        //self.textControl2.delegate = self
+        
         self.textControl.delegate = self
         
-        menuButton.addTarget(self, action: #selector(showMenu), for:    .touchUpInside)
-        
         loadEvents()
-        
-        
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func showMenu() {
-        
-        showMenuBase()
-        
-        menuTap = UITapGestureRecognizer(target: self, action: #selector(hideMenu(_:)))
-        view.addGestureRecognizer(menuTap)
-        
-        micButton.isEnabled = false
-        
-    }
-    
-    @objc func hideMenu(_ tap: UITapGestureRecognizer) {
-    
-        hideMenuBase()
-        
-        view.removeGestureRecognizer(menuTap)
-        micButton.isEnabled = true
-        
-        collectionView.isUserInteractionEnabled = true
-        
     }
     
     func isFilteringBar() -> Bool{
@@ -217,30 +188,12 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     private func loadEvents(){
         var blockchainEvents = [String]()
         let url = "http://localhost:8080/";
-//        Alamofire.request(url).responseJSON {
-//            response in debugPrint(response)
-//            if let json = response.result.value as? NSArray{
-//                for event in json {
-//                    let i = event as? [String: Any]
-//                    let i2  = i!["eventdesc"] as! String
-//                    blockchainEvents.append(i2)
-//                    //      print(i2)
-//                }
-//                self.serverStatus = true
-//            }
-//            else{
-//                //   print("Server offline")
-//                self.serverStatus = false
-//            }
-//        }
         
         //Set the firebase reference
         ref = Database.database().reference()
         
         //Retrieve the posts and listen for changes
         refHandle = ref.observe(DataEventType.value, with: { (snapshot) in
-            //    let postDict = snapshot.value as? [0] ?? [:]
-            // print(snapshot.value)
             
             //Getting information for events
             for event in snapshot.children.allObjects as![DataSnapshot]{
@@ -382,9 +335,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
                
             } else{
                 self.collectionView.reloadData()
-            //self.tableView.reloadData()
             }
-            //Code to execute to obtain the information held in the value field in the database
         })
     }
     
@@ -476,27 +427,12 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
                 }
             }
         }
-//        if newEvents.count == 1{
-//            filteredEvents = newEvents
-//            collectionView.reloadData()
-//            collectionView.setContentOffset(.zero, animated: true)
-//
-//            let pageViewController = self.parent as! PageViewController
-//
-//            //instatiated ticket buying page
-//            let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "SeatPage") as! SeatViewController
-//            detailViewController.eventLoaded = self.filteredEvents[0]
-//            pageViewController.pages[3] = detailViewController
-//
-//            pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
-//
-//        }
+
         if newEvents.count > 0{
             filteredEvents = newEvents
             collectionView.reloadData()
             print("Hello, i did reload")
             collectionView.setContentOffset(.zero, animated: true)
-            //tableView.reloadData()
             return newEvents.count
         }
         else{
@@ -505,49 +441,12 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         }
     }
     
-    /*@IBAction func MicrophonePress(_ sender: UIButton) {
-       // let startSound: SystemSoundID = 1110
-        //let endSound : SystemSoundID = 1111
-        
-        if self.isRecording {
-           // AudioServicesPlaySystemSound(endSound)
-            CapitoController.getInstance().cancelTalking()
-            print("if")
-            
-            helper.showAlert(message: "Done Listening")
-        }
-        else {
-          //  AudioServicesPlaySystemSound(startSound)
-            CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
-        }
-        
-    }*/
-    
-    /*func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        //if let text = self.textControl2.text{
-        if let text = self.textControl.text {
-            print("Sending Text event:\(text)")
-            self.handle(text: text)
-            
-        }
-        textField.text = ""
-        return true
-    }*/
 }
 
 extension EventViewController{
     
-    /*override func handle(text:String){
-        self.showProcessingHUD(text: "Processing...")
-        
-        CapitoController.getInstance().text(self, input: text, withDialogueContext: contextContents.shared.context)
-    }*/
-    
-    
-    
+
     override func handle(response: CapitoResponse){
-        //print("handle")
         if response.messageType == "WARNING"{
             //self.showErrorMessage(text: response.message)
         }
@@ -564,6 +463,7 @@ extension EventViewController{
                     self.collectionView.reloadData()
                     
                 }
+                
                 if task == "BuyTicket" || task == "BuyTickets"{
                 
                     handleBuyTickets()
@@ -664,37 +564,7 @@ extension EventViewController{
 }
 
 
-/*extension EventViewController{
-    
-    func showProcessingHUD(text: String){
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.mode = .indeterminate
-        hud.minShowTime = 1.0
-        hud.label.text = "Processing"
-        hud.detailsLabel.text = text
-    }
-    func hideProcessingHUD(){
-        MBProgressHUD.hide(for: self.view, animated: true)
-    }
-    
-    func showError(_ error: Error) {
-        print(error.localizedDescription)
-    }
-    
-}*/
-
 extension EventViewController{
-    
-    /*func speechControllerDidBeginRecording() {
-        self.isRecording = true
-        //change microphone to show busy recording
-        self.mic2.setImage(pressedMic, for: .normal)
-    }
-    
-    func speechControllerDidFinishRecording() {
-        self.isRecording = false
-        self.mic2.setImage(readyMic, for: .normal)
-    }*/
     
     override func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
         self.showProcessingHUD(text: "Processing...")
@@ -710,31 +580,6 @@ extension EventViewController{
         //self.showError(error)
     }
 }
-
-/*
- extension ViewController: UISearchBarDelegate {
- func searchButtonPressed(_ searchBar: UISearchBar){
- self.textControlBar.resignFirstResponder()
- 
- if let text = searchBar.text{
- print("Sending text event: \(text)")
- self.onTextControlClick(nil)
- self.handle(text: text)
- }
- }
- }
- */
-/*extension EventViewController: TextDelegate{
-    func textControllerDidFinish(withResults response: CapitoResponse!) {
-        self.hideProcessingHUD()
-        self.handle(response: response)
-    }
-    
-    func textControllerDidFinishWithError(_ error: Error!){
-        self.hideProcessingHUD()
-        self.showError(error)
-    }
-}*/
 
 extension EventViewController: UISearchResultsUpdating{
     
