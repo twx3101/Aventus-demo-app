@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Used to display booking and ticket in Ticket page
 protocol ExpandableHeaderViewDelegate {
     func toggleSection(header: ExpandableHeaderView, section: Int)
 }
