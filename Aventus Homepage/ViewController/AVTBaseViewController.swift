@@ -230,23 +230,14 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
 
 }
 
-// Subclasses of AVTBaseViewController has differnt ways to handle the context, thus needs to override these functions
 extension AVTBaseViewController {
     
-    /*func handle(text:String){
-        
-        self.showProcessingHUD(text: "Processing...")
-        CapitoController.getInstance().tex
-        
-        //fatalError("Subclasess of AVTBaseViewController need to implement handle()");
-    }*/
     func handle(text:String){
         self.showProcessingHUD(text: "Processing...")
-        
         CapitoController.getInstance().text(self, input: text, withDialogueContext: contextContents.shared.context)
     }
 
-    
+    // Subclasses of AVTBaseViewController has differnt ways to handle the context, thus needs to override these functions
     func handle(response: CapitoResponse) {
         fatalError("Subclasess of AVTBaseViewController need to implement handle()");
     }

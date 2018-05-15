@@ -20,8 +20,7 @@ class contextContents {
     }
 }
 
-//TODO: add busy microphone button, add transcription textbox, add Errorlabels, add textDelegate
-
+// Home Page
 class HomeViewController: AVTBaseViewController{
    // let startSound : SystemSoundID = 1110
   //  let endSound : SystemSoundID = 1111

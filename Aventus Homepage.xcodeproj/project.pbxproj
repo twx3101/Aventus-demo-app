@@ -319,11 +319,11 @@
 			children = (
 				BFBD7FA520A628E2000BA93B /* AVTBaseViewController.swift */,
 				457E32D320659C7E00B7224B /* PageViewController.swift */,
-				BF83B2C52075109C00EA2405 /* EventCollectionViewCell.swift */,
+				BB8D22F820A86ACE00CB8C45 /* HomeViewController.swift */,
 				BFD17E18202CD729008CB952 /* EventViewController.swift */,
+				BF83B2C52075109C00EA2405 /* EventCollectionViewCell.swift */,
 				BF40F12E2030971400E280BB /* SeatViewController.swift */,
 				BF59469C2038E25900A0A493 /* SeatPopUpViewController.swift */,
-				BB8D22F820A86ACE00CB8C45 /* HomeViewController.swift */,
 				BFE01B1E2077C1C0002BA3E2 /* SummaryTableViewCell.swift */,
 				BF8588242030B729005C9D7D /* PaymentViewController.swift */,
 				BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */,

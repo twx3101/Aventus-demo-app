@@ -8,8 +8,9 @@
 
 import UIKit
 
+
+// The contents in the collection view cell displayed in EventViewController
 class EventCollectionViewCell: UICollectionViewCell {
-    
     
     @IBOutlet weak var artistLabel: UILabel!
     
