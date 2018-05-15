@@ -14,7 +14,7 @@ import UIKit
 
 // PageViewController is the initial view controller of the application and helps manage navigation between pages
 // It consists of 1) Ticket 2) Home 3) Event 4) Seat 5) Payment 6) Confirm
-// This is set to show Home Page when called
+// Home Page is set to be displayed as the first page of the application
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     var pages = [UIViewController]()
@@ -39,7 +39,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         pages.append(paymentPage)
         pages.append(confirmPage)
         
-        // set the first page
+        // Set the first page
         setViewControllers([homePage], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
     }
     

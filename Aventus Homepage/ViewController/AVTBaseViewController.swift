@@ -10,6 +10,9 @@ import UIKit
 import CapitoSpeechKit
 import MBProgressHUD
 
+
+// AVTBaseViewController is the super class of HomeVC, EventVC, SeatVC
+// This VC contains banner, chat bar, menu bar and all functions related
 class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     
     var menuView: UIView = UIView()
@@ -94,7 +97,7 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(textControl)
         
         
-        // The sidebar consists of help button and ticket button.
+        // The menu bar consists of help button and ticket button.
         // Users can navigate to help page and ticket page by clicking the button.
         
         menuView.frame = CGRect(x: 0, y: 0 , width: menuWidth, height: Int(self.view.frame.size.height))
