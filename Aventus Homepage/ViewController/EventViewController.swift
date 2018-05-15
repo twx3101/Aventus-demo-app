@@ -12,23 +12,18 @@ import Alamofire
 import AlamofireImage
 import CapitoSpeechKit
 import MBProgressHUD
-//import AVFoundation
 
 
-
+// Event Page
 class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var collectionView: UICollectionView!
-
-
     
     let cellIdentifier = "EventCollectionViewCell"
     
     var ref: DatabaseReference!
     var refHandle: DatabaseHandle!
     var serverStatus: Bool = false
- 
-    //var isRecording : Bool = false
     
     var priceLimit : Double = 10
     
@@ -38,13 +33,28 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     var filteredItems = Dictionary<String,Any>()
     let searchController = UISearchController(searchResultsController: nil)
     
-    //var menuTap: UITapGestureRecognizer!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        view.backgroundColor = colors.bg
+        collectionView.backgroundColor = colors.bg
+        
+        definesPresentationContext = true
+        
+        self.textControl.delegate = self
+        
+        loadEvents()
+    }
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
+    // The number of events to be displayed
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isFiltering {
             return filteredEvents.count
@@ -52,6 +62,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         return events.count
     }
     
+    // How the events will be displayed
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cellIdentifier = "EventCollectionViewCell"
@@ -78,7 +89,6 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         
         mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.headerText, range: NSRange(location: 0, length: event.artist.count))
         
-
         cell.artistLabel.attributedText = mutableString
         
         cell.locationDatetimeLabel.text = event.formattedDate + ", " + event.time
@@ -89,7 +99,6 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         cell.priceLabel.textColor = colors.bodyText
 
         Alamofire.request(event.bannerURL).responseImage { response in
-            //debugPrint(response)
 
             if let image = response.result.value{
                 cell.artistPhoto.image = image
@@ -105,6 +114,8 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         
     }
     
+    
+    // set the size of each cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let itemSizeWidth = collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right)
@@ -115,9 +126,8 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     }
     
     
+    // Navigate to Seat page when users select the event
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        print("clicked")
         
         let pageViewController = self.parent as! PageViewController
 
@@ -134,60 +144,36 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        view.backgroundColor = colors.bg
-        collectionView.backgroundColor = colors.bg
-        
-//        searchController.searchResultsUpdater = self
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.placeholder = "Search Events"
-//        if #available(iOS 11.0, *) {
-//            navigationItem.searchController = searchController
-//        }
-        definesPresentationContext = true
-        
-        self.textControl.delegate = self
-        
-        loadEvents()
-
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-//    func isFilteringBar() -> Bool{
-//        if(searchController.isActive && !searchBarIsEmpty()){
-//            isFiltering = true
-//        }
-//        else{
-//            isFiltering = false
-//        }
-//        return isFiltering
-//    }
-//    
-//    func searchBarIsEmpty()-> Bool{
-//        return searchController.searchBar.text?.isEmpty ?? true
-//    }
-//    
-//    func filterContentForSearchText(_ searchText: String, scope: String = "All"){
-//        filteredEvents = events.filter({( event:Event) -> Bool in
-//            return event.artist.lowercased().contains(searchText.lowercased()) || event.location.lowercased().contains(searchText.lowercased())
-//            
-//        })
-//        collectionView.reloadData()
-//        //tableView.reloadData()
-//    }
-
     
+    // load events to be displayed
     private func loadEvents(){
         var blockchainEvents = [String]()
         let url = "http://localhost:8080/";
+        
+        //connect to Web3.js server to laod blockchain events
+        Alamofire.request(url).responseJSON {
+                        response in debugPrint(response)
+                        if let json = response.result.value as? NSArray{
+                            for event in json {
+                                let i = event as? [String: Any]
+                                let i2  = i!["eventdesc"] as! String
+                                blockchainEvents.append(i2)
+                                //      print(i2)
+                            }
+                            self.serverStatus = true
+                        }
+                        else{
+                            //   print("Server offline")
+                            self.serverStatus = false
+                        }
+                    }
+
         
         //Set the firebase reference
         ref = Database.database().reference()
@@ -443,12 +429,11 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     
 }
 
+// Context is handled differently by the page
 extension EventViewController{
     
-
     override func handle(response: CapitoResponse){
         if response.messageType == "WARNING"{
-            //self.showErrorMessage(text: response.message)
         }
         else{
             handlingContext().bootstrapView(response: response)
@@ -461,11 +446,9 @@ extension EventViewController{
                     self.filteredItems = contextContents.shared.contextContent
                     self.filterContentofEvents(contextContent: self.filteredItems)
                     self.collectionView.reloadData()
-                    
                 }
                 
                 if task == "BuyTicket" || task == "BuyTickets"{
-                
                     handleBuyTickets()
                 }
             }
@@ -518,11 +501,8 @@ extension EventViewController{
             detailViewController.category = categoryNum!
         }
         
-        print("HELLO2")
-        
         if noOfEvents.count == 1{
-            print("Hello3", noOfEvents.count)
-            
+
             if number != nil && categoryNum != nil{
                 detailViewController.eventLoaded = self.filteredEvents[0]
                 pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
@@ -554,10 +534,10 @@ extension EventViewController{
             }
         }
             
-            //go back to event page  if there's more than 1 event to select from
+        //go back to event page  if there's more than 1 event to select from
         else{
             helper.showAlert(message: "Which event would you like to go to?")
-           //print message
+
         }
     }
     
@@ -580,14 +560,6 @@ extension EventViewController{
         //self.showError(error)
     }
 }
-
-//extension EventViewController: UISearchResultsUpdating{
-//
-//    func updateSearchResults(for searchController: UISearchController) {
-//        filterContentForSearchText(searchController.searchBar.text!)
-//
-//    }
-
 
 extension Date{
     func isBetween(_ date1: Date, and date2: Date) -> Bool{

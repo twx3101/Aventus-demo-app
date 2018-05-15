@@ -8,7 +8,7 @@
 
 import UIKit
 
-// Define global variables
+// Used to help set color 
 struct colors{
     
     static var whiteCol: UInt32 = 0xFFFFFF

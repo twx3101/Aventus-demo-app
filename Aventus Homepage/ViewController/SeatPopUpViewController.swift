@@ -8,6 +8,7 @@
 
 import UIKit
 
+// To show seating layout
 class SeatPopUpViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
     override func viewDidLoad() {
@@ -26,12 +27,7 @@ class SeatPopUpViewController: UIViewController, UIViewControllerTransitioningDe
 
     }
     
-
-
-
-    
-    func showAnimate()
-    {
+    func showAnimate() {
         self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         self.view.alpha = 0.0;
         UIView.animate(withDuration: 0.25, animations: {
@@ -40,8 +36,7 @@ class SeatPopUpViewController: UIViewController, UIViewControllerTransitioningDe
         });
     }
     
-    func removeAnimate()
-    {
+    func removeAnimate() {
         UIView.animate(withDuration: 0.25, animations: {
             self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             self.view.alpha = 0.0;
@@ -55,6 +50,5 @@ class SeatPopUpViewController: UIViewController, UIViewControllerTransitioningDe
     
     @objc func goPreviousPage(_ tap: UITapGestureRecognizer) {
         removeAnimate()
-        
     }
 }

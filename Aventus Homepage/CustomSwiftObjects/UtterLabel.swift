@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Used to display utterances in Home and Help page
 class UtterLabel: UILabel{
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -24,11 +25,8 @@ class UtterLabel: UILabel{
     }
     
     func sharedInit(){
-
         textColor = colors.utterText
         font = UIFont(name:"Sarabun",size:28)
-        
-        
     }
     
     

@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+// Warning label used in Seat and Payment page
 class WarningLabel: UILabel{
     override init(frame: CGRect){
         super.init(frame: frame)

@@ -9,8 +9,9 @@
 import UIKit
 import FirebaseDatabase
 
+
+// Payment page
 class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     
     @IBOutlet weak var warningLabel: UILabel!
     
@@ -45,34 +46,21 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         super.viewDidLoad()
         
-        //self.view.backgroundColor = colors.bg
-        NotificationCenter.default.addObserver(self, selector: #selector(PaymentViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(PaymentViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
         helper.setBackground(view: self.view, image: "paymentBg")
         
         summaryTableView.delegate = self
         summaryTableView.dataSource = self
         
+        // Move the textbox up when users type in the information
+        NotificationCenter.default.addObserver(self, selector: #selector(PaymentViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PaymentViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PaymentViewController.dismissKeyboard))
         
         view.addGestureRecognizer(tap)
-        //summaryView.backgroundColor = colors.buttonBg
         
-//        let thickness: CGFloat = 0.5
-//        let borderColor = (colors.border).cgColor
-//
-//        let topBorder = CALayer()
-//        topBorder.backgroundColor = borderColor
-//        topBorder.frame = CGRect(x: 0, y:0, width: summaryView.frame.width, height: thickness)
-//
-//        let bottomBorder = CALayer()
-//        bottomBorder.backgroundColor = borderColor
-//        bottomBorder.frame = CGRect(x: 0, y: summaryView.frame.height, width: summaryView.frame.width, height: thickness)
-//
-//        summaryView.layer.addSublayer(topBorder)
-//        summaryView.layer.addSublayer(bottomBorder)
-        
+        // Set the text to be displayed in the summary
+
         let text_total = String(format:"%.02f",Double((payment?.selectedSeats)!)*(payment?.price)!)
 
         let text_1line = (event?.artist)!
@@ -96,6 +84,8 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         summaryItems = [text_1line,text_12line, text_2line, text_3line, text_4line]
         
     }
+    
+    // When users begin editing
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
@@ -104,6 +94,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    // When users finish editing
     @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{
@@ -111,13 +102,14 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
+    
+    // the height for the cell
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 30
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -125,10 +117,9 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         return self.summaryItems.count-1
     }
     
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        
+    // How the cell is displayed
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+
         let cellIdentifier = "SummaryTableViewCell"
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SummaryTableViewCell
@@ -137,7 +128,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.backgroundColor = .clear
     
-
+        // Display the total amount differently
         if( indexPath.row == self.summaryItems.count-2){
             let labelFont = UIFont(name: "Sarabun-Bold", size: 25)
             let color = UIColor.white
@@ -157,11 +148,10 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         }
       
-        
         return cell
     }
  
-    
+    // When users click confirm button
     @IBAction func confirmButton(_ sender: UIButton) {
         
         // Proceed when the users complete the form 
@@ -175,10 +165,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 userBookings.append(currentBooking)
                 helper.saveDataForKey(key: "Bookings", data: userBookings)
             
-                let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
-                
-                popOverVC.event = event
-                popOverVC.payment = payment
+            
             
                 // Update the number of tickets available in Firebase database
                 var seats: Int
@@ -192,6 +179,10 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 seat?.noSeatsAvail[seatCategory] = no!
 
                 let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
+            
+                // Navigate to Confirm page
+                let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController
+            
                 pageViewController.pages[5] = popOverVC
                 
                 pageViewController.setViewControllers([popOverVC], direction: UIPageViewControllerNavigationDirection.forward , animated: true, completion: nil)

@@ -7,12 +7,12 @@
 
 import UIKit
 
+
+// Used in AVTBaseViewController (HomeViewController, EventViewController, SeatViewController)
 class SearchTextField : UITextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         sharedInit()
-        
-        //fatalError("init(coder:) has not been implemented")
     }
     
     override init(frame: CGRect) {
@@ -22,10 +22,8 @@ class SearchTextField : UITextField {
 
     init(frame: CGRect, arg1: CGFloat, arg2: String) {
         super.init(frame: frame)
-        
         self.layer.cornerRadius = arg1
-        print(arg2)
-        print("Instantiated")
+
     }
     
     let padding = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 7);
@@ -44,26 +42,16 @@ class SearchTextField : UITextField {
     
     func sharedInit(){
         
-        //textControl.backgroundColor = colors.white
-        
         self.placeholder = "Search for Events ..."
-        //textControl.borderStyle = UITextBorderStyle.roundedRect
-        //textControl.autocorrectionType = UITextAutocorrectionType.no
-        //textControl.keyboardType = UIKeyboardType.default
-        //textControl.returnKeyType = UIReturnKeyType.done
-        //textControl.clearButtonMode = UITextFieldViewMode.whileEditing;
-        //textControl.contentVerticalAlignment = UIControlContentVerticalAlignment.center
-        
+
         self.isEnabled = true
         self.isUserInteractionEnabled = true
         self.allowsEditingTextAttributes = true
-        
         
         //Border
         self.layer.cornerRadius = 15.0;
         self.layer.borderWidth = 1.2
         self.layer.borderColor = colors.textFieldBorder.cgColor
-        
         self.clipsToBounds = true
         
         //Background
@@ -71,7 +59,6 @@ class SearchTextField : UITextField {
         
         textColor = colors.textFieldText
         font = UIFont(name: "Sarabun", size: 24)
-        //Text
         
     }
     

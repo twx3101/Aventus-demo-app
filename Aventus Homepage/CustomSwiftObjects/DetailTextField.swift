@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Used to show the textbox in Payment page
 class DetailTextField : UITextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

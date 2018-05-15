@@ -8,6 +8,7 @@
 
 import UIKit
 
+// microphone button
 class RecordButton: UIButton{
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -24,17 +25,7 @@ class RecordButton: UIButton{
     }
     
     func sharedInit(){
-        //layer.backgroundColor = colors.buttonBg.cgColor
-        
         layer.cornerRadius = frame.height/2
-        
-        //layer.shadowColor = UIColor.black.cgColor
-        //layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        //layer.masksToBounds = false
-        //layer.shadowRadius = 1.0
-        //layer.shadowOpacity = 0.5
-        //clipsToBounds = true
-
     }
     
 

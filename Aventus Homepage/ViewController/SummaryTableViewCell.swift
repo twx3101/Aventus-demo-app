@@ -8,9 +8,9 @@
 
 import UIKit
 
+// The cell that is displayed in Payment page
 class SummaryTableViewCell: UITableViewCell {
     
-
     @IBOutlet weak var detailRightLabel: UILabel!
     
     @IBOutlet weak var detailLabel: UILabel!

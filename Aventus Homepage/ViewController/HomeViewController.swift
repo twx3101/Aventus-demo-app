@@ -9,6 +9,7 @@
 import UIKit
 import CapitoSpeechKit
 import MBProgressHUD
+import AVFoundation
 
 class contextContents {
     static let shared = contextContents()
@@ -22,27 +23,16 @@ class contextContents {
 
 // Home Page
 class HomeViewController: AVTBaseViewController{
-   // let startSound : SystemSoundID = 1110
-  //  let endSound : SystemSoundID = 1111
-    
-    // MARK: Properties
-    @IBOutlet weak var utter1Label: UILabel!
-    
-    @IBOutlet weak var utter2Label: UILabel!
-    
-    @IBOutlet weak var microphone: RecordButton!
-    
+
     @IBOutlet weak var transcription: UILabel!
     
-    @IBOutlet weak var resetBut: UIButton!
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = colors.greyBg
         self.textControl.delegate = self
-        
     }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         handlingContext.resetData()
@@ -52,28 +42,24 @@ class HomeViewController: AVTBaseViewController{
     override func micPress() {
         
         if self.isRecording {
-            // AudioServicesPlaySystemSound(endSound)
+            AudioServicesPlaySystemSound(endSound)
             CapitoController.getInstance().cancelTalking()
             helper.showAlert(message: "Done Listening")
             
         }
         else {
-            // AudioServicesPlaySystemSound(startSound)
+            AudioServicesPlaySystemSound(startSound)
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
             self.transcription.text = ""
         }
     }
-    
-
 }
 
+// Context is handled differently by the page
 extension HomeViewController{
     
-
     override func handle(response: CapitoResponse){
-        //print("handle")
         if response.messageType == "WARNING"{
-            //self.showErrorMessage(text: response.message)
         }
         else{
             
@@ -88,7 +74,6 @@ extension HomeViewController{
                 if task == "BuyTicket" || task == "BuyTickets"{
                     handleBuyTickets()
                 }
-                
             }
             else{
                 helper.showAlert(message: "Sorry, I couldn't understand that")
@@ -96,7 +81,9 @@ extension HomeViewController{
         }
     }
   
+    // Navigate to Event page
     func handleNavigate(){
+        
         var nextViewController : EventViewController
         
         let pageViewController = self.parent as! PageViewController
@@ -118,6 +105,8 @@ extension HomeViewController{
         
         pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
+    
+    
     override func handleBuyTickets(){
         
         var categoryNum : Int?
@@ -173,14 +162,9 @@ extension HomeViewController{
             }
             detailViewController.category = categoryNum!
         }
-        
-        print("HELLO2")
-      
-        
-       
+
         if noOfEvents.count == 1{
-            print("Hello3", noOfEvents.count)
-            
+
             if number != nil && categoryNum != nil{
                 let paymentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PaymentPage") as! PaymentViewController
                 
@@ -204,49 +188,18 @@ extension HomeViewController{
             }
         }
         else if noOfEvents.count == 0{
-            //TODO
             pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         }
             
-            //go back to event page  if there's more than 1 event to select from
+        //go back to event page  if there's more than 1 event to select from
         else{
             pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         }
     }
 }
 
-//errors
-/*extension HomeViewController{
-    
-    func showProcessingHUD(text: String){
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.mode = .indeterminate
-        hud.minShowTime = 1.0
-        hud.label.text = "Processing"
-        hud.detailsLabel.text = text
-    }
-    func hideProcessingHUD(){
-        MBProgressHUD.hide(for: self.view, animated: true)
-    }
-    
-    func showError(_ error: Error) {
-        //print(error.localizedDescription)
-    }
-    
-}*/
 
 extension HomeViewController{
-    
-    /*func speechControllerDidBeginRecording() {
-        self.isRecording = true
-        //change microphone to show busy recording
-        self.microphone.setImage(pressedMic, for: .normal)
-    }
-    
-    func speechControllerDidFinishRecording() {
-        self.isRecording = false
-        self.microphone.setImage(readyMic, for: .normal)
-    }*/
     
     override func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
         self.showProcessingHUD(text: "Processing...")
@@ -264,28 +217,3 @@ extension HomeViewController{
     }
 }
 
-/*
- extension ViewController: UISearchBarDelegate {
-    func searchButtonPressed(_ searchBar: UISearchBar){
-        self.textControlBar.resignFirstResponder()
- 
-        if let text = searchBar.text{
-            print("Sending text event: \(text)")
-            self.onTextControlClick(nil)
-            self.handle(text: text)
-        }
-    }
- }
-*/
- /*extension HomeViewController: TextDelegate{
-    func textControllerDidFinish(withResults response: CapitoResponse!) {
-        self.hideProcessingHUD()
-    self.handle(response: response)
-    }
- 
-    func textControllerDidFinishWithError(_ error: Error!){
-        self.hideProcessingHUD()
-        self.showError(error)
-    }
- }
-*/

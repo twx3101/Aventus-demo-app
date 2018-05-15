@@ -9,9 +9,7 @@
 import UIKit
 
 class Seating{
-    
-    // MARK: Properties
-    
+
     var categories: [String]
     
     var price: [Double]
@@ -20,13 +18,7 @@ class Seating{
     
     var noCategories: Int
     
- 
-    
-    
-    // MARK: Initialization
-    
     init(categories: [String], price: [Double], noSeatsAvail: [Int], noCategories: Int){
-        
         self.categories = categories
         self.price = price
         self.noSeatsAvail = noSeatsAvail

@@ -6,6 +6,8 @@
 //  Copyright © 2018 Krongsiriwat, Krantharat. All rights reserved.
 //
 
+
+// Used to store the index of each page in PageViewController
 struct pageNo {
     
     static var profile: Int = 0

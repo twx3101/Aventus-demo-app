@@ -9,16 +9,12 @@
 import UIKit
 
 class Payment{
-    
-    // MARK: Properties
-    
+
     var category: String
     
     var price: Double
     
     var selectedSeats: Int
-    
-    // MARK: Initialization
     
     init(category: String, price: Double, selectedSeats: Int){
         

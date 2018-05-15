@@ -9,7 +9,7 @@
 import UIKit
 import CapitoSpeechKit
 import MBProgressHUD
-
+import AVFoundation
 
 // AVTBaseViewController is the super class of HomeVC, EventVC, SeatVC
 // This VC contains banner, chat bar, menu bar and all functions related
@@ -26,7 +26,7 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     var textControl: UITextField = SearchTextField(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
     var cancelButton: UIButton = UIButton(type: UIButtonType.system)
     
-    var micButton: UIButton = RecordButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    var micButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     
     lazy var readyMic: UIImage = {
         return UIImage(named: "icons8-microphone-96")!
@@ -55,6 +55,11 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     
     var leftItemX: Int = 0
     var rightItemX: Int = 0
+    
+    
+    
+    let startSound: SystemSoundID = 1110
+    let endSound : SystemSoundID = 1111
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,18 +140,15 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     
     // When microphone button is pressed, the application proceeds the input given by users.
     func micPress() {
-        // let startSound: SystemSoundID = 1110
-        //let endSound : SystemSoundID = 1111
         
         if self.isRecording {
-            // AudioServicesPlaySystemSound(endSound)
+            AudioServicesPlaySystemSound(endSound)
             CapitoController.getInstance().cancelTalking()
-            print("if")
             
             helper.showAlert(message: "Done Listening")
         }
         else {
-            //  AudioServicesPlaySystemSound(startSound)
+            AudioServicesPlaySystemSound(startSound)
             CapitoController.getInstance().push(toTalk: self, withDialogueContext: contextContents.shared.context)
         }
     }

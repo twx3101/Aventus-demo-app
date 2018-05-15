@@ -8,10 +8,8 @@
 
 import Foundation
 
+// Needs to convert to NSCode so that it can be stored locally
 class Booking: NSObject, NSCoding{
-    
-    
-    // MARK: Properties
     
     var bookingId: String?
     

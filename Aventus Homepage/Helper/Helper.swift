@@ -11,6 +11,7 @@ import BRYXBanner
 
 class helper {
     
+    // The banner appears when users finish their speech
     static func showAlert(message: String) {
         
         let banner = Banner(title: "Aventus", subtitle: message, image: UIImage(named: "Icon"), backgroundColor: colors.neonblueBg)
@@ -19,6 +20,7 @@ class helper {
         
     }
     
+    // retrieve booking users have by key
     static func retrieveDataFromKey(key: String) -> [Booking] {
         
         let ud = UserDefaults.standard
@@ -29,19 +31,18 @@ class helper {
         } else {
             bookings = []
         }
-        //print(bookings[0].noTickets)
         return bookings
     }
     
+    // save data to users' phone by key
     static func saveDataForKey(key: String, data: [Booking]) {
-        
         let ud = UserDefaults.standard
-        
         let dataToSave = NSKeyedArchiver.archivedData(withRootObject: data)
         ud.set(dataToSave, forKey: key)
         ud.synchronize()
     }
     
+    // set background image to the view
     static func setBackground(view: UIView, image: String) {
         let bgImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height) )
         bgImageView.image = UIImage(named: image)

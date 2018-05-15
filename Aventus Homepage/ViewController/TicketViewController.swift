@@ -24,16 +24,76 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var cellHeight: Double = 0
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = colors.greyBg
+        tableView.backgroundColor = colors.greyBg
+        
+        headerWidth = Double(self.view.frame.width - self.view.layoutMargins.left - self.view.layoutMargins.right)
+        headerHeight = SCALE*headerWidth
+        
+        cellWidth = headerWidth
+        cellHeight = 44
+        
+        tableView.allowsSelection = false
+        
+        // retrieve the data saved in users' phone
+        userBookings = helper.retrieveDataFromKey(key: "Bookings")
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goPreviousPage(_:))))
+        
+    }
+    
+    // The number of bookings
     func numberOfSections(in tableView: UITableView) -> Int {
         return userBookings.count
     }
     
+    // The number of tickets for each booking
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Int(userBookings[section].noTickets!)!
     }
     
+    // How each booking is displayed
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = ExpandableHeaderView()
+        
+        header.customInit(title: userBookings[section].eventArtist!, section: section, delegate: self)
+        
+        let bgImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: headerHeight) )
+        bgImageView.image = UIImage(named: "mainTicket")
+        bgImageView.center.x = self.view.frame.width/2
+        
+        header.contentView.insertSubview(bgImageView, at: 0)
+        
+        let artistLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: 100))
+        
+        artistLabel.text = userBookings[section].eventArtist
+        artistLabel.textAlignment = .center
+        artistLabel.textColor = UIColor.black
+        
+        let dateLabel = UILabel(frame: CGRect(x: 0.0, y: headerHeight*2/5, width: headerWidth, height: 100))
+        
+        dateLabel.text = userBookings[section].eventDatetime
+        dateLabel.textAlignment = .center
+        dateLabel.textColor = UIColor.black
+        
+        let venueLabel = UILabel(frame: CGRect(x: 0.0, y: headerHeight/2, width: headerWidth, height: 100))
+        
+        venueLabel.text = userBookings[section].eventVenue! + " , " + userBookings[section].eventLocation!
+        venueLabel.textAlignment = .center
+        venueLabel.textColor = UIColor.black
+        
+        
+        header.addSubview(artistLabel)
+        header.addSubview(dateLabel)
+        header.addSubview(venueLabel)
+        
+        return header
+    }
     
-    
+    // How each ticket is displayed
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
@@ -58,6 +118,7 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.addSubview(detailLabel)
         
         // Hide all rows in the last section if the section has not been clicked
+        // Needed when users just navigate to the page
         if indexPath.section == (userBookings.count - 1) {
             if (userBookings[indexPath.section].expanded == "0") {
                 cell.isHidden = true
@@ -70,11 +131,14 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    // The height for the booking
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(headerHeight)
     }
     
+    // The height for the ticket
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // if it is expanded (clicked), display the row
         if(userBookings[indexPath.section].expanded == "1") {
             return CGFloat(cellHeight)
         } else {
@@ -82,49 +146,13 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    // The gap between any two sections
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 2
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = ExpandableHeaderView()
-        
-        header.customInit(title: userBookings[section].eventArtist!, section: section, delegate: self)
-        
-        let bgImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: headerHeight) )
-        bgImageView.image = UIImage(named: "mainTicket")
-        bgImageView.center.x = self.view.frame.width/2
-        
-        header.contentView.insertSubview(bgImageView, at: 0)
-        
-        let artistLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: 100))
-        
-        artistLabel.text = userBookings[section].eventArtist
-        artistLabel.textAlignment = .center
-        artistLabel.textColor = UIColor.black
-        
-        let dateLabel = UILabel(frame: CGRect(x: 0.0, y: headerHeight*2/5, width: headerWidth, height: 100))
-        
-        dateLabel.text = userBookings[section].eventDatetime
-        dateLabel.textAlignment = .center
-        dateLabel.textColor = UIColor.black
-    
-        let venueLabel = UILabel(frame: CGRect(x: 0.0, y: headerHeight/2, width: headerWidth, height: 100))
-        
-        venueLabel.text = userBookings[section].eventVenue! + " , " + userBookings[section].eventLocation!
-        venueLabel.textAlignment = .center
-        venueLabel.textColor = UIColor.black
-        
-        
-        header.addSubview(artistLabel)
-        header.addSubview(dateLabel)
-        header.addSubview(venueLabel)
-        
-        return header
-    }
-    
+
+    // When users click on the booking, display every ticket corresponded with the booking
     func toggleSection(header: ExpandableHeaderView, section: Int) {
-        
         
         if (userBookings[section].expanded == "0") {
             userBookings[section].expanded = "1"
@@ -134,36 +162,11 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         tableView.beginUpdates()
-        
         let noTick = Int(userBookings[section].noTickets!)!
-        
-        print(noTick)
         for i in 0..<noTick {
             tableView.reloadRows(at: [IndexPath(row: i, section: section)], with: .automatic)
         }
         tableView.endUpdates()
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-        self.view.backgroundColor = colors.greyBg
-        tableView.backgroundColor = colors.greyBg
-        
-        
-        headerWidth = Double(self.view.frame.width - self.view.layoutMargins.left - self.view.layoutMargins.right)
-        headerHeight = SCALE*headerWidth
-        
-        cellWidth = headerWidth
-        cellHeight = 44
-
-        tableView.allowsSelection = false
-        
-        userBookings = helper.retrieveDataFromKey(key: "Bookings")
-        
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goPreviousPage(_:))))
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -175,7 +178,7 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.didReceiveMemoryWarning()
     }
     
-    
+    // Go back to previous page
     @objc func goPreviousPage(_ tap: UITapGestureRecognizer) {
         presentingViewController?.dismiss(animated: true, completion: nil)
         

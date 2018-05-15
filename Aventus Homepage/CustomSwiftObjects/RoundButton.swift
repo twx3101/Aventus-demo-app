@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Used to display the purchase button (in Seat page) and the confirm button (in Confirm page)
 class RoundButton: UIButton{
     override init(frame: CGRect){
         super.init(frame: frame)

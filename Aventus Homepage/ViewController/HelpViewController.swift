@@ -18,27 +18,28 @@ class HelpViewController: UIViewController, UIViewControllerTransitioningDelegat
     
     let width = 343
     
+    // The index of page users currently are before Help page is presented
     var pageIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        //self.view.backgroundColor = colors.bg
         helper.setBackground(view: self.view, image: "helpBg")
-        
        
-        
         let index: Int = pageIndex!
         
         var labels = [UILabel]()
+        
+        // The label displayed at the top
         let topLabel = UtterLabel(frame: CGRect(x: 0, y: 0, width: width, height: 80))
         topLabel.textColor = .white
         topLabel.lineBreakMode = .byWordWrapping
         topLabel.numberOfLines = 0
         topLabel.textAlignment = .center
         
+        // The label displayed at the middle of the page, depending on where users come from
         switch(index) {
+        
         case pageNo.home:
             
             topLabel.text = "Here are some examples of what you can say to me"
@@ -113,11 +114,6 @@ class HelpViewController: UIViewController, UIViewControllerTransitioningDelegat
             print(index)
         }
         
-        //utterView.frame.
-        //utterView.distribution = .fill
-        //utterView.alignment = .fill
-        //utterView.spacing = 16;
-        
         headerView.addSubview(topLabel)
         
         for var label in labels {
@@ -128,25 +124,14 @@ class HelpViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goPreviousPage(_:))))
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    // Go back to the previous page
     @objc func goPreviousPage(_ tap: UITapGestureRecognizer) {
         presentingViewController?.dismiss(animated: true, completion: nil)
 

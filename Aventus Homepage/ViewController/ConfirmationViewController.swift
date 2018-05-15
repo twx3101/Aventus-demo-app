@@ -10,9 +10,6 @@ import UIKit
 
 class ConfirmationViewController: UIViewController{
     
-    var event: Event?
-    
-    var payment: Payment?
     
     @IBOutlet weak var homeButton: UIButton!
     
@@ -31,17 +28,14 @@ class ConfirmationViewController: UIViewController{
         homeButton.isUserInteractionEnabled = true
         
     }
-    
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
 
-    
+    // Navigate to Home page
     @IBAction func goHome(_ sender: UIButton) {
-        print("hello")
         let pageViewController = self.parent as! PageViewController
         
         let homeViewController = storyboard?.instantiateViewController(withIdentifier: "HomePage") as! HomeViewController
@@ -51,6 +45,7 @@ class ConfirmationViewController: UIViewController{
         
     }
     
+    // Navigat to Ticket page
     @IBAction func goViewTicket(_ sender: UIButton) {
         
         let pageViewController = self.parent as! PageViewController

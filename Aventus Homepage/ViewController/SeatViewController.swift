@@ -10,8 +10,9 @@ import UIKit
 import Alamofire
 import CapitoSpeechKit
 import MBProgressHUD
-//import AVFoundation
 
+
+// Seat Page
 class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerViewDataSource{
 
     @IBOutlet weak var artistLabel: UILabel!
@@ -46,25 +47,106 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
     
     var seatCategory: Int = 0
     
+    // Categories appeared in the picker that users can select
     var categoriesData: [String] = [String]()
     
+    // Prices corresponding to categoriesData
     var priceData: [String] = [String]()
     
+    // The number of tickets in the picker that users can select
     var ticketData: [String] = [String]()
     
+    // The current category currently selected
     var selectedCategory: String = ""
     
+    // index associated with the position of selectedCategory (string) in categoriesData (array of string)
+    var category: Int = 0
+    
+    // The price of the seat corresponding to selectedCategory
     var selectedPrice: Double = 0
     
+    // The number of tickets currently selected
     var selectedTicket: Int = 0
-    
-    var category: Int = 0
     
     let pickerWidth = 100
     
     let pickerHeight = 80
+
     
-    let controller = CapitoController.getInstance()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = colors.greyBg
+        
+        categoryPicker.delegate = self
+        categoryPicker.dataSource = self
+        
+        ticketPicker.delegate = self
+        ticketPicker.dataSource = self
+        
+        eventView.layer.cornerRadius = 5.0
+        eventView.clipsToBounds = true
+        
+        pickerView.layer.backgroundColor = (UIColor.white.withAlphaComponent(0.95)).cgColor
+        pickerView.layer.cornerRadius = 5.0
+        
+        layoutButton.setTitleColor(colors.headerTwoText, for: UIControlState.normal)
+        
+        categoryLabel.textColor = colors.headerTwoText
+        ticketLabel.textColor = colors.headerTwoText
+        
+        let txtLabel = ((eventLoaded?.artist)?.uppercased())! + " " + (eventLoaded?.location)!
+        
+        let mutableString = NSMutableAttributedString(string: txtLabel)
+        
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.bodyText, range: NSRange(location: 0, length: txtLabel.count))
+        
+        mutableString.addAttribute(NSFontAttributeName, value: UIFont(name: "Nexa Light", size: 21) as Any, range: NSRange(location: 0, length: (eventLoaded?.artist.count)!))
+        
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.headerText, range: NSRange(location: 0, length: (eventLoaded?.artist.count)!))
+        
+        artistLabel.attributedText = mutableString
+        
+        locationDateTimeLabel.text = (eventLoaded?.formattedDate)! + ", " + (eventLoaded?.time)!
+        locationDateTimeLabel.textColor = colors.bodyText
+        
+        Alamofire.request((eventLoaded?.bannerURL)!).responseImage { response in
+            debugPrint(response)
+            
+            if let image = response.result.value{
+                self.artistPhoto.image = image
+            }
+        }
+        
+        
+        // Setting the data to be displayed in the picker
+        seating = (eventLoaded?.seating) as! Seating
+        
+        categoriesData = (seating!.categories)
+        
+        let noCategories = (seating!.noCategories)
+        
+        for i in 0..<noCategories {
+            priceData.append(String(format:"%.02f", seating!.price[i]))
+        }
+        let noSeats = 6
+        for i in 0..<noSeats {
+            ticketData.append(String(i))
+        }
+        
+        selectedCategory = categoriesData[category]
+        selectedPrice = Double(priceData[category])!
+        
+        // set the current position of the picker
+        categoryPicker.selectRow(category, inComponent: 0, animated: false)
+        categoryPicker.showsSelectionIndicator = false
+        ticketPicker.selectRow(selectedTicket, inComponent: 0, animated: false)
+        ticketPicker.showsSelectionIndicator = false
+        
+        categoryPicker.subviews[1].isHidden = true
+        categoryPicker.subviews[2].isHidden = true
+        
+    }
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         pickerView.subviews.forEach({
@@ -73,6 +155,7 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         return 1
     }
     
+    // The number of rows shown in the picker view
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if(pickerView.tag==0) {
             return categoriesData.count
@@ -81,16 +164,19 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         }
     }
 
+    // the height for each component
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 100
     }
     
+    // how each component is displayed
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
         var view: UIView
         
         let labelColor = UIColor.black
         
+        // for category picker
         if(pickerView.tag==0){
             
             view = UIView(frame: CGRect(x: 0, y: 0, width: pickerWidth*2, height: pickerHeight))
@@ -112,6 +198,7 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
             
             view.addSubview(bottomLabel)
             
+        // for the number of tickets
         } else {
             
             view = UIView(frame: CGRect(x: 0, y: 0, width: pickerWidth, height: pickerHeight))
@@ -128,12 +215,10 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
             
         }
         
-
-        
         return view
     }
     
-
+    // change the value when users select row
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if(pickerView.tag==0) {
@@ -144,80 +229,6 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         }
 
     }
-
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = colors.greyBg
-        
-        eventView.layer.cornerRadius = 5.0
-        eventView.clipsToBounds = true
-        
-        pickerView.layer.backgroundColor = (UIColor.white.withAlphaComponent(0.95)).cgColor
-        pickerView.layer.cornerRadius = 5.0
-
-        categoryPicker.delegate = self
-        categoryPicker.dataSource = self
-        
-        ticketPicker.delegate = self
-        ticketPicker.dataSource = self
-        
-        layoutButton.setTitleColor(colors.headerTwoText, for: UIControlState.normal)
-        
-        categoryLabel.textColor = colors.headerTwoText
-        ticketLabel.textColor = colors.headerTwoText
-
-        let txtLabel = ((eventLoaded?.artist)?.uppercased())! + " " + (eventLoaded?.location)!
-        
-        let mutableString = NSMutableAttributedString(string: txtLabel)
-        
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.bodyText, range: NSRange(location: 0, length: txtLabel.count))
-        
-        mutableString.addAttribute(NSFontAttributeName, value: UIFont(name: "Nexa Light", size: 21) as Any, range: NSRange(location: 0, length: (eventLoaded?.artist.count)!))
-        
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: colors.headerText, range: NSRange(location: 0, length: (eventLoaded?.artist.count)!))
-        
-        artistLabel.attributedText = mutableString
-        
-        locationDateTimeLabel.text = (eventLoaded?.formattedDate)! + ", " + (eventLoaded?.time)!
-        locationDateTimeLabel.textColor = colors.bodyText
- 
-        Alamofire.request((eventLoaded?.bannerURL)!).responseImage { response in
-            debugPrint(response)
-            
-            if let image = response.result.value{
-                self.artistPhoto.image = image
-            }
-        }
-        
-        seating = (eventLoaded?.seating) as! Seating
-        
-        categoriesData = (seating!.categories)
-        
-        let noCategories = (seating!.noCategories)
-        
-        for i in 0..<noCategories {
-            priceData.append(String(format:"%.02f", seating!.price[i]))
-        }
-        let noSeats = 6
-        for i in 0..<noSeats {
-            ticketData.append(String(i))
-        }
-        
-        selectedCategory = categoriesData[category]
-        selectedPrice = Double(priceData[category])!
-        
-        categoryPicker.selectRow(category, inComponent: 0, animated: false)
-        categoryPicker.showsSelectionIndicator = false
-        ticketPicker.selectRow(selectedTicket, inComponent: 0, animated: false)
-        ticketPicker.showsSelectionIndicator = false
-        
-        categoryPicker.subviews[1].isHidden = true
-        categoryPicker.subviews[2].isHidden = true
-
-    }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -234,6 +245,7 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         purchaseButton.isEnabled = true
     }
     
+    // Show pop up
     @IBAction func showLayoutButton(_ sender: RoundButton) {
         
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seatLayoutPopUp") as! SeatPopUpViewController
@@ -245,13 +257,18 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
 
     }
     
+    // The function is called when users tap purchase button
+    // If users' selection is valid, navigate to Payment page
+    // Otherwise, warning is displayed
     @IBAction func purchaseButton(_ sender: RoundButton) {
         
+        // The number of tickets is zero
         if(selectedTicket==0) {
             warningLabel.text = "Please select the number of tickets."
             return
         }
         
+        // If there are not enough seats for users to purchase
         convertStringCatToInt()
         let seat = self.eventLoaded?.seating
         var no = seat?.noSeatsAvail[seatCategory]
@@ -263,6 +280,7 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         }
             
         
+        // Navigate to Payment page
         let pageViewController = self.parent as! PageViewController
         
         let detailViewController = self.storyboard?.instantiateViewController(withIdentifier: "PaymentPage") as! PaymentViewController
@@ -297,6 +315,7 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
     
 }
 
+// Context is handled differently by the page
 extension SeatViewController{
 
     override func handle(response: CapitoResponse){
