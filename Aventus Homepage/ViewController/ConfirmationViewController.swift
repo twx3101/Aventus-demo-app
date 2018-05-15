@@ -30,38 +30,12 @@ class ConfirmationViewController: UIViewController{
         homeButton.isEnabled = true
         homeButton.isUserInteractionEnabled = true
         
-        //confirmView.backgroundColor = colors.darkpurpleBg
-        
-        /*labelConfirm.lineBreakMode = .byWordWrapping
-        labelConfirm.numberOfLines = 0
-        labelConfirm.textAlignment = .center
-        labelConfirm.textColor = colors.headerText
-        
-        confirmViewTicketButton.titleLabel?.font = UIFont(name : "Sarabun-Bold" , size: 24)
-        confirmViewTicketButton.setTitleColor(colors.whiteText,for: UIControlState.normal)
-        
-        confirmViewTicketButton.layer.borderWidth = 0.6
-        confirmViewTicketButton.layer.backgroundColor = (colors.headerThreeText).cgColor
-        confirmViewTicketButton.layer.cornerRadius = 15
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)*/
-        
     }
     
-    func showAnimate()
-    {
-        /*self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        self.view.alpha = 0.0;
-        UIView.animate(withDuration: 0.25, animations: {
-            self.view.alpha = 1.0
-            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        });*/
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

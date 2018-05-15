@@ -143,12 +143,12 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         view.backgroundColor = colors.bg
         collectionView.backgroundColor = colors.bg
         
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Events"
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = searchController
-        }
+//        searchController.searchResultsUpdater = self
+//        searchController.obscuresBackgroundDuringPresentation = false
+//        searchController.searchBar.placeholder = "Search Events"
+//        if #available(iOS 11.0, *) {
+//            navigationItem.searchController = searchController
+//        }
         definesPresentationContext = true
         
         self.textControl.delegate = self
@@ -161,28 +161,28 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         super.didReceiveMemoryWarning()
     }
     
-    func isFilteringBar() -> Bool{
-        if(searchController.isActive && !searchBarIsEmpty()){
-            isFiltering = true
-        }
-        else{
-            isFiltering = false
-        }
-        return isFiltering
-    }
-    
-    func searchBarIsEmpty()-> Bool{
-        return searchController.searchBar.text?.isEmpty ?? true
-    }
-    
-    func filterContentForSearchText(_ searchText: String, scope: String = "All"){
-        filteredEvents = events.filter({( event:Event) -> Bool in
-            return event.artist.lowercased().contains(searchText.lowercased()) || event.location.lowercased().contains(searchText.lowercased())
-            
-        })
-        collectionView.reloadData()
-        //tableView.reloadData()
-    }
+//    func isFilteringBar() -> Bool{
+//        if(searchController.isActive && !searchBarIsEmpty()){
+//            isFiltering = true
+//        }
+//        else{
+//            isFiltering = false
+//        }
+//        return isFiltering
+//    }
+//    
+//    func searchBarIsEmpty()-> Bool{
+//        return searchController.searchBar.text?.isEmpty ?? true
+//    }
+//    
+//    func filterContentForSearchText(_ searchText: String, scope: String = "All"){
+//        filteredEvents = events.filter({( event:Event) -> Bool in
+//            return event.artist.lowercased().contains(searchText.lowercased()) || event.location.lowercased().contains(searchText.lowercased())
+//            
+//        })
+//        collectionView.reloadData()
+//        //tableView.reloadData()
+//    }
 
     
     private func loadEvents(){
@@ -581,14 +581,13 @@ extension EventViewController{
     }
 }
 
-extension EventViewController: UISearchResultsUpdating{
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
-        
-    }
-    
-}
+//extension EventViewController: UISearchResultsUpdating{
+//
+//    func updateSearchResults(for searchController: UISearchController) {
+//        filterContentForSearchText(searchController.searchBar.text!)
+//
+//    }
+
 
 extension Date{
     func isBetween(_ date1: Date, and date2: Date) -> Bool{

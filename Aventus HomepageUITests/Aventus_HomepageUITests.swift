@@ -161,5 +161,50 @@ class Aventus_HomepageUITests: XCTestCase {
         
         
     }
-
+    
+    func testSeatpopup()
+    {
+        
+        let app = XCUIApplication()
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        element.swipeLeft()
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["seatLayoutPopUp"]/*[[".buttons[\"Layout\"]",".buttons[\"seatLayoutPopUp\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        element.children(matching: .other).element(boundBy: 0).children(matching: .other).element.tap()
+        app.buttons["PURCHASE"].tap()
+        
+    }
+    
+    
+    func testTicketView(){
+        
+        let app = XCUIApplication()
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element
+        element.children(matching: .other).element.children(matching: .other).element.swipeLeft()
+        app.collectionViews/*@START_MENU_TOKEN@*/.staticTexts["RIHANNA London"]/*[[".cells.staticTexts[\"RIHANNA London\"]",".staticTexts[\"RIHANNA London\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.pickerWheels["0"]/*[[".pickers.pickerWheels[\"0\"]",".pickerWheels[\"0\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
+        app.buttons["PURCHASE"].tap()
+        
+        let cardholderSNameTextField = app.textFields["Cardholder's name"]
+        cardholderSNameTextField.tap()
+        cardholderSNameTextField.typeText("s")
+        
+        let cardNumberTextField = app.textFields["Card Number"]
+        cardNumberTextField.tap()
+        cardNumberTextField.tap()
+        cardNumberTextField.typeText("s")
+        
+        let mmYyTextField = app.textFields["MM/YY"]
+        mmYyTextField.tap()
+        mmYyTextField.typeText("s")
+        
+        let cvvTextField = app.textFields["CVV"]
+        cvvTextField.tap()
+        cvvTextField.tap()
+        cvvTextField.typeText("s")
+        app.buttons["CONFIRM"].tap()
+        app.buttons["ticketIcon"].tap()
+        element.tap()
+        
+    }
 }
