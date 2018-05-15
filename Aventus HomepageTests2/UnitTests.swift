@@ -10,7 +10,8 @@ import XCTest
 
 class Aventus_HomepageTests2: XCTestCase {
     var event : EventViewController!
-    var price : ConfirmationViewController!
+    var price : PaymentViewController!
+    var home : HomeViewController!
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -21,53 +22,64 @@ class Aventus_HomepageTests2: XCTestCase {
         super.tearDown()
     }
     
-    func testFiltering(){
-        event = EventViewController()
+    func testFirstSearch(){
         
-        let searchText = "London"
+        home = HomeViewController()
+        let a = handlingContext()
+        home.viewDidLoad()
         
+        let searchtext = "Show me London"
         
-        event.filteredEvents = event.events.filter({( event:Event) -> Bool in
-            return event.artist.lowercased().contains(searchText.lowercased()) || event.location.lowercased().contains(searchText.lowercased())
-            
-            })
-        for i in event.filteredEvents{
-            if (!i.artist.lowercased().contains(searchText.lowercased())){
-                XCTFail()
-            }
-            if (!i.artist.lowercased().contains(searchText.lowercased())){
-                XCTFail()
-            }
-        }
+        home.handle(text: searchtext)
+        
+        let context = ["task" : "Navigate", "artist" : "Rihanna", "musicGenre" : "pop", "location" : "London", "venue" : "O2"]
+        a.parseData(context: context)
+        let seat = ["task" : "Navigate", "numTickets" : "2", "priceComprison" : "<", "seatArea" : "A", "amount" : "20"]
+        a.parseData(context: seat)
+        
+        let date =  ["day" : 1, "month" : 12, "year" : 2018]
+        let date4 = ["task" : "Navigate" , "end_datetime" : date] as [String : Any]
+        a.parseData(context: date4)
+ 
+        let date2 = ["task" : "Navigate" , "start_datetime" : date] as [String : Any]
+        a.parseData(context: date2)
     }
+        
     
     func testTicketPriceComputed(){
-        price = ConfirmationViewController()
-        let newpay = Payment(categories: ["101"], price: [120], selectedSeats: [2])
-        
-        price.payment = newpay
-        
-        let sub = (price.payment?.price[0])! *  (price.payment?.selectedSeats[0])!
-        
-        if (sub != 240){
-            XCTFail()
-        }
-        
-        
+        price = PaymentViewController()
+        let price2 = Payment(category: "A", price: 120.0, selectedSeats: 2)
+      
+
+        price.payment = price2
+
+        let sub = (price2.price) *  Double((price2.selectedSeats))
+
+        if (sub != 240.0){
+           XCTFail()
+       }
 
     }
+
     
-    func testCapitoSpeechsetup(){
-        /*
-         var controller : CapitoController
-         
-         controller.setupWithID("
-         
-         let status = CapitoController.getInstance.connect()
-         if status != "kCapitoConnect_SUCCESS"{
-         XCTFailt("Status Code: \(status)")
-         }
-         */
+    func testhelpPage(){
+        
+      /*let help = HelpViewController()
+        help.pageIndex = 1
+        help.viewDidLoad()*/
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: type(of: self)))
+        let vc = storyboard.instantiateViewController(withIdentifier: "helpPage") as! HelpViewController
+        
+        //let dummy = vc.view // force loading subviews and setting outlets
+        
+        vc.viewDidLoad()
+    }
+    
+    
+    func testeventPage(){
+        event = EventViewController()
+        event.viewDidLoad()
     }
 }
 

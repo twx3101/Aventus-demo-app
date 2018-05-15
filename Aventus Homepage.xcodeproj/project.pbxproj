@@ -50,9 +50,7 @@
 		BFA98FD120A7611400553773 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA98FD020A7611400553773 /* Helper.swift */; };
 		BFA98FD320A763C400553773 /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA98FD220A763C400553773 /* ExpandableHeaderView.swift */; };
 		BFA98FD520A7642D00553773 /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA98FD420A7642D00553773 /* TicketViewController.swift */; };
-		BFA98FD720A764B600553773 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA98FD620A764B600553773 /* Section.swift */; };
 		BFA98FDB20A779C500553773 /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA98FDA20A779C500553773 /* Booking.swift */; };
-		BFA98FDD20A77A7500553773 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA98FDC20A77A7500553773 /* Ticket.swift */; };
 		BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */; };
 		BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAF60C2035C3E200050B8A /* Seating.swift */; };
 		BFBD7FA620A628E2000BA93B /* AVTBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBD7FA520A628E2000BA93B /* AVTBaseViewController.swift */; };
@@ -158,9 +156,7 @@
 		BFA98FD020A7611400553773 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		BFA98FD220A763C400553773 /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
 		BFA98FD420A7642D00553773 /* TicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
-		BFA98FD620A764B600553773 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		BFA98FDA20A779C500553773 /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
-		BFA98FDC20A77A7500553773 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		BFBAF60A2035C36500050B8A /* ConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		BFBAF60C2035C3E200050B8A /* Seating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seating.swift; sourceTree = "<group>"; };
 		BFBD7FA520A628E2000BA93B /* AVTBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVTBaseViewController.swift; sourceTree = "<group>"; };
@@ -312,9 +308,7 @@
 				BFBAF60C2035C3E200050B8A /* Seating.swift */,
 				BF5946962038743A00A0A493 /* Payment.swift */,
 				BF76AE2F20264CD5006274FE /* Event.swift */,
-				BFA98FD620A764B600553773 /* Section.swift */,
 				BFA98FDA20A779C500553773 /* Booking.swift */,
-				BFA98FDC20A77A7500553773 /* Ticket.swift */,
 			);
 			path = AVTObjects;
 			sourceTree = "<group>";
@@ -832,7 +826,6 @@
 				BFA98FD520A7642D00553773 /* TicketViewController.swift in Sources */,
 				BFBAF60D2035C3E200050B8A /* Seating.swift in Sources */,
 				BF93314720448ABB0002A3C8 /* DetailTextField.swift in Sources */,
-				BFA98FD720A764B600553773 /* Section.swift in Sources */,
 				BFA6C53D20757EE000AD0601 /* HelpViewController.swift in Sources */,
 				457E32D520659C7E00B7224B /* WarningLabel.swift in Sources */,
 				BF59469D2038E25900A0A493 /* SeatPopUpViewController.swift in Sources */,
@@ -847,7 +840,6 @@
 				BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */,
 				BFA98FD120A7611400553773 /* Helper.swift in Sources */,
 				BFA98FDB20A779C500553773 /* Booking.swift in Sources */,
-				BFA98FDD20A77A7500553773 /* Ticket.swift in Sources */,
 				457E32D720659C7E00B7224B /* ProfileViewController.swift in Sources */,
 				BF337EDF20768C8300B4D2E1 /* DescriptionLabel.swift in Sources */,
 				BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */,

@@ -44,12 +44,12 @@ class handlingContext{
                 //TODO
                  contextContents.shared.contextContent = handleNavigate(context: context)
             }
-            else if task == "SelectSeat"{
-                //TODO
-            }
-            else if task == "NavigateStatic"{
-                //TODO
-            }
+//            else if task == "SelectSeat"{
+//                //TODO
+//            }
+//            else if task == "NavigateStatic"{
+//                //TODO
+//            }
         }
         else{
             //handle nil data
@@ -216,35 +216,35 @@ class handlingContext{
         
         
         //handling time of day and hour
-        if let dayPart = context["dayPart"] as? String{
-            if contextContent.index(forKey: "start_date") == nil  {
-                contextContent["start_date"] = setCurrentDate()
-            }
-            
-            var cal = Calendar.current
-            cal.timeZone = TimeZone(abbreviation: "GMT")!
-            let start_date = contextContent["start_date"] as! Date
-            var d = DateComponents(hour: 0)
-            var e = DateComponents(hour: 0)
-            if dayPart == "Day"{
-                d.hour = 6
-                e.hour = 12
-            }
-            else if dayPart == "Afternoon"{
-                d.hour = 12
-                e.hour = 18
-            }
-            else if dayPart == "Night"{
-                d.hour = 18
-                e.hour = 24
-            }
-            let futureDate = cal.date(byAdding: d, to: start_date)
-            let endDate = cal.date(byAdding: e, to: start_date)
-            
-            contextContent["start_date"] = futureDate
-            contextContent["end_date"] = endDate
-        }
-        
+//        if let dayPart = context["dayPart"] as? String{
+//            if contextContent.index(forKey: "start_date") == nil  {
+//                contextContent["start_date"] = setCurrentDate()
+//            }
+//
+//            var cal = Calendar.current
+//            cal.timeZone = TimeZone(abbreviation: "GMT")!
+//            let start_date = contextContent["start_date"] as! Date
+//            var d = DateComponents(hour: 0)
+//            var e = DateComponents(hour: 0)
+//            if dayPart == "Day"{
+//                d.hour = 6
+//                e.hour = 12
+//            }
+//            else if dayPart == "Afternoon"{
+//                d.hour = 12
+//                e.hour = 18
+//            }
+//            else if dayPart == "Night"{
+//                d.hour = 18
+//                e.hour = 24
+//            }
+//            let futureDate = cal.date(byAdding: d, to: start_date)
+//            let endDate = cal.date(byAdding: e, to: start_date)
+//
+//            contextContent["start_date"] = futureDate
+//            contextContent["end_date"] = endDate
+//        }
+//
         //handling price // not sure if this works
         if let amount = context["amount"] as? String{
             print("HELLO3", amount)
@@ -261,9 +261,9 @@ class handlingContext{
         if let numTickets = context["numTickets"] as? String{
             contextContent["numTickets"] = numTickets
         }
-        if let ticketType = context["ticketType"] as? String{
-            contextContent["ticketType"] = ticketType
-        }
+//        if let ticketType = context["ticketType"] as? String{
+//            contextContent["ticketType"] = ticketType
+//        }
         
         if let seatArea = context["seatArea"] as? String{
             contextContent["seatArea"] = seatArea
@@ -273,11 +273,11 @@ class handlingContext{
         return contextContent
         
     }
-    
-    func handleNavigateStatic(){
-        //open help
-    }
-    
+//
+//    func handleNavigateStatic(){
+//        //open help
+//    }
+//
     func setCurrentDate() -> Date{
         let current_date = Date()
         var cal = Calendar.current

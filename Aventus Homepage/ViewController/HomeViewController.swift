@@ -78,8 +78,6 @@ extension HomeViewController{
         }
         else{
             
-           
-            
             if let task = response.semanticOutput["task"] as? String{
                 handlingContext().bootstrapView(response: response)
                 if task == "NavigateStatic"{

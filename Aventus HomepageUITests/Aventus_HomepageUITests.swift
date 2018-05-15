@@ -32,30 +32,47 @@ class Aventus_HomepageUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testOverall() {
+    func testBuy() {
+      
         
         let app = XCUIApplication()
-        app.staticTexts["\"I want to see Drake.\""].tap()
-        app.staticTexts["\"Inspire me!\""].tap()
-        app.otherElements.containing(.navigationBar, identifier:"UITabBar").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .button).element.tap()
         
-        let tablesQuery = XCUIApplication().tables
-        tablesQuery.children(matching: .cell).element(boundBy: 0).staticTexts["London"].swipeUp()
         
-        let cell = tablesQuery.children(matching: .cell).element(boundBy: 1)
-        let element = cell.children(matching: .other).element(boundBy: 0)
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.swipeLeft()
+        
+        let element = app.collectionViews.children(matching: .cell).element(boundBy: 1).children(matching: .other).element
         element.swipeUp()
+        element.tap()
         
-       element.tap()
         
         
-        let upButton = tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"402,404")/*[[".cells.containing(.staticText, identifier:\"98\")",".cells.containing(.staticText, identifier:\"75\")",".cells.containing(.staticText, identifier:\"402,404\")"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.buttons["Up"]
-        upButton.tap()
-        tablesQuery.buttons["Purchase"].tap()
-        app.buttons["Confirm"].tap()
-        app.navigationBars["Aventus_Homepage.ConfirmationView"].buttons["Back"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["101,102,104,105"]/*[[".cells.staticTexts[\"101,102,104,105\"]",".staticTexts[\"101,102,104,105\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-
+        let pickerWheel = app/*@START_MENU_TOKEN@*/.pickerWheels["0"]/*[[".pickers.pickerWheels[\"0\"]",".pickerWheels[\"0\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        pickerWheel/*@START_MENU_TOKEN@*/.press(forDuration: 1.1);/*[[".tap()",".press(forDuration: 1.1);"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        pickerWheel.swipeUp()
+        app.buttons["PURCHASE"].tap()
+        
+        let cardholderSNameTextField = app.textFields["Cardholder's name"]
+        cardholderSNameTextField.tap()
+        cardholderSNameTextField.typeText("a")
+        
+        let cardNumberTextField = app.textFields["Card Number"]
+        cardNumberTextField.tap()
+        cardNumberTextField.tap()
+        cardNumberTextField.typeText("a")
+        
+        let mmYyTextField = app.textFields["MM/YY"]
+        mmYyTextField.tap()
+        mmYyTextField.tap()
+        mmYyTextField.typeText("a")
+        
+        let cvvTextField = app.textFields["CVV"]
+        cvvTextField.tap()
+        cvvTextField.tap()
+        cvvTextField.typeText("a")
+        app.buttons["CONFIRM"].tap()
+        app.buttons["homeIcon"].tap()
+        
+        
                         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
@@ -63,17 +80,86 @@ class Aventus_HomepageUITests: XCTestCase {
     
     func testTableView(){
         
+        let app = XCUIApplication()
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        element.swipeLeft()
+        
+        let collectionViewsQuery = app.collectionViews
+        let element2 = collectionViewsQuery.children(matching: .cell).element(boundBy: 2).children(matching: .other).element
+        element2.swipeUp()
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 3).children(matching: .other).element.swipeUp()
+        element2.swipeUp()
+        element.swipeRight()
+        
     }
     
-    func testSeguetransition(){
+    func testMenuBar(){
+        
+        let app = XCUIApplication()
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        element.children(matching: .button).element(boundBy: 1).tap()
+        
+        let button = element.children(matching: .button).element(boundBy: 0)
+        button.tap()
+        button.tap()
+        
+        let helpButton = app.buttons["  Help"]
+        helpButton.tap()
+        app.staticTexts["\"Buy me two standing tickets to Rihanna on 19th May\""].tap()
+        element.swipeLeft()
+        element.tap()
+        
+        let menuButton = app.buttons["menu"]
+        menuButton.tap()
+        helpButton.tap()
+        app.staticTexts["\"Don't show me Justin Bieber events\""].tap()
+        
+        let element2 = app.collectionViews.children(matching: .cell).element(boundBy: 1).children(matching: .other).element
+        element2.tap()
+        
         
     }
     
     func testTicket(){
         
-    }
-    
-    func testPayment(){
+        
+        let app = XCUIApplication()
+        app.buttons["menu"].tap()
+        app.buttons["  Ticket"].tap()
+        
+        let rihannaStaticText = app.tables/*@START_MENU_TOKEN@*/.staticTexts["Rihanna"]/*[[".otherElements[\"Rihanna\"].staticTexts[\"Rihanna\"]",".staticTexts[\"Rihanna\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        rihannaStaticText.tap()
+        rihannaStaticText.tap()
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.tap()
+        
         
     }
+    
+    func testMic(){
+
+        
+        let app = XCUIApplication()
+        let window = app.children(matching: .window).element(boundBy: 0)
+        let element = window.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        element.swipeLeft()
+        
+        let icons8Microphone96Button = app.buttons["icons8 microphone 96"]
+        icons8Microphone96Button.tap()
+        
+        let microphoneOnButton = app.buttons["microphone on"]
+        microphoneOnButton.tap()
+        
+    }
+    
+    func testMic2(){
+        
+        
+        let app = XCUIApplication()
+        app.buttons["icons8 microphone 96"].tap()
+        app.buttons["microphone on"].tap()
+        
+        
+        
+    }
+
 }

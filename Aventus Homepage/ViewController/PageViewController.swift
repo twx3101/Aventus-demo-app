@@ -22,7 +22,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.delegate = self
         self.dataSource = self
         
-        let profilePage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "ProfilePage")
+        let ticketPage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "TicketPage")
         let homePage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "HomePage")
         let eventPage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "EventPage")
         let seatPage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "SeatPage")
@@ -30,7 +30,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         let confirmPage: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage")
         
 
-        pages.append(profilePage)
+        pages.append(ticketPage)
         pages.append(homePage)
         pages.append(eventPage)
         pages.append(seatPage)

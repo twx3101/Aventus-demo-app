@@ -26,17 +26,37 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      language = ""
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BF7B71CA20236FCD009E5598"
-               BuildableName = "Aventus HomepageTests.xctest"
-               BlueprintName = "Aventus HomepageTests"
+               BlueprintIdentifier = "A1845B09204B161E0004D983"
+               BuildableName = "Aventus HomepageUITests.xctest"
+               BlueprintName = "Aventus HomepageUITests"
                ReferencedContainer = "container:Aventus Homepage.xcodeproj">
             </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A1ECFFC4204B109B006DE0C0"
+               BuildableName = "Aventus HomepageTests2.xctest"
+               BlueprintName = "Aventus HomepageTests2"
+               ReferencedContainer = "container:Aventus Homepage.xcodeproj">
+            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "Aventus_HomepageTests2/testeventPage()">
+               </Test>
+               <Test
+                  Identifier = "Aventus_HomepageTests2/testhelpPage()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
@@ -55,6 +75,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
