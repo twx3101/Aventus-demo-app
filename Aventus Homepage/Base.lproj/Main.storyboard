@@ -98,97 +98,6 @@
             </objects>
             <point key="canvasLocation" x="2242" y="-783"/>
         </scene>
-        <!--Profile View Controller-->
-        <scene sceneID="CmX-Ab-QrL">
-            <objects>
-                <viewController storyboardIdentifier="ProfilePage" id="lZ0-vv-1mp" customClass="ProfileViewController" customModule="Aventus_Homepage" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Otu-SD-DFU"/>
-                        <viewControllerLayoutGuide type="bottom" id="0yd-bJ-pYS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ohe-Fy-PDw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VWB-XC-5eZ" customClass="CustomSegmentedControl" customModule="Aventus_Homepage" customModuleProvider="target">
-                                <rect key="frame" x="16" y="194" width="343" height="29"/>
-                                <segments>
-                                    <segment title="Profile"/>
-                                    <segment title="Tickets"/>
-                                    <segment title="Settings"/>
-                                </segments>
-                                <connections>
-                                    <action selector="indexChanged:" destination="lZ0-vv-1mp" eventType="valueChanged" id="Uid-24-rc6"/>
-                                </connections>
-                            </segmentedControl>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="KcO-oZ-Xat">
-                                <rect key="frame" x="16" y="36" width="128" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="Ihz-wa-5qU"/>
-                                    <constraint firstAttribute="height" constant="128" id="wAr-n1-8eH"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firstname Lastname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tb-js-um3" customClass="UtterLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                <rect key="frame" x="160" y="36" width="155" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuZ-TP-glW">
-                                <rect key="frame" x="16" y="238" width="343" height="413"/>
-                                <connections>
-                                    <segue destination="WV6-Bt-I0U" kind="embed" id="wBQ-CR-A9D"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BeG-Hp-Z0b">
-                                <rect key="frame" x="16" y="238" width="343" height="413"/>
-                                <connections>
-                                    <segue destination="Mtu-N1-FGZ" kind="embed" id="LCa-qi-iVp"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sB-ai-J7u">
-                                <rect key="frame" x="16" y="238" width="343" height="413"/>
-                                <connections>
-                                    <segue destination="osU-qd-dlK" kind="embed" id="UTh-h7-6ei"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="VWB-XC-5eZ" secondAttribute="trailing" id="03c-8Y-twr"/>
-                            <constraint firstItem="KcO-oZ-Xat" firstAttribute="leading" secondItem="Ohe-Fy-PDw" secondAttribute="leadingMargin" id="79h-pP-7H5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6sB-ai-J7u" secondAttribute="trailing" id="841-Mv-88v"/>
-                            <constraint firstItem="6Tb-js-um3" firstAttribute="top" secondItem="Otu-SD-DFU" secondAttribute="bottom" constant="16" id="GH3-n5-rIp"/>
-                            <constraint firstItem="TuZ-TP-glW" firstAttribute="top" secondItem="VWB-XC-5eZ" secondAttribute="bottom" constant="16" id="VRe-vj-DEX"/>
-                            <constraint firstItem="TuZ-TP-glW" firstAttribute="leading" secondItem="Ohe-Fy-PDw" secondAttribute="leadingMargin" id="Xjv-U8-TRd"/>
-                            <constraint firstItem="6sB-ai-J7u" firstAttribute="top" secondItem="VWB-XC-5eZ" secondAttribute="bottom" constant="16" id="YUE-UE-7iy"/>
-                            <constraint firstItem="VWB-XC-5eZ" firstAttribute="leading" secondItem="Ohe-Fy-PDw" secondAttribute="leadingMargin" id="aQw-zJ-f70"/>
-                            <constraint firstItem="0yd-bJ-pYS" firstAttribute="top" secondItem="BeG-Hp-Z0b" secondAttribute="bottom" constant="16" id="cOR-XU-AUi"/>
-                            <constraint firstItem="BeG-Hp-Z0b" firstAttribute="leading" secondItem="Ohe-Fy-PDw" secondAttribute="leadingMargin" id="fhK-gO-Six"/>
-                            <constraint firstItem="6sB-ai-J7u" firstAttribute="leading" secondItem="Ohe-Fy-PDw" secondAttribute="leadingMargin" id="gJG-wC-ZWM"/>
-                            <constraint firstItem="BeG-Hp-Z0b" firstAttribute="top" secondItem="VWB-XC-5eZ" secondAttribute="bottom" constant="16" id="gZ1-EY-eds"/>
-                            <constraint firstItem="6Tb-js-um3" firstAttribute="leading" secondItem="KcO-oZ-Xat" secondAttribute="trailing" constant="16" id="iN6-wM-NV7"/>
-                            <constraint firstItem="0yd-bJ-pYS" firstAttribute="top" secondItem="6sB-ai-J7u" secondAttribute="bottom" constant="16" id="jl0-Ze-0nB"/>
-                            <constraint firstItem="0yd-bJ-pYS" firstAttribute="top" secondItem="TuZ-TP-glW" secondAttribute="bottom" constant="16" id="lOk-3m-xTe"/>
-                            <constraint firstItem="VWB-XC-5eZ" firstAttribute="top" secondItem="KcO-oZ-Xat" secondAttribute="bottom" constant="30" id="mV2-MG-GEZ"/>
-                            <constraint firstItem="TuZ-TP-glW" firstAttribute="trailing" secondItem="Ohe-Fy-PDw" secondAttribute="trailingMargin" id="pfq-Z2-iWa"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BeG-Hp-Z0b" secondAttribute="trailing" id="tGU-K4-z2e"/>
-                            <constraint firstItem="KcO-oZ-Xat" firstAttribute="top" secondItem="Ohe-Fy-PDw" secondAttribute="topMargin" constant="16" id="uxk-Rh-0Kw"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="TicketView" destination="BeG-Hp-Z0b" id="AoK-CK-WNv"/>
-                        <outlet property="profilePicture" destination="KcO-oZ-Xat" id="cDc-85-JmE"/>
-                        <outlet property="profileView" destination="TuZ-TP-glW" id="ZBa-Iz-byO"/>
-                        <outlet property="segmentedControl" destination="VWB-XC-5eZ" id="HK6-ek-bmJ"/>
-                        <outlet property="settingView" destination="6sB-ai-J7u" id="3as-jZ-N3C"/>
-                        <outlet property="ticketView" destination="BeG-Hp-Z0b" id="VHo-EG-3hl"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ove-YD-KtW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1167" y="36"/>
-        </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -863,60 +772,6 @@
             </objects>
             <point key="canvasLocation" x="7492" y="35.532233883058474"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="IGI-PC-PbP">
-            <objects>
-                <viewController id="WV6-Bt-I0U" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Lac-Dr-UmH"/>
-                        <viewControllerLayoutGuide type="bottom" id="9Lu-UQ-jof"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="KOz-zY-yka">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="413"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="il2-sZ-0pO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="532" y="832.53373313343332"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="5VO-ER-769">
-            <objects>
-                <viewController id="Mtu-N1-FGZ" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Afi-Dr-0Zg"/>
-                        <viewControllerLayoutGuide type="bottom" id="7zw-tu-LDb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="sry-Vm-LkV">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="413"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pma-KL-ezZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1217" y="833"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="MXL-B5-2hF">
-            <objects>
-                <viewController id="osU-qd-dlK" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PhB-dI-Z29"/>
-                        <viewControllerLayoutGuide type="bottom" id="LtH-XF-M6M"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8N9-zW-26k">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="413"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mXk-AR-kJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2087" y="841"/>
-        </scene>
         <!--Help View Controller-->
         <scene sceneID="u6a-6p-rC3">
             <objects>
@@ -968,6 +823,5 @@
         <image name="seatBg" width="292" height="314"/>
         <image name="ticketBg" width="585" height="223"/>
         <image name="ticketIcon" width="25" height="25"/>
-        <image name="user" width="112" height="112"/>
     </resources>
 </document>
