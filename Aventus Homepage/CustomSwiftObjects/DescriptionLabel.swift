@@ -25,7 +25,7 @@ class DescriptionLabel: UILabel{
     
     func sharedInit(){
 
-        font = UIFont(name:"Sarabun", size:24)
+        
         
     }
     

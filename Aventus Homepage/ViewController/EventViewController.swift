@@ -95,6 +95,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         cell.locationDatetimeLabel.textColor = colors.bodyText
         
         cell.priceLabel.text = "From £" + String(Int(event.minPrice)) + " - " + String(Int(event.maxPrice))
+        cell.priceLabel.font = UIFont(name:"Sarabun", size:24)
         
         cell.priceLabel.textColor = colors.bodyText
 

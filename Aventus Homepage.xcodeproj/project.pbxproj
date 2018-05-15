@@ -23,7 +23,6 @@
 		BF0A13252076C7CA00B98981 /* Nexa Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF0A13172076C28000B98981 /* Nexa Light.otf */; };
 		BF0A13262076C7CC00B98981 /* Sarabun-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF0A13192076C28000B98981 /* Sarabun-Regular.ttf */; };
 		BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1607012044A36B00241A2D /* HeaderLabel.swift */; };
-		BF337EDF20768C8300B4D2E1 /* DescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF337EDE20768C8300B4D2E1 /* DescriptionLabel.swift */; };
 		BF40F12F2030971400E280BB /* SeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF40F12E2030971400E280BB /* SeatViewController.swift */; };
 		BF51ED4F20432787003D0219 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED4E20432787003D0219 /* ColorHelper.swift */; };
 		BF51ED5520433BBD003D0219 /* UtterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF51ED5420433BBD003D0219 /* UtterLabel.swift */; };
@@ -120,7 +119,6 @@
 		BF0A13182076C28000B98981 /* Sarabun-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sarabun-Bold.ttf"; sourceTree = "<group>"; };
 		BF0A13192076C28000B98981 /* Sarabun-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sarabun-Regular.ttf"; sourceTree = "<group>"; };
 		BF1607012044A36B00241A2D /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
-		BF337EDE20768C8300B4D2E1 /* DescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLabel.swift; sourceTree = "<group>"; };
 		BF40F12E2030971400E280BB /* SeatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatViewController.swift; sourceTree = "<group>"; };
 		BF51ED4E20432787003D0219 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		BF51ED5420433BBD003D0219 /* UtterLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtterLabel.swift; sourceTree = "<group>"; };
@@ -269,7 +267,6 @@
 				457E32D220659C7E00B7224B /* WarningLabel.swift */,
 				BF51ED5420433BBD003D0219 /* UtterLabel.swift */,
 				BF1607012044A36B00241A2D /* HeaderLabel.swift */,
-				BF337EDE20768C8300B4D2E1 /* DescriptionLabel.swift */,
 				BF933144204471160002A3C8 /* RoundButton.swift */,
 				BF93314620448ABB0002A3C8 /* DetailTextField.swift */,
 				BFA98FD220A763C400553773 /* ExpandableHeaderView.swift */,
@@ -821,7 +818,6 @@
 				BF1607022044A36B00241A2D /* HeaderLabel.swift in Sources */,
 				BFA98FD120A7611400553773 /* Helper.swift in Sources */,
 				BFA98FDB20A779C500553773 /* Booking.swift in Sources */,
-				BF337EDF20768C8300B4D2E1 /* DescriptionLabel.swift in Sources */,
 				BFBAF60B2035C36500050B8A /* ConfirmationViewController.swift in Sources */,
 				BF76AE3020264CD5006274FE /* Event.swift in Sources */,
 			);
