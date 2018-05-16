@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let controller = CapitoController.getInstance()
         //"a2d65251-0fe4-476f-994d-5dce055f555f" test appkey
-        controller?.setup(withID: "0848c593-9864-4205-bf86-4fb40c5b7744", host: "sysportal.test.a.cloud.capitosystems.com" , port: 443, useSSL: true)
+        controller?.setup(withID: "0848c593-9864-4205-bf86-4fb40c5b7744", host: "dev-api.capitosystems.com" , port: 443, useSSL: true)
         
         let status = controller?.connect()
         //print("CapitoSpeechKit status: ", status)
