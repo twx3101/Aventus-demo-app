@@ -99,7 +99,7 @@
 		457E32D220659C7E00B7224B /* WarningLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningLabel.swift; sourceTree = "<group>"; };
 		457E32D320659C7E00B7224B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		60DF77654971427BC6104ACA /* Pods-Aventus HomepageTests2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aventus HomepageTests2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aventus HomepageTests2/Pods-Aventus HomepageTests2.debug.xcconfig"; sourceTree = "<group>"; };
-		A1845B0A204B161E0004D983 /* Aventus HomepageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aventus HomepageUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1845B0A204B161E0004D983 /* AventusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AventusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1845B0C204B161E0004D983 /* Aventus_HomepageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aventus_HomepageUITests.swift; sourceTree = "<group>"; };
 		A1845B0E204B161E0004D983 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A18FF15D204C607200DE4692 /* Aventus HomepageTests2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aventus HomepageTests2-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		A1AB3174204C533100F5A6A1 /* Test Databse Fake Data.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Test Databse Fake Data.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1AB3176204C533100F5A6A1 /* Test_Databse_Fake_Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test_Databse_Fake_Data.swift; sourceTree = "<group>"; };
 		A1AB3178204C533100F5A6A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1ECFFC5204B109B006DE0C0 /* Aventus HomepageTests2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aventus HomepageTests2.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1ECFFC5204B109B006DE0C0 /* AventusTests2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AventusTests2.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1ECFFC9204B109B006DE0C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA6B0AEFFA9500FD09E18E5C /* Pods_Aventus_HomepageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aventus_HomepageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB8D22F820A86ACE00CB8C45 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -126,13 +126,13 @@
 		BF5946962038743A00A0A493 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		BF59469C2038E25900A0A493 /* SeatPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatPopUpViewController.swift; sourceTree = "<group>"; };
 		BF76AE2F20264CD5006274FE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		BF7B71B720236FCC009E5598 /* Aventus Homepage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aventus Homepage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF7B71B720236FCC009E5598 /* Aventus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aventus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7B71BA20236FCC009E5598 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF7B71BF20236FCC009E5598 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF7B71C120236FCC009E5598 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF7B71C420236FCC009E5598 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF7B71C620236FCC009E5598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF7B71CB20236FCD009E5598 /* Aventus HomepageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aventus HomepageTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF7B71CB20236FCD009E5598 /* AventusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AventusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7B71CF20236FCD009E5598 /* Aventus_HomepageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aventus_HomepageTests.swift; sourceTree = "<group>"; };
 		BF7B71D120236FCD009E5598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF83B2C52075109C00EA2405 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -345,10 +345,10 @@
 		BF7B71B820236FCC009E5598 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BF7B71B720236FCC009E5598 /* Aventus Homepage.app */,
-				BF7B71CB20236FCD009E5598 /* Aventus HomepageTests.xctest */,
-				A1ECFFC5204B109B006DE0C0 /* Aventus HomepageTests2.xctest */,
-				A1845B0A204B161E0004D983 /* Aventus HomepageUITests.xctest */,
+				BF7B71B720236FCC009E5598 /* Aventus.app */,
+				BF7B71CB20236FCD009E5598 /* AventusTests.xctest */,
+				A1ECFFC5204B109B006DE0C0 /* AventusTests2.xctest */,
+				A1845B0A204B161E0004D983 /* AventusUITests.xctest */,
 				A1AB3166204C529500F5A6A1 /* Aventus Database Tests.xctest */,
 				A1AB3174204C533100F5A6A1 /* Test Databse Fake Data.xctest */,
 			);
@@ -385,9 +385,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A1845B09204B161E0004D983 /* Aventus HomepageUITests */ = {
+		A1845B09204B161E0004D983 /* AventusUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1845B13204B161E0004D983 /* Build configuration list for PBXNativeTarget "Aventus HomepageUITests" */;
+			buildConfigurationList = A1845B13204B161E0004D983 /* Build configuration list for PBXNativeTarget "AventusUITests" */;
 			buildPhases = (
 				A1845B06204B161E0004D983 /* Sources */,
 				A1845B07204B161E0004D983 /* Frameworks */,
@@ -398,9 +398,9 @@
 			dependencies = (
 				A1845B10204B161E0004D983 /* PBXTargetDependency */,
 			);
-			name = "Aventus HomepageUITests";
+			name = AventusUITests;
 			productName = "Aventus HomepageUITests";
-			productReference = A1845B0A204B161E0004D983 /* Aventus HomepageUITests.xctest */;
+			productReference = A1845B0A204B161E0004D983 /* AventusUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		A1AB3165204C529500F5A6A1 /* Aventus Database Tests */ = {
@@ -439,9 +439,9 @@
 			productReference = A1AB3174204C533100F5A6A1 /* Test Databse Fake Data.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A1ECFFC4204B109B006DE0C0 /* Aventus HomepageTests2 */ = {
+		A1ECFFC4204B109B006DE0C0 /* AventusTests2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1ECFFCE204B109B006DE0C0 /* Build configuration list for PBXNativeTarget "Aventus HomepageTests2" */;
+			buildConfigurationList = A1ECFFCE204B109B006DE0C0 /* Build configuration list for PBXNativeTarget "AventusTests2" */;
 			buildPhases = (
 				F5C1085A95F51FAA73B07704 /* [CP] Check Pods Manifest.lock */,
 				A1ECFFC1204B109B006DE0C0 /* Sources */,
@@ -455,14 +455,14 @@
 			dependencies = (
 				A1ECFFCB204B109B006DE0C0 /* PBXTargetDependency */,
 			);
-			name = "Aventus HomepageTests2";
+			name = AventusTests2;
 			productName = "Aventus HomepageTests2";
-			productReference = A1ECFFC5204B109B006DE0C0 /* Aventus HomepageTests2.xctest */;
+			productReference = A1ECFFC5204B109B006DE0C0 /* AventusTests2.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BF7B71B620236FCC009E5598 /* Aventus Homepage */ = {
+		BF7B71B620236FCC009E5598 /* Aventus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF7B71D420236FCD009E5598 /* Build configuration list for PBXNativeTarget "Aventus Homepage" */;
+			buildConfigurationList = BF7B71D420236FCD009E5598 /* Build configuration list for PBXNativeTarget "Aventus" */;
 			buildPhases = (
 				8C554C0448D9B24507A38AE6 /* [CP] Check Pods Manifest.lock */,
 				BF7B71B320236FCC009E5598 /* Sources */,
@@ -475,14 +475,14 @@
 			);
 			dependencies = (
 			);
-			name = "Aventus Homepage";
+			name = Aventus;
 			productName = "Aventus Homepage";
-			productReference = BF7B71B720236FCC009E5598 /* Aventus Homepage.app */;
+			productReference = BF7B71B720236FCC009E5598 /* Aventus.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BF7B71CA20236FCD009E5598 /* Aventus HomepageTests */ = {
+		BF7B71CA20236FCD009E5598 /* AventusTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF7B71D720236FCD009E5598 /* Build configuration list for PBXNativeTarget "Aventus HomepageTests" */;
+			buildConfigurationList = BF7B71D720236FCD009E5598 /* Build configuration list for PBXNativeTarget "AventusTests" */;
 			buildPhases = (
 				BF7B71C720236FCD009E5598 /* Sources */,
 				BF7B71C820236FCD009E5598 /* Frameworks */,
@@ -493,9 +493,9 @@
 			dependencies = (
 				BF7B71CD20236FCD009E5598 /* PBXTargetDependency */,
 			);
-			name = "Aventus HomepageTests";
+			name = AventusTests;
 			productName = "Aventus HomepageTests";
-			productReference = BF7B71CB20236FCD009E5598 /* Aventus HomepageTests.xctest */;
+			productReference = BF7B71CB20236FCD009E5598 /* AventusTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -545,7 +545,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BF7B71B220236FCC009E5598 /* Build configuration list for PBXProject "Aventus Homepage" */;
+			buildConfigurationList = BF7B71B220236FCC009E5598 /* Build configuration list for PBXProject "Aventus" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -558,10 +558,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BF7B71B620236FCC009E5598 /* Aventus Homepage */,
-				BF7B71CA20236FCD009E5598 /* Aventus HomepageTests */,
-				A1ECFFC4204B109B006DE0C0 /* Aventus HomepageTests2 */,
-				A1845B09204B161E0004D983 /* Aventus HomepageUITests */,
+				BF7B71B620236FCC009E5598 /* Aventus */,
+				BF7B71CA20236FCD009E5598 /* AventusTests */,
+				A1ECFFC4204B109B006DE0C0 /* AventusTests2 */,
+				A1845B09204B161E0004D983 /* AventusUITests */,
 				A1AB3165204C529500F5A6A1 /* Aventus Database Tests */,
 				A1AB3173204C533100F5A6A1 /* Test Databse Fake Data */,
 			);
@@ -836,27 +836,27 @@
 /* Begin PBXTargetDependency section */
 		A1845B10204B161E0004D983 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF7B71B620236FCC009E5598 /* Aventus Homepage */;
+			target = BF7B71B620236FCC009E5598 /* Aventus */;
 			targetProxy = A1845B0F204B161E0004D983 /* PBXContainerItemProxy */;
 		};
 		A1AB316C204C529500F5A6A1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF7B71B620236FCC009E5598 /* Aventus Homepage */;
+			target = BF7B71B620236FCC009E5598 /* Aventus */;
 			targetProxy = A1AB316B204C529500F5A6A1 /* PBXContainerItemProxy */;
 		};
 		A1AB317A204C533100F5A6A1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF7B71B620236FCC009E5598 /* Aventus Homepage */;
+			target = BF7B71B620236FCC009E5598 /* Aventus */;
 			targetProxy = A1AB3179204C533100F5A6A1 /* PBXContainerItemProxy */;
 		};
 		A1ECFFCB204B109B006DE0C0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF7B71B620236FCC009E5598 /* Aventus Homepage */;
+			target = BF7B71B620236FCC009E5598 /* Aventus */;
 			targetProxy = A1ECFFCA204B109B006DE0C0 /* PBXContainerItemProxy */;
 		};
 		BF7B71CD20236FCD009E5598 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF7B71B620236FCC009E5598 /* Aventus Homepage */;
+			target = BF7B71B620236FCC009E5598 /* Aventus */;
 			targetProxy = BF7B71CC20236FCD009E5598 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -953,7 +953,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus.app/Aventus";
 			};
 			name = Debug;
 		};
@@ -979,7 +979,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus.app/Aventus";
 			};
 			name = Release;
 		};
@@ -1005,7 +1005,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus.app/Aventus";
 			};
 			name = Debug;
 		};
@@ -1031,7 +1031,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus.app/Aventus";
 			};
 			name = Release;
 		};
@@ -1065,7 +1065,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus.app/Aventus";
 			};
 			name = Debug;
 		};
@@ -1094,7 +1094,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Aventus HomepageTests2/Aventus HomepageTests2-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus.app/Aventus";
 			};
 			name = Release;
 		};
@@ -1235,7 +1235,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Aventus-HomepageTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus.app/Aventus";
 			};
 			name = Debug;
 		};
@@ -1249,14 +1249,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Aventus-HomepageTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus Homepage.app/Aventus Homepage";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Aventus.app/Aventus";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A1845B13204B161E0004D983 /* Build configuration list for PBXNativeTarget "Aventus HomepageUITests" */ = {
+		A1845B13204B161E0004D983 /* Build configuration list for PBXNativeTarget "AventusUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1845B11204B161E0004D983 /* Debug */,
@@ -1283,7 +1283,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1ECFFCE204B109B006DE0C0 /* Build configuration list for PBXNativeTarget "Aventus HomepageTests2" */ = {
+		A1ECFFCE204B109B006DE0C0 /* Build configuration list for PBXNativeTarget "AventusTests2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1ECFFCC204B109B006DE0C0 /* Debug */,
@@ -1292,7 +1292,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF7B71B220236FCC009E5598 /* Build configuration list for PBXProject "Aventus Homepage" */ = {
+		BF7B71B220236FCC009E5598 /* Build configuration list for PBXProject "Aventus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF7B71D220236FCD009E5598 /* Debug */,
@@ -1301,7 +1301,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF7B71D420236FCD009E5598 /* Build configuration list for PBXNativeTarget "Aventus Homepage" */ = {
+		BF7B71D420236FCD009E5598 /* Build configuration list for PBXNativeTarget "Aventus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF7B71D520236FCD009E5598 /* Debug */,
@@ -1310,7 +1310,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF7B71D720236FCD009E5598 /* Build configuration list for PBXNativeTarget "Aventus HomepageTests" */ = {
+		BF7B71D720236FCD009E5598 /* Build configuration list for PBXNativeTarget "AventusTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF7B71D820236FCD009E5598 /* Debug */,
