@@ -10,10 +10,11 @@ import UIKit
 import CapitoSpeechKit
 import MBProgressHUD
 import AVFoundation
+import CoreLocation
 
 // AVTBaseViewController is the super class of HomeVC, EventVC, SeatVC
 // This VC contains banner, chat bar, menu bar and all functions related
-class AVTBaseViewController: UIViewController, UITextFieldDelegate {
+class AVTBaseViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
     var menuView: UIView = UIView()
     
@@ -56,13 +57,25 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
     var leftItemX: Int = 0
     var rightItemX: Int = 0
     
-    
-    
     let startSound: SystemSoundID = 1110
     let endSound : SystemSoundID = 1111
+    
+    let locationManager = CLLocationManager()
+    
+    var currentLocation: CLLocation?
+    var currentCity: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Get a user's location
+        locationManager.requestAlwaysAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
         
         leftItemX = sideMargin
         rightItemX = Int(self.view.frame.width) - sideMargin - buttonSize
@@ -136,6 +149,8 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         hideMenuBase()
         hideSearchBarView()
         
+        //getCurrentCity()
+        
     }
     
     // When microphone button is pressed, the application proceeds the input given by users.
@@ -169,6 +184,56 @@ class AVTBaseViewController: UIViewController, UITextFieldDelegate {
         present(detailViewController, animated: true, completion: nil)
     }
     
+    func updateCity (){
+        let geoCoder = CLGeocoder()
+        //var currentCity: String = ""
+        self.currentCity = ""
+        //var city: String = ""
+        if let location = currentLocation {
+            geoCoder.reverseGeocodeLocation(location, completionHandler: { placemarks, error in
+                var placemark: CLPlacemark!
+                placemark = placemarks?[0]
+                
+                if let city = placemark.addressDictionary!["City"] as? String {
+                    self.setLocation(city: city)
+                }
+            })
+        }
+    }
+    
+    func  locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            currentLocation = location
+            updateCity()
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if(status==CLAuthorizationStatus.denied) {
+            showLocationDisabledPopUp()
+        }
+    }
+    func setLocation(city: String){
+        contextContents.shared.city = city
+    }
+    
+    func showLocationDisabledPopUp() {
+        let alertController = UIAlertController(title: "Background Location Access Disabled",
+                                                message: "In order to deliver pizza we need your location",
+                                                preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+            if let url = URL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        alertController.addAction(openAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     
     // Show menu side bar

@@ -202,7 +202,7 @@
                                                             <rect key="frame" x="8" y="66" width="315" height="60"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORl-Vq-2CA" customClass="DescriptionLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                                    <rect key="frame" x="4" y="38" width="35.5" height="30"/>
+                                                                    <rect key="frame" x="4" y="34" width="35.5" height="30"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="Wdt-ee-KaE"/>
                                                                     </constraints>
@@ -211,7 +211,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PriceLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNj-aG-IDz" customClass="DescriptionLabel" customModule="Aventus_Homepage" customModuleProvider="target">
-                                                                    <rect key="frame" x="20" y="38" width="291" height="30"/>
+                                                                    <rect key="frame" x="20" y="34" width="291" height="30"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="r7m-gh-ERO"/>
                                                                     </constraints>
@@ -231,12 +231,12 @@
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="FNj-aG-IDz" firstAttribute="leading" secondItem="jTn-dj-HzH" secondAttribute="leading" constant="20" symbolic="YES" id="540-Xd-xQD"/>
-                                                                <constraint firstItem="ORl-Vq-2CA" firstAttribute="top" secondItem="WQz-wx-aZh" secondAttribute="bottom" constant="4" id="5ql-TS-fKM"/>
+                                                                <constraint firstItem="ORl-Vq-2CA" firstAttribute="top" secondItem="WQz-wx-aZh" secondAttribute="bottom" id="5ql-TS-fKM"/>
                                                                 <constraint firstItem="WQz-wx-aZh" firstAttribute="leading" secondItem="jTn-dj-HzH" secondAttribute="leading" constant="4" id="8mL-mU-vn9"/>
                                                                 <constraint firstItem="WQz-wx-aZh" firstAttribute="top" secondItem="jTn-dj-HzH" secondAttribute="top" constant="4" id="ES5-Yf-0b1"/>
                                                                 <constraint firstAttribute="trailing" secondItem="FNj-aG-IDz" secondAttribute="trailing" constant="4" id="N5j-Vh-Eq7"/>
                                                                 <constraint firstAttribute="trailing" secondItem="WQz-wx-aZh" secondAttribute="trailing" constant="4" id="TsN-J9-QGc"/>
-                                                                <constraint firstItem="FNj-aG-IDz" firstAttribute="top" secondItem="WQz-wx-aZh" secondAttribute="bottom" constant="4" id="egU-ej-fnR"/>
+                                                                <constraint firstItem="FNj-aG-IDz" firstAttribute="top" secondItem="WQz-wx-aZh" secondAttribute="bottom" id="egU-ej-fnR"/>
                                                                 <constraint firstItem="ORl-Vq-2CA" firstAttribute="leading" secondItem="jTn-dj-HzH" secondAttribute="leading" constant="4" id="hE3-PD-uLF"/>
                                                                 <constraint firstAttribute="height" constant="60" id="nbw-UO-uM0"/>
                                                             </constraints>

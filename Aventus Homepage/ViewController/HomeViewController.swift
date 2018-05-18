@@ -16,7 +16,7 @@ class contextContents {
     
     var context : [AnyHashable : Any]?
     var contextContent = [String : Any]()
-    
+    var city : String?
     private init(){
     }
 }
