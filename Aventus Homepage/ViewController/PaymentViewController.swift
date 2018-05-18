@@ -159,10 +159,12 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             let pageViewController = self.parent as! PageViewController
             
+            
                 // Retrieve data from the users' phone, append the current booking to them and update the data
                 var userBookings: [Booking] = helper.retrieveDataFromKey(key: "Bookings")
                 let currentBooking = Booking(event: event!, payment: payment!)
-                userBookings.append(currentBooking)
+                //userBookings.append(currentBooking)
+                userBookings.insert(currentBooking, at: 0)
                 helper.saveDataForKey(key: "Bookings", data: userBookings)
             
             
