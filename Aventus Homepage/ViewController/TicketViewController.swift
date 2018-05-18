@@ -23,6 +23,8 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var cellWidth: Double = 0
     var cellHeight: Double = 0
     
+    var footerHeight: Double = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +68,13 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         header.customInit(title: userBookings[section].eventArtist!, section: section, delegate: self)
         
-        let bgImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: headerHeight) )
+        let bgView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: headerHeight))
+        bgView.backgroundColor = .clear
+        //header.contentView.insertSubview(bgView, at: 0)
+        //header.insertSubview(bgView, at: 0)
+        
+        //let bgImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: headerHeight) )
+        let bgImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: Double(self.tableView.bounds.size.width), height: Double(headerHeight)) )
         bgImageView.image = UIImage(named: "mainTicket")
         bgImageView.contentMode = .scaleToFill
         //bgImageView.contentMode = .scaleAspectFill
@@ -75,6 +83,7 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //bgImageView.center.x = header.contentView.center.x
         
         header.contentView.insertSubview(bgImageView, at: 0)
+        //header.insertSubview(bgImageView, at: 0)
         
         let artistLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: 100))
         
@@ -104,8 +113,8 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         header.addSubview(venueLabel)
         
         header.backgroundColor = .clear
-        //header.
         header.contentView.backgroundColor = .clear
+        header.backgroundView = bgView
         
         return header
     }
@@ -123,7 +132,7 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         detailLabel.textColor = colors.pink
         detailLabel.font = UIFont(name:"Sarabun", size:20)
         
-        let qrImageView =  UIImageView(frame: CGRect(x: self.view.frame.width - 80, y: 0, width: 35, height: 35))
+        let qrImageView =  UIImageView(frame: CGRect(x: self.view.frame.width - 80, y: 5, width: 35, height: 35))
         qrImageView.image = UIImage(named: "qrcode")
         
         let ticketImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: cellHeight))
@@ -154,6 +163,14 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        //let bgView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: footerHeight))
+        //bgView.backgroundColor = .clear
+        let footer = UIView(frame: CGRect(x: 0.0, y: 0.0, width: headerWidth, height: footerHeight))
+        footer.backgroundColor = .clear
+        return footer
+    }
+    
     // The height for the booking
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(headerHeight)
@@ -171,7 +188,7 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // The gap between any two sections
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 2
+        return CGFloat(footerHeight)
     }
 
     // When users click on the booking, display every ticket corresponded with the booking
