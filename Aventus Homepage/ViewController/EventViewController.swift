@@ -428,6 +428,68 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         }
     }
     
+    func excludeContentofEvents(contextContent: Dictionary<String, Any>){
+        var newEvents : [Event]
+        if self.isFiltering{
+            newEvents = filteredEvents
+        }
+        else{
+            newEvents = events
+        }
+        
+        if let artist = contextContent["artist"] as? String{
+            newEvents = newEvents.filter({( event:Event) -> Bool in
+                return !(event.artist.lowercased().contains(artist.lowercased()))
+            })
+        }
+        if let location = contextContent["location"] as? String{
+            newEvents = newEvents.filter({( event:Event) -> Bool in
+                return !(event.location.lowercased().contains(location.lowercased()))
+            })
+        }
+        if let venue  = contextContent["venue"] as? String{
+            newEvents = newEvents.filter({( event:Event) -> Bool in
+                return !(event.venue.lowercased().contains(venue.lowercased()))
+            })
+        }
+        if let genre = contextContent["genre"] as? String{
+            
+            newEvents = newEvents.filter({( event:Event) -> Bool in
+                return !(genre.lowercased().contains(event.genre.lowercased().replacingOccurrences(of: "/", with: " ")))
+            })
+        }
+        if let start_date = contextContent["start_date"] as? Date{
+            
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "MM/dd/yyyy hh:mm a"
+            dateformatter.locale = Locale(identifier: "en_US_POSIX")
+            dateformatter.timeZone = TimeZone(abbreviation: "GMT")
+            
+            //range of dateas
+            if let end_date = contextContent["end_date"] as? Date{
+                print(start_date, end_date, "hello4")
+                newEvents = newEvents.filter{
+                    let dateTime = $0.datetime + " " + $0.time
+                    let eventDate = dateformatter.date(from: dateTime)
+                    return !(eventDate!.isBetween(start_date, and: end_date))
+                }
+            }
+            else{
+                newEvents = newEvents.filter{
+                    let eventDate = dateformatter.date(from: $0.datetime)
+                    return eventDate != (start_date)
+                }
+            }
+            
+        }
+        
+        self.isFiltering = true
+        filteredEvents = newEvents
+        collectionView.reloadData()
+        print("Hello, i did reload")
+        collectionView.setContentOffset(.zero, animated: true)
+    }
+    
 }
 
 // Context is handled differently by the page
@@ -440,17 +502,36 @@ extension EventViewController{
             handlingContext().bootstrapView(response: response)
             if let task = response.semanticOutput["task"] as? String{
                 if task == "NavigateStatic"{
-                    navHelp()
+                    if let goTo = response.semanticOutput["goTo"] as? String{
+                        if goTo == "help"{
+                            navHelp()
+                        }
+                        else if goTo == "MyPurchases"{
+                            navTicket()
+                        }
+                        else if goTo == "Homepage"{
+                             let pageViewController = self.parent as! PageViewController
+                            let nextViewController = pageViewController.pages[1] as! HomeViewController
+                            pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+                        }
+                    }
                 }
-                if task == "Navigate"{
+                else if task == "Navigate"{
                     self.isFiltering = true
                     self.filteredItems = contextContents.shared.contextContent
                     self.filterContentofEvents(contextContent: self.filteredItems)
                     self.collectionView.reloadData()
                 }
                 
-                if task == "BuyTicket" || task == "BuyTickets"{
+                else if task == "BuyTicket" || task == "BuyTickets"{
                     handleBuyTickets()
+                }
+                else if task == "Cancel"{
+                    self.isFiltering = false
+                    self.collectionView.reloadData()
+                }
+                else if task == "Exclude"{
+                    self.excludeContentofEvents(contextContent: contextContents.shared.contextContent)
                 }
             }
             else{

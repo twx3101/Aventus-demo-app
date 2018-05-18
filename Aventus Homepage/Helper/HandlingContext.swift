@@ -44,9 +44,13 @@ class handlingContext{
                 //TODO
                  contextContents.shared.contextContent = handleNavigate(context: context)
             }
-//            else if task == "SelectSeat"{
-//                //TODO
-//            }
+           else if task == "Cancel"{
+                handlingContext.resetData()
+            }
+            else if task == "Exclude"{
+                handlingContext.resetData()
+                 contextContents.shared.contextContent = handleNavigate(context: context)
+            }
 //            else if task == "NavigateStatic"{
 //                //TODO
 //            }
@@ -91,7 +95,12 @@ class handlingContext{
                 handlingContext.resetData()
                 contextContent = contextContents.shared.contextContent
             }
+            if location == "Nearby"{
+                contextContent["location"] = contextContents.shared.city
+            }
+            else{
              contextContent["location"] = location
+            }
         }
         
         //        venue: String

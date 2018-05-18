@@ -66,13 +66,26 @@ extension HomeViewController{
             if let task = response.semanticOutput["task"] as? String{
                 handlingContext().bootstrapView(response: response)
                 if task == "NavigateStatic"{
-                    navHelp()
+                    if let goTo = response.semanticOutput["goTo"] as? String{
+                        if goTo == "help"{
+                            navHelp()
+                        }
+                        else if goTo == "MyPurchases"{
+                            navTicket()
+                        }
+                    }
                 }
-                if task == "Navigate"{
+                else if task == "Navigate"{
                     handleNavigate()
                 }
-                if task == "BuyTicket" || task == "BuyTickets"{
+                else if task == "BuyTicket" || task == "BuyTickets"{
                     handleBuyTickets()
+                }
+                else if task == "Cancel"{
+                   print("data cancelled")
+                }
+                else if task == "Exclude"{
+                    handleExclude()
                 }
             }
             else{
@@ -196,6 +209,26 @@ extension HomeViewController{
             pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         }
     }
+    func handleExclude(){
+        var nextViewController : EventViewController
+        
+        let pageViewController = self.parent as! PageViewController
+        
+        if pageViewController.instantiated[2] == false{
+            nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "EventPage") as! EventViewController
+            
+            pageViewController.pages[2] = nextViewController
+            pageViewController.instantiated[2] = true
+        }
+        else{
+            nextViewController = pageViewController.pages[2] as! EventViewController
+            nextViewController.excludeContentofEvents(contextContent: contextContents.shared.contextContent)
+        }
+        
+        pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        nextViewController.excludeContentofEvents(contextContent: contextContents.shared.contextContent)
+    }
+    
 }
 
 

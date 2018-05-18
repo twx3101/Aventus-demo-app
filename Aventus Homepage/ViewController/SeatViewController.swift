@@ -326,7 +326,19 @@ extension SeatViewController{
             handlingContext().bootstrapView(response: response)
             if let task = response.semanticOutput["task"] as? String{
                 if task == "NavigateStatic"{
-                    navHelp()
+                    if let goTo = response.semanticOutput["goTo"] as? String{
+                        if goTo == "help"{
+                            navHelp()
+                        }
+                        else if goTo == "MyPurchases"{
+                            navTicket()
+                        }
+                        else if goTo == "Homepage"{
+                            let pageViewController = self.parent as! PageViewController
+                            let nextViewController = pageViewController.pages[1] as! HomeViewController
+                            pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+                        }
+                    }
                 }
                 
                 if task == "BuyTicket" || task == "BuyTickets"{
@@ -335,6 +347,21 @@ extension SeatViewController{
                 else if task == "Navigate"{
                     handleNavigate()
                 }
+                else if task == "Cancel"{
+                     let pageViewController = self.parent as! PageViewController
+                    
+                   let prevViewController = pageViewController.pages[2] as! EventViewController
+                    
+                    prevViewController.isFiltering = true
+                }
+                else if task == "Exclude"{
+                    print("exclude in seat page?")
+                    //CHECK
+                }
+                
+            }
+            else{
+                helper.showAlert(message: "Sorry I couldn't understand that")
             }
         }
     }
