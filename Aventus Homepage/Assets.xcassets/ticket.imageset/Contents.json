@@ -2,7 +2,6 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Screen Shot 2018-05-13 at 22.38.12.png",
       "scale" : "1x"
     },
     {
@@ -11,6 +10,7 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "imageedit_21_9115518391.png",
       "scale" : "3x"
     }
   ],

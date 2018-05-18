@@ -27,8 +27,10 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = colors.greyBg
-        tableView.backgroundColor = colors.greyBg
+        helper.setBackground(view: self.view, image: "ticketBg")
+        tableView.backgroundColor = .clear
+        //self.view.backgroundColor = colors.greyBg
+        //tableView.backgroundColor = colors.greyBg
         
         headerWidth = Double(self.view.frame.width - 16)
         headerHeight = SCALE*headerWidth
@@ -101,7 +103,9 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         header.addSubview(dateLabel)
         header.addSubview(venueLabel)
         
-        header.backgroundColor = colors.greyBg
+        header.backgroundColor = .clear
+        //header.
+        header.contentView.backgroundColor = .clear
         
         return header
     }
@@ -145,7 +149,7 @@ class TicketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
         
-        cell.backgroundColor = colors.greyBg
+        cell.backgroundColor = .clear
         
         return cell
     }

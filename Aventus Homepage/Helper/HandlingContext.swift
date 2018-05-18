@@ -202,6 +202,23 @@ class handlingContext{
             
             contextContent["end_date"] = futureDate
         }
+        
+        // if end date is larger than start date
+        if let end_date = contextContent["end_date"] as? Date{
+            if let start_date = contextContent["start_date"] as? Date{
+                if end_date < start_date{
+                    var cal = Calendar.current
+                    cal.timeZone = TimeZone(abbreviation: "GMT")!
+                    let d = DateComponents(day: 1)
+                    
+                    let futureDate = cal.date(byAdding: d, to: start_date)
+                    
+                    contextContent["end_date"] = futureDate
+                }
+            }
+           
+        }
+        
         // if there is no end_date, then set end_Date to the next day
         if contextContent.index(forKey: "end_date") == nil && contextContent.index(forKey: "start_date") != nil{
             var cal = Calendar.current

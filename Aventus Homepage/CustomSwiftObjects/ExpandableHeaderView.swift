@@ -36,6 +36,8 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
     func customInit(title: String, section: Int, delegate: ExpandableHeaderViewDelegate) {
         self.section = section
         self.delegate = delegate
+        self.backgroundColor = .clear
+        //self.view.backgroundColor = .clear
     }
     
     override func layoutSubviews() {

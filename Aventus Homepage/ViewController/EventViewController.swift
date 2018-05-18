@@ -414,7 +414,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
                 }
             }
         }
-
+        print(newEvents.count, "count")
         if newEvents.count > 0{
             filteredEvents = newEvents
             collectionView.reloadData()
@@ -452,6 +452,9 @@ extension EventViewController{
                 if task == "BuyTicket" || task == "BuyTickets"{
                     handleBuyTickets()
                 }
+            }
+            else{
+                helper.showAlert(message: "Sorry, I couldn't understand that!")
             }
         }
     }
@@ -525,13 +528,18 @@ extension EventViewController{
                 
                 detailViewController.eventLoaded = self.filteredEvents[0]
                 pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+                helper.showAlert(message: "Please select a seat category")
             }
             else if categoryNum != nil{
+                
                 detailViewController.eventLoaded = self.filteredEvents[0]
                 pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+                helper.showAlert(message: "Please select the number of seats")
             }
             else{
+                detailViewController.eventLoaded = self.filteredEvents[0]
                 pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+                helper.showAlert(message: "Please select your seat")
             }
         }
             
