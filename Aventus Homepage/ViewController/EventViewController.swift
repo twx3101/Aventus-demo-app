@@ -329,10 +329,23 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
     func filterContentofEvents(contextContent: Dictionary<String, Any>) -> Int{
         var newEvents = events
         
+        if let genre = contextContent["genre"] as? String{
+            
+            newEvents = newEvents.filter({( event:Event) -> Bool in
+                return
+                genre.lowercased().contains(event.genre.lowercased().replacingOccurrences(of: "/", with: " "))
+            })
+            if newEvents.count > 0{
+                contextContents.shared.event = newEvents[0]
+            }
+        }
+        
         if let artist = contextContent["artist"] as? String{
             newEvents = newEvents.filter({( event:Event) -> Bool in
                 return event.artist.lowercased().contains(artist.lowercased())
             })
+            
+
         }
         if let location = contextContent["location"] as? String{
             newEvents = newEvents.filter({( event:Event) -> Bool in
@@ -344,13 +357,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
                 return event.venue.lowercased().contains(venue.lowercased())
             })
         }
-        if let genre = contextContent["genre"] as? String{
-            
-            newEvents = newEvents.filter({( event:Event) -> Bool in
-                return
-               (event.genre.lowercased().replacingOccurrences(of: "/", with: " ")).contains(genre.lowercased())
-            })
-        }
+       
         if let start_date = contextContent["start_date"] as? Date{
             
             let dateformatter = DateFormatter()
@@ -456,7 +463,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         if let genre = contextContent["genre"] as? String{
             
             newEvents = newEvents.filter({( event:Event) -> Bool in
-                return !(event.genre.lowercased().replacingOccurrences(of: "/", with: " ")).contains(genre.lowercased())
+                return !(genre.lowercased().contains(event.genre.lowercased().replacingOccurrences(of: "/", with: " ")))
             })
         }
         if let start_date = contextContent["start_date"] as? Date{
@@ -522,6 +529,10 @@ extension EventViewController{
                     self.filteredItems = contextContents.shared.contextContent
                     self.filterContentofEvents(contextContent: self.filteredItems)
                     self.collectionView.reloadData()
+                    if filteredEvents.count < 5{
+                        helper.showAlert(message: "You can say \" Buy me X tickets on [date\"")
+                        helper.showAlert(message: "Or alternatively \" Buy me X tickets in [venue]\"")
+                    }
                 }
                 
                 else if task == "BuyTicket" || task == "BuyTickets"{

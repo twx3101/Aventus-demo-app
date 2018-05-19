@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aventus Homepage/ViewController/HomeViewController.swift"
-            timestampString = "548435642.840494"
+            timestampString = "548451294.314428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "handleBuyTickets()"
             landmarkType = "7">
             <Actions>
@@ -65,11 +65,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Aventus Homepage/ViewController/HomeViewController.swift"
-            timestampString = "548435642.8409359"
+            timestampString = "548451294.314869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "handleBuyTickets()"
             landmarkType = "7">
             <Actions>

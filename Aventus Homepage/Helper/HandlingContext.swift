@@ -66,9 +66,11 @@ class handlingContext{
         var contextContent = contextContents.shared.contextContent
         //        artist: String
         if let artist = context["artist"] as? String{
-            if (contextContent["genre"] as? String) != nil{
-                handlingContext.resetData()
-                contextContent = contextContents.shared.contextContent
+            if let genre = contextContent["genre"] as? String{
+                if contextContents.shared.event?.genre != genre {
+                    handlingContext.resetData()
+                    contextContent = contextContents.shared.contextContent
+                }
             }
             if let compArtist = contextContent["artist"] as? String{
                 if artist != compArtist{

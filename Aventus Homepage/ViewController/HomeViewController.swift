@@ -17,24 +17,38 @@ class contextContents {
     var context : [AnyHashable : Any]?
     var contextContent = [String : Any]()
     var city : String?
+    var event : Event?
     private init(){
     }
 }
 
 // Home Page
 class HomeViewController: AVTBaseViewController{
-
+    var startup : Bool = true
+    var hello : Bool = false
     @IBOutlet weak var transcription: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = colors.greyBg
         self.textControl.delegate = self
+        
+        
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if startup{
+            print("hello")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                helper.showAlert(message: "Hello, my name is AV and I can help you search for music events! You can speak to me by tapping on the microphone :)")
+            })
+            startup = false
+        }
+        
+        helper.helpTips()
         handlingContext.resetData()
     }
     
@@ -89,7 +103,9 @@ extension HomeViewController{
                 }
             }
             else{
+                if hello == false{
                 helper.showAlert(message: "Sorry, I couldn't understand that")
+                }
             }
         }
     }
@@ -240,8 +256,13 @@ extension HomeViewController{
 extension HomeViewController{
     
     override func speechControllerProcessing(_ transcription: CapitoTranscription!, suggestion: String!) {
+        self.hello = false
         self.showProcessingHUD(text: "Processing...")
         self.transcription.text = String(format: "\"%@\"", transcription.firstResult().replacingOccurrences(of: " | ", with: " "))
+        if String(self.transcription.text!) == "\"Hello\"" || String(self.transcription.text!) == "\"Hi\""{
+            self.hello = true
+            helper.showAlert(message: "Hello there. I see you are an advanced homosapien")
+        }
     }
     
     override func speechControllerDidFinish(withResults response: CapitoResponse!) {
