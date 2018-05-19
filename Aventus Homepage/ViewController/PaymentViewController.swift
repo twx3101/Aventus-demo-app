@@ -180,7 +180,7 @@ class PaymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             
                 seat?.noSeatsAvail[seatCategory] = no!
 
-                let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
+               // let ref = Database.database().reference().root.child(id).updateChildValues([category:no])
             
                 // Navigate to Confirm page
                 let popOverVC = storyboard?.instantiateViewController(withIdentifier: "ConfirmPage") as! ConfirmationViewController

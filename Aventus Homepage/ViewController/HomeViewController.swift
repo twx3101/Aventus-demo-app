@@ -26,6 +26,7 @@ class contextContents {
 class HomeViewController: AVTBaseViewController{
     var startup : Bool = true
     var hello : Bool = false
+    var home : Bool = true
     @IBOutlet weak var transcription: UILabel!
     
     override func viewDidLoad() {
@@ -47,9 +48,12 @@ class HomeViewController: AVTBaseViewController{
             })
             startup = false
         }
-        
-        helper.helpTips()
+        if home{
+            helper.helpTips()
+        }
         handlingContext.resetData()
+        home = true
+        self.transcription.text = ""
     }
     
     // MARK: Actions
@@ -133,6 +137,13 @@ extension HomeViewController{
         nextViewController.filteredItems = contextContents.shared.contextContent
         
         pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+        
+        if nextViewController.filteredEvents.count < 5{
+            helper.showAlert(message: "You can say \" Buy me X tickets on [date\"")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
+                helper.showAlert(message: "Or alternatively \" Buy me X tickets in [venue]\"")
+            })
+        }
     }
     
     
@@ -152,6 +163,10 @@ extension HomeViewController{
             
             nextViewController.isFiltering = true
             nextViewController.filteredItems = contextContents.shared.contextContent
+            
+            pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            
+            nextViewController.filterContentofEvents(contextContent: nextViewController.filteredItems)
         }
         else{
             nextViewController = pageViewController.pages[2] as! EventViewController
@@ -228,6 +243,12 @@ extension HomeViewController{
         //go back to event page  if there's more than 1 event to select from
         else{
             pageViewController.setViewControllers([nextViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+            if nextViewController.filteredEvents.count < 5{
+                helper.showAlert(message: "You can say \" Buy me X tickets on [date\"")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute: {
+                    helper.showAlert(message: "Or alternatively \" Buy me X tickets in [venue]\"")
+                })
+            }
         }
     }
     func handleExclude(){

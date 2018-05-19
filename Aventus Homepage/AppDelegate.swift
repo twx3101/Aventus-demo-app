@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let settings = CAPSettings.getInstance()
         settings?.setAppVersion(AppDelegate.appVersionNumberDisplayString())
-        settings?.silenceDetectionTime = 2.5
+        settings?.silenceDetectionTime = 3.0
         
         let controller = CapitoController.getInstance()
         //"a2d65251-0fe4-476f-994d-5dce055f555f" test appkey

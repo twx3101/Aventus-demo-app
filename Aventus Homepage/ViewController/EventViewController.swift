@@ -45,6 +45,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         definesPresentationContext = true
         
         self.textControl.delegate = self
+     
         
         loadEvents()
     }
@@ -324,6 +325,8 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
                 self.collectionView.reloadData()
             }
         })
+        let pageViewController = self.parent as! PageViewController
+        pageViewController.instantiated[2] = true
     }
     
     func filterContentofEvents(contextContent: Dictionary<String, Any>) -> Int{
@@ -530,8 +533,13 @@ extension EventViewController{
                     self.filterContentofEvents(contextContent: self.filteredItems)
                     self.collectionView.reloadData()
                     if filteredEvents.count < 5{
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute:{
                         helper.showAlert(message: "You can say \" Buy me X tickets on [date\"")
-                        helper.showAlert(message: "Or alternatively \" Buy me X tickets in [venue]\"")
+                        })
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+                            helper.showAlert(message: "Or alternatively \" Buy me X tickets in [venue]\"")
+                        })
+                        
                     }
                 }
                 
@@ -639,6 +647,15 @@ extension EventViewController{
         //go back to event page  if there's more than 1 event to select from
         else{
             helper.showAlert(message: "Which event would you like to go to?")
+            if filteredEvents.count < 5{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.5, execute:{
+                    helper.showAlert(message: "You can say \" Buy me X tickets on [date\"")
+                })
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+                    helper.showAlert(message: "Or alternatively \" Buy me X tickets in [venue]\"")
+                })
+                
+            }
 
         }
     }

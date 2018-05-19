@@ -38,9 +38,8 @@ class ConfirmationViewController: UIViewController{
     @IBAction func goHome(_ sender: UIButton) {
         let pageViewController = self.parent as! PageViewController
         
-        let homeViewController = storyboard?.instantiateViewController(withIdentifier: "HomePage") as! HomeViewController
-        
-        pageViewController.pages[1] = homeViewController
+        let homeViewController = pageViewController.pages[1] as! HomeViewController
+        homeViewController.home = false
         pageViewController.setViewControllers([homeViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         
     }
@@ -50,9 +49,11 @@ class ConfirmationViewController: UIViewController{
         
         let pageViewController = self.parent as! PageViewController
         
-        let homeViewController = storyboard?.instantiateViewController(withIdentifier: "HomePage") as! HomeViewController
+        //let homeViewController = storyboard?.instantiateViewController(withIdentifier: "HomePage") as! HomeViewController
         
-        pageViewController.pages[1] = homeViewController
+        let homeViewController = pageViewController.pages[1] as! HomeViewController
+        
+        homeViewController.home = false
         pageViewController.setViewControllers([homeViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
         
         homeViewController.navTicket()
