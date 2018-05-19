@@ -179,6 +179,9 @@ extension HomeViewController{
         if noOfEvents.count == 1{
 
             if number != nil && categoryNum != nil{
+                detailViewController.eventLoaded = noOfEvents[0]
+                pageViewController.setViewControllers([detailViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
+                
                 let paymentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PaymentPage") as! PaymentViewController
                 
                 pageViewController.pages[4] = paymentViewController
@@ -189,6 +192,8 @@ extension HomeViewController{
                 
                 
                 paymentViewController.payment = Payment(category: selectedCategories, price: price!, selectedSeats: number!)
+                
+                pageViewController.setViewControllers([paymentViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
             }
             else if number != nil{
                 

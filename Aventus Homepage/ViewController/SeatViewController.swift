@@ -264,7 +264,8 @@ class SeatViewController: AVTBaseViewController, UIPickerViewDelegate, UIPickerV
         
         // The number of tickets is zero
         if(selectedTicket==0) {
-            warningLabel.text = "Please select the number of tickets."
+            //warningLabel.text = "Please select the number of tickets."
+            helper.showAlert(message: "Please select the number of tickets")
             return
         }
         

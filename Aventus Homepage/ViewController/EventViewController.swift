@@ -347,7 +347,8 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         if let genre = contextContent["genre"] as? String{
             
             newEvents = newEvents.filter({( event:Event) -> Bool in
-                return genre.lowercased().contains(event.genre.lowercased().replacingOccurrences(of: "/", with: " "))
+                return
+               (event.genre.lowercased().replacingOccurrences(of: "/", with: " ")).contains(genre.lowercased())
             })
         }
         if let start_date = contextContent["start_date"] as? Date{
@@ -455,7 +456,7 @@ class EventViewController: AVTBaseViewController, UICollectionViewDataSource, UI
         if let genre = contextContent["genre"] as? String{
             
             newEvents = newEvents.filter({( event:Event) -> Bool in
-                return !(genre.lowercased().contains(event.genre.lowercased().replacingOccurrences(of: "/", with: " ")))
+                return !(event.genre.lowercased().replacingOccurrences(of: "/", with: " ")).contains(genre.lowercased())
             })
         }
         if let start_date = contextContent["start_date"] as? Date{
